@@ -1,0 +1,296 @@
+@import "../../responsive/breakpoints";
+// stiky header css
+.sticky {
+  background-color: #fff !important;
+  transition: all 0.3s ease-in-out;
+}
+.ss-trade_frontpage_header_wrapper {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  padding: 0px 0px;
+  @include breakpoints(miniSemiTablet) {
+    background-color: #fff !important;
+  }
+  .toggler_icon {
+    display: none;
+    @include breakpoints(miniSemiTablet) {
+      display: block;
+      margin-right: 15px;
+      svg {
+        color: #000;
+        font-size: 20px;
+      }
+    }
+  }
+  .ss-trade_front_navbar {
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .ss-trade_front_logo {
+      // background-color: #fff;
+      border-radius: 100%;
+      @include breakpoints(miniSemiTablet) {
+        background-color: rgb(255, 255, 255);
+        border-radius: none;
+        width: 100%;
+        border-radius: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        @include breakpoints(miniSemiTablet) {
+          // background-color: #fff;
+          border-radius: 100%;
+        }
+        // background-color: #fff;
+        // border-radius: 100%;
+        img {
+          width: 80px;
+          height: 70px;
+          @include breakpoints(largeMobile) {
+            width: 80px;
+            height: 70px;
+          }
+        }
+      }
+      .ss-trade_front_navbar_lists2 {
+        display: none;
+        @include breakpoints(miniSemiTablet) {
+          display: inline-block;
+          display: flex;
+          gap: 10px;
+        }
+        list-style: none;
+        .ss-trade_front_navbar_list2 {
+          display: inline-block;
+          margin-left: 0px;
+          .ss-trade_front_nav_link2 {
+            font-size: 18px;
+            padding: 12px;
+            font-weight: 600;
+            color: #000;
+            transition: all 0.3s ease-in-out;
+            @media screen and (max-width: 402px) {
+              font-size: 15px;
+              padding: 13px;
+              font-weight: 600;
+            }
+            @include breakpoints(mobile) {
+              font-size: 12px;
+              padding: 6px;
+              font-weight: 600;
+            }
+          }
+          .login2 {
+            border: 0px;
+            background-color: #00a5ec;
+            &:hover {
+              color: #fff !important;
+              background-color: #0192cf;
+              border-bottom: none !important;
+            }
+          }
+          .register2 {
+            border: 0px;
+            background-color: #ffffff;
+            color: #000 !important;
+            &:hover {
+              color: $text-white !important;
+              background-color: #787af0;
+              border-bottom: none !important;
+            }
+          }
+          .ss-trade_front_navbar_dashboard {
+            border: 0px;
+            background-color: #ffffff;
+            color: #1e0b56 !important;
+            &:hover {
+              color: #fff !important;
+              background-color: #787af0;
+              border-bottom: none !important;
+            }
+          }
+          .ss-trade_front_navbar_logOut {
+            border: 0px;
+            background-color: #e8c743;
+            &:hover {
+              color: #fff !important;
+              background-color: #c4a50c;
+              border-bottom: none !important;
+            }
+          }
+        }
+      }
+    }
+    @include breakpoints(miniSemiTablet) {
+      justify-content: start;
+    }
+    .toggle_navbar {
+      @include breakpoints(miniSemiTablet) {
+        height: 220px !important;
+        opacity: 1 !important;
+        transition: all 0.3s ease-in-out !important;
+        transform: scaleY(1.1) !important;
+        background: #fff !important;
+        transform-origin: top !important;
+      }
+    }
+    .ss-trade_front_navbar_menu {
+      transition: all 0.3s ease-in-out;
+      @include breakpoints(miniSemiTablet) {
+        position: absolute;
+        top: 105px;
+        width: 100%;
+        background: #fff;
+        left: 0;
+        height: 0px;
+        opacity: 0;
+        border-top: 2px solid #7b5eea;
+        transition: all 0.3s ease-in-out;
+        transform: scaleY(0);
+      }
+      @include breakpoints(mdlgMobile) {
+        top: 75px;
+      }
+      .ss-trade_front_navbar_lists {
+        list-style: none;
+        @include breakpoints(miniSemiTablet) {
+          margin-left: 15px !important;
+        }
+        @include breakpoints(mdlgMobile) {
+          margin-left: 10px !important;
+        }
+        .ss-trade_front_navbar_list {
+          display: inline-block;
+          margin-left: 15px;
+          @include breakpoints(semiTablet) {
+            margin-left: 5px !important;
+          }
+          @include breakpoints(miniSemiTablet) {
+            display: inherit !important;
+            margin: 13px 30px !important;
+          }
+          .sub-menu-l {
+            display: none;
+            position: absolute;
+            top: 64px !important;
+          }
+          &:hover {
+            .sub-menu-l {
+              display: block !important;
+              position: absolute;
+              background-color: rgba(255, 255, 255, 0.9);
+              box-shadow: $box-shadow-1;
+              // margin-top: 15px;
+              margin-left: 0px;
+              // top: 50px;
+              @include breakpoints(miniSemiTablet) {
+                top: 190px !important;
+              }
+              ul {
+                list-style: none;
+                margin: 0px;
+                @include breakpoints(miniSemiTablet) {
+                  text-align: center;
+                }
+                li {
+                  padding: 10px 30px;
+                  // pointer-events:none;
+                  cursor: pointer;
+                  &:hover {
+                    background-color: #ae989877;
+                    // border-bottom: 2px solid #e8c743;
+                    // color: #e8c743;
+                  }
+                  a {
+                    // padding: 0px 15px;
+                    font-size: 12px;
+                    border-bottom: 2px solid rgba(0, 0, 0, 0);
+                    @include breakpoints(largeMobile) {
+                      padding: 8px;
+                    }
+                    color: #000;
+                    &:hover {
+                      border-bottom: 2px solid #e8c743;
+                      color: #142bf7;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .ss-trade_front_nav_link {
+            font-size: 13px;
+            font-weight: 600;
+            color: #000;
+            padding: 10px;
+            @include breakpoints(semiTablet) {
+              padding: 10px 8px;
+            }
+            // background-color: red;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              border-bottom: 2px solid #7b5eea;
+              color: #7b5eea;
+            }
+          }
+          .active {
+            border-bottom: 2px solid #7b5eea;
+            color: #7b5eea;
+          }
+        }
+        .login {
+          @include breakpoints(miniSemiTablet) {
+            margin-top: 25px !important;
+          }
+        }
+
+        .login,
+        .register {
+          a {
+            padding: 8px 28px !important;
+            transition: all 0.3s ease-in-out;
+            border-radius: 0px;
+            font-weight: 400 !important;
+            color: #1e0b56 !important;
+            background-color: #00a5ec;
+            &:hover {
+              color: #000 !important;
+              background-color: #027fb4;
+              border-bottom: none !important;
+            }
+            @include breakpoints(miniSemiTablet) {
+              display: none;
+            }
+          }
+        }
+        .register {
+          @include breakpoints(miniSemiTablet) {
+            margin-top: 25px !important;
+          }
+          .active {
+            border-bottom: none;
+            color: #7b5eea;
+          }
+          a {
+            color: #7b5eea !important;
+            background-color: #ffffff !important;
+            &:hover {
+              color: #fff !important;
+              background-color: #787af0 !important;
+              border-bottom: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

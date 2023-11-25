@@ -1,0 +1,293 @@
+@import "../../../responsive/breakpoints";
+.tp_fundTransfer_page_wrapper {
+  margin-top: 20px;
+  .tp_fundTransfer_form_card {
+    padding: 25px;
+    min-height: 250px;
+    h1 {
+      font-size: 18px;
+      color: $text-p-color;
+      white-space: nowrap;
+      @include breakpoints(mdlgMobile) {
+        font-size: 14px;
+      }
+    }
+    h2 {
+      font-size: 16px;
+      color: $text-p-color;
+      white-space: nowrap;
+      @include breakpoints(mdlgMobile) {
+        font-size: 14px;
+      }
+    }
+    .tp_section_title {
+      text-align: start;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      h2 {
+        font-size: 16px;
+        text-align: left;
+        color: $text-black;
+        text-transform: uppercase;
+        margin-bottom: 10px !important;
+        position: relative;
+        margin-left: 10px !important;
+        font-weight: 500 !important;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 3px;
+          height: 90%;
+          background: $text-menu-active-color;
+          top: 1px;
+          left: -8px;
+          bottom: 0;
+        }
+        @include breakpoints(mdlgMobile) {
+          font-size: 14px;
+        }
+      }
+      .tp_section_title_right_side {
+        display: flex;
+        gap: 5px;
+        @include breakpoints(miniPortraitTablet) {
+          flex-direction: column;
+          gap: 2px;
+        }
+        .tp_section_title_balance {
+          text-align: start;
+          margin-bottom: 10px;
+          @include breakpoints(miniPortraitTablet) {
+            margin-bottom: 4px;
+          }
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          h3 {
+            font-size: 18px;
+            color: $text-p-color;
+          }
+          p {
+            color: #24d5b8 !important;
+            background-color: rgba(26, 156, 134, 0.2) !important;
+            padding: 5px 10px;
+            border-radius: 50px;
+            white-space: nowrap;
+            @include breakpoints(mdlgMobile) {
+              font-size: 14px;
+              padding: 5px 5px;
+            }
+          }
+        }
+        .tp_section_Trx_balance {
+          p {
+            @include breakpoints(mdlgMobile) {
+              font-size: 14px;
+            }
+            white-space: nowrap;
+            color: #248ed5 !important;
+            background-color: rgba(26, 121, 156, 0.2) !important;
+          }
+        }
+      }
+    }
+    .tp_fundTransfer_page_content {
+      margin-bottom: 30px;
+      .select_field {
+        width: 100%;
+        padding: 7px 8px;
+        border: $border-header;
+        outline: none;
+        border-radius: 5px;
+        color: $text-default-color;
+        background: $bg-body;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      label {
+        font-size: 13px;
+        font-weight: 600;
+        color: $text-p-color;
+      }
+      form {
+        .form_group {
+          display: flex;
+          margin: 15px 0;
+          @include breakpoints(portraitTablet) {
+            display: inherit;
+            margin: 0px;
+          }
+          .input_group {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: auto;
+              margin: 10px 0;
+            }
+          }
+          .package {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: 100%;
+              margin: 10px 0;
+            }
+          }
+          .left {
+            margin-right: 16px !important;
+            @include breakpoints(portraitTablet) {
+              margin-right: 0px !important;
+            }
+          }
+          label {
+            font-size: 13px;
+            font-weight: 600;
+            color: $text-p-color;
+          }
+          .input_field {
+            width: 100%;
+            padding: 7px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-p-color;
+            background: $bg-body;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+            font-size: 14px;
+          }
+          .select_field {
+            width: 100%;
+            padding: 7px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-default-color;
+            background: $bg-body;
+            margin-top: 10px;
+            font-size: 14px;
+          }
+          input {
+            width: 100%;
+            padding: 7px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-p-color;
+            background: $bg-body;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+            font-size: 14px;
+          }
+          textarea {
+            width: 100%;
+            padding: 10px 8px;
+            border: none;
+            outline: none;
+            border-radius: 3px;
+            background-color: $bg-body;
+            color: $text-black;
+            font-size: 14px;
+            border: $border-header;
+            &::placeholder {
+              text-transform: capitalize;
+              color: $text-gray;
+              font-size: 13px;
+            }
+          }
+          input:disabled {
+            background-color: $bg-body;
+            border: none;
+            cursor: no-drop;
+            border: $border-header !important;
+          }
+          .copyToClipboard {
+            color: $text-primary;
+            background-color: $bg-body;
+          }
+          .OTP_input_field {
+            width: 93% !important;
+            overflow-y: hidden;
+            @include breakpoints(mdlgMobile) {
+              width: 90% !important;
+            }
+          }
+        }
+        .form_group_OTP {
+          // background: red;
+          width: 100%;
+          display: grid;
+          grid-template-columns: 7fr 3fr;
+          @include breakpoints(mdlgMobile) {
+            grid-template-columns: 3fr 2fr;
+          }
+          gap: 5px;
+          .OTP_resend_btn {
+            background-color: #ea5e5e;
+            // padding: 8px 12px;
+            height: 36px;
+            align-self: flex-end;
+            white-space: nowrap;
+            border-radius: 3px;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            @include breakpoints(mdlgMobile) {
+              font-size: 12px;
+            }
+            &:hover {
+              background-color: #ea5e5ee5;
+              box-shadow: 0 5px 5px 0 rgb(82 63 105 / 5%);
+            }
+          }
+        }
+        .submit_btn {
+          background: $bg-thin-green;
+          box-shadow: $box-shadow-sidebar-menu;
+          padding: 10px 12px;
+          width: 150px;
+          border-radius: 5px;
+          border: none;
+          font-size: 15px;
+          font-weight: 600;
+          text-transform: capitalize;
+          color: #fff;
+          margin-top: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            opacity: 0.8;
+          }
+          @include breakpoints(portraitTablet) {
+            width: 100%;
+          }
+        }
+      }
+      .minimum_amount {
+        font-size: 15px;
+        color: $text-p-color;
+        @include breakpoints(mdlgMobile) {
+          font-size: 14px;
+        }
+      }
+      .charge_amount {
+        font-size: 14px;
+        color: #ec2525;
+        @include breakpoints(mdlgMobile) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+// .amount_field {
+//   position: relative;
+//   input {
+//     width: 97% !important;
+//     padding: 10px 8px;
+//     padding-left: 23px !important;
+//   }
+// }

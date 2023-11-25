@@ -1,0 +1,22 @@
+.autoppool-start-button {
+  width: max-content;
+  padding: 10px 20px;
+  text-align: center;
+  background: $bg-thin-green;
+  box-shadow: $box-shadow-sidebar-menu;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 10px;
+  @include breakpoints(tablet) {
+    width: 100%;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+}

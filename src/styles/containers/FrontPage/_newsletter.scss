@@ -1,0 +1,113 @@
+@import "../../responsive/breakpoints";
+
+.sst_newsletter {
+  background: linear-gradient(#0f0f12, #0f0f12);
+  background-image: url("https://res.cloudinary.com/deavhufn6/image/upload/v1694425310/sst-bg_dchkjr.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include breakpoints(tablet) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .sst_newsletter-body {
+    width: 80%;
+    border-radius: 20px;
+    padding: 30px;
+    background: linear-gradient(to bottom right, #5a60ff, #ec5967);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include breakpoints(tablet) {
+      padding: 10px;
+    }
+
+    .sst_news-image {
+      flex: 1;
+
+      @include breakpoints(tablet) {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .sst_news-form {
+      flex: 3;
+
+      h2 {
+        font-size: 40px;
+        font-weight: 600 !important;
+        color: #fff;
+        padding: 20px 0;
+
+        @include breakpoints(tablet) {
+          font-size: 27px;
+          font-weight: 600 !important;
+        }
+      }
+
+      p {
+        font-size: 20px;
+        color: #ccc;
+        line-height: 2em;
+        padding: 10px 0;
+
+        @include breakpoints(tablet) {
+          font-size: 15px;
+          font-weight: 400 !important;
+        }
+      }
+
+      input {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        padding: 10px 5px;
+        font-size: 20px;
+        color: #fff;
+        opacity: 1;
+        outline: none;
+
+        ::placeholder {
+          color: #fff !important;
+          opacity: 1;
+        }
+      }
+
+      button {
+        background-color: #0000ffd1;
+        padding: 12px 25px;
+        margin-left: 20px;
+        font-size: 20px;
+        color: #fff;
+        border: none;
+        margin-right: 20px;
+        font-weight: 600 !important;
+        transition: all 500ms ease-in-out;
+
+        @include breakpoints(tablet) {
+          padding: 10px 15px;
+          font-size: 15px;
+          margin-right: 10px;
+          margin-top: 20px;
+          margin-left: 0px;
+        }
+
+        :hover {
+          background-color: rgb(2, 2, 161);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

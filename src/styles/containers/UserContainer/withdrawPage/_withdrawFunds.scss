@@ -1,0 +1,133 @@
+@import "../../../responsive/breakpoints";
+.ss-trade_withdrawfunds_page_wrapper {
+  margin-top: 20px;
+  .ss-trade_withdrawfunds_form_card {
+    padding: 25px;
+    min-height: 250px;
+    .ss-trade_section_title {
+      text-align: start;
+      margin-bottom: 20px;
+      h2 {
+        font-size: 20px;
+        color: $text-default-color;
+        transition: all 0.3s ease-in-out;
+        @include breakpoints(tablet) {
+          font-size: 20px;
+        }
+      }
+    }
+    .ss-trade_withdrawfunds_page_content {
+      form {
+        .form_group {
+          display: flex;
+          margin: 5px 0;
+          @include breakpoints(portraitTablet) {
+            display: inherit;
+            margin: 0px;
+          }
+          .input_group {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: auto;
+              margin: 10px 0;
+            }
+          }
+          .receiver_wallet {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: auto;
+              margin: 10px 0;
+            }
+          }
+          .left {
+            margin-right: 33px !important;
+            @include breakpoints(portraitTablet) {
+              margin-right: 16px !important;
+            }
+          }
+          .right {
+            margin-right: 19px;
+          }
+          label {
+            font-size: 15px;
+            font-weight: 600;
+            color: $text-default-color;
+            @include breakpoints(tablet) {
+              font-size: 14px;
+            }
+          }
+          .input_field {
+            position: absolute;
+            content: "₹";
+            width: 10px;
+            height: 10px;
+            color: white;
+            background: red;
+          }
+          .input_field,
+          .select_field {
+            width: 100%;
+            padding: 10px 8px;
+            color: $text-default-color;
+            font-size: 15px;
+            border: $border-header;
+            outline: none;
+            margin: 10px 0;
+            border-radius: 3px;
+            background: $bg-body;
+            position: relative;
+          }
+          :disabled {
+            background-color: $bg-body;
+            border: none;
+            cursor: no-drop;
+          }
+        }
+        .submit_btn {
+          background: $bg-blue-linear-gradient;
+          box-shadow: $box-shadow-sidebar-menu;
+          padding: 10px 12px;
+          width: 100px;
+          border-radius: 3px;
+          border: none;
+          font-size: 15px;
+          font-weight: 600;
+          text-transform: capitalize;
+          color: #fff;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            opacity: 0.8;
+          }
+          @include breakpoints(portraitTablet) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.converter_box_wrapper {
+  width: 50%;
+  @include breakpoints(tablet) {
+    width: 100%;
+  }
+}
+// .amount_field {
+//   position: relative;
+//   // display: inline-block;
+//   &::after {
+//     content: "₹";
+//     width: 1em;
+//     height: 1em;
+//     position: absolute;
+//     top: 67%;
+//     left: 8px;
+//     transform: translateY(-50%);
+//   }
+//   input {
+//     width: 97% !important;
+//     padding: 10px 8px;
+//     padding-left: 23px !important;
+//   }
+// }

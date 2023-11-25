@@ -1,0 +1,144 @@
+@import "../responsive/breakpoints";
+body {
+  background-color: $bg-body !important;
+  font-family: $font-family;
+  position: relative;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  color: $text-default-color !important;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: $bg-body;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.container {
+  padding: 0 30px;
+  max-width: 1280px;
+  margin: auto;
+  @include breakpoints(mdlgMobile) {
+    padding: 0 10px;
+  }
+}
+
+.landingPage_container {
+  padding: 0 80px;
+  max-width: 1080px;
+  margin: auto;
+  @include breakpoints(tablet) {
+    padding: 0 50px;
+  }
+  @include breakpoints(mdlgMobile) {
+    padding: 0 10px;
+  }
+}
+.hero_section {
+  padding: 50px 10px;
+}
+button:not(.Mui-disabled):disabled {
+  background: #9b9696 !important;
+  cursor: no-drop !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196f3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+// date range
+
+.rdrDateRangePickerWrapper {
+  flex-direction: column-reverse;
+}
+
+.rdrMonthsHorizontal {
+  flex-direction: column;
+}
+
+.rdrInputRanges {
+  display: none;
+}
+
+.rdrDefinedRangesWrapper {
+  display: none;
+}

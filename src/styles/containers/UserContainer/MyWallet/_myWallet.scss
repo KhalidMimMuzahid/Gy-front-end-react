@@ -1,0 +1,98 @@
+.wallet_page_wrapper {
+  .ss-trade_dash_content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    margin-top: 20px;
+    // height: 140px;
+    margin-right: 10px;
+    @include breakpoints(4kdevice) {
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 15px;
+    }
+    @include breakpoints(portraitTablet) {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 15px;
+    }
+
+    .ss-trade_dash_card_wrapper {
+      background-image: url("../../../../assets/card.jpeg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      position: relative;
+      padding: 44px 22px;
+      background-color: $bg-white;
+      transition: all 0.3s ease-in-out;
+      box-shadow: $box-shadow-1;
+      // border-right: $border-1;
+      border-radius: 5px;
+      display: grid;
+      align-items: center;
+      @include breakpoints(laptop) {
+        height: 100px;
+      }
+      @include breakpoints(tablet) {
+        height: auto;
+      }
+      .ss-trade_content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transition: all 0.3s ease-in-out;
+        justify-content: space-between;
+        .ss-trade_widget_info {
+          p {
+            font-size: 32px;
+            color: $text-p-color;
+            // white-space: nowrap;
+            -webkit-text-stroke: 0.1px black;
+            color: white;
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+              -1px 1px 0 #000, 1px 1px 0 #000;
+          }
+          h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px !important;
+          }
+          a {
+            color: $text-black;
+            font-size: 13px;
+            text-transform: capitalize;
+            font-weight: 500;
+            &:hover {
+              color: $text-menu-active-color;
+            }
+          }
+        }
+        .ss-trade_widget_icon {
+          order: 2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          padding: 0px;
+          @include breakpoints(smLaptop) {
+            margin-right: 10px;
+          }
+          svg {
+            color: #fff;
+            font-size: 30px;
+            border-radius: 50px;
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+.converter_box_wrapper {
+  width: 50%;
+  @include breakpoints(tablet) {
+    width: 100%;
+  }
+}

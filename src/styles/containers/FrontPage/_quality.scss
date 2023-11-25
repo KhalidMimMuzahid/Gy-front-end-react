@@ -1,0 +1,141 @@
+.quality_container {
+    padding: 50px 0;
+    background-color: #eee;
+
+    .quality_inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+
+        @include breakpoints(tablet) {
+            flex-direction: column-reverse;
+        }
+
+        .quality_left {
+            h2 {
+                font-size: 36px;
+                font-weight: 600 !important;
+                line-height: 54px;
+                color: #3F3453;
+                padding-bottom: 15px;
+                text-align: left;
+                position: relative;
+
+                &::after {
+                    content: "\A";
+                    width: 150px;
+                    height: 4px;
+                    background: #3F3453;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+
+                @include breakpoints(tablet) {
+                    text-align: left;
+                }
+
+                @include breakpoints(largeMobile) {
+                    font-size: 22px;
+                }
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 400 !important;
+                color: #000;
+                padding-top: 20px;
+            }
+        }
+
+        .quality_right {
+            img {
+                -webkit-animation: bounce 2.8s ease-in-out 0s infinite alternate;
+                animation: bounce 1.8s ease-in-out 0s infinite alternate;
+
+                @include breakpoints(tablet) {
+                    width: 70%;
+                    height: auto;
+                }
+
+                @include breakpoints(largeMobile) {
+                    width: 50%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+.future_container {
+    padding: 50px 0;
+    background-color: #fff;
+
+    .future_inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+
+        @include breakpoints(tablet) {
+            flex-direction: column;
+        }
+
+        .future_right {
+            h2 {
+                font-size: 36px;
+                font-weight: 600 !important;
+                line-height: 54px;
+                color: #3F3453;
+                padding-bottom: 15px;
+                text-align: left;
+                position: relative;
+
+                &::after {
+                    content: "\A";
+                    width: 150px;
+                    height: 4px;
+                    background: #3F3453;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+
+                @include breakpoints(tablet) {
+                    text-align: left;
+                }
+
+                @include breakpoints(largeMobile) {
+                    font-size: 22px;
+                }
+            }
+
+            p {
+                font-size: 15px;
+                font-weight: 400 !important;
+                color: #000;
+                padding-top: 20px;
+            }
+        }
+
+        .future_left {
+            img {
+                -webkit-animation: bounce 2.8s ease-in-out 0s infinite alternate;
+                animation: bounce 1.8s ease-in-out 0s infinite alternate;
+
+                @include breakpoints(tablet) {
+                    width: 70%;
+                    height: auto;
+                }
+
+                @include breakpoints(largeMobile) {
+                    width: 50%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}

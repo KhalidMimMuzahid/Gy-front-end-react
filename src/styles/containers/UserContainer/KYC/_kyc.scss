@@ -1,0 +1,218 @@
+@import "../../../responsive/breakpoints";
+
+
+
+// //new variables
+
+
+
+// // Colors
+// $text-p-color: #333;               // Text primary color
+// $text-black: #000;                  // Black text color
+// $bg-body: #f5f5f5;                 // Body background color
+// $bg-thin-green: #4caf50;           // Thin green background color
+// $text-menu-active-color: #00bcd4;  // Text menu active color
+
+// // Borders
+// $border-header: 1px solid #ccc;    // Header border color
+
+// // Box Shadow
+// $box-shadow-sidebar-menu: 0 2px 4px rgba(0, 0, 0, 0.1);  // Sidebar menu box shadow
+
+// // Breakpoints (assuming these are defined in "responsive/breakpoints" file)
+// // Define your breakpoints variables here, if not provided in the code snippet.
+
+// // Font Sizes
+// $font-size-small: 10px;
+// $font-size-medium: 13px;
+// $font-size-large: 15px;
+
+// // Other common values
+// $button-padding: 10px 12px;
+// $border-radius: 5px;
+
+
+
+.kyc_page_wrapper {
+  margin-top: 10px;
+  @include breakpoints(tablet) {
+    margin-top: 5px !important;
+  }
+  .kyc_form_card {
+    padding: 15px;
+    min-height: 250px;
+    @include breakpoints(tablet) {
+      padding: 10px 5px !important;
+      min-height: auto !important;
+    }
+    .kyc_section_title {
+      text-align: start;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include breakpoints(extralargeMobile) {
+        margin-bottom: 10px !important;
+      }
+      h2 {
+        font-size: 18px;
+        text-align: left;
+        color: $text-p-color;
+        text-transform: uppercase;
+        margin-bottom: 10px !important;
+        position: relative;
+        margin-left: 10px !important;
+        font-weight: 500 !important;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 3px;
+          height: 90%;
+          background: $text-menu-active-color;
+          top: 1px;
+          left: -8px;
+          bottom: 0;
+        }
+        @include breakpoints(extralargeMobile) {
+          font-size: 15px;
+        }
+      }
+    }
+    .kyc_page_content {
+      label {
+        color: $text-black !important;
+        @include breakpoints(extralargeMobile) {
+          font-size: 12px !important;
+        }
+      }
+      .select_field {
+        width: 100%;
+        padding: 10px 8px;
+        border: $border-header;
+        outline: none;
+        border-radius: 5px;
+        color: $text-black;
+        background: $bg-body;
+        margin-top: 10px;
+        @include breakpoints(extralargeMobile) {
+          padding: 7px 5px !important;
+          margin-top: 0px !important;
+          font-size: 12px !important;
+        }
+      }
+      form {
+        .images_section {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          gap: 20px;
+          @include breakpoints(extralargeMobile) {
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+            gap: 5px !important;
+          }
+          .kyc_box {
+            width: 100%;
+            @include breakpoints(portraitTablet) {
+              margin-bottom: 20px;
+            }
+            @include breakpoints(extralargeMobile) {
+              margin-bottom: 0px !important;
+            }
+            .image_preview {
+              width: 100%;
+              height: 300px;
+              margin-bottom: 10px;
+              @include breakpoints(largeMobile) {
+                height: 200px;
+              }
+              img {
+                height: 100%;
+                width: 100%;
+                border-radius: 15px;
+              }
+            }
+            .input_field {
+              width: 100%;
+              padding: 10px 8px;
+              border: $border-header;
+              outline: none;
+              border-radius: 5px;
+              color: $text-p-color;
+              background: $bg-body;
+              margin-top: 10px;
+              position: relative;
+              @include breakpoints(extralargeMobile) {
+                padding: 3px 5px !important;
+                margin-top: 0px !important;
+              }
+            }
+            p {
+              font-size: 10px !important;
+            }
+            label {
+              font-size: 13px;
+              font-weight: 600;
+              color: $text-p-color;
+            }
+          }
+        }
+        .input_field {
+          width: 100%;
+          padding: 10px 8px;
+          border: $border-header;
+          outline: none;
+          border-radius: 5px;
+          color: $text-p-color;
+          background: $bg-body;
+          margin-top: 10px;
+          position: relative;
+          @include breakpoints(extralargeMobile) {
+            // padding: 3px 5px !important;
+            margin-top: 0px !important;
+            font-size: 12px !important;
+          }
+        }
+        label {
+          font-size: 13px;
+          font-weight: 600;
+          color: $text-p-color;
+        }
+        .submit_btn {
+          background: $bg-thin-green;
+          box-shadow: $box-shadow-sidebar-menu;
+          padding: 10px 12px;
+          width: 140px;
+          border-radius: 5px;
+          border: none;
+          font-size: 15px;
+          font-weight: 600;
+          text-transform: capitalize;
+          color: #fff;
+          margin-top: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            opacity: 0.8;
+          }
+          @include breakpoints(portraitTablet) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .deposithistory_table {
+    .tp_sectiontable_card {
+      @include breakpoints(tablet) {
+        padding: 5px !important;
+      }
+      .tp_sectiontable_title {
+        @include breakpoints(extralargeMobile) {
+          margin-bottom: 5px !important;
+        }
+      }
+    }
+  }
+}

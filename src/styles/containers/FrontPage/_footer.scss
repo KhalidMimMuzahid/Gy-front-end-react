@@ -1,0 +1,189 @@
+@import "../../responsive/breakpoints";
+.ss-trade_front_footer_wrapper {
+  background-color: $bg_front_black_purple;
+  padding-top: 10px;
+  //   padding-bottom: 80px;
+  .footer-container {
+    padding: 0px 0px 10px;
+    // border-top: 2px solid $text_front_blue;
+    text-align: center;
+    display: flex;
+    p {
+      color: #fff !important;
+    }
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      color: $text_front_blue !important;
+    }
+
+    @include breakpoints(miniSemiTablet) {
+      flex-direction: column;
+    }
+
+    .content {
+      .social_link {
+        list-style: none;
+        li {
+          display: inline-block;
+          margin: 20px 10px 0 0;
+          a {
+            svg {
+              font-weight: 14px;
+              font-size: 16px;
+              padding: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+              background-color: $bg_front_blue;
+              transition: all 0.3s ease-in-out;
+              // &:hover {
+              //   background-color: $bg-white;
+              //   color: $text_front_blue;
+              // }
+            }
+            .facebook {
+              &:hover {
+                background: #1877f2 !important;
+              }
+            }
+            .twitter {
+              &:hover {
+                background: #1da1f2 !important;
+              }
+            }
+            .instagram {
+              &:hover {
+                background: #e4405f !important;
+              }
+            }
+            .youtube {
+              &:hover {
+                background: #cd201f !important;
+              }
+            }
+            .interest {
+              &:hover {
+                background: #bd081c !important;
+              }
+            }
+            .telegram {
+              &:hover {
+                background: #00405d !important;
+              }
+            }
+            .linkedin {
+              &:hover {
+                background: #0077b5 !important;
+              }
+            }
+            .whatsapp {
+              &:hover {
+                background: #25d366 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .ss-trade_front_footer_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    padding: 30px 0;
+    @include breakpoints(laptop) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .form {
+      width: 400px;
+      @include breakpoints(laptop) {
+        width: 100%;
+      }
+    }
+    .ss-trade_front_footer_widget {
+      .title {
+        color: $text-white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 16px;
+        margin-bottom: 10px !important;
+      }
+      form {
+        .form_group {
+          position: relative;
+          padding-right: 45px;
+          .subscribe_field {
+            width: 100%;
+            background-color: rgba(123, 94, 234, 0.28);
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            &:focus {
+              background-color: rgba(123, 94, 234, 0.7);
+              color: $text-white;
+            }
+            &:active {
+              background-color: rgba(123, 94, 234, 0.7);
+              color: $text-white;
+            }
+            &::placeholder {
+              text-transform: uppercase;
+              color: $text-gray;
+              font-size: 11px;
+            }
+          }
+          .submit_btn {
+            position: absolute;
+            z-index: 2;
+            border-radius: 3px;
+            background-color: $bg_front_blue;
+            border: none;
+            color: $text-white;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-size: 14px;
+            position: absolute;
+            top: 5px;
+            right: -38px;
+            padding: 7px 20px;
+            @include breakpoints(laptop) {
+              right: 10px;
+            }
+          }
+        }
+      }
+      .ss-trade_front_footer_menu {
+        ul {
+          list-style: none;
+          li {
+            padding: 0;
+            margin-bottom: 10px;
+            display: inline-block;
+            width: 31%;
+            @include breakpoints(tablet) {
+              width: 48%;
+            }
+            a {
+              display: inline-block;
+              color: #a3b0bd;
+              font-weight: 500;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              font-size: 12px;
+              -webkit-transition: all 200ms linear;
+              transition: all 200ms linear;
+            }
+          }
+        }
+      }
+    }
+  }
+}

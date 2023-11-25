@@ -1,0 +1,15 @@
+.ss-trade_tickethistory_page_wrapper {
+  margin-top: 20px;
+  .ss-trade_tickethistory_form_card {
+    padding: 25px;
+    min-height: 250px;
+    .ss-trade_section_title {
+      margin-bottom: 20px;
+      h2 {
+        font-size: 20px;
+        color: $text-default-color;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}

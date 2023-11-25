@@ -1,0 +1,54 @@
+.about_container {
+  background-color: #01123c;
+  background-image: url("../../../assets/about-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 110px 0;
+
+  @include breakpoints(largeMobile){
+    padding: 70px 0;
+  }
+
+  .about_inner {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+
+    .about_left{
+      flex: 2;
+      @include breakpoints(largeMobile){
+        padding: 20px;
+      }
+      h2{
+        font-size: 48px;
+        font-weight: 500 !important;
+        line-height: 39px;
+        color: #fff;
+
+        @include breakpoints(largeMobile){
+          text-align: center;
+        }
+      }
+      p{
+        font-size: 18px;
+        font-weight: 300 !important;
+        line-height: 27px;
+        color: #f9f9f9;
+        padding: 25px 0 0px 0px;
+
+        @include breakpoints(largeMobile){
+          text-align: center;
+        }
+      }
+    }
+
+    .about_right{
+      flex: 1;
+
+      @include breakpoints(tablet){
+        display: none;
+      }
+    }
+  }
+}

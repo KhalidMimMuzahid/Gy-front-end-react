@@ -1,0 +1,105 @@
+.ss-trade_kyc_page_wrapper {
+  margin-top: 20px;
+  .ss-trade_kyc_card {
+    padding: 25px;
+    min-height: 250px;
+    .ss-trade_kyc_title {
+      text-align: start;
+      margin-bottom: 20px;
+      h2 {
+        font-size: 20px;
+        text-transform: capitalize;
+        color: $text-default-color;
+        transition: all 0.3s ease-in-out;
+        @include breakpoints(tablet) {
+          font-size: 20px;
+        }
+      }
+    }
+    .ss-trade_kyc_field {
+      form {
+        .left {
+          margin-right: 33px !important;
+          @include breakpoints(portraitTablet) {
+            margin-right: 20px !important;
+          }
+        }
+        .right {
+          margin-right: 19px !important;
+        }
+        .horizontal {
+          margin: 30px 0;
+        }
+        .form_group {
+          display: flex;
+          margin: 15px 0;
+          @include breakpoints(portraitTablet) {
+            display: inherit;
+            margin: 0px;
+          }
+          .input_group {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: auto;
+              margin: 10px 0;
+            }
+          }
+          label {
+            width: 100%;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px !important;
+            color: $text-default-color;
+            transition: all 0.3s ease-in-out;
+            @include breakpoints(tablet) {
+              font-size: 14px;
+            }
+          }
+          input {
+            width: 100%;
+            padding: 10px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-default-color;
+            background: $bg-body;
+            margin-top: 10px;
+          }
+          select {
+            width: 100%;
+            padding: 10px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-default-color;
+            background: $bg-body;
+            margin-top: 10px;
+          }
+        }
+        .submit_button {
+          button {
+            margin-top: 10px;
+            width: 100px;
+            padding: 10px 8px;
+            background: $bg-blue-linear-gradient;
+            box-shadow: $box-shadow-sidebar-menu;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            text-transform: capitalize;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              opacity: 0.8;
+            }
+            @include breakpoints(portraitTablet) {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

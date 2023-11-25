@@ -1,0 +1,1 @@
+export const  isFloat = (x) => { return !!(x % 1); }

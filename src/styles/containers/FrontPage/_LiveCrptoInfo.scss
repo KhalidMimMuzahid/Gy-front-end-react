@@ -1,0 +1,19 @@
+@import "../../responsive/breakpoints";
+
+.LiveCrypto_Container {
+  background: $bg_front_gradient;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  .Live_crypto_Info_wrapper {
+    background: $bg_front_gradient;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    .Live_crypto_Info_section {
+      h1 {
+        color: #fff;
+        text-align: center;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

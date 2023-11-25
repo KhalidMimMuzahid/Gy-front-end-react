@@ -1,0 +1,344 @@
+@import "../../../responsive/breakpoints";
+
+.ss-trade_boosterIncome {
+  margin-top: 10px;
+  .ss-trade_boosterIncome_form_card {
+    padding: 15px;
+    min-height: 150px;
+    .ss-trade_section_title {
+      text-align: start;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-size: 18px;
+        color: $text-p-color;
+        white-space: nowrap;
+        @include breakpoints(mdlgMobile) {
+          font-size: 14px;
+        }
+      }
+      .search__box__booster {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .search__input {
+          width: 100%;
+          padding: 10px 8px;
+          border: $border-header;
+          outline: none;
+          border-radius: 5px;
+          color: $text-default-color;
+          background: $bg-body;
+        }
+        .search__btn {
+          background: $bg-thin-green;
+          border: none;
+          color: $text-white;
+          padding: 10px 15px;
+          margin-left: 10px;
+          border-radius: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+    .ss-trade_boosterIncome_page_content {
+      form {
+        .global__group {
+          display: flex;
+          align-items: center;
+          gap: 40px;
+        }
+        .form_group {
+          label {
+            font-size: 13px;
+            font-weight: 600;
+            color: $text-p-color;
+          }
+          input {
+            width: 100%;
+            padding: 10px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-black;
+            background: $bg-body;
+            margin-top: 10px;
+          }
+          .select_field {
+            width: 100%;
+            padding: 10px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-default-color;
+            background: $bg-body;
+            margin-top: 10px;
+          }
+          .send__btn {
+            display: inline-block;
+            position: relative;
+            margin-top: 10px;
+            padding: 10px 25px;
+            background: $bg-thin-green;
+            box-shadow: $box-shadow-sidebar-menu;
+            color: #fff;
+            border-radius: 10%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+          .booster_userList_box {
+            width: 100%;
+            position: relative;
+            .list_field {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 5px;
+              cursor: pointer;
+              border: $border-header;
+              border-radius: 5px;
+              color: $text-default-color;
+              background: $bg-body;
+              user-select: none;
+              span {
+                font-size: 16px;
+                color: $text-default-color;
+                svg {
+                  font-size: 18px;
+                  color: $text-default-color;
+                }
+              }
+            }
+            .list_dropdown {
+              background: $bg-body;
+              display: flex;
+              width: 100%;
+              flex-wrap: wrap;
+              position: absolute;
+              top: 35px;
+              z-index: 9;
+              box-shadow: 0px 5px 4px -4px gray;
+              max-height: 250px;
+              overflow: auto;
+              .search__box {
+                width: 100%;
+                display: block;
+                padding: 10px 5px;
+                outline: none;
+                border: $border-header;
+                height: 15px;
+                font-size: 16px;
+                position: sticky;
+                top: 0;
+              }
+              .search_box_dropdown {
+                list-style: none;
+                width: 100%;
+                li {
+                  padding: 2px 10px;
+                  display: block;
+                  cursor: pointer;
+                  font-size: 15px;
+                  font-size: 15px;
+                  border-bottom: 1px solid$border-header;
+                  &:last-child {
+                    border-bottom: 0px !important;
+                  }
+                  &:hover {
+                    opacity: 0.8;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .ss-trade__eligible__user__list {
+        margin-top: 20px !important;
+        h2 {
+          font-size: 18px;
+          color: $text-black;
+          margin-bottom: 10px !important;
+        }
+        .user__list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          span {
+            background: $bg-thin-green;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .perviousBtn {
+        display: inline-block;
+        position: relative;
+        margin-top: 10px;
+        padding: 20px;
+        background: $bg-thin-green;
+        box-shadow: $box-shadow-sidebar-menu;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          opacity: 0.8;
+        }
+        button {
+          color: #fff;
+          position: absolute;
+          background-color: rgba(0, 0, 0, 0);
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+      #draggableZone {
+        width: 100%;
+        height: 50vh;
+        cursor: move;
+        position: relative;
+      }
+      .booster_row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        p {
+          color: $text-black;
+        }
+        .booster_tree {
+          width: 100%;
+          height: auto;
+          text-align: center;
+          overflow: auto;
+        }
+        .booster_tree ul {
+          padding-top: 20px !important;
+          position: relative;
+          transition: 0.5s;
+          display: flex;
+          justify-content: center;
+          @media screen and (max-width: 1550px) {
+            justify-content: inherit;
+          }
+        }
+        .booster_tree li {
+          display: inline-table;
+          text-align: center;
+          list-style-type: none;
+          position: relative;
+          padding: 10px;
+          transition: 0.5s;
+        }
+        .booster_tree li::before,
+        .booster_tree li::after {
+          content: "";
+          position: absolute;
+          top: -5px;
+          right: 50%;
+          border-top: 1px solid #ccc;
+          width: 51%;
+          height: 15px;
+        }
+        .booster_tree li::after {
+          right: auto;
+          left: 50%;
+          border-left: 1px solid #ccc;
+        }
+        .booster_tree li:only-child::after,
+        .booster_tree li:only-child::before {
+          display: none;
+        }
+        .booster_tree li:only-child {
+          padding-top: 0;
+        }
+        .booster_tree li:first-child::before,
+        .booster_tree li:last-child::after {
+          border: 0 none;
+        }
+        .booster_tree li:last-child::before {
+          border-right: 1px solid #ccc;
+          border-radius: 0 5px 0 0;
+          -webkit-border-radius: 0 5px 0 0;
+          -moz-border-radius: 0 5px 0 0;
+        }
+        .booster_tree li:first-child::after {
+          border-radius: 5px 0 0 0;
+          -webkit-border-radius: 5px 0 0 0;
+          -moz-border-radius: 5px 0 0 0;
+        }
+        .booster_tree ul ul::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 50%;
+          border-left: 1px solid #ccc;
+          width: 0;
+          height: 15px;
+        }
+        .booster_tree li a {
+          border: 1px solid #ccc;
+          padding: 3px 0px;
+          display: inline-grid;
+          text-decoration-line: none;
+          border-radius: 5px;
+          transition: 0.5s;
+          width: 60px;
+          &:hover {
+            span {
+              color: #666;
+            }
+          }
+        }
+        .booster_tree li a img {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 10px !important;
+          border-radius: 100px;
+          margin: auto;
+        }
+        .booster_tree li a span {
+          border-radius: 5px;
+          color: $text-black;
+          padding: 8px;
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        /*Hover-Section*/
+        .booster_tree li a:hover,
+        .booster_tree li a:hover i,
+        .booster_tree li a:hover + ul li a {
+          background: #c8e4f8;
+          color: #000;
+          border: 1px solid #94a0b4;
+        }
+        .booster_tree li a:hover + ul li::after,
+        .booster_tree li a:hover + ul li::before,
+        .booster_tree li a:hover + ul::before,
+        .booster_tree li a:hover + ul ul::before {
+          border-color: #94a0b4;
+        }
+      }
+    }
+  }
+}

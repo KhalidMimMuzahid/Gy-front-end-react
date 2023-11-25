@@ -1,0 +1,122 @@
+.ss-trade_contact_page_wrapper {
+  margin-top: 20px;
+  .ss-trade_contact_page_inner_part {
+    padding: 50px;
+    min-height: 250px;
+    box-shadow: 0 5px 5px 0 rgb(82 63 105 / 5%);
+    border-radius: 5px;
+    background-color: $bg-white;
+    @include breakpoints(tablet) {
+      padding: 25px;
+    }
+    .ss-trade_contact_title {
+      h2 {
+        font-size: 18px;
+        position: relative;
+        color: $text-p-color;
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   width: 35px;
+        //   height: 2px;
+        //   background: $bg-thin-green;
+        //   bottom: -4px;
+        //   left: 0;
+        // }
+      }
+    }
+    .send_button {
+      width: max-content;
+      padding: 10px 20px;
+      text-align: center;
+      background: $bg-thin-green;
+      box-shadow: $box-shadow-sidebar-menu;
+      font-size: 15px;
+      border: none;
+      outline: none;
+      text-transform: capitalize;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      margin-top: 10px;
+      @include breakpoints(tablet) {
+        width: 100%;
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    .ss-trade_containers {
+      display: flex;
+      @include breakpoints(tablet) {
+        display: inherit;
+      }
+      .ss-trade_input_fields {
+        width: 40%;
+        @include breakpoints(tablet) {
+          width: 100%;
+        }
+        .fields {
+          margin-top: 20px;
+          .form_group {
+            margin: 20px 0;
+            .right {
+              margin-right: 19px !important;
+            }
+            label {
+              width: 100%;
+              font-weight: 500;
+              font-size: 13px;
+              margin-bottom: 10px !important;
+              color: $text-p-color;
+            }
+            input {
+              width: 100%;
+              padding: 10px 8px;
+              border: $border-header;
+              border-radius: 5px;
+              outline: none;
+              color: $text-p-color;
+              background: $bg-body;
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+      .ss-trade_message_box {
+        padding: 0 20px;
+        width: 60%;
+        margin-top: 20px;
+        @include breakpoints(tablet) {
+          width: 100%;
+          border: none;
+          padding: 0px;
+        }
+        label {
+          color: $text-p-color;
+          font-weight: 500;
+          font-size: 13px;
+        }
+        .message_box {
+          width: 100%;
+          resize: none;
+          border: none;
+          outline: none;
+          margin-top: 10px;
+          padding-top: 10px;
+          padding-left: 10px;
+          font-family: $font-family;
+          min-height: 202px;
+          background: $bg-body;
+          color: $text-p-color;
+          border: $border-header;
+          border-radius: 5px;
+          @include breakpoints(tablet) {
+            min-height: 50px;
+          }
+        }
+      }
+    }
+  }
+}

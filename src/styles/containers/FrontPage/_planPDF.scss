@@ -1,0 +1,50 @@
+@import "../../responsive/breakpoints";
+
+// plan hero section
+.ss-trade_front_planPDF_hero_wrapper {
+  background: linear-gradient(#0e0529, #1e0b56);
+  padding-top: 140px;
+  padding-bottom: 80px;
+  @include breakpoints(tablet) {
+    // padding-bottom: 20px;
+  }
+  .pdfContainer {
+    height: 80vh;
+    @include breakpoints(tablet) {
+      height: 80vh;
+    }
+    overflow: hidden;
+    .ss-trade_front_planPDF_hero_container {
+      width: 100%;
+      height: 80vh;
+      @include breakpoints(tablet) {
+        height: 80vh;
+      }
+      .all_pdf_title {
+        width: 100%;
+        background: rgba(36, 35, 35, 0);
+        padding: 10px 10px;
+        form {
+          margin: 30px 0px;
+          span {
+            margin-top: 3px;
+          }
+        }
+      }
+      .pdf_container {
+        width: 90%;
+        margin: 0px auto;
+        height: 80vh;
+        @include breakpoints(portraitTablet) {
+          height: 80vh;
+          overflow: hidden;
+        }
+        .classDocViewer {
+          width: "50%";
+          height: "100%";
+          margin: "0px auto";
+        }
+      }
+    }
+  }
+}

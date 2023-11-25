@@ -1,0 +1,299 @@
+// For variables
+@import "./abstract/variables";
+// For global css
+@import "./global/global";
+@import "./global/reset";
+// For responsive
+@import "./responsive/breakpoints";
+// For all pages
+@import "./containers/index";
+// For components
+@import "./components/index";
+
+// App.js css
+html {
+  scroll-behavior: smooth;
+}
+.home_wrapper {
+  display: flex;
+  .menu_backdrop {
+    display: none;
+    @include breakpoints(tablet) {
+      display: block;
+    }
+  }
+  // sideber static css
+  .sidebar_wrapper {
+    width: 270px;
+    background: $bg-white;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    transition: all 0.3s ease-in-out;
+    overflow-x: hidden;
+    z-index: 999;
+    border-right: $border-header;
+    @include breakpoints(laptop) {
+      width: 103px;
+    }
+    @include breakpoints(tablet) {
+      width: 270px;
+      transform: translateX(-300px);
+      z-index: 9999;
+    }
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: $bg-white;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #dcdada;
+    }
+    // sidebar hover effect
+    @include breakpoints(laptop) {
+      &:hover {
+        width: 270px;
+        max-width: 100%;
+        z-index: 999;
+        .ss-trade_sidebar {
+          .ss-trade_logo_container {
+            img {
+              width: 75px;
+              height: 90px;
+              transition: all 0.3s ease-in-out;
+            }
+          }
+          .ss-trade_user_profile {
+            padding: 0px 9px;
+            img {
+              width: 75px;
+              height: 75px;
+              transition: all 0.3s ease-in-out;
+            }
+            .ss-trade_user_info {
+              transition: all 0.3s ease-in-out;
+              display: block;
+            }
+          }
+          .ss-trade_sidebar_menu {
+            .ss-trade_sidebar_menu_lists {
+              .ss-trade_sidebar_menu_list {
+                width: auto;
+                margin: auto !important;
+                margin-bottom: 10px !important;
+                transition: all 0.3s ease-in-out;
+                .active {
+                  background-color: transparent;
+                }
+                .ss-trade_nav_link {
+                  .icon_text {
+                    p {
+                      transition: all 0.3s ease-in-out;
+                      @include breakpoints(laptop) {
+                        display: block;
+                        opacity: 1;
+                      }
+                    }
+                  }
+                  span {
+                    svg {
+                      transition: all 0.3s ease-in-out;
+                      @include breakpoints(laptop) {
+                        display: block;
+                        opacity: 1;
+                      }
+                    }
+                  }
+                }
+              }
+              .submenu ul {
+                display: block;
+                opacity: 1;
+                transition: all 0.3s ease-in-out;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // sidebar toggler css
+  &[show-menu="true"] {
+    .sidebar_wrapper {
+      width: 103px;
+      max-width: 100%;
+      transition: all 0.3s ease-in-out;
+      @include breakpoints(tablet) {
+        width: 270px;
+        transform: translateX(0px);
+        transition: all 0.3s ease-in-out;
+        z-index: 99999;
+        box-shadow: $box-shadow-sidebar-menu;
+      }
+      .ss-trade_sidebar {
+        .ss-trade_logo_container {
+          img {
+            width: 100px;
+            height: 90px;
+            transition: all 0.3s ease-in-out;
+          }
+        }
+        .ss-trade_user_profile {
+          padding: 0px 9px;
+          img {
+            width: 75px;
+            height: 75px;
+            transition: all 0.3s ease-in-out;
+          }
+          .ss-trade_user_info {
+            transition: all 0.3s ease-in-out;
+          }
+        }
+        .ss-trade_sidebar_menu {
+          .ss-trade_sidebar_menu_lists {
+            .ss-trade_sidebar_menu_list {
+              // width: 62px;
+              margin: auto !important;
+              margin-bottom: 10px !important;
+              transition: all 0.3s ease-in-out;
+              @include breakpoints(tablet) {
+                width: auto;
+              }
+              .active {
+                background-color: $bg-menu-active-color;
+              }
+              .ss-trade_nav_link {
+                .icon_text {
+                  p {
+                    transition: all 0.3s ease-in-out;
+                    display: none;
+                    opacity: 0;
+                    @include breakpoints(tablet) {
+                      display: block;
+                      opacity: 1;
+                    }
+                  }
+                }
+                span {
+                  svg {
+                    transition: all 0.3s ease-in-out;
+                    display: none;
+                    opacity: 0;
+                    @include breakpoints(tablet) {
+                      display: block !important;
+                      opacity: 1 !important;
+                    }
+                  }
+                }
+              }
+            }
+            .submenu ul li .active {
+              background-color: transparent;
+            }
+            .submenu ul {
+              display: none;
+              opacity: 0;
+            }
+          }
+        }
+      }
+      // sidebar hover effect
+      &:hover {
+        width: 270px;
+        max-width: 100%;
+        z-index: 99999;
+        .ss-trade_sidebar {
+          .ss-trade_logo_container {
+            img {
+              width: 100px;
+              height: 90px;
+              transition: all 0.3s ease-in-out;
+            }
+          }
+          .ss-trade_user_profile {
+            padding: 0px 9px;
+            .ss-trade_user_info {
+              transition: all 0.3s ease-in-out;
+              display: block;
+            }
+          }
+          .ss-trade_sidebar_menu {
+            .ss-trade_sidebar_menu_lists {
+              .ss-trade_sidebar_menu_list {
+                width: auto;
+                margin: auto !important;
+                margin-bottom: 10px !important;
+                transition: all 0.3s ease-in-out;
+                .active {
+                  background-color: transparent;
+                }
+                .ss-trade_nav_link {
+                  .icon_text {
+                    p {
+                      transition: all 0.3s ease-in-out;
+                      display: block;
+                      opacity: 1;
+                      @include breakpoints(tablet) {
+                        display: block;
+                        opacity: 1;
+                      }
+                    }
+                  }
+                  span {
+                    svg {
+                      transition: all 0.3s ease-in-out;
+                      display: block !important;
+                      opacity: 1 !important;
+                      @include breakpoints(tablet) {
+                        display: block;
+                        opacity: 1;
+                      }
+                    }
+                  }
+                }
+              }
+              .submenu ul {
+                display: block;
+                opacity: 1;
+                transition: all 0.3s ease-in-out;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .body_content_wrapper {
+    position: relative;
+    margin-left: auto;
+    transition: all 0.3s ease-in-out;
+    width: calc(100% - 270px);
+    @include breakpoints(laptop) {
+      width: calc(100% - 103px);
+    }
+    @include breakpoints(tablet) {
+      width: calc(100% - 0px);
+    }
+    .content_wrapper {
+      padding-top: 20px;
+      padding-right: 20px;
+      padding-left: 20px;
+      position: relative;
+    }
+  }
+  &[show-menu="true"] {
+    .body_content_wrapper {
+      width: calc(100% - 103px);
+      transition: all 0.3s ease-in-out;
+      @include breakpoints(tablet) {
+        width: calc(100% - 0px);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}

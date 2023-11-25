@@ -1,0 +1,67 @@
+@import "../../responsive/breakpoints";
+.net_banking_container {
+  height: 90vh;
+  margin: auto;
+  background-color: #1e0b56 !important;
+  h2{
+    padding-top: 120px;
+    padding-left: 40px;
+    color: #fff;
+  }
+  .typewriter_container {
+    height: 40vh;
+    margin: auto;
+    @include breakpoints(4kdevice) {
+      width: 100%;
+    }
+    @include breakpoints(portraitTablet) {
+      width: 100%;
+    }
+    @include breakpoints(mdlgMobile) {
+      padding-top: 30px;
+    }
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    h1 {
+      color: #fff;
+      font-size: 50px;
+      @include breakpoints(mdlgMobile) {
+        font-size: 30px;
+      }
+    }
+    .line-1 {
+      position: relative;
+      width: 9em;
+      margin: 0 auto;
+      border-right: 2px solid rgba(255, 255, 255, 0.75);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      transform: translateY(-50%);
+    }
+
+    /* Animation */
+    .anim-typewriter {
+      animation: typewriter 4s steps(12) 1s 1 normal both,
+        blinkTextCursor 500ms steps(12) infinite normal;
+    }
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 9em;
+  }
+}
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}

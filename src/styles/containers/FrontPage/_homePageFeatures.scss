@@ -1,0 +1,122 @@
+@import "../../responsive/breakpoints";
+.center_element {
+  text-align: center;
+}
+.Home_page_Features_wrapper {
+  background: linear-gradient(#0e0529, #1e0b56);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  .Home_page_Features_content {
+    .table_Features_card {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 40px;
+      grid-row-gap: 20px;
+      margin-top: 60px;
+      @include breakpoints(semiTablet) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 20px;
+      }
+      @include breakpoints(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 20px;
+      }
+      @media screen and (max-width: 490px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .crypto_card {
+        padding: 10px !important;
+        height: auto !important;
+      }
+      .table_Features {
+        justify-self: auto;
+        position: relative;
+        // width: 260px;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        // background: #fff;
+        border: 1px solid rgb(151, 151, 235);
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+        @include breakpoints(laptop) {
+          padding: 30px 20px;
+        }
+        @include breakpoints(tablet) {
+          padding: 40px;
+        }
+        &:hover {
+          transform: translateY(-10px);
+          // background-color: $bg_front_blue;
+          box-shadow: 0 8px 60px -6px rgb(123 94 234 / 70%);
+          p {
+            span {
+              background-color: $bg-white;
+              color: $text_front_blue;
+            }
+            .active {
+              color: $text-white;
+            }
+          }
+        }
+        .crypto_details {
+          // background: white;
+          padding: 10px;
+          border-radius: 4px;
+          .crypto_name {
+            display: flex;
+            justify-content: center;
+            .crypto_img {
+              width: 50px;
+              height: 50px;
+              margin-right: 10px;
+            }
+            .crypto_name_symbol {
+              color: #fff;
+              h2 {
+                font-size: 25px;
+              }
+              p {
+                font-size: 14px;
+                margin-top: -8px !important;
+              }
+            }
+          }
+          .crypto_rate {
+            text-align: center;
+            h2 {
+              font-size: 25px;
+              color: #fff;
+              margin-top: 10px !important;
+            }
+          }
+          .crypto_market {
+            margin-top: 10px !important;
+            .market {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              span {
+                color: #fff;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        h1 {
+          color: #ffffff;
+          // font-size: 28px;
+        }
+        p {
+          color: #ffffff;
+          font-size: 14px;
+        }
+        .dark_blue {
+          background-color: $bg_front_dark_purple;
+        }
+      }
+    }
+  }
+}

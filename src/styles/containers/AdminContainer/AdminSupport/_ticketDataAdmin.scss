@@ -1,0 +1,15 @@
+@import "../../../responsive/breakpoints";
+
+.ss-trade_message_modal_field {
+  .message_details {
+    .message_group {
+      margin-top: 20px;
+      text-align: left;
+      p {
+        color: $text-black;
+        font-size: 14px;
+        font-weight: 300 !important;
+      }
+    }
+  }
+}

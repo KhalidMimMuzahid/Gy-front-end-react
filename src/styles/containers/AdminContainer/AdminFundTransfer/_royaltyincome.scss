@@ -1,0 +1,188 @@
+@import "../../../responsive/breakpoints";
+.ss-trade_royalty_page_wrapper {
+  margin-top: 10px;
+  .ss-trade_royalty_form_card {
+    padding: 15px;
+    min-height: 250px;
+    .ss-trade_section_title {
+      text-align: start;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-size: 18px;
+        color: $text-p-color;
+        white-space: nowrap;
+        @include breakpoints(mdlgMobile) {
+          font-size: 14px;
+        }
+      }
+      .ss-trade_section_title_right_side {
+        display: flex;
+        gap: 5px;
+        @include breakpoints(miniPortraitTablet) {
+          flex-direction: column;
+          gap: 2px;
+        }
+        .ss-trade_section_title_balance {
+          text-align: start;
+          margin-bottom: 10px;
+          @include breakpoints(miniPortraitTablet) {
+            margin-bottom: 4px;
+          }
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          h3 {
+            font-size: 18px;
+            color: $text-p-color;
+          }
+          p {
+            color: #24d5b8 !important;
+            background-color: rgba(26, 156, 134, 0.2) !important;
+            padding: 5px 10px;
+            border-radius: 50px;
+            white-space: nowrap;
+            @include breakpoints(mdlgMobile) {
+              font-size: 14px;
+              padding: 5px 5px;
+            }
+          }
+        }
+        .ss-trade_section_Trx_balance {
+          p {
+            @include breakpoints(mdlgMobile) {
+              font-size: 14px;
+            }
+            white-space: nowrap;
+            color: #248ed5 !important;
+            background-color: rgba(26, 121, 156, 0.2) !important;
+          }
+        }
+      }
+    }
+    .ss-trade_royalty_page_content {
+      form {
+        .form_group {
+          display: flex;
+          margin: 15px 0;
+          @include breakpoints(portraitTablet) {
+            display: inherit;
+            margin: 0px;
+          }
+          .input_group {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: auto;
+              margin: 10px 0;
+            }
+          }
+          .package {
+            width: 50%;
+            @include breakpoints(portraitTablet) {
+              width: auto;
+              margin: 10px 0;
+            }
+          }
+          .left {
+            margin-right: 33px !important;
+            @include breakpoints(portraitTablet) {
+              margin-right: 16px !important;
+            }
+          }
+          .right {
+            margin-right: 20px !important;
+          }
+          label {
+            font-size: 13px;
+            font-weight: 600;
+            color: $text-p-color;
+          }
+          .input_field {
+            width: 100%;
+            padding: 10px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-p-color;
+            background: $bg-body;
+            margin-top: 10px;
+            position: relative;
+          }
+          textarea {
+            width: 98%;
+            @include breakpoints(tablet) {
+              width: 97%;
+            }
+            @include breakpoints(miniPortraitTablet) {
+              width: 95%;
+            }
+            padding: 7px 8px;
+            color: $text-p-color;
+            font-size: 15px;
+            border: $border-header;
+            outline: none;
+            margin: 10px 0;
+            border-radius: 5px;
+            resize: none;
+            font-family: $font-family;
+            background: $bg-body;
+            font-size: 14px;
+          }
+          .select_field {
+            width: 100%;
+            padding: 10px 8px;
+            border: $border-header;
+            outline: none;
+            border-radius: 5px;
+            color: $text-default-color;
+            background: $bg-body;
+            margin-top: 10px;
+          }
+        }
+        .submit_btn {
+          background: $bg-thin-green;
+          box-shadow: $box-shadow-sidebar-menu;
+          padding: 10px 12px;
+          width: 160px;
+          border-radius: 5px;
+          border: none;
+          font-size: 15px;
+          font-weight: 600;
+          text-transform: capitalize;
+          color: #fff;
+          margin-top: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            opacity: 0.8;
+          }
+          @include breakpoints(portraitTablet) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+.amount_field {
+  position: relative;
+  &::after {
+    content: "₹";
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 67%;
+    left: 8px;
+    transform: translateY(-50%);
+  }
+  input {
+    width: 97% !important;
+    @include breakpoints(miniPortraitTablet) {
+      width: 95% !important;
+    }
+    padding: 10px 8px;
+    padding-left: 23px !important;
+  }
+}

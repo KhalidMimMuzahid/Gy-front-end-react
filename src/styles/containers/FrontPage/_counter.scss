@@ -1,0 +1,41 @@
+@import "../../responsive/breakpoints";
+.ss-trade_counter_section_wrapper {
+  background-color: #1e0b56;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  .ss-trade_counter_box_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include breakpoints(portraitTablet) {
+      display: inherit !important;
+    }
+    .counter {
+      background-color: $bg_front_blue;
+      border-radius: 10px;
+      padding: 20px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 45px;
+      color: white;
+      @include breakpoints(tablet) {
+        padding: 20px 25px;
+        margin: 0 20px;
+      }
+      @include breakpoints(portraitTablet) {
+        margin: 20px 0;
+      }
+      span {
+        font-size: 40px;
+        @include breakpoints(portraitTablet) {
+          font-size: 30px;
+        }
+      }
+      h2 {
+        font-size: 16px;
+      }
+    }
+  }
+}

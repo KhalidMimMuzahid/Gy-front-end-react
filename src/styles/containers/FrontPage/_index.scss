@@ -1,0 +1,126 @@
+@import "./home";
+@import "./about";
+@import "./footer";
+@import "./header";
+@import "./service";
+@import "./plan";
+@import "./contactus";
+@import "./LiveCrptoInfo";
+@import "./planPDF";
+@import "./homePageFeatures";
+@import "./youtube";
+@import "./coming.scss";
+@import "./bannar";
+@import "./counter";
+@import "./heroHome";
+@import "./newsletter";
+@import "./trusted.scss";
+@import "./coreService";
+@import "./misson";
+@import "./missionCard";
+@import "./quality";
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+}
+@keyframes letszoom {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.home_page_side_bar {
+  position: fixed;
+  top: 50%;
+  @include breakpoints(largeMobile) {
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+  }
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  z-index: 99999;
+  .all_social_icon {
+    text-decoration: none;
+    width: 100px;
+    // background: red;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 2px;
+    font-size: 20px;
+    @include breakpoints(largeMobile) {
+      font-size: 15px;
+      width: 80px;
+      transform: translateX(-60px);
+      -webkit-transform: translateX(-60px);
+      -ms-transform: translateX(-60px);
+    }
+    transform: translateX(-70px);
+    -webkit-transform: translateX(-70px);
+    -ms-transform: translateX(-70px);
+
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+
+    .social_icon {
+      padding-left: 10px;
+      padding-right: 1px;
+      font-size: 30px !important;
+      @include breakpoints(largeMobile) {
+        font-size: 20px !important;
+      }
+      animation: letszoom 3s linear alternate-reverse infinite duration
+        timing-function delay iteration-count direction fill-mode;
+    }
+    &:hover {
+      transform: translateX(-0px);
+      -webkit-transform: translateX(-0px);
+      -ms-transform: translateX(-0px);
+    }
+  }
+  .twitter {
+    background: #25d366 !important;
+  }
+  .facebook {
+    background: #1877f2 !important;
+  }
+  .instagram {
+    background: #e4405f !important;
+  }
+  .youtube {
+    background: #cd201f !important;
+  }
+  .interest {
+    background: #bd081c !important;
+  }
+  .telegram {
+    background: #00405d !important;
+  }
+  .linkedin {
+    background: #0077b5 !important;
+  }
+  .whatsapp {
+    background: #25d366 !important;
+  }
+}
+.home_page_side_bar_for_login_page {
+  @include breakpoints(largeMobile) {
+    display: none !important;
+  }
+}

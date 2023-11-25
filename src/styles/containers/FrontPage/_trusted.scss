@@ -1,0 +1,107 @@
+.trusted_container {
+  // background-image: url("../../../assets/banner2n.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  background-color: #eee;
+  background-position: 100% 100%;
+
+  .trust_innerbody {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    padding: 80px 0;
+
+    @include breakpoints(tablet) {
+      flex-direction: column;
+      padding: 50px 0;
+    }
+
+    .trusted_left {
+      flex: 1;
+      padding-right: 15px;
+      border-right: 1px solid #ccc;
+
+      @include breakpoints(tablet) {
+        border: 0;
+      }
+
+      h2 {
+        font-size: 36px;
+        font-weight: 600 !important;
+        line-height: 54px;
+        color: #3F3453;
+        padding-bottom: 15px;
+
+        @include breakpoints(tablet) {
+          text-align: center;
+        }
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 400 !important;
+        line-height: 27px;
+        color: #000;
+
+        @include breakpoints(tablet) {
+          text-align: center;
+          padding-top: 15px;
+        }
+      }
+    }
+
+    .trusted_right {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 15px;
+      justify-content: space-between;
+
+      @include breakpoints(largeMobile) {
+        flex-direction: column;
+        padding: 0;
+      }
+
+      .feat_box {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include breakpoints(largeMobile){
+        padding: 15px ;
+        }
+
+        .feat {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          padding: 20px 0;
+
+          img {
+            width: 70px;
+            height: 70px;
+
+            @include breakpoints(largeMobile) {
+              width: 50px;
+              height: 50px;
+            }
+          }
+
+          h4 {
+            font-size: 18px;
+            font-weight: 500 !important;
+            line-height: 27px;
+            color: #3F3453;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+
+}

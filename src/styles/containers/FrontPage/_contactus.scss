@@ -1,0 +1,216 @@
+@import "../../responsive/breakpoints";
+.ss-trade_front_contact_wrapper {
+  background: linear-gradient(#0e0529, #1e0b56);
+  padding-top: 100px;
+  padding-bottom: 80px;
+  height: 70vh;
+  @include breakpoints(tablet) {
+    padding-bottom: 20px;
+  }
+  .ss-trade_front_contact_container {
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 55px;
+      h2 {
+        text-transform: uppercase;
+        font-size: 65px;
+        color: #fff;
+        font-weight: 600;
+        font-family: $font-family;
+        text-align: center;
+        @media screen and (max-width: 490px) {
+          font-size: 25px;
+        }
+      }
+    }
+    .ss-trade_front_contact_form {
+      width: 100%;
+      margin: auto;
+      margin-top: 30px;
+      display: grid;
+      grid-gap: 30px;
+      grid-template-columns: repeat(1, 1fr);
+      @include breakpoints(smLaptop) {
+        width: 100%;
+      }
+      @include breakpoints(semiTablet) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      @include breakpoints(tablet) {
+        width: 100%;
+      }
+      .ss-trade_front_contact_address {
+        display: flex;
+        // grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        justify-content: center;
+        grid-row-gap: 20px;
+        text-align: center;
+        margin-bottom: 35px;
+        @include breakpoints(tablet) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .address_list {
+          width: 100%;
+          border: 1px solid #999;
+          border-radius: 10px;
+          padding: 22px 0px;
+          @include breakpoints(tablet) {
+            padding: 20px 0px;
+          }
+          @include breakpoints(portraitTablet) {
+            padding: 18px 0px;
+          }
+          @include breakpoints(largeMobile) {
+            padding: 16px 0px;
+          }
+          display: flex;
+          flex-direction: column;
+          justify-self: center;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            transform: translateY(-10px);
+            background-color: #7b5eea;
+            box-shadow: 0 8px 60px -6px rgb(123 94 234 / 70%);
+          }
+          // cursor: pointer;
+          img {
+            width: 120px;
+            height: 120px;
+            @include breakpoints(tablet) {
+              width: 45px;
+              height: 45px;
+            }
+            @include breakpoints(portraitTablet) {
+              width: 40px;
+              height: 40px;
+            }
+            @include breakpoints(largeMobile) {
+              width: 35px;
+              height: 35px;
+            }
+          }
+          .contactUs-logo {
+            border: 1px solid #999;
+            padding: 4px 10px;
+            margin: 3px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            background-color: rgba(0, 0, 0, 0);
+            &:hover {
+              background-color: rgba(26, 26, 79, 0.831);
+              border: 1px solid rgba(0, 0, 0, 0);
+            }
+          }
+        }
+      }
+      form {
+        // border: 3px solid red;
+        .form_group {
+          display: flex;
+          justify-content: space-between;
+          .right {
+            margin-right: 19px;
+          }
+          .left {
+            margin-right: 25px;
+          }
+          .input_group {
+            width: 50%;
+            .input_field {
+              width: 100%;
+              padding: 15px 8px;
+              border: none;
+              outline: none;
+              border-radius: 3px;
+              color: #fff;
+              background-color: rgba(123, 94, 234, 0.08);
+              margin-bottom: 10px;
+              text-align: left;
+              font-size: 12px;
+              &:focus {
+                background-color: rgba(123, 94, 234, 0.7);
+                color: #fff;
+                // &::placeholder {
+                //   color: $text-white;
+                // }
+              }
+              &:active {
+                background-color: rgba(123, 94, 234, 0.7);
+                color: #fff;
+              }
+              &::placeholder {
+                text-transform: uppercase;
+                color: #9fa4a6;
+                font-size: 11px;
+              }
+            }
+          }
+        }
+        .left {
+          margin-right: 25px;
+        }
+        .text_area textarea {
+          width: 100%;
+          padding: 10px 8px;
+          border: none;
+          outline: none;
+          border-radius: 3px;
+          color: #fff;
+          background-color: rgba(123, 94, 234, 0.08);
+          margin-bottom: 10px;
+          text-align: left;
+          font-size: 12px;
+          font-family: $font-family;
+          height: 100px;
+          resize: none;
+          &:focus {
+            background-color: rgba(123, 94, 234, 0.7);
+            color: #fff;
+          }
+          &:active {
+            background-color: rgba(123, 94, 234, 0.7);
+            color: #fff;
+          }
+          &::placeholder {
+            text-transform: uppercase;
+            color: #9fa4a6;
+            font-size: 11px;
+          }
+        }
+        .text_area_subject textarea {
+          height: 20px !important;
+        }
+        .msg_button {
+          text-align: center;
+          .submit_btn {
+            background-color: #7b5eea;
+            padding: 10px 12px;
+            width: 140px;
+            border-radius: 3px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px !important;
+            &:hover {
+              background-color: #7b5eeaa6;
+              box-shadow: 0 5px 5px 0 rgb(82 63 105 / 5%);
+            }
+            @include breakpoints(largeMobile) {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.wedo_container {
+  padding: 50px 0;
+
+  .wedo_inner {
+    @include breakpoints(tablet) {
+      padding: 10px;
+    }
+
+    .wedo_header {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 50%;
+      margin: 0 auto;
+
+      @include breakpoints(tablet) {
+        max-width: 90%;
+      }
+
+      @include breakpoints(largeMobile) {
+        max-width: 100%;
+      }
+
+      h2 {
+        font-size: 36px;
+        font-weight: 600 !important;
+        line-height: 54px;
+        color: #3F3453;
+        padding-bottom: 15px;
+        text-align: center;
+        position: relative;
+
+        &::after {
+          content: "\A";
+          width: 140px;
+          height: 4px;
+          background: #3F3453;
+          display: inline-block;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        @include breakpoints(tablet) {
+          text-align: center;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        font-weight: 300 !important;
+        line-height: 27px;
+        color: #090909;
+        padding: 25px 0 0px 0px;
+        text-align: center;
+
+        @include breakpoints(largeMobile) {
+          text-align: center;
+        }
+      }
+    }
+
+    .wedo_cards {
+      padding-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+
+      @include breakpoints(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include breakpoints(largeMobile) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}

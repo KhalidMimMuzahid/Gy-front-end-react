@@ -1,0 +1,81 @@
+{
+  "name": "rf",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.4.4",
+    "@react-pdf-viewer/core": "^3.7.0",
+    "@react-pdf-viewer/default-layout": "^3.7.0",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jwt-decode": "^3.1.0",
+    "aos": "^3.0.0-beta.6",
+    "apexcharts": "^3.35.5",
+    "axios": "^1.6.0",
+    "bootstrap": "^5.1.3",
+    "chart.js": "^3.7.1",
+    "date-fns": "^2.30.0",
+    "downloadjs": "^1.4.7",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "pdfjs-dist": "^2.15.349",
+    "query-string": "^7.1.1",
+    "react": "^17.0.2",
+    "react-apexcharts": "^1.4.0",
+    "react-bootstrap": "^2.2.0",
+    "react-chartjs-2": "^4.0.1",
+    "react-csv": "^2.2.2",
+    "react-date-range": "^1.4.0",
+    "react-device-breakpoints": "^2.0.3",
+    "react-doc-viewer": "^0.1.5",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.35.0",
+    "react-icons": "^4.4.0",
+    "react-phone-number-input": "^3.2.11",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "react-router-hash-link": "^2.4.3",
+    "react-scripts": "5.0.0",
+    "react-scroll": "^1.8.7",
+    "react-share": "^4.4.0",
+    "react-to-print": "^2.14.7",
+    "react-toastify": "^8.2.0",
+    "react-tsparticles": "^2.10.1",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
+    "sass": "^1.49.9",
+    "smooth-scroll": "^16.1.3",
+    "tsparticles": "^2.2.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

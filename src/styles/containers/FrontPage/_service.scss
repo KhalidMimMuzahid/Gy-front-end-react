@@ -1,0 +1,61 @@
+@import "../../responsive/breakpoints";
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+.ss-trade_front_service_wrapper {
+  background: $bg_front_gradient;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  @include breakpoints(tablet) {
+    padding-bottom: 20px;
+  }
+  .ss-trade_front_service_container {
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 55px;
+      h2 {
+        font-size: 35px;
+        color: $text-white;
+        font-weight: 600;
+        font-family: $font-family;
+        text-align: center;
+        @media screen and (max-width: 490px) {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
+// card css rewrite
+.services_page_card {
+  .ss-trade_front_business_card {
+    @include breakpoints(tablet) {
+      grid-row-gap: 140px !important;
+      margin-top: 40px !important;
+    }
+    .ss-trade_front_card {
+      padding: 42px 15px !important;
+      .card_img {
+        margin-top: -75px !important;
+        img {
+          -webkit-animation: bounce 1.8s ease-in-out 0s infinite alternate;
+          animation: bounce 1.8s ease-in-out 0s infinite alternate;
+          margin-top: -75px !important;
+        }
+      }
+      .card_title {
+        margin-top: 35px !important;
+      }
+    }
+  }
+}
