@@ -1,7 +1,7 @@
 import React from "react";
 import "./_loading.scss";
-import logo_official from "../../assets/logo-light.png";
-import logo_official_dark from "../../assets/logo.png";
+import logo_official from "../../assets/growmorelogo.png";
+import logo_official_dark from "../../assets/growmorelogo.png";
 import { getLocalStorage } from "../../utils/function/localStorage";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useEffect } from "react";

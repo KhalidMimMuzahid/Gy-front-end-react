@@ -7,12 +7,12 @@ export const FAQs = [
   {
     id: "788sfd5sf4d",
     ques: "What is the leverage?",
-    ans: "LEVERAGING GrowMore EXPERTISE ACROSS OUR 5 CORE SECTORS"
+    ans: "LEVERAGING Grow More EXPERTISE ACROSS OUR 5 CORE SECTORS"
   },
   {
     id: "tsufjsj8df7s7",
     ques: "How to operate?",
-    ans: "The next decade will be a transformational one for GrowMore, as we recruit and develop a new, diverse generation of talent, for a new world of work. This is essential for three reasons. Firstly, we passionately believe that greater diversity will further strengthen our open, inclusive culture. Secondly, diverse teams ask better questions and therefore help us make better investment decisions. Lastly, it is the right thing to do.",
+    ans: "The next decade will be a transformational one for Grow More, as we recruit and develop a new, diverse generation of talent, for a new world of work. This is essential for three reasons. Firstly, we passionately believe that greater diversity will further strengthen our open, inclusive culture. Secondly, diverse teams ask better questions and therefore help us make better investment decisions. Lastly, it is the right thing to do.",
   },
   {
     id: "usjf8d7f8s",

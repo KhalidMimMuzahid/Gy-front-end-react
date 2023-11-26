@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import logoDark from "../../assets/logo.png";
-import logoLight from "../../assets/logo-light.png";
+import logoLight from "../../assets/growmorelogo.png";
 import { menus } from "../../utils/tools/menu";
 import MenuAccordion from "./MenuAccordion";
 import { removeLocalStorage } from "../../utils/function/localStorage";

@@ -67,7 +67,7 @@ const HomePage = () => {
 
   // telegram post share handle
   const handleTeShareButtonClick = () => {
-    const postText = "Join GrowMore";
+    const postText = "Join Grow More";
     const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(
       `${window.location.origin}/register?sponsorid=${userData?.data?.userId}`
     )}&text=${encodeURIComponent(postText)}`;
@@ -77,7 +77,7 @@ const HomePage = () => {
   // whatsapp share handle
   const shareOnWhatsApp = () => {
     const url = `${window.location.origin}/register?sponsorid=${userData?.data?.userId}`;
-    const message = encodeURIComponent("Join GrowMore: " + url);
+    const message = encodeURIComponent("Join Grow More: " + url);
 
     const whatsappUrl = `https://wa.me/?text=${message}`;
     window.open(whatsappUrl, "_blank");

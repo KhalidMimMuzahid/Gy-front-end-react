@@ -9,7 +9,7 @@ const Footer = () => {
         <footer className="footer-container">
           <p style={{ color: "#fff !important" }}>
             Copyright © 2023-2040, Powered By{" "}
-            <a href="https://growmore.com">GrowMore.com</a>{" "}
+            <a href="https://growmoretoday.netlify.app/">Grow More</a>{" "}
           </p>
           {/* <div className="content">
             <ul className="social_link">

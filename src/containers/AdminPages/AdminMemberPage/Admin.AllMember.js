@@ -20,6 +20,8 @@ const AllMember = () => {
   useClickOutside(modalRef, () => setOpenModal(false));
   // get all member list
   const { data, isLoading: isLoadingAllUser } = useAllUserListQuery();
+  //checking all data
+  // console.log("All member comes here: ",data)
   // blocked member
   const [
     blockMember,
@@ -64,6 +66,7 @@ const AllMember = () => {
     await editMember(values);
   };
   const [filterData, setFilterData] = useState([]);
+  console.log("Main filter:", filterData);
   if (isLoadingAllUser) {
     return <Loading />;
   }

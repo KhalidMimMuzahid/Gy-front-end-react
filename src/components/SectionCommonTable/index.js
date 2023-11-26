@@ -36,19 +36,50 @@ const SectionCommonTable = ({
   const { data: loginUserData } = useGetLoginUserQuery();
   const [search, setSearch] = useState("");
   const [date, setDate] = useState([]);
-  const [dateState, setDateState] = useState([
+  const [state, setState] = useState([
     {
       startDate: new Date(),
-      endDate: null,
+      endDate: "",
       key: "selection",
     },
   ]);
 
   useEffect(() => {
     if (loginUserData?.data?.role === userRole.ADMIN) {
-      setDate(dateState);
+      setDate(state);
     }
-  }, [dateState]);
+  }, [state]);
+  
+  useEffect(() => {
+    if (data) {
+      console.log('Data received:', data);
+      const filteredData = data.filter((dt) => {
+        const searchLowerCase = search?.toLowerCase();
+        const userIdIncludes = dt?.userId?.toLowerCase().includes(searchLowerCase);
+        const fullNameIncludes = dt?.fullName?.toLowerCase().includes(searchLowerCase);
+        const sponsorIdMatches = dt?.sponsor_id?.toLowerCase() === searchLowerCase;
+        const emailIncludes = dt?.email?.toLowerCase().includes(searchLowerCase);
+  
+        return (
+          userIdIncludes ||
+          fullNameIncludes ||
+          sponsorIdMatches ||
+          emailIncludes
+        );
+      });
+  
+      console.log("filterdata: ", filteredData);
+  
+      // Ensure filteredData is not empty before setting it
+      if (filteredData.length > 0) {
+        setFilterData(filteredData);
+      } else {
+        // If no search matches, set filterData back to original data
+        setFilterData(data);
+      }
+    }
+  }, [data, search]);
+  
 
   const searchFunction = () => {
     if (data) {
@@ -58,12 +89,13 @@ const SectionCommonTable = ({
         } else if (
           dt?.userId?.toLowerCase()?.includes(search?.toLowerCase()) ||
           dt?.fullName?.toLowerCase()?.includes(search?.toLowerCase()) ||
-          dt?.email?.toLowerCase()?.includes(search?.toLowerCase()) ||
-          dt?.sponsorId?.toLowerCase()?.includes(search?.toLowerCase())
+          dt?.sponsor_id?.toLowerCase() === search?.toLowerCase() ||
+          dt?.email?.toLowerCase()?.includes(search?.toLowerCase()) === search
         ) {
           return dt;
         }
       });
+      console.log("filterdata: ",filterData)
       setFilterData(filterData);
     }
   };
@@ -125,12 +157,11 @@ const SectionCommonTable = ({
       setFilterData(filterData);
     }
   };
-
   // range filter
   useEffect(() => {
-    if (date?.length > 0 && date[0]?.endDate !== null && search) {
+    if (date?.length > 0 && search) {
       dateandSearchFunct();
-    } else if (date?.length > 0 && date[0]?.endDate !== null) {
+    } else if (date?.length > 0) {
       dateFunction();
     } else if (search) {
       searchFunction();
@@ -153,34 +184,32 @@ const SectionCommonTable = ({
   // calculation
   const [totalAmount, setTotalAmount] = useState(0);
   useEffect(() => {
-    if (data) {
-      const initialValue = 0;
-      const amountArr = data?.filter(
-        (d) =>
-          d?.amount ||
-          d?.package?.amount ||
-          d?.commissionAmount ||
-          d?.amountAfterCharge
-      );
-      const sum = amountArr?.reduce(
-        (accumulator, currentValue) =>
-          accumulator +
-          (currentValue?.amount ||
-            currentValue?.package?.amount ||
-            currentValue?.commissionAmount ||
-            currentValue?.amountAfterCharge),
-        initialValue
-      );
-      setTotalAmount(sum);
-    }
+    const initialValue = 0;
+    const amountArr = data?.filter(
+      (d) =>
+        d?.amount ||
+        d?.package?.amount ||
+        d?.commissionAmount ||
+        d?.amountAfterCharge
+    );
+    const sum = amountArr?.reduce(
+      (accumulator, currentValue) =>
+        accumulator +
+        (currentValue?.amount ||
+          currentValue?.package?.amount ||
+          currentValue?.commissionAmount ||
+          currentValue?.amountAfterCharge),
+      initialValue
+    );
+    setTotalAmount(sum);
   }, [data]);
 
   return (
     <div className={`ss-trade_sectiontable_wrapper ${wrapperClassName}`}>
       {adminBalance && (
-        <CardLayout className="admin__balance__area">
-          <div className="admin__balance">
-            <h2 className="usdt_balance">
+        <CardLayout className='admin__balance__area'>
+          <div className='admin__balance'>
+            <h2 className='usdt_balance'>
               USDT Balance:{" "}
               {adminBalance?.usdtBalance?.data
                 ? parseFloat(adminBalance?.usdtBalance?.data).toFixed(4)
@@ -198,14 +227,14 @@ const SectionCommonTable = ({
         </CardLayout>
       )}
 
-      <CardLayout style={cardStyle} className="ss-trade_sectiontable_card">
-        <div className="ss-trade_sectiontable_title">
-          <div className="ss-trade_sectiontable_title_container">
+      <CardLayout style={cardStyle} className='ss-trade_sectiontable_card'>
+        <div className='ss-trade_sectiontable_title'>
+          <div className='ss-trade_sectiontable_title_container'>
             <h2>{sectionTableTitle}</h2>
             {addGiftAllUser && (
               <Button
-                className="ss-trade_giftAllButton"
-                type="button"
+                className='ss-trade_giftAllButton'
+                type='button'
                 onClick={() => addGiftAllUser()}
                 // hidden={lastDay}
                 disabled={!(toDay === lastDay || toDay === firstDay)}
@@ -220,37 +249,37 @@ const SectionCommonTable = ({
               </Button>
             )}
           </div>
-          <div className="left">
+          <div className='left'>
             {sendAll && (
-              <Button onClick={sendAll} className="send-all">
+              <Button onClick={sendAll} className='send-all'>
                 Send All
               </Button>
             )}
 
             {loginUserData?.data?.role === userRole.ADMIN &&
-              totalAmount > 0 && (
-                <div className="searchbar_input">₹{totalAmount}</div>
+              totalAmount !== 0 && (
+                <div className='searchbar_input'>₹{totalAmount}</div>
               )}
 
             {/* search filter */}
             {loginUserData?.data?.role === userRole.ADMIN && data && (
               <CSVLink
                 style={{ marginLeft: "10px" }}
-                className="downloadCSV_button"
+                className='downloadCSV_button'
                 data={data}
                 headers={headers}
                 filename={"sst.csv"}
               >
-                <Button className="downloadCSV_button">Download Data</Button>
+                <Button className='downloadCSV_button'>Download Data</Button>
               </CSVLink>
             )}
             {data && setFilterData && (
-              <div className="searchbar_input">
+              <div className='searchbar_input'>
                 <Input
-                  type="text"
-                  name="search"
-                  className="spacial_search_input"
-                  placeholder="Search user id"
+                  type='text'
+                  name='search'
+                  className='spacial_search_input'
+                  placeholder='Search user id'
                   onChange={(e) => setSearch(e.target.value)}
                   value={search}
                 />
@@ -259,7 +288,7 @@ const SectionCommonTable = ({
 
             {loginUserData?.data?.role === userRole.ADMIN && (
               <Button
-                className="filter_button"
+                className='filter_button'
                 onClick={() => setShowModal(true)}
               >
                 Filter
@@ -267,17 +296,17 @@ const SectionCommonTable = ({
             )}
             {loginUserData?.data?.role === userRole.ADMIN && (
               <Button
-                className="filter_button"
+                className='filter_button'
                 onClick={() => {
                   setDate([
                     {
                       startDate: new Date(),
-                      endDate: null,
+                      endDate: "",
                       key: "selection",
                     },
                   ]);
                   setSearch("");
-                  setFilterData([]);
+                  setFilterData(data);
                 }}
               >
                 Reset
@@ -291,34 +320,36 @@ const SectionCommonTable = ({
             dataTeam={dataTeam}
           />
         )}
-        <div className="ss-trade_sectiontable_table">{table}</div>
+        <div className='ss-trade_sectiontable_table'>{table}</div>
         {calculateContainer && (
-          <div className="ss-trade_sectiontable_calculate">
+          <div className='ss-trade_sectiontable_calculate'>
             {calculateCredit && (
-              <h2 className="credit_balance">{calculateCredit}</h2>
+              <h2 className='credit_balance'>{calculateCredit}</h2>
             )}
             {calculateDebit && (
-              <h2 className="debit_balance">{calculateDebit}</h2>
+              <h2 className='debit_balance'>{calculateDebit}</h2>
             )}
           </div>
         )}
       </CardLayout>
 
-      <Modal
-        modalRef={modalRef}
-        setOpenModal={setShowModal}
-        openModal={showModal}
-      >
-        {" "}
-        <DateRangePicker
-          onChange={(item) => setDateState([item.selection])}
-          showSelectionPreview={true}
-          moveRangeOnFirstSelection={false}
-          months={2}
-          ranges={dateState}
-          direction="horizontal"
-        />
-      </Modal>
+      {showModal && (
+        <Modal
+          modalRef={modalRef}
+          setOpenModal={setShowModal}
+          openModal={showModal}
+        >
+          {" "}
+          <DateRangePicker
+            onChange={(item) => setState([item.selection])}
+            showSelectionPreview={true}
+            moveRangeOnFirstSelection={false}
+            months={2}
+            ranges={state}
+            direction='horizontal'
+          />
+        </Modal>
+      )}
     </div>
   );
 };
