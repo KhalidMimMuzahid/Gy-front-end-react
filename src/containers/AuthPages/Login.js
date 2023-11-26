@@ -17,6 +17,8 @@ import Footer from "../FrontPage/components/Footer";
 import Header from "../FrontPage/components/Header";
 import AuthCardLayout from "./AuthCardLayout";
 import login from "../../../src/assets/login.png";
+import { FcGoogle } from "react-icons/fc";
+
 
 export let popupShow = false;
 const Login = () => {
@@ -185,6 +187,18 @@ const Login = () => {
                       // disabled={OTPup}
                     >
                       {isLoading ? "Loading..." : "Login"}
+                    </Button>
+                    <Button
+                      type="button"
+                      className="submit_btn"
+                      onClick={() => {
+                        console.log("google clicked")
+                      }}
+                    >
+                      <div className="google_btn">
+                      <FcGoogle size={25}/>
+                      <span>Continue With Google</span>
+                      </div>
                     </Button>
                     <div className="go_to_register">
                       <p>

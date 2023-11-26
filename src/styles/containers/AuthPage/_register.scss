@@ -74,6 +74,36 @@
       background-color: #7b5eeaa6;
       margin-bottom: 5px;
     }
+    //outside of form for button style
+    .submit_btn {
+      background-color: #00a5ec;
+      padding: 10px 12px;
+      width: 100%;
+      border-radius: 3px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      margin-top: 10px !important;
+      &:hover {
+        background-color: #0183bb;
+        box-shadow: $box-shadow;
+      }
+    }
+    //google button style
+    .google_btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .button_container{
+      width: 100%;
+      margin-top: 10vh;
+    }
     .ss-trade_dashboard_register_content {
       form {
         .form_group {
@@ -282,6 +312,7 @@
       border-radius: 50%;
     }
     .register-body {
+      min-height: 65dvh;
       display: flex;
       // align-items: center;
       // justify-content: center;
