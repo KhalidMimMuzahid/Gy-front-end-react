@@ -12,6 +12,7 @@ import SocialIconForCardHearder from "../../components/SideBarSocialIcon/SocialI
 import Particle from "../FrontPage/components/Particle";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import PhoneNumberInput from "./phone-number-input";
+import { env } from "../../env";
 import {
   useAddOtpMutation,
   useAddUserMutation,
@@ -24,8 +25,15 @@ import AuthCardLayout from "./AuthCardLayout";
 import { getLocalStorage } from "../../utils/function/localStorage";
 import register from "../../assets/register.png";
 import { FcGoogle } from "react-icons/fc";
+import GoogleLogin from "react-google-login";
+import useGoogleLogin from "../../hooks/useGoogleLogin";
+import GoogleLoginModal from "./googleLoginModal";
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   //for visible registered form
   const [reg, ShowReg] = useState(false);
   const [OTPup, setOTPup] = useState(false);
@@ -148,69 +156,88 @@ const Register = () => {
       navigate("/");
     }
   }, [token, navigate]);
+
+  const {
+    responseGoogle,
+    resFailed,
+    openModal,
+    setOpenModal,
+    modalRef,
+    value,
+    setValue,
+    handleGoogleLogin,
+    handleOnChange,
+    loading,
+  } = useGoogleLogin();
   return (
     <>
       {/* <SocialIconeforLogin /> */}
       <Header />
-      <div className='ss-trade_dashboard_register_page_wrapper'>
+      <div className="ss-trade_dashboard_register_page_wrapper">
         <AuthCardLayout
           style={{ backgroundColor: "rgb(0 0 0 / 17%)" }}
-          className='ss-trade_dashboard_register_card'
+          className="ss-trade_dashboard_register_card"
         >
-          <div className='bar'>
+          <div className="bar">
             <span></span>
           </div>
-          <div className='register-body'>
-            <div className='half-width'>
-              <div className='left-content'>
+          <div className="register-body">
+            <div className="half-width">
+              <div className="left-content">
                 {/* <h2>Welcome To Safe And Secure</h2>
                 <p>Please register in to get acces to your account</p>
                  */}
                 <img src={register} />
               </div>
             </div>
-            <div className='half-width'>
-              <div className='right-content'>
-                <div className='ss-trade_section_title'>
+            <div className="half-width">
+              <div className="right-content">
+                <div className="ss-trade_section_title">
                   <h2>Register</h2>
                 </div>
-                <div className='hr_border'></div>
+                <div className="hr_border"></div>
                 {/* <SocialIconForCardHearder /> */}
-                <div className='ss-trade_dashboard_register_content'>
+                <div className="ss-trade_dashboard_register_content">
                   <div className="button_containe">
-                  <Button
-                    type='submit'
-                    className='submit_btn'
-                    disabled={isLoading}
-                    onClick={handelShowForm}
-                  >
-                    Register With Email
-                  </Button>
-                  <Button
-                    type='submit'
-                    className='submit_btn'
-                    disabled={isLoading}
-                  >
-                    <div className='google_btn'>
-                      <FcGoogle size={25} />
-                      <span>Continue With Google</span>
-                    </div>
-                  </Button>
-                </div>
+                    <Button
+                      type="submit"
+                      className="submit_btn"
+                      disabled={isLoading}
+                      onClick={handelShowForm}
+                    >
+                      Register With Email
+                    </Button>
+                    <Button
+                      type="submit"
+                      className="submit_btn"
+                      disabled={isLoading}
+                    >
+                      <div className="google_btn">
+                        <GoogleLogin
+                          clientId={env.google_client_id}
+                          buttonText="Sign in with google"
+                          onSuccess={responseGoogle}
+                          onFailure={resFailed}
+                          cookiePolicy={"single_host_origin"}
+                          style={{ backgroundColor: "#BDF9FF" }}
+                        />
+                      </div>
+                    </Button>
+                  </div>
                   {/* Render based on reg State True/False */}
                   {reg && (
                     <form onSubmit={handleSubmit}>
-                      <div className='form_group'>
+                      <div className="form_group">
                         <div>
                           <Input
-                            label='Sponsor ID'
-                            type='text'
-                            name='sponsorId'
-                            placeholder='Enter your sponsor id'
+                            label="Sponsor ID"
+                            type="text"
+                            name="sponsorId"
+                            placeholder="Enter your sponsor id"
                             value={user.sponsorId || sponsorid}
                             onChange={handleChange}
-                            className='input_field'
-                            inputGroupClass='left'
+                            className="input_field"
+                            inputGroupClass="left"
                             disabled={parsed.sponsorid ? true : false}
                             isRequired={true}
                           />
@@ -241,13 +268,13 @@ const Register = () => {
 
                         <div>
                           <Input
-                            label='Full Name'
-                            type='text'
-                            name='fullName'
-                            placeholder='Enter your name'
+                            label="Full Name"
+                            type="text"
+                            name="fullName"
+                            placeholder="Enter your name"
                             onChange={handleChange}
-                            className='name_input input_field'
-                            inputGroupClass='left'
+                            className="name_input input_field"
+                            inputGroupClass="left"
                             isRequired={true}
                             error={formErrors.fullName}
                           />
@@ -265,16 +292,16 @@ const Register = () => {
                   disabled={true}
                 /> */}
                       </div>
-                      <div className='form_group'>
+                      <div className="form_group">
                         <div>
                           <Input
-                            label='Email'
-                            type='email'
-                            name='email'
-                            placeholder='Enter your email'
+                            label="Email"
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
                             onChange={handleChange}
-                            className='email_input input_field'
-                            inputGroupClass='right'
+                            className="email_input input_field"
+                            inputGroupClass="right"
                             isRequired={true}
                           />
                           {!formErrors.email?.includes("required") && (
@@ -302,17 +329,17 @@ const Register = () => {
                             )}
                         </div>
                         <div>
-                          <label htmlFor='phone-input'>
+                          <label htmlFor="phone-input">
                             Mobile <span style={{ color: "red" }}>*</span>
                           </label>
                           <PhoneInput
                             international
-                            defaultCountry='IN'
+                            defaultCountry="IN"
                             countryCallingCodeEditable={false}
-                            placeholder='Enter your phone number'
+                            placeholder="Enter your phone number"
                             value={mobile}
                             onChange={setMobile}
-                            name='mobile'
+                            name="mobile"
                             error={
                               mobile
                                 ? isValidPhoneNumber(mobile)
@@ -413,49 +440,49 @@ const Register = () => {
                   </p>
                 )}
               </div> */}
-                      <div className='form_group'>
+                      <div className="form_group">
                         <div>
                           <Input
-                            label='Password'
+                            label="Password"
                             type={`${showPassword ? "text" : "password"}`}
-                            name='password'
-                            placeholder='Enter your password'
+                            name="password"
+                            placeholder="Enter your password"
                             onChange={handleChange}
-                            className='input_field'
-                            inputGroupClass='left'
+                            className="input_field"
+                            inputGroupClass="left"
                             isRequired={true}
                             error={formErrors.password}
                           />
                         </div>
                         <div>
                           <Input
-                            label='Confirm Password'
+                            label="Confirm Password"
                             type={`${showPassword ? "text" : "password"}`}
-                            name='confirmPassword'
-                            placeholder='Enter your confirm password'
+                            name="confirmPassword"
+                            placeholder="Enter your confirm password"
                             onChange={handleChange}
-                            className='input_field'
-                            inputGroupClass='right'
+                            className="input_field"
+                            inputGroupClass="right"
                             isRequired={true}
                             error={formErrors.confirmPassword}
                           />
                         </div>
                       </div>
                       {OTPup && (
-                        <div className='form_group form_group_OTP'>
+                        <div className="form_group form_group_OTP">
                           <Input
-                            label='OTP'
-                            type='number'
-                            name='otpCode'
-                            placeholder='Enter OTP'
+                            label="OTP"
+                            type="number"
+                            name="otpCode"
+                            placeholder="Enter OTP"
                             onChange={handleChange}
-                            className='OTP_input_field input_field'
-                            inputGroupClass='left'
+                            className="OTP_input_field input_field"
+                            inputGroupClass="left"
                             isRequired={true}
                           />
                           <Button
-                            type='button'
-                            className='OTP_resend_btn'
+                            type="button"
+                            className="OTP_resend_btn"
                             onClick={() => OTP_resend()}
                           >
                             Resend OTP
@@ -463,7 +490,7 @@ const Register = () => {
                         </div>
                       )}
                       <div
-                        className='form-check form-check-label show_password form_group'
+                        className="form-check form-check-label show_password form_group"
                         style={{
                           userSelect: "none",
                           display: "flex",
@@ -471,21 +498,21 @@ const Register = () => {
                         }}
                       >
                         <Input
-                          type='checkbox'
-                          className='form-check-input form-check-label'
-                          value='showpassword'
-                          id='showpassword'
+                          type="checkbox"
+                          className="form-check-input form-check-label"
+                          value="showpassword"
+                          id="showpassword"
                           onChange={() => setShowPassword(!showPassword)}
                         />
                         <label
-                          htmlFor='showpassword'
-                          className='form-check-label'
+                          htmlFor="showpassword"
+                          className="form-check-label"
                         >
                           &nbsp;Show Password
                         </label>
                       </div>
                       <div
-                        className='form-check form-check-label show_password form_group'
+                        className="form-check form-check-label show_password form_group"
                         style={{
                           userSelect: "none",
                           display: "flex",
@@ -493,22 +520,22 @@ const Register = () => {
                         }}
                       >
                         <Input
-                          type='checkbox'
-                          className='form-check-input form-check-label'
-                          value='termscondition'
-                          id='termscondition'
+                          type="checkbox"
+                          className="form-check-input form-check-label"
+                          value="termscondition"
+                          id="termscondition"
                           defaultChecked={checked}
                           onChange={() => {
                             setChecked(!checked);
                           }}
                         />
                         <label
-                          htmlFor='termscondition'
-                          className='form-check-label'
+                          htmlFor="termscondition"
+                          className="form-check-label"
                         >
                           &nbsp;I agree to{" "}
                           <CustomLink
-                            to='/termsconditions'
+                            to="/termsconditions"
                             style={{ color: "#4885ed" }}
                           >
                             Terms & Conditions
@@ -517,23 +544,23 @@ const Register = () => {
                       </div>
 
                       <Button
-                        type='submit'
-                        className='submit_btn'
+                        type="submit"
+                        className="submit_btn"
                         disabled={isLoading}
                       >
                         {isLoading ? "Loading..." : "Register"}
                       </Button>
-                      <div className='go_to_login'>
+                      <div className="go_to_login">
                         <p>
-                          <CustomLink href='/' className='log_page_nav_link'>
+                          <CustomLink href="/" className="log_page_nav_link">
                             Home
                           </CustomLink>{" "}
                         </p>
-                        <p className='login_nav_break_point'> | </p>
+                        <p className="login_nav_break_point"> | </p>
                         <p>
                           <CustomLink
-                            href='/login'
-                            className='log_page_nav_link'
+                            href="/login"
+                            className="log_page_nav_link"
                           >
                             Login
                           </CustomLink>{" "}
@@ -547,6 +574,18 @@ const Register = () => {
           </div>
         </AuthCardLayout>
       </div>
+      {openModal && (
+        <GoogleLoginModal
+          handleGoogleLogin={handleGoogleLogin}
+          handleOnChange={handleOnChange}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          value={value}
+          setValue={setValue}
+          isSponsorId={sponsorid || "admin"}
+          loading={loading}
+        />
+      )}
       <Footer />
     </>
   );

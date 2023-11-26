@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import CustomLink from "../../components/Link";
@@ -18,10 +18,19 @@ import Header from "../FrontPage/components/Header";
 import AuthCardLayout from "./AuthCardLayout";
 import login from "../../../src/assets/login.png";
 import { FcGoogle } from "react-icons/fc";
-
+import GoogleLogin from "react-google-login";
+import useGoogleLogin from "../../hooks/useGoogleLogin";
+import GoogleLoginModal from "./googleLoginModal";
+import { env } from "../../env";
 
 export let popupShow = false;
 const Login = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const location = useLocation();
+  const sponsorid = location.search.split("=")[1];
+
   const [errors, setErrors] = useState({}); // error catch
   const navigate = useNavigate();
   const [value, setValue] = useState({
@@ -104,6 +113,18 @@ const Login = () => {
       navigate("/");
     }
   }, [token, navigate]);
+  const {
+    responseGoogle,
+    resFailed,
+    openModal,
+    setOpenModal,
+    modalRef,
+    value: values,
+    setValue: setValues,
+    handleGoogleLogin,
+    handleOnChange,
+    loading,
+  } = useGoogleLogin();
   return (
     <>
       {/* <SocialIconeforLogin /> */}
@@ -192,12 +213,17 @@ const Login = () => {
                       type="button"
                       className="submit_btn"
                       onClick={() => {
-                        console.log("google clicked")
+                        console.log("google clicked");
                       }}
                     >
                       <div className="google_btn">
-                      <FcGoogle size={25}/>
-                      <span>Continue With Google</span>
+                        <GoogleLogin
+                          clientId={env.google_client_id}
+                          buttonText="Sign in with google"
+                          onSuccess={responseGoogle}
+                          onFailure={resFailed}
+                          cookiePolicy={"single_host_origin"}
+                        />
                       </div>
                     </Button>
                     <div className="go_to_register">
@@ -232,6 +258,18 @@ const Login = () => {
           </div>
         </AuthCardLayout>
       </div>
+      {openModal && (
+        <GoogleLoginModal
+          handleGoogleLogin={handleGoogleLogin}
+          handleOnChange={handleOnChange}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          value={values}
+          setValue={setValues}
+          isSponsorId={sponsorid || "admin"}
+          loading={loading}
+        />
+      )}
       <Footer />
     </>
   );

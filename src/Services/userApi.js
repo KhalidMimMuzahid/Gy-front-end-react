@@ -318,7 +318,22 @@ export const userApi = createApi({
       query: () => "/api/v1/private/user/get-all-reject-kyc",
       providesTags: ["adminUser"], // automatic-data fetching
     }),
-
+    addGoogleLogin: builder.mutation({
+      // user register
+      query: (body) => ({
+        url: "/api/v1/public/google_login",
+        method: "POST",
+        body: body,
+      }),
+    }),
+    checkLogin: builder.mutation({
+      // user register
+      query: (body) => ({
+        url: "/api/v1/public/check_login",
+        method: "POST",
+        body: body,
+      }),
+    }),
   }),
 });
 
@@ -374,4 +389,6 @@ export const {
   useGetsuccesskycAdminQuery,
   useGetrejectedkycAdminQuery,
   useUpdateKycMutation,
+  useAddGoogleLoginMutation,
+  useCheckLoginMutation,
 } = userApi;
