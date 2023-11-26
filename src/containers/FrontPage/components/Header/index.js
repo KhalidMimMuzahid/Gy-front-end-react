@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import logo from "../../../../assets/logo-light.png";
+import logo from "../../../../assets/growmorelogo.png";
 import CustomLink from "../../../../components/Link";
 import {
   getLocalStorage,

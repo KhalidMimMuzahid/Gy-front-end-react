@@ -15,6 +15,8 @@ const Wallet = () => {
     return <Loading />;
   }
   const totalBalance = data?.data?.investmentAmount + data?.data?.activeIncome;
+  console.log({ totalBalance });
+  console.log({ data });
   return (
     <div className="wallet_page_wrapper">
       <div className="ss-trade_dash_content card_row">

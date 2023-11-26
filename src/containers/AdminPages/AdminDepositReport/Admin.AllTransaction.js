@@ -48,6 +48,17 @@ const AllTransaction = () => {
     await statusDepo(statusChanges);
   };
   const [filterData, setFilterData] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+  useEffect(() => {
+    const initialValue = 0;
+    const arr = filterData?.length > 0 ? filterData : data?.data;
+    const amountArr = arr?.filter((d) => d?.amount);
+    const sum = amountArr?.reduce(
+      (accumulator, currentValue) => accumulator + currentValue?.amount,
+      initialValue
+    );
+    setTotalAmount(sum);
+  }, [filterData, data?.data]);
 
   if (isLoadingAllDepositHistory) {
     return <Loading />;
@@ -62,6 +73,7 @@ const AllTransaction = () => {
         })`}
         data={filterData?.length > 0 ? filterData : data?.data}
         setFilterData={setFilterData}
+        countContainer={totalAmount}
         table={
           <AllDepositTable
             data={filterData?.length > 0 ? filterData : data?.data}

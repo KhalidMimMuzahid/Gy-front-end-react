@@ -47,7 +47,7 @@ export const menus = [
         permission: ["admin"],
       },
       {
-        id: "838dga9ifdteamstats",
+        id: "838dga9ifd",
         menu: "Team Statistics",
         route: "/dashboard/member/team-statistics",
         permission: ["admin"],

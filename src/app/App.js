@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <Helmet>
-        <title>Welcome To GrowMore </title>
+        <title>Welcome To Grow More </title>
         {/* google font family */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -10,7 +10,7 @@ const WeAreTrusted = () => {
     <div className="container">
     <div className="trust_innerbody">
         <div className="trusted_left">
-          <h2>Why Abhifx24 is a trusted FX broker?</h2>
+          <h2>Why Grow More is a trusted FX broker?</h2>
           <p>We provide significant support to management teams in developing and executing their business plans. In addition to our deal team, which is involved throughout the life of an investment, we draw on operating resources from our in-house Portfolio Support Group and third-party Operating Partner program. These combined resources underpin our highly operational approach to investing.</p>
         </div>
         <div className="trusted_right">
@@ -31,7 +31,7 @@ const WeAreTrusted = () => {
             </div>
             <div className="feat">
               <img src={ic4} alt="feat" />
-              <h4>Leveraging GrowMore expertise across our 5 core sectors</h4>
+              <h4>Leveraging Grow more expertise across our 5 core sectors</h4>
             </div>
           </div>
         </div>

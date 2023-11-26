@@ -118,6 +118,7 @@ const Register = () => {
         if (user.otpCode < 0) {
           Notification("Only Number Is Allowed On OTP", "error");
         } else {
+          // console.log(dataUser);
           await addUser(dataUser);
         }
       }

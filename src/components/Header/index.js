@@ -4,8 +4,8 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FiSun } from "react-icons/fi";
 import { MdOutlineDarkMode } from "react-icons/md";
 import avatar from "../../assets/avatar.png";
-import logoDark from "../../assets/logo.png";
-import logoLight from "../../assets/logo-light.png";
+import logoDark from "../../assets/growmorelogo.png";
+import logoLight from "../../assets/growmorelogo.png";
 import Popover from "../Popover";
 import AvatarDropdownMenu from "./avatarDropdownMenu";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
@@ -79,7 +79,9 @@ const Header = ({ show, setShow }) => {
               <BiDotsVerticalRounded />
             </button>
           </div>
-          <div className={`ss-trade_header_menu ${showMenu ? "active_show" : ""}`}>
+          <div
+            className={`ss-trade_header_menu ${showMenu ? "active_show" : ""}`}
+          >
             <ul className="ss-trade_header_menu_lists">
               <li className="ss-trade_header_menu_list">
                 <div className="msg_icon theme_icon" id="theme_icon">
