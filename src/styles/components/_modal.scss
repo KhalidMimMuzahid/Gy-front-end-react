@@ -69,6 +69,7 @@
   .form_group {
     // display: flex;
     margin: 15px 0;
+    display: flex;
     @include breakpoints(portraitTablet) {
       display: inherit;
       margin: 0px;

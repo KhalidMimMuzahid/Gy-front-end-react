@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import CustomLink from "../../components/Link";
 import { Notification } from "../../components/ToastNotification";
 import { loginValidate } from "../../components/Validation/vaildate";
 import { useAddLoginMutation } from "../../Services/userApi";
+import Emailimage from "../../assets/email.png";
 import {
   getLocalStorage,
   removeLocalStorage,
@@ -22,6 +23,8 @@ import GoogleLogin from "react-google-login";
 import useGoogleLogin from "../../hooks/useGoogleLogin";
 import GoogleLoginModal from "./googleLoginModal";
 import { env } from "../../env";
+import LoginModal from "./LoginModal ";
+import { CgEyeAlt } from "react-icons/cg";
 
 export let popupShow = false;
 const Login = () => {
@@ -40,6 +43,7 @@ const Login = () => {
   });
   const [captcha, setCaptcha] = useState({ x: 0, y: 0 });
   const [captchaRefresh, setCaptchaRefresh] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
@@ -71,37 +75,9 @@ const Login = () => {
     }
   }, [error, data, navigate]);
 
-  if (JSON.parse(getLocalStorage("otp_timer"))) {
-    setTimeout(() => {},
-    parseInt(JSON.parse(getLocalStorage("otp_timer"))) * 1000);
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (Object.keys(errors).length > 0) {
-      Notification(errors?.userId || errors?.password, "error");
-    } else {
-      savedLocalStorage("otp_timer", 5000);
-      if (captcha?.x + captcha?.y !== parseInt(value?.otpCode)) {
-        Notification("Wrong Answer", "error");
-        refresh();
-        setValue({ ...value, [value?.otpCode]: "" });
-      } else {
-        const logData = {
-          ...value,
-          userId: value.userId,
-        };
-        await addLogin(logData);
-      }
-    }
+  const handleEmailLogin = () => {
+    setOpenLoginModal(!openLoginModal);
   };
-  useEffect(() => {
-    setCaptcha({
-      ...captcha,
-      x: Math.floor(Math.random() * 10 + 1),
-      y: Math.floor(Math.random() * 10 + 1),
-    });
-  }, [captchaRefresh]);
 
   const refresh = async () => {
     setCaptchaRefresh(!captchaRefresh);
@@ -153,111 +129,100 @@ const Login = () => {
                 <div className="hr_border"></div>
                 {/* <SocialIconForCardHearder /> */}
                 <div className="ss-trade_dashboard_login_content">
-                  <form onSubmit={handleSubmit}>
-                    <div className="form_group" style={{ display: "inherit" }}>
-                      <Input
-                        label="User ID"
-                        type="text"
-                        name="userId"
-                        placeholder="Enter your user ID"
-                        onChange={handleChange}
-                        value={value.userId}
-                        className="userid_input input_field"
-                        inputGroupClass="right"
-                      />
-                    </div>
-                    <div className="form_group" style={{ display: "inherit" }}>
-                      <Input
-                        label="Password"
-                        type={`${showPassword ? "text" : "password"}`}
-                        name="password"
-                        placeholder="Enter your password"
-                        onChange={handleChange}
-                        value={value.password}
-                        className="password_input input_field"
-                        inputGroupClass="right"
-                      />
-                      <span
-                        style={{ marginTop: "0px" }}
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-                      </span>
-                    </div>
-                    {true && (
-                      <>
-                        <div className="captchaContainer">
-                          <p>{captcha?.x}</p>
-                          <p>+</p>
-                          <p>{captcha?.y}</p>
-                          <p>=</p>
-                          <input
-                            name="otpCode"
-                            onChange={handleChange}
-                            value={value.otpCode}
-                          />
-                          <span onClick={() => refresh()} tooltip="refresh">
-                            <HiOutlineRefresh />
-                          </span>
-                        </div>
-                      </>
-                    )}
-                    <Button
-                      type="submit"
-                      className="submit_btn"
-                      // disabled={OTPup}
-                    >
-                      {isLoading ? "Loading..." : "Login"}
-                    </Button>
-                    <Button
-                      type="button"
-                      className="submit_btn"
-                      onClick={() => {
-                        console.log("google clicked");
+                  <Button
+                    type="submit"
+                    className="submit_btn"
+                    disabled={isLoading}
+                    onClick={handleEmailLogin}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        justifyContent: "center",
                       }}
                     >
-                      <div className="google_btn">
-                        <GoogleLogin
-                          clientId={env.google_client_id}
-                          buttonText="Sign in with google"
-                          onSuccess={responseGoogle}
-                          onFailure={resFailed}
-                          cookiePolicy={"single_host_origin"}
+                      <div>
+                        <img
+                          style={{ height: "25px", width: "25px" }}
+                          src={Emailimage}
+                          alt="email image"
                         />
                       </div>
-                    </Button>
-                    <div className="go_to_register">
-                      <p>
-                        <CustomLink href="/" className="log_page_nav_link">
-                          Home
-                        </CustomLink>{" "}
-                      </p>
-                      <p className="login_nav_break_point"> | </p>
-                      <p>
-                        <CustomLink
-                          href="/register"
-                          className="log_page_nav_link"
-                        >
-                          Register
-                        </CustomLink>{" "}
-                      </p>
-                      <p className="login_nav_break_point"> | </p>
-                      <p>
-                        <CustomLink
-                          href="/forgotPassword"
-                          className="log_page_nav_link"
-                        >
-                          Forget Password
-                        </CustomLink>{" "}
-                      </p>
+                      <div>Continue With Email</div>
                     </div>
-                  </form>
+                  </Button>
+                  <Button
+                    type="button"
+                    className="submit_btn"
+                    onClick={() => {
+                      console.log("google clicked");
+                    }}
+                  >
+                    <div className="google_btn">
+                      <GoogleLogin
+                        clientId={env.google_client_id}
+                        render={(renderProps) => (
+                          <button
+                            className="google_login_btn"
+                            onClick={renderProps.onClick}
+                            disabled={renderProps.disabled}
+                          >
+                            <div
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "5px",
+                              }}
+                            >
+                              <div>
+                                <FcGoogle size={25} />
+                              </div>
+                              <div>Continue With Google</div>
+                            </div>
+                          </button>
+                        )}
+                        buttonText="Sign in with google"
+                        onSuccess={responseGoogle}
+                        onFailure={resFailed}
+                        cookiePolicy={"single_host_origin"}
+                        style={{ backgroundColor: "#BDF9FF" }}
+                      />
+                    </div>
+                  </Button>
+                  <div className="go_to_register">
+                    <p>
+                      <CustomLink href="/" className="log_page_nav_link">
+                        Home
+                      </CustomLink>{" "}
+                    </p>
+                    <p className="login_nav_break_point"> | </p>
+                    <p>
+                      <CustomLink
+                        href="/register"
+                        className="log_page_nav_link"
+                      >
+                        Register
+                      </CustomLink>{" "}
+                    </p>
+                    <p className="login_nav_break_point"> | </p>
+                    <p>
+                      <CustomLink
+                        href="/forgotPassword"
+                        className="log_page_nav_link"
+                      >
+                        Forget Password
+                      </CustomLink>{" "}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </AuthCardLayout>
       </div>
+      {openLoginModal && <LoginModal handleEmailLogin={handleEmailLogin} />}
       {openModal && (
         <GoogleLoginModal
           handleGoogleLogin={handleGoogleLogin}

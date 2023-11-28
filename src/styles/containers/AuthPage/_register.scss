@@ -94,17 +94,27 @@
       }
     }
     //google button style
-    .google_btn{
+    .google_btn {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 5px;
 
-      button{
-        background-color: #BDF9FF !important;
+      .google_login_btn {
+        background-color: transparent !important;
+        border: none !important;
+        outline: none !important;
+        color: white;
+        font-size: 15px;
+        display: flex;
+        flex-direction: row;
+      }
+
+      button {
+        background-color: #bdf9ff !important;
       }
     }
-    .button_container{
+    .button_container {
       width: 100%;
       margin-top: 10vh;
     }

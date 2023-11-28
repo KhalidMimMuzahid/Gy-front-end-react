@@ -28,7 +28,7 @@
   }
   form {
     .modal_header {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       border-bottom: 1px solid #eee;
       padding-bottom: 5px;
       .modal_title {
@@ -46,7 +46,7 @@
           font-size: 18px;
           cursor: pointer;
         }
-        span:hover{
+        span:hover {
           color: red;
         }
       }
@@ -55,7 +55,10 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+
       .form_group {
+        padding: 0;
+        margin: 0;
         display: flex;
         align-items: flex-start;
         flex-direction: column;
@@ -67,8 +70,9 @@
             color: red;
           }
         }
+
         input {
-          width: 100%;
+          width: 95%;
           font-size: 13px;
           color: $text-black;
           outline: none;
@@ -85,11 +89,21 @@
           }
         }
       }
+      p {
+        span {
+          color: green;
+        }
+      }
+      .invalid {
+        color: red;
+      }
+      .valid {
+        clear: green;
+      }
     }
     .modal_footer {
-      margin-top: 20px;
-      display: flex;
-      gap: 20px;
+      margin: 0;
+      padding: 0;
       .submit_btn {
         width: 40%;
         outline: none;
@@ -106,7 +120,7 @@
         }
       }
     }
-    .sponsor_name{
+    .sponsor_name {
       color: green;
     }
     .alert_p {

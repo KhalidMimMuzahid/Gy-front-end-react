@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import {
   useAddGoogleLoginMutation,
   useCheckLoginMutation,
+  useGetValidateSponsorIdQuery,
 } from "../Services/userApi";
 import { env } from "../env";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ import { savedLocalStorage } from "../utils/function/localStorage";
 
 const useGoogleLogin = () => {
   const navigate = useNavigate();
+
   // handle google sign in
   const [addGoogleLogin, { data: eData, error: gError, isLoading: loading }] =
     useAddGoogleLoginMutation();
@@ -19,12 +21,44 @@ const useGoogleLogin = () => {
   const [isCheck, { data: cData }] = useCheckLoginMutation();
   console.log({ cData });
   const [value, setValue] = useState({});
+  const [sponsorId, setSponsorId] = useState();
+  const [handel, setHandel] = useState(false);
+  const [sponsoreName, setSponsorName] = useState("");
+  const [handelSponsore, setHandelSponsore] = useState("");
+ 
+
   const handleOnChange = (e) => {
+    // Update only the specific property in the state
     setValue({
       ...value,
       [e.target.name]: e.target.value,
     });
   };
+  useEffect(() => {
+    // Destructure value to get sponsorid
+    const { sponsorid, ...rest } = value;
+
+    if (sponsorid && sponsorid.length >= 0) {
+      setHandel(true);
+      setSponsorId(sponsorid);
+    } else {
+      setHandel(false);
+    }
+  }, [value.sponsorid]);
+  
+
+  const { data: sponsoridData, error: sponsoridError } =
+    useGetValidateSponsorIdQuery(sponsorId);
+
+  useEffect(() => {
+    if (sponsoridError?.data?.message) {
+      // setSponError(sponsoridError?.data?.message);
+      setSponsorName("");
+    } else if (sponsoridData?.name) {
+      setSponsorName(sponsoridData?.name);
+    }
+  }, [sponsoridError?.data, sponsoridData?.name]);
+
 
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
@@ -92,6 +126,8 @@ const useGoogleLogin = () => {
     handleGoogleLogin,
     handleOnChange,
     loading,
+    handel,
+    sponsoreName,
   };
 };
 export default useGoogleLogin;

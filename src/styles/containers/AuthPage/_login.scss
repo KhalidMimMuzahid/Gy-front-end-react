@@ -77,6 +77,79 @@
       }
     }
     .ss-trade_dashboard_login_content {
+      .submit_btn {
+        background-color: #00a5ec;
+        padding: 10px 12px;
+        width: 100%;
+        border-radius: 3px;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        margin-top: 10px !important;
+        &:hover {
+          background-color: #0183bb;
+          box-shadow: 0 5px 5px 0 rgb(82 63 105 / 5%);
+        }
+      }
+      .forget_password {
+        margin: 10px 0;
+        text-align: end;
+        a {
+          color: #7a5eeaf8;
+          font-size: 14px;
+          justify-content: center;
+          font-weight: 600;
+        }
+      }
+      .google_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        .google_login_btn {
+          background-color: transparent !important;
+          border: none !important;
+          outline: none !important;
+          color: white;
+          font-size: 15px;
+          display: flex;
+          flex-direction: row;
+        }
+
+        button {
+          background-color: #bdf9ff !important;
+        }
+      }
+      .go_to_register {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        text-align: center;
+        p {
+          color: #000;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 0px 5px;
+          a {
+            color: #7a5eeaf8 !important;
+          }
+          .log_page_nav_link {
+            &:hover {
+              border-bottom: 2px solid #7b5eea;
+              color: #7b5eea;
+            }
+          }
+        }
+        .login_nav_break_point {
+          color: #7a5eeaf8 !important;
+        }
+      }
       form {
         .form_group {
           margin: 15px 0;
@@ -388,7 +461,7 @@
     }
   }
 }
-.google_btn{
+.google_btn {
   display: flex;
   align-items: center;
   justify-content: center;

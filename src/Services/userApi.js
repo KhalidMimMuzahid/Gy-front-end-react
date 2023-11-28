@@ -12,7 +12,7 @@ export const userApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["User", "adminUser", "Validate", "autoTrade","bank"], // automatic-data fetching
+  tagTypes: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
   endpoints: (builder) => ({
     getLoginUser: builder.query({
       query: () => "/api/v1/common/get_user",
@@ -301,9 +301,8 @@ export const userApi = createApi({
       providesTags: ["bank"], // automatic-data fetching
     }),
     getSuccessKyc: builder.query({
-        query: () => "/api/v1/secure/user/get-kyc-success-status",
+      query: () => "/api/v1/secure/user/get-kyc-success-status",
     }),
-
 
     //KYC for admin
     getAllkycAdmin: builder.query({
@@ -318,6 +317,7 @@ export const userApi = createApi({
       query: () => "/api/v1/private/user/get-all-reject-kyc",
       providesTags: ["adminUser"], // automatic-data fetching
     }),
+
     addGoogleLogin: builder.mutation({
       // user register
       query: (body) => ({
@@ -333,6 +333,14 @@ export const userApi = createApi({
         method: "POST",
         body: body,
       }),
+    }),
+    checkUserEmail: builder.query({
+      query: (userEmail) => `/api/v1/public/get_check_email/${userEmail}`,
+      providesTags: ["Validate"], // automatic-data fetching
+    }),
+    checkUserOTP: builder.query({
+      query: (otpCode) => `/api/v1/public/get_check_otp/${otpCode}`,
+      providesTags: ["Validate"], // automatic-data fetching
     }),
   }),
 });
@@ -391,4 +399,6 @@ export const {
   useUpdateKycMutation,
   useAddGoogleLoginMutation,
   useCheckLoginMutation,
+  useCheckUserEmailQuery,
+  useCheckUserOTPQuery,
 } = userApi;
