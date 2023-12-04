@@ -19,7 +19,7 @@ $border-radius: 5px;
       gap: 1rem;
     }
     .amount h3 {
-      color: #000;
+      color: currentColor;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
     }
@@ -78,7 +78,16 @@ $border-radius: 5px;
 }
 
 .color_button_container{
-    padding: .5rem 0rem;
+    padding: .8rem 0rem;
     display: flex;
     gap: 0.5rem;
+}
+.records_table{
+  .table_header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
