@@ -202,7 +202,7 @@ export const menus = [
     ],
   },
   {
-    id: "sf4s8f7ser",
+    id: "sf4s8f7sel",
     menu: "Games",
     icon: <CgGames />,
     permission: ["admin"],
