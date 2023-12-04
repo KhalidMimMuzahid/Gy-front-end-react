@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 
 const AdminGameDashBoard = () => {
+  // for table
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
@@ -20,15 +21,39 @@ const AdminGameDashBoard = () => {
     createData("Cupcake", 305, 3.7, 67, 4.3),
     createData("Gingerbread", 356, 16.0, 49, 3.9),
   ];
+  // for 3 minutes timer
+  const initialTime = 180; // 3 minutes in seconds
+  const [seconds, setSeconds] = React.useState(initialTime);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [seconds]);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const remainingSeconds = timeInSeconds % 60;
+    const formattedTime = `${minutes}:${
+      remainingSeconds < 10 ? "0" : ""
+    }${remainingSeconds}`;
+    return formattedTime;
+  };
 
   return (
     <div className='game_dashboard_wrapper'>
       <div className='game_dashboard_header'>
-        <div className="game_dashboard_header_left">
+        <div className='game_dashboard_header_left'>
           <h4>Count Dwon</h4>
-          <h5>0:00</h5>
+          <h5>{formatTime(seconds)}</h5>
         </div>
-        <div className="game_dashboard_header_right">
+        <div className='game_dashboard_header_right'>
           <h4>Active Period Id</h4>
           <p>0000000000</p>
         </div>
