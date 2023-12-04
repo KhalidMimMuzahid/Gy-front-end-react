@@ -84,6 +84,9 @@ const ColorGame = () => {
                 </button>
               </div>
               <div className='color_button_container'>
+                <button class='red-button button0'>
+                  <p>0</p>
+                </button>
                 <button class='red-button'>
                   <p>1</p>
                 </button>
@@ -99,9 +102,8 @@ const ColorGame = () => {
                 <button class='red-button'>
                   <p>5</p>
                 </button>
-              </div>
-              <div className='color_button_container'>
-                <button class='red-button'>
+
+                <button class='red-button button6'>
                   <p>6</p>
                 </button>
                 <button class='green-button'>
@@ -116,6 +118,9 @@ const ColorGame = () => {
                 <button class='red-button'>
                   <p>10</p>
                 </button>
+              </div>
+              <div className='color_button_container'>
+                
               </div>
             </div>
             <div className='records_table'>
