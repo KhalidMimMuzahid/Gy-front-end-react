@@ -35,7 +35,31 @@ const ColorGame = () => {
     createData("Cupcake", 305, 3.7, 67),
     createData("Gingerbread", 356, 16.0, 49),
   ];
+// for 3 minutes timer
+const initialTime = 180; // 3 minutes in seconds
+const [seconds, setSeconds] = React.useState(initialTime);
 
+React.useEffect(() => {
+  const interval = setInterval(() => {
+    if (seconds > 0) {
+      setSeconds(seconds - 1);
+    } else {
+      setSeconds(initialTime); // Reset the timer to initial value
+    }
+  }, 1000);
+
+  return () => clearInterval(interval); // Cleanup interval on component unmount
+}, [seconds]);
+
+const formatTime = (timeInSeconds) => {
+  const minutes = Math.floor(timeInSeconds / 60);
+  const remainingSeconds = timeInSeconds % 60;
+  const formattedTime = `${minutes}:${
+    remainingSeconds < 10 ? "0" : ""
+  }${remainingSeconds}`;
+  return formattedTime;
+};
+const textColor = seconds <= 30 ? 'red' : '';
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -67,7 +91,7 @@ const ColorGame = () => {
               <div className='top_content_right'>
                 <div className='count-dwon-container'>
                   <p>Count Dwon</p>
-                  <h3>0:00</h3>
+                  <h3 style={{ color: textColor }}>{formatTime(seconds)}</h3>
                 </div>
               </div>
             </div>
