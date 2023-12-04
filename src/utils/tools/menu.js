@@ -13,6 +13,7 @@ import { GrGamepad } from "react-icons/gr";
 
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { RiTeamLine, RiMoneyDollarCircleLine } from "react-icons/ri";
+import { CgGames } from "react-icons/cg";
 export const menus = [
   // ************************************* common dashboard menu ************************//
   {
@@ -196,6 +197,20 @@ export const menus = [
         id: "30ht9fwa",
         menu: "Ticket Data",
         route: "/dashboard/ticket-data",
+        permission: ["admin"],
+      },
+    ],
+  },
+  {
+    id: "sf4s8f7ser",
+    menu: "Games",
+    icon: <CgGames />,
+    permission: ["admin"],
+    dropdown: [
+      {
+        id: "f4s8fezzz",
+        menu: "Color Games",
+        route: "/dashboard/color-games",
         permission: ["admin"],
       },
     ],

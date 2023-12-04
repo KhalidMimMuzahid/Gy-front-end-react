@@ -208,6 +208,11 @@ const AdminTicketData = React.lazy(() =>
   import("../containers/AdminPages/Admin.Support/Admin.TicketData")
 );
 
+//games dashboard for admin
+const AdminGameDashBoard = React.lazy(() =>
+import("../containers/AdminPages/Game/AdminDashBoard/index")
+)
+
 // settings section
 const AdminChangePassword = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.ChangePassword")
@@ -637,6 +642,14 @@ export const routers = [
     name: "Ticket Data",
     permission: ["admin"],
     component: AdminTicketData,
+  },
+
+  // game dashboard section
+  {
+    path: "/color-games",
+    name: "Color Games",
+    permission: ["admin"],
+    component: AdminGameDashBoard,
   },
 
   // setting section
