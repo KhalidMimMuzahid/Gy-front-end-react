@@ -9,6 +9,7 @@ import {
   // GiReceiveMoney,
   GiTakeMyMoney,
 } from "react-icons/gi";
+import { GrGamepad } from "react-icons/gr";
 
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { RiTeamLine, RiMoneyDollarCircleLine } from "react-icons/ri";
@@ -153,7 +154,7 @@ export const menus = [
       // },
     ],
   },
-   {
+  {
     id: "4343qf3q2g",
     menu: "KYC",
     icon: <GiTakeMyMoney />,
@@ -177,7 +178,6 @@ export const menus = [
         route: "/dashboard/kyc/rejected",
         permission: ["admin"],
       },
-      
     ],
   },
   {
@@ -306,6 +306,20 @@ export const menus = [
         id: "fd7d8s48574",
         menu: "deposit history",
         route: "/dashboard/wallet/deposit-history",
+        permission: ["user"],
+      },
+    ],
+  },
+  {
+    id: "f7df8sfccc",
+    menu: "Games",
+    icon: <GrGamepad />,
+    permission: ["user"],
+    dropdown: [
+      {
+        id: "7854s8dfs5d",
+        menu: "Color game",
+        route: "/dashboard/games/color-game",
         permission: ["user"],
       },
     ],

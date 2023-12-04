@@ -45,6 +45,12 @@ const DepositHistory = React.lazy(() =>
 const FundReceivingHistory = React.lazy(() =>
   import("../containers/UserPages/Wallet/FundReceivingHistory")
 );
+
+//games section
+const ColorGame = React.lazy(() =>
+import("../containers/UserPages/Games/ColorGames/index")
+)
+
 // Team section
 const DirectTeam = React.lazy(() =>
   import("../containers/UserPages/MyTeamPage/Team.DirectTeamPage")
@@ -312,6 +318,15 @@ export const routers = [
     permission: ["user"],
     component: FundReceivingHistory,
   },
+
+  // games section
+  {
+    path: "/games/color-game",
+    name: "Color Game",
+    permission: ["user"],
+    component: ColorGame,
+  },
+
 
   // Team section
   {
