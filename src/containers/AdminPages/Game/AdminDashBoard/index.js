@@ -30,7 +30,7 @@ const AdminGameDashBoard = () => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
       } else {
-        clearInterval(interval);
+        setSeconds(initialTime); // Reset the timer to initial value
       }
     }, 1000);
 
