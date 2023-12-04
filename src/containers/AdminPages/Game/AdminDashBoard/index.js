@@ -45,13 +45,13 @@ const AdminGameDashBoard = () => {
     }${remainingSeconds}`;
     return formattedTime;
   };
-
+  const textColor = seconds <= 30 ? 'red' : '';
   return (
     <div className='game_dashboard_wrapper'>
       <div className='game_dashboard_header'>
         <div className='game_dashboard_header_left'>
           <h4>Count Dwon</h4>
-          <h5>{formatTime(seconds)}</h5>
+          <h5 style={{ color: textColor }}>{formatTime(seconds)}</h5>
         </div>
         <div className='game_dashboard_header_right'>
           <h4>Active Period Id</h4>
