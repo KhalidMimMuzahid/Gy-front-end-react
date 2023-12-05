@@ -14,7 +14,6 @@ const AdminGameDashBoard = () => {
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
   // console.log(data);
-
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
@@ -22,16 +21,16 @@ const AdminGameDashBoard = () => {
       Notification(error?.data?.message, "error");
     }
   }, [error, selectWindata]);
+
   const statusChange = async (da) => {
     const obj = {
       color: da?.color,
       number: da?.number,
     };
     await selectWinner(obj);
-    setIsDisable(true)
+    setIsDisable(true);
     console.log("data may of ", da);
   };
-
 
   // for 3 minutes timer
   const initialTime = 180; // 3 minutes in seconds
@@ -59,18 +58,18 @@ const AdminGameDashBoard = () => {
   };
   const textColor = seconds <= 30 ? "red" : "";
   return (
-    <div className="game_dashboard_wrapper">
-      <div className="game_dashboard_header">
-        <div className="game_dashboard_header_left">
+    <div className='game_dashboard_wrapper'>
+      <div className='game_dashboard_header'>
+        <div className='game_dashboard_header_left'>
           <h4>Count Dwon</h4>
           <h5 style={{ color: textColor }}>{formatTime(seconds)}</h5>
         </div>
-        <div className="game_dashboard_header_right">
+        <div className='game_dashboard_header_right'>
           <h4>Active Period Id</h4>
           <p>0000000000</p>
         </div>
       </div>
-      <div className="game_dashboard_table">
+      <div className='game_dashboard_table'>
         <AllColorPredictionTable
           data={data?.data}
           statusChange={statusChange}

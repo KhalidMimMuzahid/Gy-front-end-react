@@ -18,7 +18,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
+import generateId from "../../../../utils/function/generatePeriodID";
 const ColorGame = () => {
+  // for period id
+  const [periodID, setperiodID] = React.useState("");
   // For Tabs
   const [value, setValue] = React.useState("1");
 
@@ -98,7 +101,20 @@ const ColorGame = () => {
     setOpenModal(false);
     setSelectedColor("");
   };
+  //
+  React.useEffect(() => {
+    if (seconds === 0 || seconds === initialTime) {
+      // Create an ID generator function
+      const getNextId = generateId();
 
+      // Get the next ID
+      const id = getNextId();
+
+      // Use the generated ID as needed
+      // console.log(id);
+      setperiodID(id);
+    }
+  }, [seconds,periodID,setperiodID]);
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -124,7 +140,7 @@ const ColorGame = () => {
                   <p>Period</p>
                 </div>
                 <div className='amount'>
-                  <h3>000000000</h3>
+                  <h3>{periodID}</h3>
                 </div>
               </div>
               <div className='top_content_right'>
@@ -217,12 +233,12 @@ const ColorGame = () => {
                 >
                   <p>9</p>
                 </button>
-                <button
+                {/* <button
                   class='red-button'
                   onClick={() => handleOpenModal("Red(10)")}
                 >
                   <p>10</p>
-                </button>
+                </button> */}
               </div>
               <div className='color_button_container'></div>
             </div>
@@ -282,6 +298,8 @@ const ColorGame = () => {
         open={openModal}
         handleClose={handleCloseModal}
         color={selectedColor}
+        userClicked={userClicked}
+        setUserClicked={setUserClicked}
       />
     </div>
   );

@@ -45,3 +45,34 @@
         text-decoration: none;
     }
   }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  
+    .cancel-button,
+    .confirm-button {
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #eee; // Change the background color on hover
+      }
+    }
+  
+    .cancel-button {
+      background-color: #d9534f; // Set the background color for the cancel button
+      color: #fff; // Set the text color for the cancel button
+    }
+  
+    .confirm-button {
+      background-color: #5bc0de; // Set the background color for the confirm button
+      color: #fff; // Set the text color for the confirm button
+    }
+  }
+  
