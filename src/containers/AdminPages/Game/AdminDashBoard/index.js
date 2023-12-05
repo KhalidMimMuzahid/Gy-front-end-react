@@ -1,36 +1,38 @@
 import * as React from "react";
 
-import { useGetAllColorPrductionwHistoryQuery } from "../../../../Services/withdrawApi";
+import {
+  useGetAllColorPrductionwHistoryQuery,
+  useSelectWinnerMutation,
+} from "../../../../Services/withdrawApi";
 import AllColorPredictionTable from "./table/AllColorPredictionTable";
 import { Notification } from "../../../../components/ToastNotification";
+import { useEffect } from "react";
 
 const AdminGameDashBoard = () => {
+  const [isDisable, setIsDisable] = React.useState(false);
   const { data } = useGetAllColorPrductionwHistoryQuery();
-  const [selectWinner, {data:selectWindata, error}]= useSelectWinnerMutation();
-  
-  console.log(data);
-
+  const [selectWinner, { data: selectWindata, error }] =
+    useSelectWinnerMutation();
+  // console.log(data);
 
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
     } else {
-      Notification(statusError?.data?.message, "error");
+      Notification(error?.data?.message, "error");
     }
   }, [error, selectWindata]);
-  const statusChange = async(da) => {
-    const obj={
-      color:da?.color,
-      number:da?.number
-    }
-    await selectWinner(obj)
+  const statusChange = async (da) => {
+    const obj = {
+      color: da?.color,
+      number: da?.number,
+    };
+    await selectWinner(obj);
+    setIsDisable(true)
     console.log("data may of ", da);
   };
-  function createData(color, number, numberOfUser, amount) {
-    return { color, number, numberOfUser, amount };
-  }
 
- 
+
   // for 3 minutes timer
   const initialTime = 180; // 3 minutes in seconds
   const [seconds, setSeconds] = React.useState(initialTime);
@@ -72,8 +74,8 @@ const AdminGameDashBoard = () => {
         <AllColorPredictionTable
           data={data?.data}
           statusChange={statusChange}
+          isDisable={isDisable}
         />
-       
       </div>
     </div>
   );
