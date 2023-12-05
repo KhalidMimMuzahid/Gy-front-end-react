@@ -16,6 +16,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useState } from "react";
+import ColorModal from "../../../../components/ColorModal/ColorModal";
 const ColorGame = () => {
   // For Tabs
   const [value, setValue] = React.useState("1");
@@ -35,31 +37,68 @@ const ColorGame = () => {
     createData("Cupcake", 305, 3.7, 67),
     createData("Gingerbread", 356, 16.0, 49),
   ];
-// for 3 minutes timer
-const initialTime = 180; // 3 minutes in seconds
-const [seconds, setSeconds] = React.useState(initialTime);
+  // for 3 minutes timer
+  const initialTime = 180; // 3 minutes in seconds
+  const [seconds, setSeconds] = React.useState(initialTime);
 
-React.useEffect(() => {
-  const interval = setInterval(() => {
-    if (seconds > 0) {
-      setSeconds(seconds - 1);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      } else {
+        setSeconds(initialTime); // Reset the timer to initial value
+      }
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [seconds]);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const remainingSeconds = timeInSeconds % 60;
+    const formattedTime = `${minutes}:${
+      remainingSeconds < 10 ? "0" : ""
+    }${remainingSeconds}`;
+    return formattedTime;
+  };
+  const textColor = seconds <= 30 ? "red" : "";
+
+  // state for managing modal
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("");
+  // state for getting number user clicked
+  const [userClicked, setUserClicked] = useState(null);
+  console.log("User clicked", userClicked);
+  // function to handle opening modal
+  const handleOpenModal = (color) => {
+    // Check if the color contains a number in parentheses
+    const numberRegex = /\((\d+)\)/;
+    const match = color.match(numberRegex);
+
+    if (match && match[1]) {
+      const number = parseInt(match[1]);
+      if (number >= 0 && number <= 10) {
+        setSelectedColor(color);
+        setOpenModal(true);
+        // Do something with the number if needed
+        console.log(`Button ${number} clicked`);
+        setUserClicked(number);
+      } else {
+        console.log("Button out of range (0-10)");
+      }
     } else {
-      setSeconds(initialTime); // Reset the timer to initial value
+      // Handle other buttons without numbers in parentheses
+      setSelectedColor(color);
+      setOpenModal(true);
     }
-  }, 1000);
+  };
 
-  return () => clearInterval(interval); // Cleanup interval on component unmount
-}, [seconds]);
+  // function to handle closing modal
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setSelectedColor("");
+  };
 
-const formatTime = (timeInSeconds) => {
-  const minutes = Math.floor(timeInSeconds / 60);
-  const remainingSeconds = timeInSeconds % 60;
-  const formattedTime = `${minutes}:${
-    remainingSeconds < 10 ? "0" : ""
-  }${remainingSeconds}`;
-  return formattedTime;
-};
-const textColor = seconds <= 30 ? 'red' : '';
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -97,55 +136,95 @@ const textColor = seconds <= 30 ? 'red' : '';
             </div>
             <div className='game_body'>
               <div className='color-selectors'>
-                <button className='green-button'>
+                <button
+                  className='green-button'
+                  onClick={() => handleOpenModal("Green")}
+                >
                   <p>Join Green</p>
                 </button>
-                <button className='violet-button'>
+                <button
+                  className='violet-button'
+                  onClick={() => handleOpenModal("Violet")}
+                >
                   <p>Join Violet</p>
                 </button>
-                <button className='red-button'>
+                <button
+                  className='red-button'
+                  onClick={() => handleOpenModal("Red")}
+                >
                   <p>Join Red</p>
                 </button>
               </div>
               <div className='color_button_container'>
-                <button class='red-button button0'>
+                <button
+                  class='red-button button0'
+                  onClick={() => handleOpenModal("Red/Violate(0)")}
+                >
                   <p>0</p>
                 </button>
-                <button class='red-button'>
+                <button
+                  class='red-button'
+                  onClick={() => handleOpenModal("Red(1)")}
+                >
                   <p>1</p>
                 </button>
-                <button class='green-button'>
+                <button
+                  class='green-button'
+                  onClick={() => handleOpenModal("Green(2)")}
+                >
                   <p>2</p>
                 </button>
-                <button class='red-button'>
+                <button
+                  class='red-button'
+                  onClick={() => handleOpenModal("Red(3)")}
+                >
                   <p>3</p>
                 </button>
-                <button class='green-button'>
+                <button
+                  class='green-button'
+                  onClick={() => handleOpenModal("Green(4)")}
+                >
                   <p>4</p>
                 </button>
-                <button class='red-button'>
+                <button
+                  class='red-button'
+                  onClick={() => handleOpenModal("Red(5)")}
+                >
                   <p>5</p>
                 </button>
 
-                <button class='red-button button6'>
+                <button
+                  class='red-button button6'
+                  onClick={() => handleOpenModal("Violet/Green(6)")}
+                >
                   <p>6</p>
                 </button>
-                <button class='green-button'>
+                <button
+                  class='green-button'
+                  onClick={() => handleOpenModal("Green(7)")}
+                >
                   <p>7</p>
                 </button>
-                <button class='red-button'>
+                <button
+                  class='red-button'
+                  onClick={() => handleOpenModal("Red(8)")}
+                >
                   <p>8</p>
                 </button>
-                <button class='green-button'>
+                <button
+                  class='green-button'
+                  onClick={() => handleOpenModal("Green(9)")}
+                >
                   <p>9</p>
                 </button>
-                <button class='red-button'>
+                <button
+                  class='red-button'
+                  onClick={() => handleOpenModal("Red(10)")}
+                >
                   <p>10</p>
                 </button>
               </div>
-              <div className='color_button_container'>
-                
-              </div>
+              <div className='color_button_container'></div>
             </div>
             <div className='records_table'>
               <div className='table_header'>
@@ -157,10 +236,18 @@ const textColor = seconds <= 30 ? 'red' : '';
                   <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                     <TableHead>
                       <TableRow>
-                        <TableCell><p>Period</p></TableCell>
-                        <TableCell align='right'><p>Price</p></TableCell>
-                        <TableCell align='right'><p>Number</p></TableCell>
-                        <TableCell align='right'><p>Result</p></TableCell>
+                        <TableCell>
+                          <p>Period</p>
+                        </TableCell>
+                        <TableCell align='right'>
+                          <p>Price</p>
+                        </TableCell>
+                        <TableCell align='right'>
+                          <p>Number</p>
+                        </TableCell>
+                        <TableCell align='right'>
+                          <p>Result</p>
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -191,6 +278,11 @@ const textColor = seconds <= 30 ? 'red' : '';
           <TabPanel value='3'>Item Three</TabPanel> */}
         </TabContext>
       </Box>
+      <ColorModal
+        open={openModal}
+        handleClose={handleCloseModal}
+        color={selectedColor}
+      />
     </div>
   );
 };
