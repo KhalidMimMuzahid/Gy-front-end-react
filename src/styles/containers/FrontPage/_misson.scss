@@ -1,50 +1,50 @@
 .mission_container {
-    padding: 70px;
-    background-color: #675785;
-    @include breakpoints(tablet){
-        padding: 30px;
+  padding: 70px;
+  background-color: #675785;
+  @include breakpoints(tablet) {
+    padding: 30px;
+  }
+
+  .mission_inner {
+    h2 {
+      font-size: 36px;
+      font-weight: 600 !important;
+      line-height: 54px;
+      color: black;
+      padding-bottom: 15px;
+      text-align: center;
+      position: relative;
+
+      &::after {
+        content: "\A";
+        width: 100px;
+        height: 4px;
+        background: #3f3453;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @include breakpoints(tablet) {
+        text-align: center;
+      }
     }
 
-    .mission_inner {
-        h2 {
-            font-size: 36px;
-            font-weight: 600 !important;
-            line-height: 54px;
-            color: #3F3453;
-            padding-bottom: 15px;
-            text-align: center;
-            position: relative;
+    .mission_box {
+      padding: 30px 0;
 
-            &::after{
-                content: "\A";
-                width: 100px;
-                height: 4px;
-                background: #3F3453;
-                display: inline-block;
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
 
-            @include breakpoints(tablet) {
-                text-align: center;
-            }
-        }
-
-        .mission_box{
-            padding: 30px 0;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-
-            @include breakpoints(tablet){
-                grid-template-columns: repeat(2,1fr);
-            }
-            @include breakpoints(largeMobile){
-                grid-template-columns: repeat(1,1fr);
-            }
-        }
+      @include breakpoints(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include breakpoints(largeMobile) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
+  }
 }

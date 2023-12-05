@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/containers/AuthPage/googleloginform.scss";
 import { GoAlert } from "react-icons/go";
-import PhoneInput from "react-phone-number-input";
-import { isValidPhoneNumber } from "react-phone-number-input";
 import en from "react-phone-number-input/locale/en.json";
-import {
-  useGetValidateMobileQuery,
-  useAddGoogleLoginMutation,
-  useAddOtpMutation,
-  useAddUserMutation,
-  useGetValidateSponsorIdQuery,
-  useCheckUserEmailMutation,
-  useCheckUserEmailQuery,
-  useCheckUserOTPQuery,
-  useAddLoginMutation,
-} from "../../Services/userApi";
+import { useAddOtpMutation, useAddLoginMutation } from "../../Services/userApi";
 import { Notification } from "../../components/ToastNotification";
 import { useNavigate } from "react-router-dom";
 import { FaCheckDouble } from "react-icons/fa";
@@ -33,11 +21,6 @@ const LoginModal = ({ handleEmailLogin }) => {
     email: "",
     password: "",
   });
-  const [hideEmail, setHideEmail] = useState(false);
-  const [hidePassword, setHidePassword] = useState(false);
-  const [hideSponsore, setHideSponsore] = useState(false);
-  const [alreadyLogin, setalreadyLogin] = useState(false);
-  const [OTPValid, setOTPValid] = useState(false);
   const [Error, setError] = useState("");
   const [btnDisable, setBtnDisable] = useState(false);
   const [showPasswordIcon, setShowPasswordIcon] = useState(false);
@@ -45,7 +28,6 @@ const LoginModal = ({ handleEmailLogin }) => {
 
   const navigate = useNavigate();
   const [addOtp, { error: otpError, data: otpData }] = useAddOtpMutation();
-  // const [addUser, { data, error, isLoading }] = useAddUserMutation();
   const [addLogin, { error, data, isLoading }] = useAddLoginMutation();
   useEffect(() => {
     if (data?.message) {
@@ -79,19 +61,6 @@ const LoginModal = ({ handleEmailLogin }) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
-  const handelEmail = () => {
-    setHideEmail(true);
-    setHidePassword(true);
-  };
-
-  // useEffect(() => {
-  //   if (data?.message) {
-  //     Notification(data?.message, "success");
-  //     navigate("/login");
-  //   } else {
-  //     Notification(error?.data?.message, "error");
-  //   }
-  // }, [error, data, navigate]);
 
   const handleEmailLogIn = async (e) => {
     e.preventDefault();
@@ -106,22 +75,7 @@ const LoginModal = ({ handleEmailLogin }) => {
       console.log(dataUser);
       await addLogin(dataUser);
     }
-    // if (Object.keys(errors).length > 0) {
-    //   Notification(errors?.userId || errors?.password, "error");
-    // } else {
-    //   savedLocalStorage("otp_timer", 5000);
-    //   if (captcha?.x + captcha?.y !== parseInt(value?.otpCode)) {
-    //     Notification("Wrong Answer", "error");
-    //     refresh();
-    //     setValue({ ...value, [value?.otpCode]: "" });
-    //   } else {
-    //     const logData = {
-    //       ...value,
-    //       userId: value.userId,
-    //     };
-    //     await addLogin(logData);
-    //   }
-    // }
+
     console.log({ formState });
   };
 
