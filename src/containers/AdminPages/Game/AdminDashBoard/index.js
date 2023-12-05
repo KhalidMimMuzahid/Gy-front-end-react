@@ -14,6 +14,8 @@ const AdminGameDashBoard = () => {
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
   // console.log(data);
+  const periodId = data?.data[0]?.period;
+  // console.log({ periodId });
 
   useEffect(() => {
     if (selectWindata?.message) {
@@ -28,10 +30,9 @@ const AdminGameDashBoard = () => {
       number: da?.number,
     };
     await selectWinner(obj);
-    setIsDisable(true)
+    setIsDisable(true);
     console.log("data may of ", da);
   };
-
 
   // for 3 minutes timer
   const initialTime = 180; // 3 minutes in seconds
@@ -67,7 +68,7 @@ const AdminGameDashBoard = () => {
         </div>
         <div className="game_dashboard_header_right">
           <h4>Active Period Id</h4>
-          <p>0000000000</p>
+          <p>{periodId}</p>
         </div>
       </div>
       <div className="game_dashboard_table">
