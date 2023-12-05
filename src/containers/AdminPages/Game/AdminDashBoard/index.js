@@ -14,6 +14,9 @@ const AdminGameDashBoard = () => {
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
   // console.log(data);
+  const periodId = data?.data[0]?.period;
+  // console.log({ periodId });
+
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
@@ -66,7 +69,7 @@ const AdminGameDashBoard = () => {
         </div>
         <div className='game_dashboard_header_right'>
           <h4>Active Period Id</h4>
-          <p>0000000000</p>
+          <p>{periodId}</p>
         </div>
       </div>
       <div className='game_dashboard_table'>
