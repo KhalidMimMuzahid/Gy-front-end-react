@@ -1,28 +1,36 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Checkbox from "@mui/material/Checkbox";
+
 import { useGetAllColorPrductionwHistoryQuery } from "../../../../Services/withdrawApi";
+import AllColorPredictionTable from "./table/AllColorPredictionTable";
+import { Notification } from "../../../../components/ToastNotification";
 
 const AdminGameDashBoard = () => {
   const { data } = useGetAllColorPrductionwHistoryQuery();
+  const [selectWinner, {data:selectWindata, error}]= useSelectWinnerMutation();
+  
   console.log(data);
-  // for table
+
+
+  useEffect(() => {
+    if (selectWindata?.message) {
+      Notification(selectWindata?.message, "success");
+    } else {
+      Notification(statusError?.data?.message, "error");
+    }
+  }, [error, selectWindata]);
+  const statusChange = async(da) => {
+    const obj={
+      color:da?.color,
+      number:da?.number
+    }
+    await selectWinner(obj)
+    console.log("data may of ", da);
+  };
   function createData(color, number, numberOfUser, amount) {
     return { color, number, numberOfUser, amount };
   }
 
-  const rows = [
-    data?.length > 0 &&
-      data?.map((d) =>
-        createData(d?.color, d?.number, d?.numberOfUser, d?.amount)
-      ),
-  ];
+ 
   // for 3 minutes timer
   const initialTime = 180; // 3 minutes in seconds
   const [seconds, setSeconds] = React.useState(initialTime);
@@ -61,47 +69,11 @@ const AdminGameDashBoard = () => {
         </div>
       </div>
       <div className="game_dashboard_table">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  <p>Result</p>
-                </TableCell>
-                <TableCell align="right">
-                  <p>Numbers</p>
-                </TableCell>
-                <TableCell align="right">
-                  <p>No. of Users</p>
-                </TableCell>
-                <TableCell align="right">
-                  <p>Amount</p>
-                </TableCell>
-                <TableCell align="right">
-                  <p>Action</p>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.calories}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">
-                    <Checkbox color="primary" />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <AllColorPredictionTable
+          data={data?.data}
+          statusChange={statusChange}
+        />
+       
       </div>
     </div>
   );

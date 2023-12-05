@@ -51,6 +51,14 @@ export const withdrawApi = createApi({
       query: () => "/api/v1/private/get-all-color-priediction-history",
       providesTags: ["adminWithdraw"], // automatic-data fetching
     }),
+    selectWinner: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private//select-winner",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["autoTradeWithdraw"],
+    }),
   }),
 });
 
@@ -61,5 +69,6 @@ export const {
     useEditWithdrawStatusMutation,
     useAllAutoTradeWithdrawHistoryQuery,
     useEditAutoTradeWithdrawStatusMutation,
-    useGetAllColorPrductionwHistoryQuery
+    useGetAllColorPrductionwHistoryQuery,
+    useSelectWinnerMutation
 } = withdrawApi;
