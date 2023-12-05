@@ -19,7 +19,10 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
 import generateId from "../../../../utils/function/generatePeriodID";
+import { useGetperiodIDQuery } from "../../../../Services/userApi";
 const ColorGame = () => {
+  const { data: periodData } = useGetperiodIDQuery();
+  console.log("pd", periodData?.data[0]?.period);
   // for period id
   const [periodID, setperiodID] = React.useState("");
   // For Tabs
@@ -103,18 +106,10 @@ const ColorGame = () => {
   };
   //
   React.useEffect(() => {
-    if (seconds === 0 || seconds === initialTime) {
-      // Create an ID generator function
-      const getNextId = generateId();
-
-      // Get the next ID
-      const id = getNextId();
-
-      // Use the generated ID as needed
-      // console.log(id);
-      setperiodID(id);
+    if (periodData?.data[0]?.period) {
+      setperiodID(periodData?.data[0]?.period);
     }
-  }, [seconds,periodID,setperiodID]);
+  }, [periodData?.data[0]?.period, periodID, setperiodID]);
   return (
     <div className='color_games_container'>
       {/* For Tabs */}

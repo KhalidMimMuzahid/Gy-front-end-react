@@ -342,6 +342,10 @@ export const userApi = createApi({
       query: (otpCode) => `/api/v1/public/get_check_otp/${otpCode}`,
       providesTags: ["Validate"], // automatic-data fetching
     }),
+    getperiodID: builder.query({
+      query: () => "/api/v1/public//get_period_id",
+      providesTags: ["User"], // automatic-data fetching
+    }),
   }),
 });
 
@@ -401,4 +405,5 @@ export const {
   useCheckLoginMutation,
   useCheckUserEmailQuery,
   useCheckUserOTPQuery,
+  useGetperiodIDQuery,
 } = userApi;
