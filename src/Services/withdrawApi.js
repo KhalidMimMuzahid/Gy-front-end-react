@@ -47,6 +47,10 @@ export const withdrawApi = createApi({
       query: () => "/api/v1/private/get_rejected_withdraw",
       providesTags: ["adminWithdraw"], // automatic-data fetching
     }),
+    getAllColorPrductionwHistory: builder.query({
+      query: () => "/api/v1/private/get-all-color-priediction-history",
+      providesTags: ["adminWithdraw"], // automatic-data fetching
+    }),
   }),
 });
 
@@ -57,4 +61,5 @@ export const {
     useEditWithdrawStatusMutation,
     useAllAutoTradeWithdrawHistoryQuery,
     useEditAutoTradeWithdrawStatusMutation,
+    useGetAllColorPrductionwHistoryQuery
 } = withdrawApi;
