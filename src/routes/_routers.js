@@ -45,6 +45,12 @@ const DepositHistory = React.lazy(() =>
 const FundReceivingHistory = React.lazy(() =>
   import("../containers/UserPages/Wallet/FundReceivingHistory")
 );
+
+//games section
+const ColorGame = React.lazy(() =>
+import("../containers/UserPages/Games/ColorGames/index")
+)
+
 // Team section
 const DirectTeam = React.lazy(() =>
   import("../containers/UserPages/MyTeamPage/Team.DirectTeamPage")
@@ -202,6 +208,11 @@ const AdminTicketData = React.lazy(() =>
   import("../containers/AdminPages/Admin.Support/Admin.TicketData")
 );
 
+//games dashboard for admin
+const AdminGameDashBoard = React.lazy(() =>
+import("../containers/AdminPages/Game/AdminDashBoard/index")
+)
+
 // settings section
 const AdminChangePassword = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.ChangePassword")
@@ -312,6 +323,15 @@ export const routers = [
     permission: ["user"],
     component: FundReceivingHistory,
   },
+
+  // games section
+  {
+    path: "/games/color-game",
+    name: "Color Game",
+    permission: ["user"],
+    component: ColorGame,
+  },
+
 
   // Team section
   {
@@ -622,6 +642,14 @@ export const routers = [
     name: "Ticket Data",
     permission: ["admin"],
     component: AdminTicketData,
+  },
+
+  // game dashboard section
+  {
+    path: "/color-games",
+    name: "Color Games",
+    permission: ["admin"],
+    component: AdminGameDashBoard,
   },
 
   // setting section
