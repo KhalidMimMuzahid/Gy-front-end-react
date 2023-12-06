@@ -18,11 +18,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import generateId from "../../../../utils/function/generatePeriodID";
-import { useGetperiodIDQuery } from "../../../../Services/userApi";
+import { useBettingDataMutation, useGetperiodIDQuery } from "../../../../Services/userApi";
+
 const ColorGame = () => {
   const { data: periodData } = useGetperiodIDQuery();
-  console.log("pd", periodData?.data[0]?.period);
+  const [createBetting, { data: bettingData, error: bettingError, isLoading: bettingLoading }] =
+    useBettingDataMutation();
+  console.log("Betting data", bettingData)
+  console.log("Betting loading", bettingLoading)
+  console.log("Betting err", bettingError);
   // for period id
   const [periodID, setperiodID] = React.useState("");
   // For Tabs
@@ -74,20 +78,21 @@ const ColorGame = () => {
   const [selectedColor, setSelectedColor] = useState("");
   // state for getting number user clicked
   const [userClicked, setUserClicked] = useState(null);
-  console.log("User clicked", userClicked);
+  // console.log("User clicked", userClicked);
   // function to handle opening modal
   const handleOpenModal = (color) => {
     // Check if the color contains a number in parentheses
     const numberRegex = /\((\d+)\)/;
     const match = color.match(numberRegex);
-
+    // Remove parentheses and their content from the color string
+    const cleanedColor = color.replace(/\(\d+\)/, "");
     if (match && match[1]) {
       const number = parseInt(match[1]);
       if (number >= 0 && number <= 10) {
-        setSelectedColor(color);
+        setSelectedColor(cleanedColor);
         setOpenModal(true);
         // Do something with the number if needed
-        console.log(`Button ${number} clicked`);
+        // console.log(`Button ${number} clicked`);
         setUserClicked(number);
       } else {
         console.log("Button out of range (0-10)");
@@ -110,6 +115,7 @@ const ColorGame = () => {
       setperiodID(periodData?.data[0]?.period);
     }
   }, [periodData?.data[0]?.period, periodID, setperiodID]);
+ 
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -169,71 +175,65 @@ const ColorGame = () => {
               <div className='color_button_container'>
                 <button
                   class='red-button button0'
-                  onClick={() => handleOpenModal("Red/Violate(0)")}
+                  onClick={() => handleOpenModal("red-violet(0)")}
                 >
                   <p>0</p>
                 </button>
                 <button
                   class='red-button'
-                  onClick={() => handleOpenModal("Red(1)")}
+                  onClick={() => handleOpenModal("green(1)")}
                 >
                   <p>1</p>
                 </button>
                 <button
                   class='green-button'
-                  onClick={() => handleOpenModal("Green(2)")}
+                  onClick={() => handleOpenModal("red(2)")}
                 >
                   <p>2</p>
                 </button>
                 <button
                   class='red-button'
-                  onClick={() => handleOpenModal("Red(3)")}
+                  onClick={() => handleOpenModal("green(3)")}
                 >
                   <p>3</p>
                 </button>
                 <button
                   class='green-button'
-                  onClick={() => handleOpenModal("Green(4)")}
+                  onClick={() => handleOpenModal("red(4)")}
                 >
                   <p>4</p>
                 </button>
                 <button
                   class='red-button'
-                  onClick={() => handleOpenModal("Red(5)")}
+                  onClick={() => handleOpenModal("green-violet(5)")}
                 >
                   <p>5</p>
                 </button>
 
                 <button
                   class='red-button button6'
-                  onClick={() => handleOpenModal("Violet/Green(6)")}
+                  onClick={() => handleOpenModal("red(6)")}
                 >
                   <p>6</p>
                 </button>
                 <button
                   class='green-button'
-                  onClick={() => handleOpenModal("Green(7)")}
+                  onClick={() => handleOpenModal("green(7)")}
                 >
                   <p>7</p>
                 </button>
                 <button
                   class='red-button'
-                  onClick={() => handleOpenModal("Red(8)")}
+                  onClick={() => handleOpenModal("red(8)")}
                 >
                   <p>8</p>
                 </button>
                 <button
                   class='green-button'
-                  onClick={() => handleOpenModal("Green(9)")}
+                  onClick={() => handleOpenModal("green(9)")}
                 >
                   <p>9</p>
                 </button>
-                {/* <button
-                  class='red-button'
-                  onClick={() => handleOpenModal("Red(10)")}
-                >
-                  <p>10</p>
-                </button> */}
               </div>
               <div className='color_button_container'></div>
             </div>
@@ -295,6 +295,10 @@ const ColorGame = () => {
         color={selectedColor}
         userClicked={userClicked}
         setUserClicked={setUserClicked}
+        periodID={periodID}
+        createBetting={createBetting}
+        bettingData={bettingData}
+        bettingError={bettingError}
       />
     </div>
   );

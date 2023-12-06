@@ -334,6 +334,14 @@ export const userApi = createApi({
         body: body,
       }),
     }),
+    bettingData: builder.mutation({
+      // for betting...
+      query: (body) => ({
+        url: "/api/v1/secure/create-predicted",
+        method: "POST",
+        body: body,
+      }),
+    }),
     checkUserEmail: builder.query({
       query: (userEmail) => `/api/v1/public/get_check_email/${userEmail}`,
       providesTags: ["Validate"], // automatic-data fetching
@@ -406,4 +414,5 @@ export const {
   useCheckUserEmailQuery,
   useCheckUserOTPQuery,
   useGetperiodIDQuery,
+  useBettingDataMutation,
 } = userApi;

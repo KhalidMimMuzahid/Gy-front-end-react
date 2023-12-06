@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const ButtonInputGroup = ({ selectedValue, setcurVal }) => {
-  const [selectedOption, setSelectedOption] = useState(10); // State to track the selected option
-  console.log(selectedOption);
+  const [selectedOption, setSelectedOption] = useState("10"); // State to track the selected option
+  // console.log(selectedOption);
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
     setcurVal(e.target.value);
