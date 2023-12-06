@@ -10,25 +10,17 @@ import { GiLaurelsTrophy } from "react-icons/gi";
 import { IoMdTrophy } from "react-icons/io";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import {
-  useBettingDataMutation,
-  useGetperiodIDQuery,
-} from "../../../../Services/userApi";
+import { useGetperiodIDQuery } from "../../../../Services/userApi";
 import { useEffect } from "react";
 import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
 const ColorGame = () => {
   const { data: periodData } = useGetperiodIDQuery();
-  const [
-    createBetting,
-    { data: bettingData, error: bettingError, isLoading: bettingLoading },
-  ] = useBettingDataMutation();
-  console.log("Betting data", bettingData);
-  console.log("Betting loading", bettingLoading);
-  console.log("Betting err", bettingError);
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
-  console.log({ periodRecord });
-  // console.log("pd", periodData?.data[0]?.period);
+  // console.log({ periodRecord });
+  // console.log("Current period", periodData?.data[0]?.period);
+  // detect if from non number box
+  const [isFromBox, setisFromBox] = useState(null);
   // for period id
   const [periodID, setperiodID] = React.useState("");
   // For Tabs
@@ -111,14 +103,18 @@ const ColorGame = () => {
   useEffect(() => {
     if (selectedColor === "green") {
       setNumber(1);
+      setisFromBox(null)
     }
     if (selectedColor === "red") {
       setNumber(2);
+      setisFromBox(null)
     }
     if (selectedColor === "violet") {
       setNumber(0);
+      setisFromBox(null)
     }
-  }, [number]);
+  }, [number, selectedColor]);
+
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -158,18 +154,21 @@ const ColorGame = () => {
               <div className='color-selectors'>
                 <button
                   className='green-button'
+                  id='oub-green'
                   onClick={() => handleOpenModal("green")}
                 >
                   <p>Join Green</p>
                 </button>
                 <button
                   className='violet-button'
+                  id='oub-violate'
                   onClick={() => handleOpenModal("violet")}
                 >
                   <p>Join Violet</p>
                 </button>
                 <button
                   className='red-button'
+                  id='oub-red'
                   onClick={() => handleOpenModal("red")}
                 >
                   <p>Join Red</p>
@@ -183,38 +182,40 @@ const ColorGame = () => {
                   <p>0</p>
                 </button>
                 <button
-                  class='red-button'
+                  class='green-button'
                   onClick={() => handleOpenModal("green(1)")}
                 >
                   <p>1</p>
                 </button>
                 <button
-                  class='green-button'
+                  class='red-button'
                   onClick={() => handleOpenModal("red(2)")}
                 >
                   <p>2</p>
                 </button>
                 <button
-                  class='red-button'
+                  class='green-button'
                   onClick={() => handleOpenModal("green(3)")}
                 >
                   <p>3</p>
                 </button>
                 <button
-                  class='green-button'
+                  class='red-button'
                   onClick={() => handleOpenModal("red(4)")}
                 >
                   <p>4</p>
                 </button>
+              </div>
+              <div className='color_button_container'>
                 <button
-                  class='red-button'
+                  class='red-button button6'
                   onClick={() => handleOpenModal("green-violet(5)")}
                 >
                   <p>5</p>
                 </button>
 
                 <button
-                  class='red-button button6'
+                  class='red-button'
                   onClick={() => handleOpenModal("red(6)")}
                 >
                   <p>6</p>
@@ -238,7 +239,6 @@ const ColorGame = () => {
                   <p>9</p>
                 </button>
               </div>
-              <div className='color_button_container'></div>
             </div>
             <div className='records_table'>
               <div className='table_header'>
@@ -258,13 +258,10 @@ const ColorGame = () => {
       <ColorModal
         open={openModal}
         handleClose={handleCloseModal}
-        color={selectedColor}
-        userClicked={userClicked}
-        setUserClicked={setUserClicked}
-        periodID={periodID}
-        createBetting={createBetting}
-        bettingData={bettingData}
-        bettingError={bettingError}
+        currentPeriod={periodData?.data[0]?.period}
+        selectedColor={selectedColor}
+        userClickedNumber={userClicked}
+        isFromBox={isFromBox}
         number={number}
       />
     </div>
