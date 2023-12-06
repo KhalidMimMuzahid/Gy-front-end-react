@@ -18,14 +18,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import { useBettingDataMutation, useGetperiodIDQuery } from "../../../../Services/userApi";
+import {
+  useBettingDataMutation,
+  useGetperiodIDQuery,
+} from "../../../../Services/userApi";
+import { useEffect } from "react";
 
 const ColorGame = () => {
   const { data: periodData } = useGetperiodIDQuery();
-  const [createBetting, { data: bettingData, error: bettingError, isLoading: bettingLoading }] =
-    useBettingDataMutation();
-  console.log("Betting data", bettingData)
-  console.log("Betting loading", bettingLoading)
+  const [
+    createBetting,
+    { data: bettingData, error: bettingError, isLoading: bettingLoading },
+  ] = useBettingDataMutation();
+  console.log("Betting data", bettingData);
+  console.log("Betting loading", bettingLoading);
   console.log("Betting err", bettingError);
   // for period id
   const [periodID, setperiodID] = React.useState("");
@@ -76,6 +82,7 @@ const ColorGame = () => {
   // state for managing modal
   const [openModal, setOpenModal] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
+  const [number, setNumber] = useState(0);
   // state for getting number user clicked
   const [userClicked, setUserClicked] = useState(null);
   // console.log("User clicked", userClicked);
@@ -109,13 +116,24 @@ const ColorGame = () => {
     setOpenModal(false);
     setSelectedColor("");
   };
-  //
+  // for setting period
   React.useEffect(() => {
     if (periodData?.data[0]?.period) {
       setperiodID(periodData?.data[0]?.period);
     }
   }, [periodData?.data[0]?.period, periodID, setperiodID]);
- 
+  // for non-number color button
+  useEffect(() => {
+    if (selectedColor === "green") {
+      setNumber(1);
+    }
+    if (selectedColor === "red") {
+      setNumber(2);
+    }
+    if (selectedColor === "violet") {
+      setNumber(0);
+    }
+  }, [number]);
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -155,19 +173,19 @@ const ColorGame = () => {
               <div className='color-selectors'>
                 <button
                   className='green-button'
-                  onClick={() => handleOpenModal("Green")}
+                  onClick={() => handleOpenModal("green")}
                 >
                   <p>Join Green</p>
                 </button>
                 <button
                   className='violet-button'
-                  onClick={() => handleOpenModal("Violet")}
+                  onClick={() => handleOpenModal("violet")}
                 >
                   <p>Join Violet</p>
                 </button>
                 <button
                   className='red-button'
-                  onClick={() => handleOpenModal("Red")}
+                  onClick={() => handleOpenModal("red")}
                 >
                   <p>Join Red</p>
                 </button>
@@ -299,6 +317,7 @@ const ColorGame = () => {
         createBetting={createBetting}
         bettingData={bettingData}
         bettingError={bettingError}
+        number={number}
       />
     </div>
   );

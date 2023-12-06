@@ -12,6 +12,7 @@ const ColorModal = ({
   open,
   handleClose,
   color,
+  number,
   userClicked,
   setUserClicked,
   periodID,
@@ -20,24 +21,25 @@ const ColorModal = ({
   createBetting,
   bettingData,
 }) => {
-  console.log("bdata", bettingData)
+  console.log("bdata", bettingData);
   const [selectedValue, setSelectedValue] = useState([10, 100, 1000, 10000]);
   // for getting current value of button group
   const [currVal, setcurVal] = useState(10);
   // console.log("button group currval :", currVal);
   //for counter
   const [count, setCount] = useState(1);
-// for create betting
+  // for create betting
   const handleConfirm = () => {
     const submitedData = {
       color: color,
       period: periodID,
       box: userClicked,
+      number: number || userClicked,
       contractCount: count,
       totalContractMoney: totalContractMony,
     };
     console.log("your Submission data: ", submitedData);
-  
+
     // for betting
     if (bettingError?.data?.message) {
       return Notification(bettingError?.data?.message, "error");
@@ -48,15 +50,13 @@ const ColorModal = ({
     if (bettingData?.message) {
       createBetting(submitedData);
       return Notification(bettingData?.message, "success");
-    }
-    else {
-      console.log(bettingError?.data?.message)
+    } else {
+      console.log(bettingError?.data?.message);
       Notification("Something Went Wrong", "error");
       setUserClicked(null);
       handleClose();
     }
   };
-  
 
   const modalStyle = {
     position: "fixed",
