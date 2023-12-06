@@ -343,7 +343,11 @@ export const userApi = createApi({
       providesTags: ["Validate"], // automatic-data fetching
     }),
     getperiodID: builder.query({
-      query: () => "/api/v1/public//get_period_id",
+      query: () => "/api/v1/public/get_period_id",
+      providesTags: ["User"], // automatic-data fetching
+    }),
+    getAllPeriodRecord: builder.query({
+      query: () => "/api/v1/public/get_all_period_record",
       providesTags: ["User"], // automatic-data fetching
     }),
   }),
@@ -406,4 +410,5 @@ export const {
   useCheckUserEmailQuery,
   useCheckUserOTPQuery,
   useGetperiodIDQuery,
+  useGetAllPeriodRecordQuery,
 } = userApi;
