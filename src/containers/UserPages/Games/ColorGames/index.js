@@ -59,7 +59,7 @@ const ColorGame = () => {
 
   useEffect(() => {
     const remainingTime = 180 - seconds;
-    if (remainingTime <= 30) {
+    if (remainingTime <= 150) {
       setisButtonDisabled(false);
     } else {
       setisButtonDisabled(true);
