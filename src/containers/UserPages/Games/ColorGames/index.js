@@ -17,7 +17,7 @@ import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
 import { Notification } from "../../../../components/ToastNotification";
 const ColorGame = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
-  // console.log("p data", periodData);
+  console.log("p data", periodData);
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
   // console.log({ periodRecord });
   // console.log("Current period", periodData?.data[0]?.period);
@@ -40,24 +40,24 @@ const ColorGame = () => {
   // for 3 minutes timer
   const initialTime = 180; // 3 minutes in seconds
   //fetching time
-  useEffect(() => {
-    const createdDate = new Date(periodData?.data[0]?.createdAt);
+//   useEffect(() => {
+//     const createdDate = new Date(periodData?.data[0]?.updatedAt);
+// console.log(createdDate)
+//     // Get current system time
+//     const currentSystemTime = new Date();
+// console.log(currentSystemTime)
+//     // Calculate the time difference in milliseconds
+//     const timeDifference = currentSystemTime - createdDate;
+//     // console.log(timeDifference)
+//     // Convert the time difference to seconds
+//     const secondsDiff = Math.floor(timeDifference / 1000);
 
-    // Get current system time
-    const currentSystemTime = new Date();
-
-    // Calculate the time difference in milliseconds
-    const timeDifference = currentSystemTime - createdDate;
-
-    // Convert the time difference to seconds
-    const secondsDiff = Math.floor(timeDifference / 1000);
-
-    // Display the result
+//     // Display the result
     
-    const remainingsecondsofPeroid = secondsDiff - initialTime
-    setSeconds(remainingsecondsofPeroid)
-    console.log("Period remaining second:", remainingsecondsofPeroid, "seconds");
-  }, [periodData?.data[0]?.createdAt]);
+//     const remainingsecondsofPeroid = secondsDiff - initialTime
+//     setSeconds(remainingsecondsofPeroid)
+//     console.log("Period remaining second:", remainingsecondsofPeroid, "seconds");
+//   }, [periodData?.data[0]?.updatedAt]);
 
   
   const [seconds, setSeconds] = React.useState(initialTime);

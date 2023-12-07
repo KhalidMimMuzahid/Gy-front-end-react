@@ -13,10 +13,11 @@ const columns = [
 
 const AllPeriodRecordTable = ({ data }) => {
   console.log(data);
+
   function getBackgroundColor(index) {
     switch (index % 10) {
       case 0:
-        return "linear-gradient(to bottom left, #ff1100 50%, #9C28B1 0) !important";
+        return "linear-gradient(to bottom left, #ff1100 50%, #9C28B1 0)";
       case 1:
         return "green";
       case 2:
@@ -26,7 +27,7 @@ const AllPeriodRecordTable = ({ data }) => {
       case 4:
         return "red";
       case 5:
-        return "linear-gradient(to bottom left, #0c910c 50%, #9C28B1 0) !important";
+        return "linear-gradient(to bottom left, #0c910c 50%, #9C28B1 0)";
       case 6:
         return "red";
       case 7:
@@ -41,6 +42,7 @@ const AllPeriodRecordTable = ({ data }) => {
   }
 
   function createData(periodId, price, number) {
+    console.log("number :", number);
     return {
       periodId,
       price,
