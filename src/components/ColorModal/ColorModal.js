@@ -25,9 +25,9 @@ const ColorModal = ({
     createBetting,
     { data: bettingData, error: bettingError, isLoading: bettingLoading },
   ] = useBettingDataMutation();
-  console.log("Betting data:", bettingData);
-  console.log("Betting loading:", bettingLoading);
-  console.log("Betting err:", bettingError);
+  // console.log("Betting data:", bettingData);
+  // console.log("Betting loading:", bettingLoading);
+  // console.log("Betting err:", bettingError);
   const [selectedValue, setSelectedValue] = useState([10, 100, 1000, 10000]);
   // for getting current value of button group
   const [currVal, setcurVal] = useState(10);
