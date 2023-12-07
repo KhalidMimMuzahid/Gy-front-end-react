@@ -35,7 +35,7 @@ const ColorGame = () => {
   // for 3 minutes timer
   const initialTime = 180; // 3 minutes in seconds
   const [seconds, setSeconds] = React.useState(initialTime);
-
+  const [notificationShown, setNotificationShown] = useState(false);
   React.useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
@@ -64,9 +64,13 @@ const ColorGame = () => {
       setisButtonDisabled(false);
     } else {
       setisButtonDisabled(true);
-      Notification("Times up!", "error");
+      if (!notificationShown) {
+        Notification("Times up!", "error");
+        // Set the state to indicate that the notification has been shown
+        setNotificationShown(true);
+      }
     }
-  }, [seconds, isButtonDisabled]);
+  }, [seconds, isButtonDisabled, notificationShown]);
   // state for managing modal
   const [openModal, setOpenModal] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
@@ -127,107 +131,107 @@ const ColorGame = () => {
   }, [number, selectedColor]);
 
   return (
-    <div className='color_games_container'>
+    <div className="color_games_container">
       {/* For Tabs */}
       <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList
               onChange={handleChange}
-              aria-label='lab API tabs example'
+              aria-label="lab API tabs example"
               centered
             >
-              <Tab label='Parity' value='1' />
+              <Tab label="Parity" value="1" />
               {/* <Tab label='Item Two' value='2' />
               <Tab label='Item Three' value='3' /> */}
               {/* More can be addded here */}
             </TabList>
           </Box>
-          <TabPanel value='1'>
-            <div className='top_content'>
-              <div className='top_content_left'>
-                <div className='title_with_icon'>
+          <TabPanel value="1">
+            <div className="top_content">
+              <div className="top_content_left">
+                <div className="title_with_icon">
                   <GiLaurelsTrophy size={30} />
                   <p>Period</p>
                 </div>
-                <div className='amount'>
+                <div className="amount">
                   <h3>{periodID}</h3>
                 </div>
               </div>
-              <div className='top_content_right'>
-                <div className='count-dwon-container'>
+              <div className="top_content_right">
+                <div className="count-dwon-container">
                   <p>Count Dwon</p>
                   <h3 style={{ color: textColor }}>{formatTime(seconds)}</h3>
                 </div>
               </div>
             </div>
-            <div className='game_body'>
-              <div className='color-selectors'>
+            <div className="game_body">
+              <div className="color-selectors">
                 <button
-                  className='green-button'
-                  id='oub-green'
+                  className="green-button"
+                  id="oub-green"
                   onClick={() => handleOpenModal("green")}
                   disabled={isButtonDisabled}
                 >
                   <p>Join Green</p>
                 </button>
                 <button
-                  className='violet-button'
-                  id='oub-violate'
+                  className="violet-button"
+                  id="oub-violate"
                   onClick={() => handleOpenModal("violet")}
                   disabled={isButtonDisabled}
                 >
                   <p>Join Violet</p>
                 </button>
                 <button
-                  className='red-button'
-                  id='oub-red'
+                  className="red-button"
+                  id="oub-red"
                   onClick={() => handleOpenModal("red")}
                   disabled={isButtonDisabled}
                 >
                   <p>Join Red</p>
                 </button>
               </div>
-              <div className='color_button_container'>
+              <div className="color_button_container">
                 <button
-                  class='red-button button0'
+                  class="red-button button0"
                   onClick={() => handleOpenModal("red-violet(0)")}
                   disabled={isButtonDisabled}
                 >
                   <p>0</p>
                 </button>
                 <button
-                  class='green-button'
+                  class="green-button"
                   onClick={() => handleOpenModal("green(1)")}
                   disabled={isButtonDisabled}
                 >
                   <p>1</p>
                 </button>
                 <button
-                  class='red-button'
+                  class="red-button"
                   onClick={() => handleOpenModal("red(2)")}
                   disabled={isButtonDisabled}
                 >
                   <p>2</p>
                 </button>
                 <button
-                  class='green-button'
+                  class="green-button"
                   onClick={() => handleOpenModal("green(3)")}
                   disabled={isButtonDisabled}
                 >
                   <p>3</p>
                 </button>
                 <button
-                  class='red-button'
+                  class="red-button"
                   onClick={() => handleOpenModal("red(4)")}
                   disabled={isButtonDisabled}
                 >
                   <p>4</p>
                 </button>
               </div>
-              <div className='color_button_container'>
+              <div className="color_button_container">
                 <button
-                  class='red-button button6'
+                  class="red-button button6"
                   onClick={() => handleOpenModal("green-violet(5)")}
                   disabled={isButtonDisabled}
                 >
@@ -235,28 +239,28 @@ const ColorGame = () => {
                 </button>
 
                 <button
-                  class='red-button'
+                  class="red-button"
                   onClick={() => handleOpenModal("red(6)")}
                   disabled={isButtonDisabled}
                 >
                   <p>6</p>
                 </button>
                 <button
-                  class='green-button'
+                  class="green-button"
                   onClick={() => handleOpenModal("green(7)")}
                   disabled={isButtonDisabled}
                 >
                   <p>7</p>
                 </button>
                 <button
-                  class='red-button'
+                  class="red-button"
                   onClick={() => handleOpenModal("red(8)")}
                   disabled={isButtonDisabled}
                 >
                   <p>8</p>
                 </button>
                 <button
-                  class='green-button'
+                  class="green-button"
                   onClick={() => handleOpenModal("green(9)")}
                   disabled={isButtonDisabled}
                 >
@@ -264,12 +268,12 @@ const ColorGame = () => {
                 </button>
               </div>
             </div>
-            <div className='records_table'>
-              <div className='table_header'>
+            <div className="records_table">
+              <div className="table_header">
                 <IoMdTrophy size={50} />
                 <p>Parity Record</p>
               </div>
-              <div className='table-content'>
+              <div className="table-content">
                 <AllPeriodRecordTable data={periodRecord?.data} />
               </div>
             </div>
