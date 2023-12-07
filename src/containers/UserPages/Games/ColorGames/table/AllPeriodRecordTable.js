@@ -41,7 +41,7 @@ const AllPeriodRecordTable = ({ data }) => {
             marginLeft: "60px",
           }}
         >
-          <p>{` `}</p>
+          <p>'</p>
         </div>
       ) : d?.color === "red" ? (
         <div
@@ -63,7 +63,7 @@ const AllPeriodRecordTable = ({ data }) => {
             marginLeft: "60px",
           }}
         >
-          <p>{` `}</p>
+          <p>'</p>
         </div>
       ) : d?.color === "red-violet" ? (
         <div
@@ -83,7 +83,7 @@ const AllPeriodRecordTable = ({ data }) => {
               marginLeft: "60px",
             }}
           >
-            <p>{` `}</p>
+            <p>'</p>
           </div>{" "}
           <div></div>{" "}
           <div
@@ -93,7 +93,7 @@ const AllPeriodRecordTable = ({ data }) => {
               borderRadius: "50%",
             }}
           >
-            <p>{` `}</p>
+            <p>'</p>
           </div>
         </div>
       ) : d?.color === "green-violet" ? (
@@ -107,7 +107,7 @@ const AllPeriodRecordTable = ({ data }) => {
               marginLeft: "60px",
             }}
           >
-            <p>{` `}</p>
+            <p>'</p>
           </div>{" "}
           <div></div>{" "}
           <div
@@ -117,7 +117,7 @@ const AllPeriodRecordTable = ({ data }) => {
               borderRadius: "50%",
             }}
           >
-            <p>{` `}</p>
+            <p>'</p>
           </div>
         </div>
       ) : (
