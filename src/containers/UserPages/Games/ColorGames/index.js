@@ -14,6 +14,7 @@ import { useGetperiodIDQuery } from "../../../../Services/userApi";
 import { useEffect } from "react";
 import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
+import { Notification } from "../../../../components/ToastNotification";
 const ColorGame = () => {
   const { data: periodData } = useGetperiodIDQuery();
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
@@ -63,6 +64,7 @@ const ColorGame = () => {
       setisButtonDisabled(false);
     } else {
       setisButtonDisabled(true);
+      Notification("Times up!", "error");
     }
   }, [seconds, isButtonDisabled]);
   // state for managing modal
