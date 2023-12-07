@@ -21,6 +21,7 @@ const ColorGame = () => {
   // console.log("Current period", periodData?.data[0]?.period);
   // detect if from non number box
   const [isFromBox, setisFromBox] = useState(null);
+  const [isButtonDisabled, setisButtonDisabled] = useState(false);
   // for period id
   const [periodID, setperiodID] = React.useState("");
   // For Tabs
@@ -56,6 +57,14 @@ const ColorGame = () => {
   };
   const textColor = seconds <= 30 ? "red" : "";
 
+  useEffect(() => {
+    const remainingTime = 180 - seconds;
+    if (remainingTime <= 30) {
+      setisButtonDisabled(false);
+    } else {
+      setisButtonDisabled(true);
+    }
+  }, [seconds, isButtonDisabled]);
   // state for managing modal
   const [openModal, setOpenModal] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
@@ -103,15 +112,15 @@ const ColorGame = () => {
   useEffect(() => {
     if (selectedColor === "green") {
       setNumber(1);
-      setisFromBox(null)
+      setisFromBox(null);
     }
     if (selectedColor === "red") {
       setNumber(2);
-      setisFromBox(null)
+      setisFromBox(null);
     }
     if (selectedColor === "violet") {
       setNumber(0);
-      setisFromBox(null)
+      setisFromBox(null);
     }
   }, [number, selectedColor]);
 
@@ -156,6 +165,7 @@ const ColorGame = () => {
                   className='green-button'
                   id='oub-green'
                   onClick={() => handleOpenModal("green")}
+                  disabled={isButtonDisabled}
                 >
                   <p>Join Green</p>
                 </button>
@@ -163,6 +173,7 @@ const ColorGame = () => {
                   className='violet-button'
                   id='oub-violate'
                   onClick={() => handleOpenModal("violet")}
+                  disabled={isButtonDisabled}
                 >
                   <p>Join Violet</p>
                 </button>
@@ -170,6 +181,7 @@ const ColorGame = () => {
                   className='red-button'
                   id='oub-red'
                   onClick={() => handleOpenModal("red")}
+                  disabled={isButtonDisabled}
                 >
                   <p>Join Red</p>
                 </button>
@@ -178,30 +190,35 @@ const ColorGame = () => {
                 <button
                   class='red-button button0'
                   onClick={() => handleOpenModal("red-violet(0)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>0</p>
                 </button>
                 <button
                   class='green-button'
                   onClick={() => handleOpenModal("green(1)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>1</p>
                 </button>
                 <button
                   class='red-button'
                   onClick={() => handleOpenModal("red(2)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>2</p>
                 </button>
                 <button
                   class='green-button'
                   onClick={() => handleOpenModal("green(3)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>3</p>
                 </button>
                 <button
                   class='red-button'
                   onClick={() => handleOpenModal("red(4)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>4</p>
                 </button>
@@ -210,6 +227,7 @@ const ColorGame = () => {
                 <button
                   class='red-button button6'
                   onClick={() => handleOpenModal("green-violet(5)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>5</p>
                 </button>
@@ -217,24 +235,28 @@ const ColorGame = () => {
                 <button
                   class='red-button'
                   onClick={() => handleOpenModal("red(6)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>6</p>
                 </button>
                 <button
                   class='green-button'
                   onClick={() => handleOpenModal("green(7)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>7</p>
                 </button>
                 <button
                   class='red-button'
                   onClick={() => handleOpenModal("red(8)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>8</p>
                 </button>
                 <button
                   class='green-button'
                   onClick={() => handleOpenModal("green(9)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>9</p>
                 </button>
@@ -258,6 +280,7 @@ const ColorGame = () => {
       <ColorModal
         open={openModal}
         handleClose={handleCloseModal}
+        isButtonDisabled={isButtonDisabled}
         currentPeriod={periodData?.data[0]?.period}
         selectedColor={selectedColor}
         userClickedNumber={userClicked}

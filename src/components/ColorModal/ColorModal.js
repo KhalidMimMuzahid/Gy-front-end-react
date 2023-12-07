@@ -14,6 +14,7 @@ import { Notification } from "../ToastNotification";
 const ColorModal = ({
   open,
   handleClose,
+  isButtonDisabled,
   currentPeriod,
   selectedColor,
   userClickedNumber,
@@ -151,7 +152,7 @@ const ColorModal = ({
             <button onClick={handleClose} className='cancel-button'>
               Cancel
             </button>
-            <button onClick={handleConfirm} className='confirm-button'>
+            <button onClick={handleConfirm} className='confirm-button' disabled={isButtonDisabled}>
               Confirm
             </button>
           </div>
