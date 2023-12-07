@@ -6,57 +6,77 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import ButtonInputGroup from "../ButtonInputGroup/ButtonInputGroup";
 import CustomLink from "../Link";
+import { useBettingDataMutation } from "../../Services/userApi";
 import { Notification } from "../ToastNotification";
+
+
 
 const ColorModal = ({
   open,
   handleClose,
-  color,
+  isButtonDisabled,
+  currentPeriod,
+  selectedColor,
+  userClickedNumber,
+  isFromBox,
   number,
-  userClicked,
-  setUserClicked,
-  periodID,
-  bettingError,
-  bettingLoading,
-  createBetting,
-  bettingData,
 }) => {
-  console.log("bdata", bettingData);
+  const [
+    createBetting,
+    { data: bettingData, error: bettingError, isLoading: bettingLoading },
+  ] = useBettingDataMutation();
+  console.log("Betting data:", bettingData);
+  console.log("Betting loading:", bettingLoading);
+  console.log("Betting err:", bettingError);
   const [selectedValue, setSelectedValue] = useState([10, 100, 1000, 10000]);
   // for getting current value of button group
   const [currVal, setcurVal] = useState(10);
-  // console.log("button group currval :", currVal);
   //for counter
   const [count, setCount] = useState(1);
-  // for create betting
-  const handleConfirm = () => {
-    const submitedData = {
-      color: color,
-      period: periodID,
-      box: userClicked,
-      number: number || userClicked,
-      contractCount: count,
-      totalContractMoney: totalContractMony,
-    };
-    console.log("your Submission data: ", submitedData);
 
-    // for betting
+  // For Toatal contract money
+  const totalContractMony = parseInt(currVal * count);
+
+  // console.log("Total Contract Money is:", totalContractMony);
+  // console.log("Contract Count:", count);
+  // console.log("Current Period:", currentPeriod);
+  // console.log("User Selected Color:", selectedColor);
+  // console.log("User clicked Number:", userClickedNumber);
+  // console.log("Contract Amount :", currVal);
+  // for create betting
+  const betCreator = {
+    color: selectedColor,
+    number: userClickedNumber || number,
+    period: currentPeriod,
+    box: isFromBox || userClickedNumber,
+    contractMoney: currVal,
+    contractCount: count,
+    totalContractMoney: totalContractMony,
+  };
+  
+  const handleConfirm = async () => {
     if (bettingError?.data?.message) {
       return Notification(bettingError?.data?.message, "error");
     }
+  
     if (bettingLoading) {
-      return <>Loading</>;
+      return <>Loading...</>; // It's not clear what you want to return here
     }
-    if (bettingData?.message) {
-      createBetting(submitedData);
-      return Notification(bettingData?.message, "success");
-    } else {
-      console.log(bettingError?.data?.message);
-      Notification("Something Went Wrong", "error");
-      setUserClicked(null);
-      handleClose();
+  
+    try {
+      const response = await createBetting(betCreator);
+      
+      if (response?.message) {
+        Notification(bettingData?.message, "success");
+      }
+    } catch (error) {
+      // Handle error in case of an issue with the API call
+      // console.error("Error creating betting:", error);
+      Notification("Something Went wrong!", "error");
     }
+    handleClose()
   };
+  
 
   const modalStyle = {
     position: "fixed",
@@ -80,8 +100,7 @@ const ColorModal = ({
       setCount(count - 1);
     }
   };
-  // For Toatal contract money
-  const totalContractMony = parseInt(currVal * count);
+
   return (
     <Modal
       open={open}
@@ -90,7 +109,7 @@ const ColorModal = ({
       aria-describedby='modal-modal-description'
     >
       <Box sx={modalStyle}>
-        <h2 id='modal-modal-title'>{`Join ${color}`}</h2>
+        <h2 id='modal-modal-title'>{`Join ${selectedColor}`}</h2>
         <div className='modal_body'>
           <p>Contract Money</p>
           <ButtonInputGroup
@@ -133,7 +152,7 @@ const ColorModal = ({
             <button onClick={handleClose} className='cancel-button'>
               Cancel
             </button>
-            <button onClick={handleConfirm} className='confirm-button'>
+            <button onClick={handleConfirm} className='confirm-button' disabled={isButtonDisabled}>
               Confirm
             </button>
           </div>

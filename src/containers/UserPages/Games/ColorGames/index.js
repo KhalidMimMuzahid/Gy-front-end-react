@@ -10,25 +10,19 @@ import { GiLaurelsTrophy } from "react-icons/gi";
 import { IoMdTrophy } from "react-icons/io";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import {
-  useBettingDataMutation,
-  useGetperiodIDQuery,
-} from "../../../../Services/userApi";
+import { useGetperiodIDQuery } from "../../../../Services/userApi";
 import { useEffect } from "react";
 import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
+import { Notification } from "../../../../components/ToastNotification";
 const ColorGame = () => {
   const { data: periodData } = useGetperiodIDQuery();
-  const [
-    createBetting,
-    { data: bettingData, error: bettingError, isLoading: bettingLoading },
-  ] = useBettingDataMutation();
-  console.log("Betting data", bettingData);
-  console.log("Betting loading", bettingLoading);
-  console.log("Betting err", bettingError);
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
-  console.log({ periodRecord });
-  // console.log("pd", periodData?.data[0]?.period);
+  // console.log({ periodRecord });
+  // console.log("Current period", periodData?.data[0]?.period);
+  // detect if from non number box
+  const [isFromBox, setisFromBox] = useState(null);
+  const [isButtonDisabled, setisButtonDisabled] = useState(false);
   // for period id
   const [periodID, setperiodID] = React.useState("");
   // For Tabs
@@ -64,6 +58,15 @@ const ColorGame = () => {
   };
   const textColor = seconds <= 30 ? "red" : "";
 
+  useEffect(() => {
+    const remainingTime = 180 - seconds;
+    if (remainingTime <= 150) {
+      setisButtonDisabled(false);
+    } else {
+      setisButtonDisabled(true);
+      Notification("Times up!", "error");
+    }
+  }, [seconds, isButtonDisabled]);
   // state for managing modal
   const [openModal, setOpenModal] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
@@ -111,14 +114,18 @@ const ColorGame = () => {
   useEffect(() => {
     if (selectedColor === "green") {
       setNumber(1);
+      setisFromBox(null);
     }
     if (selectedColor === "red") {
       setNumber(2);
+      setisFromBox(null);
     }
     if (selectedColor === "violet") {
       setNumber(0);
+      setisFromBox(null);
     }
-  }, [number]);
+  }, [number, selectedColor]);
+
   return (
     <div className='color_games_container'>
       {/* For Tabs */}
@@ -158,19 +165,25 @@ const ColorGame = () => {
               <div className='color-selectors'>
                 <button
                   className='green-button'
+                  id='oub-green'
                   onClick={() => handleOpenModal("green")}
+                  disabled={isButtonDisabled}
                 >
                   <p>Join Green</p>
                 </button>
                 <button
                   className='violet-button'
+                  id='oub-violate'
                   onClick={() => handleOpenModal("violet")}
+                  disabled={isButtonDisabled}
                 >
                   <p>Join Violet</p>
                 </button>
                 <button
                   className='red-button'
+                  id='oub-red'
                   onClick={() => handleOpenModal("red")}
+                  disabled={isButtonDisabled}
                 >
                   <p>Join Red</p>
                 </button>
@@ -179,66 +192,77 @@ const ColorGame = () => {
                 <button
                   class='red-button button0'
                   onClick={() => handleOpenModal("red-violet(0)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>0</p>
                 </button>
                 <button
-                  class='red-button'
+                  class='green-button'
                   onClick={() => handleOpenModal("green(1)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>1</p>
                 </button>
                 <button
-                  class='green-button'
+                  class='red-button'
                   onClick={() => handleOpenModal("red(2)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>2</p>
                 </button>
                 <button
-                  class='red-button'
+                  class='green-button'
                   onClick={() => handleOpenModal("green(3)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>3</p>
                 </button>
                 <button
-                  class='green-button'
+                  class='red-button'
                   onClick={() => handleOpenModal("red(4)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>4</p>
                 </button>
+              </div>
+              <div className='color_button_container'>
                 <button
-                  class='red-button'
+                  class='red-button button6'
                   onClick={() => handleOpenModal("green-violet(5)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>5</p>
                 </button>
 
                 <button
-                  class='red-button button6'
+                  class='red-button'
                   onClick={() => handleOpenModal("red(6)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>6</p>
                 </button>
                 <button
                   class='green-button'
                   onClick={() => handleOpenModal("green(7)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>7</p>
                 </button>
                 <button
                   class='red-button'
                   onClick={() => handleOpenModal("red(8)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>8</p>
                 </button>
                 <button
                   class='green-button'
                   onClick={() => handleOpenModal("green(9)")}
+                  disabled={isButtonDisabled}
                 >
                   <p>9</p>
                 </button>
               </div>
-              <div className='color_button_container'></div>
             </div>
             <div className='records_table'>
               <div className='table_header'>
@@ -258,13 +282,11 @@ const ColorGame = () => {
       <ColorModal
         open={openModal}
         handleClose={handleCloseModal}
-        color={selectedColor}
-        userClicked={userClicked}
-        setUserClicked={setUserClicked}
-        periodID={periodID}
-        createBetting={createBetting}
-        bettingData={bettingData}
-        bettingError={bettingError}
+        isButtonDisabled={isButtonDisabled}
+        currentPeriod={periodData?.data[0]?.period}
+        selectedColor={selectedColor}
+        userClickedNumber={userClicked}
+        isFromBox={isFromBox}
         number={number}
       />
     </div>

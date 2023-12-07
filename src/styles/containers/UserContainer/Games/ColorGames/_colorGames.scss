@@ -71,7 +71,7 @@ $border-radius: 5px;
 }
 
 .violet-button {
-  @include button-style(violet);
+  @include button-style(#9C28B1);
 }
 
 .red-button {
@@ -80,15 +80,15 @@ $border-radius: 5px;
 .button0 {
   background-image: linear-gradient(
     to bottom left,
-    #ff0000 50%,
-    #9300b8 0
+    #ff1100 50%,
+    #9C28B1 0
   ) !important;
 }
 .button6 {
   background-image: linear-gradient(
     to bottom left,
     #0c910c 50%,
-    #eb43dd 0
+    #9C28B1 0
   ) !important;
 }
 
