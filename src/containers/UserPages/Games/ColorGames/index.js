@@ -37,6 +37,7 @@ const ColorGame = () => {
   const [seconds, setSeconds] = React.useState(initialTime);
   const [notificationShown, setNotificationShown] = useState(false);
   React.useEffect(() => {
+    // const a = getCurrentPeriodFrom
     const interval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
@@ -116,7 +117,7 @@ const ColorGame = () => {
           if (seconds && periodData?.data[0]?.period) {
             setperiodID(periodData.data[0].period);
           } else if (seconds === 0) {
-            console.log("Fetching...")
+            console.log("Fetching...");
             await refetch();
           }
         } catch (error) {
