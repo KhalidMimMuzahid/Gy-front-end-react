@@ -16,7 +16,7 @@ import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
 import { Notification } from "../../../../components/ToastNotification";
 const ColorGame = () => {
-  const { data: periodData } = useGetperiodIDQuery();
+  const { data: periodData, refetch } = useGetperiodIDQuery();
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
   // console.log({ periodRecord });
   // console.log("Current period", periodData?.data[0]?.period);
@@ -106,10 +106,32 @@ const ColorGame = () => {
   };
   // for setting period
   React.useEffect(() => {
-    if (periodData?.data[0]?.period) {
-      setperiodID(periodData?.data[0]?.period);
-    }
-  }, [periodData?.data[0]?.period, periodID, setperiodID]);
+    const fetchData = async () => {
+      if (seconds && periodData?.data[0]?.period) {
+        try {
+          if (seconds && periodData?.data[0]?.period) {
+            setperiodID(periodData.data[0].period);
+          } else if (seconds === 0) {
+            console.log("Fetching...")
+            await refetch();
+          }
+        } catch (error) {
+          // Handle error if refetch fails
+          console.error("Error fetching data:", error);
+        }
+      } else {
+      }
+    };
+
+    fetchData();
+
+    // Add cleanup function if necessary
+    // For example, if refetch returns a cleanup function
+    // return () => {
+    //   // Perform cleanup here if needed
+    // };
+  }, [periodData?.data[0]?.period, periodID, setperiodID, refetch]);
+
   // for non-number color button
   useEffect(() => {
     if (selectedColor === "green") {
