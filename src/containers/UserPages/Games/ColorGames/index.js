@@ -63,6 +63,7 @@ const ColorGame = () => {
   const [seconds, setSeconds] = React.useState(initialTime);
   const [notificationShown, setNotificationShown] = useState(false);
   React.useEffect(() => {
+    // const a = getCurrentPeriodFrom
     const interval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);

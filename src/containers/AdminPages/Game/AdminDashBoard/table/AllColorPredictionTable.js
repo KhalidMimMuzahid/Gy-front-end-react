@@ -15,6 +15,11 @@ const columns = [
     label: "Amount",
     minWidth: 80,
   },
+  {
+    id: "priceCL",
+    label: "Price CL",
+    minWidth: 80,
+  },
 
   {
     id: "action",
@@ -24,21 +29,13 @@ const columns = [
 ];
 
 const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
-  function createData(
-    color,
-    number,
-    numberOfUser,
-    amount,
-
-    action
-  ) {
+  function createData(color, number, numberOfUser, amount, priceCL, action) {
     return {
       color,
       number,
       numberOfUser,
       amount,
-
-      // transaction_hash,
+      priceCL,
       action,
     };
   }
@@ -69,6 +66,7 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
       d?.number,
       d?.numberOfUser,
       d?.amount,
+      d?.priceCL,
       <span>
         <Checkbox
           color="primary"
