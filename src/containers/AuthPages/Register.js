@@ -66,27 +66,27 @@ const Register = () => {
   const [sponError, setSponError] = useState("");
   const [formErrors, setFormErrors] = useState({}); // form error
   //function for show/hide form
-  const handelEmailModal = () => {
-    setShowREGModel(!showREGModel);
-  };
+  // const handelEmailModal = () => {
+  //   setShowREGModel(!showREGModel);
+  // };
   console.log({ showREGModel });
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   // sponosr id validate
-  // const { data: sponsoridData, error: sponsoridError } =
-  //   useGetValidateSponsorIdQuery(
-  //     sponsorid?.toUpperCase() || user?.sponsorId?.toUpperCase()
-  //   );
-  // useEffect(() => {
-  //   if (sponsoridError?.data?.message) {
-  //     setSponsorName("");
-  //     setSponError(sponsoridError?.data?.message);
-  //   } else if (sponsoridData?.name) {
-  //     setSponError("");
-  //     setSponsorName(sponsoridData?.name);
-  //   }
-  // }, [sponsoridError?.data, sponsoridData?.name]);
+  const { data: sponsoridData, error: sponsoridError } =
+    useGetValidateSponsorIdQuery(
+      sponsorid?.toUpperCase() || user?.sponsorId?.toUpperCase()
+    );
+  useEffect(() => {
+    if (sponsoridError?.data?.message) {
+      setSponsorName("");
+      setSponError(sponsoridError?.data?.message);
+    } else if (sponsoridData?.name) {
+      setSponError("");
+      setSponsorName(sponsoridData?.name);
+    }
+  }, [sponsoridError?.data, sponsoridData?.name]);
   const [addUser, { data, error, isLoading }] = useAddUserMutation();
   useEffect(() => {
     if (data?.message) {
@@ -179,32 +179,30 @@ const Register = () => {
     <>
       {/* <SocialIconeforLogin /> */}
       <Header />
-      <div className="ss-trade_dashboard_register_page_wrapper">
+      <div className='ss-trade_dashboard_register_page_wrapper'>
         <AuthCardLayout
           style={{ backgroundColor: "rgb(0 0 0 / 17%)" }}
-          className="ss-trade_dashboard_register_card"
+          className='ss-trade_dashboard_register_card'
         >
-          <div className="bar">
+          <div className='bar'>
             <span></span>
           </div>
-          <div className="register-body">
-            <div className="half-width">
-              <div className="left-content">
-                {/* <h2>Welcome To Safe And Secure</h2>
-                <p>Please register in to get acces to your account</p>
-                 */}
+          <div className='register-body'>
+            <div className='half-width'>
+              <div className='left-content'>
                 <img src={register} />
               </div>
             </div>
-            <div className="half-width">
-              <div className="right-content">
-                <div className="ss-trade_section_title">
+            <div className='half-width'>
+              <div className='right-content'>
+                <div className='ss-trade_section_title'>
                   <h2>Register</h2>
                 </div>
-                <div className="hr_border"></div>
+                <div className='hr_border'></div>
                 {/* <SocialIconForCardHearder /> */}
-                <div className="ss-trade_dashboard_register_content">
-                  <div className="button_containe">
+                <div className='ss-trade_dashboard_register_content'>
+                  {/* Google sign in Stuff */}
+                  {/* <div className="button_containe">
                     <Button
                       type="submit"
                       className="submit_btn"
@@ -265,352 +263,330 @@ const Register = () => {
                         />
                       </div>
                     </Button>
-                  </div>
+                  </div> */}
                   {/* Render based on reg State True/False */}
-                  {showREGModel && (
-                    <EmailLoginModal
-                      handleGoogleLogin={handleGoogleLogin}
-                      handleOnChange={handleOnChange}
-                      openModal={openModal}
-                      handelEmailModal={handelEmailModal}
-                      value={value}
-                      setValue={setValue}
-                      isSponsorId={sponsorid}
-                      loading={loading}
-                      handel={handel}
-                      handelSponsore={sponsoreName}
-                    />
-                    //       <form onSubmit={handleSubmit}>
-                    //         <div className="form_group">
-                    //           <div>
-                    //             <Input
-                    //               label="Sponsor ID"
-                    //               type="text"
-                    //               name="sponsorId"
-                    //               placeholder="Enter your sponsor id"
-                    //               value={user.sponsorId || sponsorid}
-                    //               onChange={handleChange}
-                    //               className="input_field"
-                    //               inputGroupClass="left"
-                    //               disabled={parsed.sponsorid ? true : false}
-                    //               isRequired={true}
-                    //             />
-                    //             {!formErrors.sponsorId?.includes("required") && (
-                    //               <p
-                    //                 style={{
-                    //                   color: "red",
-                    //                   fontSize: "10px",
-                    //                 }}
-                    //               >
-                    //                 {formErrors.sponsorId}
-                    //               </p>
-                    //             )}
-                    //             {!formErrors.sponsorId &&
-                    //               !sponError.includes("Not Found") && (
-                    //                 <p
-                    //                   style={{
-                    //                     color: !sponError.includes("Invalid")
-                    //                       ? "green"
-                    //                       : "red",
-                    //                     fontSize: "13px",
-                    //                   }}
-                    //                 >
-                    //                   {sponError}
-                    //                 </p>
-                    //               )}
-                    //           </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className='form_group'>
+                      <div>
+                        <Input
+                          label='Sponsor ID'
+                          type='text'
+                          name='sponsorId'
+                          placeholder='Enter your sponsor id'
+                          value={user.sponsorId || sponsorid}
+                          onChange={handleChange}
+                          className='input_field'
+                          inputGroupClass='left'
+                          disabled={parsed.sponsorid ? true : false}
+                          isRequired={true}
+                        />
+                        {!formErrors.sponsorId?.includes("required") && (
+                          <p
+                            style={{
+                              color: "red",
+                              fontSize: "10px",
+                            }}
+                          >
+                            {formErrors.sponsorId}
+                          </p>
+                        )}
+                        {!formErrors.sponsorId &&
+                          !sponError.includes("Not Found") && (
+                            <p
+                              style={{
+                                color: !sponError.includes("Invalid")
+                                  ? "green"
+                                  : "red",
+                                fontSize: "13px",
+                              }}
+                            >
+                              {sponError}
+                            </p>
+                          )}
+                      </div>
 
-                    //           <div>
-                    //             <Input
-                    //               label="Full Name"
-                    //               type="text"
-                    //               name="fullName"
-                    //               placeholder="Enter your name"
-                    //               onChange={handleChange}
-                    //               className="name_input input_field"
-                    //               inputGroupClass="left"
-                    //               isRequired={true}
-                    //               error={formErrors.fullName}
-                    //             />
-                    //           </div>
+                      <div>
+                        <Input
+                          label='Full Name'
+                          type='text'
+                          name='fullName'
+                          placeholder='Enter your name'
+                          onChange={handleChange}
+                          className='name_input input_field'
+                          inputGroupClass='left'
+                          isRequired={true}
+                          error={formErrors.fullName}
+                        />
+                      </div>
+                    </div>
+                    <div className='form_group'>
+                      <div>
+                        <Input
+                          label='Email'
+                          type='email'
+                          name='email'
+                          placeholder='Enter your email'
+                          onChange={handleChange}
+                          className='email_input input_field'
+                          inputGroupClass='right'
+                          isRequired={true}
+                        />
+                        {!formErrors.email?.includes("required") && (
+                          <p
+                            style={{
+                              color: "red",
+                              fontSize: "13px",
+                            }}
+                          >
+                            {formErrors.email}
+                          </p>
+                        )}
+                        {!formErrors.email && !eerros.includes("Not Found") && (
+                          <p
+                            style={{
+                              color: eerros.includes("Available")
+                                ? "green"
+                                : "red",
+                              fontSize: "13px",
+                            }}
+                          >
+                            {eerros}
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <label htmlFor='phone-input'>
+                          Mobile <span style={{ color: "red" }}>*</span>
+                        </label>
+                        <PhoneInput
+                          international
+                          defaultCountry='IN'
+                          countryCallingCodeEditable={false}
+                          placeholder='Enter your phone number'
+                          value={mobile}
+                          onChange={setMobile}
+                          name='mobile'
+                          error={
+                            mobile
+                              ? isValidPhoneNumber(mobile)
+                                ? undefined
+                                : "Invalid phone number"
+                              : "Phone number required"
+                          }
+                          style={{
+                            border: "1px solid #b1b7c1",
+                            width: "100%",
+                            padding: "6px 0",
+                            borderRadius: "0 3px 3px 0",
+                          }}
+                        />
+                        <p style={{ fontSize: "13px", width: "100%" }}>
+                          {mobile ? (
+                            isValidPhoneNumber(mobile) ? undefined : (
+                              <span style={{ color: "red" }}>
+                                {(formErrors.mobile = "Invalid phone number")}
+                              </span>
+                            )
+                          ) : (
+                            <span style={{ color: "red" }}>
+                              {(formErrors.mobile = "Phone number is required")}
+                            </span>
+                          )}
+                        </p>
+                        {!formErrors.mobile && (
+                          <p
+                            style={{
+                              color: merror.includes("available")
+                                ? "green"
+                                : "red",
+                              fontSize: "13px",
+                              width: "100%",
+                            }}
+                          >
+                            {merror}
+                          </p>
+                        )}
+                      </div>
+                    </div>
 
-                    //         </div>
-                    //         <div className="form_group">
-                    //           <div>
-                    //             <Input
-                    //               label="Email"
-                    //               type="email"
-                    //               name="email"
-                    //               placeholder="Enter your email"
-                    //               onChange={handleChange}
-                    //               className="email_input input_field"
-                    //               inputGroupClass="right"
-                    //               isRequired={true}
-                    //             />
-                    //             {!formErrors.email?.includes("required") && (
-                    //               <p
-                    //                 style={{
-                    //                   color: "red",
-                    //                   fontSize: "13px",
-                    //                 }}
-                    //               >
-                    //                 {formErrors.email}
-                    //               </p>
-                    //             )}
-                    //             {!formErrors.email &&
-                    //               !eerros.includes("Not Found") && (
-                    //                 <p
-                    //                   style={{
-                    //                     color: eerros.includes("Available")
-                    //                       ? "green"
-                    //                       : "red",
-                    //                     fontSize: "13px",
-                    //                   }}
-                    //                 >
-                    //                   {eerros}
-                    //                 </p>
-                    //               )}
-                    //           </div>
-                    //           <div>
-                    //             <label htmlFor="phone-input">
-                    //               Mobile <span style={{ color: "red" }}>*</span>
-                    //             </label>
-                    //             <PhoneInput
-                    //               international
-                    //               defaultCountry="IN"
-                    //               countryCallingCodeEditable={false}
-                    //               placeholder="Enter your phone number"
-                    //               value={mobile}
-                    //               onChange={setMobile}
-                    //               name="mobile"
-                    //               error={
-                    //                 mobile
-                    //                   ? isValidPhoneNumber(mobile)
-                    //                     ? undefined
-                    //                     : "Invalid phone number"
-                    //                   : "Phone number required"
-                    //               }
-                    //               style={{
-                    //                 border: "1px solid #b1b7c1",
-                    //                 width: "100%",
-                    //                 padding: "6px 0",
-                    //                 borderRadius: "0 3px 3px 0",
-                    //               }}
-                    //             />
-                    //             <p style={{ fontSize: "13px", width: "100%" }}>
-                    //               {mobile ? (
-                    //                 isValidPhoneNumber(mobile) ? undefined : (
-                    //                   <span style={{ color: "red" }}>
-                    //                     {(formErrors.mobile = "Invalid phone number")}
-                    //                   </span>
-                    //                 )
-                    //               ) : (
-                    //                 <span style={{ color: "red" }}>
-                    //                   {
-                    //                     (formErrors.mobile =
-                    //                       "Phone number is required")
-                    //                   }
-                    //                 </span>
-                    //               )}
-                    //             </p>
-                    //             {!formErrors.mobile && (
-                    //               <p
-                    //                 style={{
-                    //                   color: merror.includes("available")
-                    //                     ? "green"
-                    //                     : "red",
-                    //                   fontSize: "13px",
-                    //                   width: "100%",
-                    //                 }}
-                    //               >
-                    //                 {merror}
-                    //               </p>
-                    //             )}
-                    //           </div>
-                    //         </div>
+                    {/* <div
+                      className="form_group"
+                      style={{ display: "flex", flexWrap: "wrap" }}
+                    >
+                      <label htmlFor="phone-input">
+                        Mobile <span style={{ color: "red" }}>*</span>
+                      </label>
+                      <PhoneInput
+                        international
+                        defaultCountry="IN"
+                        countryCallingCodeEditable={false}
+                        placeholder="Enter your phone number"
+                        value={mobile}
+                        onChange={setMobile}
+                        name="mobile"
+                        error={
+                          mobile
+                            ? isValidPhoneNumber(mobile)
+                              ? undefined
+                              : "Invalid phone number"
+                            : "Phone number required"
+                        }
+                        style={{
+                          border: "1px solid #b1b7c1",
+                          width: "100%",
+                          padding: "6px 0",
+                          borderRadius: "0 3px 3px 0",
+                        }}
+                      />
+                      <p style={{ fontSize: "13px", width: "100%" }}>
+                        {mobile ? (
+                          isValidPhoneNumber(mobile) ? undefined : (
+                            <span style={{ color: "red" }}>
+                              {(formErrors.mobile = "Invalid phone number")}
+                            </span>
+                          )
+                        ) : (
+                          <span style={{ color: "red" }}>
+                            {(formErrors.mobile = "Phone number is required")}
+                          </span>
+                        )}
+                      </p>
+                      {!formErrors.mobile && (
+                        <p
+                          style={{
+                            color: merror.includes("available") ? "green" : "red",
+                            fontSize: "13px",
+                            width: "100%",
+                          }}
+                        >
+                          {merror}
+                        </p>
+                      )}
+                    </div> */}
+                    <div className='form_group'>
+                      <div>
+                        <Input
+                          label='Password'
+                          type={`${showPassword ? "text" : "password"}`}
+                          name='password'
+                          placeholder='Enter your password'
+                          onChange={handleChange}
+                          className='input_field'
+                          inputGroupClass='left'
+                          isRequired={true}
+                          error={formErrors.password}
+                        />
+                      </div>
+                      <div>
+                        <Input
+                          label='Confirm Password'
+                          type={`${showPassword ? "text" : "password"}`}
+                          name='confirmPassword'
+                          placeholder='Enter your confirm password'
+                          onChange={handleChange}
+                          className='input_field'
+                          inputGroupClass='right'
+                          isRequired={true}
+                          error={formErrors.confirmPassword}
+                        />
+                      </div>
+                    </div>
+                    {OTPup && (
+                      <div className='form_group form_group_OTP'>
+                        <Input
+                          label='OTP'
+                          type='number'
+                          name='otpCode'
+                          placeholder='Enter OTP'
+                          onChange={handleChange}
+                          className='OTP_input_field input_field'
+                          inputGroupClass='left'
+                          isRequired={true}
+                        />
+                        <Button
+                          type='button'
+                          className='OTP_resend_btn'
+                          onClick={() => OTP_resend()}
+                        >
+                          Resend OTP
+                        </Button>
+                      </div>
+                    )}
+                    <div
+                      className='form-check form-check-label show_password form_group'
+                      style={{
+                        userSelect: "none",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Input
+                        type='checkbox'
+                        className='form-check-input form-check-label'
+                        value='showpassword'
+                        id='showpassword'
+                        onChange={() => setShowPassword(!showPassword)}
+                      />
+                      <label
+                        htmlFor='showpassword'
+                        className='form-check-label'
+                      >
+                        &nbsp;Show Password
+                      </label>
+                    </div>
+                    <div
+                      className='form-check form-check-label show_password form_group'
+                      style={{
+                        userSelect: "none",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Input
+                        type='checkbox'
+                        className='form-check-input form-check-label'
+                        value='termscondition'
+                        id='termscondition'
+                        defaultChecked={checked}
+                        onChange={() => {
+                          setChecked(!checked);
+                        }}
+                      />
+                      <label
+                        htmlFor='termscondition'
+                        className='form-check-label'
+                      >
+                        &nbsp;I agree to{" "}
+                        <CustomLink
+                          to='/termsconditions'
+                          style={{ color: "#4885ed" }}
+                        >
+                          Terms & Conditions
+                        </CustomLink>
+                      </label>
+                    </div>
 
-                    //         {/* <div
-                    //   className="form_group"
-                    //   style={{ display: "flex", flexWrap: "wrap" }}
-                    // >
-                    //   <label htmlFor="phone-input">
-                    //     Mobile <span style={{ color: "red" }}>*</span>
-                    //   </label>
-                    //   <PhoneInput
-                    //     international
-                    //     defaultCountry="IN"
-                    //     countryCallingCodeEditable={false}
-                    //     placeholder="Enter your phone number"
-                    //     value={mobile}
-                    //     onChange={setMobile}
-                    //     name="mobile"
-                    //     error={
-                    //       mobile
-                    //         ? isValidPhoneNumber(mobile)
-                    //           ? undefined
-                    //           : "Invalid phone number"
-                    //         : "Phone number required"
-                    //     }
-                    //     style={{
-                    //       border: "1px solid #b1b7c1",
-                    //       width: "100%",
-                    //       padding: "6px 0",
-                    //       borderRadius: "0 3px 3px 0",
-                    //     }}
-                    //   />
-                    //   <p style={{ fontSize: "13px", width: "100%" }}>
-                    //     {mobile ? (
-                    //       isValidPhoneNumber(mobile) ? undefined : (
-                    //         <span style={{ color: "red" }}>
-                    //           {(formErrors.mobile = "Invalid phone number")}
-                    //         </span>
-                    //       )
-                    //     ) : (
-                    //       <span style={{ color: "red" }}>
-                    //         {(formErrors.mobile = "Phone number is required")}
-                    //       </span>
-                    //     )}
-                    //   </p>
-                    //   {!formErrors.mobile && (
-                    //     <p
-                    //       style={{
-                    //         color: merror.includes("available") ? "green" : "red",
-                    //         fontSize: "13px",
-                    //         width: "100%",
-                    //       }}
-                    //     >
-                    //       {merror}
-                    //     </p>
-                    //   )}
-                    // </div> */}
-                    //         <div className="form_group">
-                    //           <div>
-                    //             <Input
-                    //               label="Password"
-                    //               type={`${showPassword ? "text" : "password"}`}
-                    //               name="password"
-                    //               placeholder="Enter your password"
-                    //               onChange={handleChange}
-                    //               className="input_field"
-                    //               inputGroupClass="left"
-                    //               isRequired={true}
-                    //               error={formErrors.password}
-                    //             />
-                    //           </div>
-                    //           <div>
-                    //             <Input
-                    //               label="Confirm Password"
-                    //               type={`${showPassword ? "text" : "password"}`}
-                    //               name="confirmPassword"
-                    //               placeholder="Enter your confirm password"
-                    //               onChange={handleChange}
-                    //               className="input_field"
-                    //               inputGroupClass="right"
-                    //               isRequired={true}
-                    //               error={formErrors.confirmPassword}
-                    //             />
-                    //           </div>
-                    //         </div>
-                    //         {OTPup && (
-                    //           <div className="form_group form_group_OTP">
-                    //             <Input
-                    //               label="OTP"
-                    //               type="number"
-                    //               name="otpCode"
-                    //               placeholder="Enter OTP"
-                    //               onChange={handleChange}
-                    //               className="OTP_input_field input_field"
-                    //               inputGroupClass="left"
-                    //               isRequired={true}
-                    //             />
-                    //             <Button
-                    //               type="button"
-                    //               className="OTP_resend_btn"
-                    //               onClick={() => OTP_resend()}
-                    //             >
-                    //               Resend OTP
-                    //             </Button>
-                    //           </div>
-                    //         )}
-                    //         <div
-                    //           className="form-check form-check-label show_password form_group"
-                    //           style={{
-                    //             userSelect: "none",
-                    //             display: "flex",
-                    //             alignItems: "center",
-                    //           }}
-                    //         >
-                    //           <Input
-                    //             type="checkbox"
-                    //             className="form-check-input form-check-label"
-                    //             value="showpassword"
-                    //             id="showpassword"
-                    //             onChange={() => setShowPassword(!showPassword)}
-                    //           />
-                    //           <label
-                    //             htmlFor="showpassword"
-                    //             className="form-check-label"
-                    //           >
-                    //             &nbsp;Show Password
-                    //           </label>
-                    //         </div>
-                    //         <div
-                    //           className="form-check form-check-label show_password form_group"
-                    //           style={{
-                    //             userSelect: "none",
-                    //             display: "flex",
-                    //             alignItems: "center",
-                    //           }}
-                    //         >
-                    //           <Input
-                    //             type="checkbox"
-                    //             className="form-check-input form-check-label"
-                    //             value="termscondition"
-                    //             id="termscondition"
-                    //             defaultChecked={checked}
-                    //             onChange={() => {
-                    //               setChecked(!checked);
-                    //             }}
-                    //           />
-                    //           <label
-                    //             htmlFor="termscondition"
-                    //             className="form-check-label"
-                    //           >
-                    //             &nbsp;I agree to{" "}
-                    //             <CustomLink
-                    //               to="/termsconditions"
-                    //               style={{ color: "#4885ed" }}
-                    //             >
-                    //               Terms & Conditions
-                    //             </CustomLink>
-                    //           </label>
-                    //         </div>
-
-                    //         <Button
-                    //           type="submit"
-                    //           className="submit_btn"
-                    //           disabled={isLoading}
-                    //         >
-                    //           {isLoading ? "Loading..." : "Register"}
-                    //         </Button>
-                    //         <div className="go_to_login">
-                    //           <p>
-                    //             <CustomLink href="/" className="log_page_nav_link">
-                    //               Home
-                    //             </CustomLink>{" "}
-                    //           </p>
-                    //           <p className="login_nav_break_point"> | </p>
-                    //           <p>
-                    //             <CustomLink
-                    //               href="/login"
-                    //               className="log_page_nav_link"
-                    //             >
-                    //               Login
-                    //             </CustomLink>{" "}
-                    //           </p>
-                    //         </div>
-                    //       </form>
-                  )}
+                    <Button
+                      type='submit'
+                      className='submit_btn'
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "Loading..." : "Register"}
+                    </Button>
+                    <div className='go_to_login'>
+                      <p>
+                        <CustomLink href='/' className='log_page_nav_link'>
+                          Home
+                        </CustomLink>{" "}
+                      </p>
+                      <p className='login_nav_break_point'> | </p>
+                      <p>
+                        <CustomLink href='/login' className='log_page_nav_link'>
+                          Login
+                        </CustomLink>{" "}
+                      </p>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
