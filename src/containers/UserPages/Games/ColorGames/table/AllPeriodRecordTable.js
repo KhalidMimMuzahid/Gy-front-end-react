@@ -12,7 +12,6 @@ const columns = [
 ];
 
 const AllPeriodRecordTable = ({ data }) => {
-  console.log(data);
 
   function getBackgroundColor(index) {
     switch (index % 10) {
@@ -42,7 +41,6 @@ const AllPeriodRecordTable = ({ data }) => {
   }
 
   function createData(periodId, price, number) {
-    console.log("number :", number);
     return {
       periodId,
       price,
@@ -53,7 +51,7 @@ const AllPeriodRecordTable = ({ data }) => {
             <div
               key={i}
               style={{
-                background: getBackgroundColor(i),
+                background: number === i ? getBackgroundColor(i) : "#ccc",
                 width: "20px",
                 borderRadius: "50%",
                 display: "flex",

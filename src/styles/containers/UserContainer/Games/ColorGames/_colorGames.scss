@@ -68,40 +68,43 @@ $border-radius: 5px;
 
 .green-button {
   @include button-style(green);
+  flex: 1;
 }
 
 .violet-button {
-  @include button-style(#9C28B1);
+  @include button-style(#9c28b1);
+  flex: 1;
 }
 
 .red-button {
   @include button-style(red);
+  flex: 1;
 }
 .button0 {
   background-image: linear-gradient(
     to bottom left,
     #ff1100 50%,
-    #9C28B1 0
+    #9c28b1 0
   ) !important;
 }
 .button6 {
   background-image: linear-gradient(
     to bottom left,
     #0c910c 50%,
-    #9C28B1 0
+    #9c28b1 0
   ) !important;
 }
 
-.color_button_container{
-    padding: .8rem 0rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content:center;
-    gap: 0.5rem;
+.color_button_container {
+  padding: 0.8rem 0rem 0rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.5rem;
 }
-.records_table{
-  .table_header{
+.records_table {
+  .table_header {
     width: 100%;
     display: flex;
     flex-direction: column;
