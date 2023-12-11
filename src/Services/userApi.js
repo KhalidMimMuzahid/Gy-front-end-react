@@ -358,6 +358,10 @@ export const userApi = createApi({
       query: () => "/api/v1/public/get_all_period_record",
       providesTags: ["User"], // automatic-data fetching
     }),
+    getPredicted: builder.query({
+      query: () => "/api/v1/secure/get-predicted",
+      providesTags: ["User"], // automatic-data fetching
+    }),
   }),
 });
 
@@ -420,4 +424,5 @@ export const {
   useGetperiodIDQuery,
   useBettingDataMutation,
   useGetAllPeriodRecordQuery,
+  useGetPredictedQuery,
 } = userApi;
