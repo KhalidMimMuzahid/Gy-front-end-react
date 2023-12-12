@@ -49,13 +49,25 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
       ) : d?.color === "violet" ? (
         <span style={{ color: "violet" }}>{d?.color}</span>
       ) : d?.color === "red-violet" ? (
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
           {" "}
           <span style={{ color: "red" }}>red</span> <span>+</span>{" "}
           <span style={{ color: "violet" }}>violet</span>
         </div>
       ) : d?.color === "green-violet" ? (
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
           {" "}
           <span style={{ color: "green" }}>green</span> <span>+</span>{" "}
           <span style={{ color: "violet" }}>violet</span>
@@ -69,7 +81,7 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
       d?.priceCL,
       <span>
         <Checkbox
-          color="primary"
+          color='primary'
           disabled={isDisable}
           onChange={() => statusChange(d)}
         />
@@ -82,7 +94,7 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
       rows={rows}
       perPageShow={6}
       tableHeight={440}
-      className="common_table"
+      className='common_table'
     />
   );
 };

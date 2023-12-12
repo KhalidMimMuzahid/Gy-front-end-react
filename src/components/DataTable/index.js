@@ -44,7 +44,7 @@ const DataTable = ({ columns, rows, perPageShow, tableHeight, className }) => {
       <TableContainer className={`${className}`} sx={{ maxHeight: tableHeight, width: "100%", maxWidth: "100%" }}>
         <Table stickyHeader aria-label="sticky table" className="materialTable">
           <TableHead className="materialTableHead">
-            <TableRow className="materialTableRow">
+            <TableRow className="materialTableBodyRowForAdminGameDashboard">
               {columns.map((column, i) => (
                 <TableCell
                   key={i+50}

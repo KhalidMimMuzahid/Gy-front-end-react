@@ -49,37 +49,46 @@ const SectionCommonTable = ({
       setDate(state);
     }
   }, [state]);
-  
-  useEffect(() => {
-    if (data) {
-      console.log('Data received:', data);
-      const filteredData = data.filter((dt) => {
-        const searchLowerCase = search?.toLowerCase();
-        const userIdIncludes = dt?.userId?.toLowerCase().includes(searchLowerCase);
-        const fullNameIncludes = dt?.fullName?.toLowerCase().includes(searchLowerCase);
-        const sponsorIdMatches = dt?.sponsor_id?.toLowerCase() === searchLowerCase;
-        const emailIncludes = dt?.email?.toLowerCase().includes(searchLowerCase);
-  
-        return (
-          userIdIncludes ||
-          fullNameIncludes ||
-          sponsorIdMatches ||
-          emailIncludes
-        );
-      });
-  
-      console.log("filterdata: ", filteredData);
-  
-      // Ensure filteredData is not empty before setting it
-      if (filteredData.length > 0) {
-        setFilterData(filteredData);
-      } else {
-        // If no search matches, set filterData back to original data
-        setFilterData(data);
+
+  useEffect(
+    () => {
+      if (data) {
+        console.log("Data received:", data);
+        const filteredData = data.filter((dt) => {
+          const searchLowerCase = search?.toLowerCase();
+          const userIdIncludes = dt?.userId
+            ?.toLowerCase()
+            .includes(searchLowerCase);
+          const fullNameIncludes = dt?.fullName
+            ?.toLowerCase()
+            .includes(searchLowerCase);
+          const sponsorIdMatches =
+            dt?.sponsor_id?.toLowerCase() === searchLowerCase;
+          const emailIncludes = dt?.email
+            ?.toLowerCase()
+            .includes(searchLowerCase);
+
+          return (
+            userIdIncludes ||
+            fullNameIncludes ||
+            sponsorIdMatches ||
+            emailIncludes
+          );
+        });
+
+        console.log("filterdata: ", filteredData);
+
+        // Ensure filteredData is not empty before setting it
+        if (filteredData.length > 0) {
+          setFilterData(filteredData);
+        } else {
+          // If no search matches, set filterData back to original data
+          setFilterData(data);
+        }
       }
-    }
-  }, [data, search]);
-  
+    }, // [data, search] // if i set data as a dependencies, then this useEffect hook is falling to loop hole
+    [search]
+  );
 
   const searchFunction = () => {
     if (data) {
@@ -95,7 +104,7 @@ const SectionCommonTable = ({
           return dt;
         }
       });
-      console.log("filterdata: ",filterData)
+      console.log("filterdata: ", filterData);
       setFilterData(filterData);
     }
   };
