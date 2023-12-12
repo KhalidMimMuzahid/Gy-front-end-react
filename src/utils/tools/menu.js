@@ -337,6 +337,12 @@ export const menus = [
         route: "/dashboard/games/color-game",
         permission: ["user"],
       },
+      {
+        id: "7854s8dfs5jk",
+        menu: "My Betting History",
+        route: "/dashboard/games/color-game/betting-history",
+        permission: ["user"],
+      },
     ],
   },
   {

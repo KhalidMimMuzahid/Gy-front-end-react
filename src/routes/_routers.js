@@ -50,6 +50,9 @@ const FundReceivingHistory = React.lazy(() =>
 const ColorGame = React.lazy(() =>
 import("../containers/UserPages/Games/ColorGames/index")
 )
+const ColorGameHistory = React.lazy(() =>
+import("../containers/UserPages/Games/UserBettingHistory/index")
+)
 
 // Team section
 const DirectTeam = React.lazy(() =>
@@ -330,6 +333,12 @@ export const routers = [
     name: "Color Game",
     permission: ["user"],
     component: ColorGame,
+  },
+  {
+    path: "/games/color-game/betting-history",
+    name: "Betting History",
+    permission: ["user"],
+    component: ColorGameHistory,
   },
 
 
