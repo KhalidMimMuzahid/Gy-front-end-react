@@ -5,7 +5,7 @@ import UserSpecificBettingHistory from "../ColorGames/table/UserSpecificBettingH
 
 const UserBettingHistory = () => {
   const { data: predictedData } = useGetPredictedQuery();
-  console.log("Pedicted: ", predictedData);
+  // console.log("Pedicted: ", predictedData);
   return (
     <div>
       <div className='records_table'>

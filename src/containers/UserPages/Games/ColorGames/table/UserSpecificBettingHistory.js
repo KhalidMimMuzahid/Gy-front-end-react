@@ -2,29 +2,66 @@ import React from "react";
 import DataTable from "../../../../../components/DataTable";
 
 const columns = [
-  { id: "periodId", label: "Period", minWidth: 20 },
-  { id: "price", label: "Price", minWidth: 50 },
+  { id: "userId", label: "userId", minWidth: 20 },
+  { id: "period", label: "period", minWidth: 50 },
   {
-    id: "result",
-    label: "Result",
-    minWidth: 250,
+    id: "fullName",
+    label: "fullName",
+    minWidth: 50,
+  },
+  {
+    id: "date",
+    label: "date",
+    minWidth: 50,
+  },
+  {
+    id: "contractCount",
+    label: "contractCount",
+    minWidth: 50,
+  },
+  {
+    id: "color",
+    label: "color",
+    minWidth: 50,
+  },
+  {
+    id: "number",
+    label: "number",
+    minWidth: 50,
+  },
+  {
+    id: "totalContractMoney",
+    label: "totalContractMoney",
+    minWidth: 50,
   },
 ];
 
 const UserSpecificBettingHistory = ({ data }) => {
-
-  function createData(periodId, price, number,result) {
+  function createData(
+    userId,
+    period,
+    fullName,
+    date,
+    contractCount,
+    color,
+    number,
+    totalContractMoney
+  ) {
     return {
-      periodId,
-      price,
+      userId,
+      period,
+      fullName,
+      date,
+      contractCount,
+      color,
       number,
-      result,
-      
+      totalContractMoney,
     };
   }
 
   const rows = data?.map((d, index) =>
-    createData(d?.periodId, d?.price, d?.number)
+    // console.log(d),
+    createData(d?.userId)
   );
 
   return (
