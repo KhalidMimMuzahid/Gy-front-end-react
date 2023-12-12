@@ -28,7 +28,7 @@ const ColorGame = () => {
   // setCreatedDate(periodData?.data[0]?.createdAt);
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   // for period id
-  const [periodID, setperiodID] = React.useState("");
+  // const [periodID, setperiodID] = React.useState("");
   // For Tabs
   const [value, setValue] = React.useState("1");
 
@@ -61,9 +61,9 @@ const ColorGame = () => {
     ) {
       console.log("refetching...");
       refetch();
-      setperiodID(periodData.data[0].period);
+      
     }
-  }, [seconds]);
+  }, [seconds,periodData?.data[0]?.period]);
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -193,7 +193,7 @@ const ColorGame = () => {
                   <p>Period</p>
                 </div>
                 <div className='amount'>
-                  <h3>{periodID}</h3>
+                  <h3>{periodData?.data[0]?.period}</h3>
                 </div>
               </div>
               <div className='top_content_right'>

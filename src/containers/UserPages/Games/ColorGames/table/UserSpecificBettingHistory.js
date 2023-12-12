@@ -2,36 +2,36 @@ import React from "react";
 import DataTable from "../../../../../components/DataTable";
 
 const columns = [
-  { id: "userId", label: "userId", minWidth: 20 },
-  { id: "period", label: "period", minWidth: 50 },
+  { id: "userId", label: "User Id", minWidth: 20 },
+  { id: "period", label: "Period", minWidth: 20 },
   {
     id: "fullName",
-    label: "fullName",
-    minWidth: 50,
+    label: "Full Name",
+    minWidth: 20,
   },
   {
     id: "date",
-    label: "date",
-    minWidth: 50,
+    label: "Date",
+    minWidth: 20,
   },
   {
     id: "contractCount",
-    label: "contractCount",
-    minWidth: 50,
+    label: "Contract Count",
+    minWidth: 20,
   },
   {
     id: "color",
-    label: "color",
+    label: "Color",
     minWidth: 50,
   },
   {
     id: "number",
-    label: "number",
+    label: "Number",
     minWidth: 50,
   },
   {
     id: "totalContractMoney",
-    label: "totalContractMoney",
+    label: "Total Contract Money",
     minWidth: 50,
   },
 ];
@@ -61,7 +61,7 @@ const UserSpecificBettingHistory = ({ data }) => {
 
   const rows = data?.map((d, index) =>
     // console.log(d),
-    createData(d?.userId)
+    createData(d?.userId,d?.period,d?.fullName,d?.date,d?.contractCount,d?.color,d?.number,d?.totalContractMoney)
   );
 
   return (
