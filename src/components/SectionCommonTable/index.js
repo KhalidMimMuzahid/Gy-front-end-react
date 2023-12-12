@@ -49,7 +49,7 @@ const SectionCommonTable = ({
       setDate(state);
     }
   }, [state]);
-
+  
   useEffect(
     () => {
       if (data) {
@@ -86,9 +86,11 @@ const SectionCommonTable = ({
           setFilterData(data);
         }
       }
-    }, // [data, search] // if i set data as a dependencies, then this useEffect hook is falling to loop hole
+    },
+    // [data, search] // if i set data as a dependencies, then this useEffect hook is falling to loop hole
     [search]
   );
+  
 
   const searchFunction = () => {
     if (data) {

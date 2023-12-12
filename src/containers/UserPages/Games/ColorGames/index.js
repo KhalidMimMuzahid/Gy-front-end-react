@@ -10,13 +10,19 @@ import { GiLaurelsTrophy } from "react-icons/gi";
 import { IoMdTrophy } from "react-icons/io";
 import { useState } from "react";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import { useGetperiodIDQuery } from "../../../../Services/userApi";
+import {
+  useGetInitialTimeQuery,
+  useGetperiodIDQuery,
+} from "../../../../Services/userApi";
 import { useEffect } from "react";
 import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
 import { Notification } from "../../../../components/ToastNotification";
 const ColorGame = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
+
+  const { data: initialTimeX, refetch: refetchForInitialTime } =
+    useGetInitialTimeQuery();
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
 
   // console.log("Current period", periodData?.data[0]?.period);
@@ -28,7 +34,7 @@ const ColorGame = () => {
   // setCreatedDate(periodData?.data[0]?.createdAt);
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   // for period id
-  // const [periodID, setperiodID] = React.useState("");
+  const [periodID, setperiodID] = React.useState(periodData?.data[0]?.period);
   // For Tabs
   const [value, setValue] = React.useState("1");
 
@@ -53,17 +59,15 @@ const ColorGame = () => {
   }, [seconds]);
   // for setting period automatically after 3 minutes
   useEffect(() => {
-    console.log(seconds);
     if (
       seconds !== (null || undefined) &&
       seconds === 0 &&
       periodData?.data[0]?.period
     ) {
-      console.log("refetching...");
       refetch();
-      
+      setperiodID(periodData.data[0].period);
     }
-  }, [seconds,periodData?.data[0]?.period]);
+  }, [seconds, periodData?.data[0]?.period]);
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);

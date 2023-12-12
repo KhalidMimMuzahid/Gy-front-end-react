@@ -350,10 +350,16 @@ export const userApi = createApi({
       query: (otpCode) => `/api/v1/public/get_check_otp/${otpCode}`,
       providesTags: ["Validate"], // automatic-data fetching
     }),
+
     getperiodID: builder.query({
       query: () => "/api/v1/public/get_period_id",
       providesTags: ["User"], // automatic-data fetching
     }),
+    getInitialTime: builder.query({
+      query: () => "/api/v1/public/get_initial_time",
+      providesTags: ["User"], // automatic-data fetching
+    }),
+
     getAllPeriodRecord: builder.query({
       query: () => "/api/v1/public/get_all_period_record",
       providesTags: ["User"], // automatic-data fetching
@@ -422,6 +428,7 @@ export const {
   useCheckUserEmailQuery,
   useCheckUserOTPQuery,
   useGetperiodIDQuery,
+  useGetInitialTimeQuery,
   useBettingDataMutation,
   useGetAllPeriodRecordQuery,
   useGetPredictedQuery,

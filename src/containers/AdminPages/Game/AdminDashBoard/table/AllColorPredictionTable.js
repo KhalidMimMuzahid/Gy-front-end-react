@@ -92,9 +92,9 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
     <DataTable
       columns={columns}
       rows={rows}
-      perPageShow={6}
-      tableHeight={440}
-      className='common_table'
+      perPageShow={10}
+      tableHeight={600}
+      className="common_table"
     />
   );
 };
