@@ -41,13 +41,16 @@ const DataTable = ({ columns, rows, perPageShow, tableHeight, className }) => {
 
   return (
     <>
-      <TableContainer className={`${className}`} sx={{ maxHeight: tableHeight, width: "100%", maxWidth: "100%" }}>
+      <TableContainer
+        className={`${className}`}
+        sx={{ maxHeight: tableHeight, width: "100%", maxWidth: "100%" }}
+      >
         <Table stickyHeader aria-label="sticky table" className="materialTable">
           <TableHead className="materialTableHead">
             <TableRow className="materialTableRow">
               {columns.map((column, i) => (
                 <TableCell
-                  key={i+50}
+                  key={i + 50}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
                   className="materialTableCell"
@@ -58,27 +61,40 @@ const DataTable = ({ columns, rows, perPageShow, tableHeight, className }) => {
             </TableRow>
           </TableHead>
           <TableBody className="materialTableBody">
-            {rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)?.map((row,i) => (
-              <TableRow className="materialTableBodyRow" hover role="checkbox" tabIndex={-1} key={i+100}>
-              {columns.map((column) => {
-                const value = row[column.id];
-                return (
-                  <TableCell className="materialTableBodyCell" key={column.id} align={column.align}>
-                    {column.format && typeof value === "number"
-                      ? column.format(value)
-                      : value}
-                  </TableCell>
-                );
-              })}
-            </TableRow>
-            ))}
+            {rows
+              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ?.map((row, i) => (
+                <TableRow
+                  //change the className here
+                  className="materialTableBodyRowForAdminGameDashboard"
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  key={i + 100}
+                >
+                  {columns.map((column) => {
+                    const value = row[column.id];
+                    return (
+                      <TableCell
+                        className="materialTableBodyCell"
+                        key={column.id}
+                        align={column.align}
+                      >
+                        {column.format && typeof value === "number"
+                          ? column.format(value)
+                          : value}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[5]}
         component="div"
-        count={rows?.length ?rows?.length  : 0}
+        count={rows?.length ? rows?.length : 0}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
