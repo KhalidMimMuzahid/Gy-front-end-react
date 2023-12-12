@@ -49,13 +49,25 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
       ) : d?.color === "violet" ? (
         <span style={{ color: "violet" }}>{d?.color}</span>
       ) : d?.color === "red-violet" ? (
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
           {" "}
           <span style={{ color: "red" }}>red</span> <span>+</span>{" "}
           <span style={{ color: "violet" }}>violet</span>
         </div>
       ) : d?.color === "green-violet" ? (
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
           {" "}
           <span style={{ color: "green" }}>green</span> <span>+</span>{" "}
           <span style={{ color: "violet" }}>violet</span>
