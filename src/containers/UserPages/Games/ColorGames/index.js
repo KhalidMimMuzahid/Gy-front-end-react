@@ -21,20 +21,25 @@ import { Notification } from "../../../../components/ToastNotification";
 const ColorGame = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
 
-  const { data: initialTimeX, refetch: refetchForInitialTime } =
-    useGetInitialTimeQuery();
+  const {
+    data: initialTime,
+    refetch: refetchForInitialTime,
+    isLoading: InitialTimeisLoading,
+  } = useGetInitialTimeQuery();
+  console.log("Initial Time :", initialTime);
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
 
-  // console.log("Current period", periodData?.data[0]?.period);
+  // console.log("Current period", periodData?.data?.period);
   // detect if from non number box
   const [isFromBox, setisFromBox] = useState(null);
+  const [isLoading, setisLoading] = useState(true);
   //getting current period creation time
   // const [createdDate, setCreatedDate] = useState(null);
   // console.log("period created at:", createdDate);
   // setCreatedDate(periodData?.data[0]?.createdAt);
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   // for period id
-  const [periodID, setperiodID] = React.useState(periodData?.data[0]?.period);
+  // const [periodID, setperiodID] = React.useState(periodData?.data?.period);
   // For Tabs
   const [value, setValue] = React.useState("1");
 
@@ -43,31 +48,39 @@ const ColorGame = () => {
   };
 
   // for 3 minutes timer
-  const initialTime = 180; // 3 minutes in seconds
-  const [seconds, setSeconds] = React.useState(initialTime);
+  // const initialTime = 180; // 3 minutes in seconds
+  const [seconds, setSeconds] = React.useState(null);
   const [notificationShown, setNotificationShown] = useState(false);
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      } else {
-        setSeconds(initialTime); // Reset the timer to initial value
-      }
-    }, 1000);
+    if (!isLoading) {
+      const interval = setInterval(() => {
+        if (seconds > 0) {
+          setSeconds(seconds - 1);
+        } else {
+          setSeconds(initialTime?.data); // Reset the timer to initial value
+        }
+      }, 1000);
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [seconds]);
+      return () => clearInterval(interval); // Cleanup interval on component unmount
+    }
+  }, [seconds, isLoading]);
   // for setting period automatically after 3 minutes
   useEffect(() => {
     if (
-      seconds !== (null || undefined) &&
-      seconds === 0 &&
-      periodData?.data[0]?.period
+      // seconds !== (null || undefined) &&
+      // seconds === 0 &&
+      periodData?.data?.period ||
+      !seconds
     ) {
       refetch();
-      setperiodID(periodData.data[0].period);
+      refetchForInitialTime();
+      setisLoading(true);
+      // setperiodID(periodData.data[0].period);
     }
-  }, [seconds, periodData?.data[0]?.period]);
+    if (initialTime?.data && periodData?.data?.period) {
+      setisLoading(false);
+    }
+  }, [seconds, periodData?.data?.period, initialTime?.data]);
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -85,7 +98,7 @@ const ColorGame = () => {
       setisButtonDisabled(false);
     } else {
       setisButtonDisabled(true);
-      if (!notificationShown) {
+      if (!notificationShown && !isLoading) {
         Notification("Times up!", "error");
         // Set the state to indicate that the notification has been shown
         setNotificationShown(true);
@@ -132,9 +145,9 @@ const ColorGame = () => {
   // for setting period
   // React.useEffect(() => {
   //   const fetchData = async () => {
-  //     if (seconds && periodData?.data[0]?.period) {
+  //     if (seconds && periodData?.data?.period) {
   //       try {
-  //         if (seconds && periodData?.data[0]?.period) {
+  //         if (seconds && periodData?.data?.period) {
   //           setperiodID(periodData.data[0].period);
   //         } else if (seconds === 0) {
   //           console.log("Fetching...");
@@ -154,7 +167,7 @@ const ColorGame = () => {
   //   // return () => {
   //   //   // Perform cleanup here if needed
   //   // };
-  // }, [periodData?.data[0]?.period, periodID, setperiodID, refetch]);
+  // }, [periodData?.data?.period, periodID, setperiodID, refetch]);
 
   // for non-number color button
   useEffect(() => {
@@ -171,174 +184,182 @@ const ColorGame = () => {
       setisFromBox(null);
     }
   }, [number, selectedColor]);
-
+  // isLoading && return <h1>Loading..</h1>;
   return (
-    <div className='color_games_container'>
-      {/* For Tabs */}
-      <Box sx={{ width: "100%", typography: "body1" }}>
-        <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList
-              onChange={handleChange}
-              aria-label='lab API tabs example'
-              centered
-            >
-              <Tab label='Parity' value='1' />
-              {/* <Tab label='Item Two' value='2' />
+    <div>
+      {isLoading ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className='color_games_container'>
+          {/* For Tabs */}
+          <Box sx={{ width: "100%", typography: "body1" }}>
+            <TabContext value={value}>
+              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <TabList
+                  onChange={handleChange}
+                  aria-label='lab API tabs example'
+                  centered
+                >
+                  <Tab label='Parity' value='1' />
+                  {/* <Tab label='Item Two' value='2' />
               <Tab label='Item Three' value='3' /> */}
-              {/* More can be addded here */}
-            </TabList>
-          </Box>
-          <TabPanel value='1'>
-            <div className='top_content'>
-              <div className='top_content_left'>
-                <div className='title_with_icon'>
-                  <GiLaurelsTrophy size={30} />
-                  <p>Period</p>
+                  {/* More can be addded here */}
+                </TabList>
+              </Box>
+              <TabPanel value='1'>
+                <div className='top_content'>
+                  <div className='top_content_left'>
+                    <div className='title_with_icon'>
+                      <GiLaurelsTrophy size={30} />
+                      <p>Period</p>
+                    </div>
+                    <div className='amount'>
+                      <h3>{periodData?.data?.period}</h3>
+                    </div>
+                  </div>
+                  <div className='top_content_right'>
+                    <div className='count-dwon-container'>
+                      <p>Count Dwon</p>
+                      <h3 style={{ color: textColor }}>
+                        {formatTime(seconds)}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
-                <div className='amount'>
-                  <h3>{periodData?.data[0]?.period}</h3>
-                </div>
-              </div>
-              <div className='top_content_right'>
-                <div className='count-dwon-container'>
-                  <p>Count Dwon</p>
-                  <h3 style={{ color: textColor }}>{formatTime(seconds)}</h3>
-                </div>
-              </div>
-            </div>
-            <div className='game_body'>
-              <div className='color-selectors'>
-                <button
-                  className='green-button'
-                  id='oub-green'
-                  onClick={() => handleOpenModal("green")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>Join Green</p>
-                </button>
-                <button
-                  className='violet-button'
-                  id='oub-violate'
-                  onClick={() => handleOpenModal("violet")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>Join Violet</p>
-                </button>
-                <button
-                  className='red-button'
-                  id='oub-red'
-                  onClick={() => handleOpenModal("red")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>Join Red</p>
-                </button>
-              </div>
-              <div className='color_button_container'>
-                <button
-                  class='red-button button0'
-                  onClick={() => handleOpenModal("red-violet(0)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>0</p>
-                </button>
-                <button
-                  class='green-button'
-                  onClick={() => handleOpenModal("green(1)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>1</p>
-                </button>
-                <button
-                  class='red-button'
-                  onClick={() => handleOpenModal("red(2)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>2</p>
-                </button>
-                <button
-                  class='green-button'
-                  onClick={() => handleOpenModal("green(3)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>3</p>
-                </button>
-                <button
-                  class='red-button'
-                  onClick={() => handleOpenModal("red(4)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>4</p>
-                </button>
-              </div>
-              <div className='color_button_container'>
-                <button
-                  class='red-button button6'
-                  onClick={() => handleOpenModal("green-violet(5)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>5</p>
-                </button>
+                <div className='game_body'>
+                  <div className='color-selectors'>
+                    <button
+                      className='green-button'
+                      id='oub-green'
+                      onClick={() => handleOpenModal("green")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>Join Green</p>
+                    </button>
+                    <button
+                      className='violet-button'
+                      id='oub-violate'
+                      onClick={() => handleOpenModal("violet")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>Join Violet</p>
+                    </button>
+                    <button
+                      className='red-button'
+                      id='oub-red'
+                      onClick={() => handleOpenModal("red")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>Join Red</p>
+                    </button>
+                  </div>
+                  <div className='color_button_container'>
+                    <button
+                      class='red-button button0'
+                      onClick={() => handleOpenModal("red-violet(0)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>0</p>
+                    </button>
+                    <button
+                      class='green-button'
+                      onClick={() => handleOpenModal("green(1)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>1</p>
+                    </button>
+                    <button
+                      class='red-button'
+                      onClick={() => handleOpenModal("red(2)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>2</p>
+                    </button>
+                    <button
+                      class='green-button'
+                      onClick={() => handleOpenModal("green(3)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>3</p>
+                    </button>
+                    <button
+                      class='red-button'
+                      onClick={() => handleOpenModal("red(4)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>4</p>
+                    </button>
+                  </div>
+                  <div className='color_button_container'>
+                    <button
+                      class='red-button button6'
+                      onClick={() => handleOpenModal("green-violet(5)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>5</p>
+                    </button>
 
-                <button
-                  class='red-button'
-                  onClick={() => handleOpenModal("red(6)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>6</p>
-                </button>
-                <button
-                  class='green-button'
-                  onClick={() => handleOpenModal("green(7)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>7</p>
-                </button>
-                <button
-                  class='red-button'
-                  onClick={() => handleOpenModal("red(8)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>8</p>
-                </button>
-                <button
-                  class='green-button'
-                  onClick={() => handleOpenModal("green(9)")}
-                  disabled={isButtonDisabled}
-                >
-                  <p>9</p>
-                </button>
-              </div>
-            </div>
-            <div className='records_table'>
-              <div className='table_header'>
-                <IoMdTrophy size={50} />
-                <p>Parity Record</p>
-              </div>
-              <div className='table-content'>
-                <AllPeriodRecordTable data={periodRecord?.data} />
-              </div>
-            </div>
-          </TabPanel>
-          {/* More can be added Here */}
-          {/* <TabPanel value='2'>Item Two</TabPanel>
+                    <button
+                      class='red-button'
+                      onClick={() => handleOpenModal("red(6)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>6</p>
+                    </button>
+                    <button
+                      class='green-button'
+                      onClick={() => handleOpenModal("green(7)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>7</p>
+                    </button>
+                    <button
+                      class='red-button'
+                      onClick={() => handleOpenModal("red(8)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>8</p>
+                    </button>
+                    <button
+                      class='green-button'
+                      onClick={() => handleOpenModal("green(9)")}
+                      disabled={isButtonDisabled}
+                    >
+                      <p>9</p>
+                    </button>
+                  </div>
+                </div>
+                <div className='records_table'>
+                  <div className='table_header'>
+                    <IoMdTrophy size={50} />
+                    <p>Parity Record</p>
+                  </div>
+                  <div className='table-content'>
+                    <AllPeriodRecordTable data={periodRecord?.data} />
+                  </div>
+                </div>
+              </TabPanel>
+              {/* More can be added Here */}
+              {/* <TabPanel value='2'>Item Two</TabPanel>
           <TabPanel value='3'>Item Three</TabPanel> */}
-        </TabContext>
-      </Box>
-      <ColorModal
-        open={openModal}
-        handleClose={handleCloseModal}
-        isButtonDisabled={isButtonDisabled}
-        currentPeriod={periodData?.data[0]?.period}
-        selectedColor={selectedColor}
-        setSelectedColor={setSelectedColor}
-        userClickedNumber={userClicked}
-        setUserClicked={setUserClicked}
-        setisFromBox={setisFromBox}
-        setNumber={setNumber}
-        isFromBox={isFromBox}
-        number={number}
-      />
+            </TabContext>
+          </Box>
+          <ColorModal
+            open={openModal}
+            handleClose={handleCloseModal}
+            isButtonDisabled={isButtonDisabled}
+            currentPeriod={periodData?.data?.period}
+            selectedColor={selectedColor}
+            setSelectedColor={setSelectedColor}
+            userClickedNumber={userClicked}
+            setUserClicked={setUserClicked}
+            setisFromBox={setisFromBox}
+            setNumber={setNumber}
+            isFromBox={isFromBox}
+            number={number}
+          />
+        </div>
+      )}
     </div>
   );
 };
