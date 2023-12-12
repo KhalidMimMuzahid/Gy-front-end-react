@@ -327,7 +327,11 @@ const ColorGame = () => {
         isButtonDisabled={isButtonDisabled}
         currentPeriod={periodData?.data[0]?.period}
         selectedColor={selectedColor}
+        setSelectedColor={setSelectedColor}
         userClickedNumber={userClicked}
+        setUserClicked={setUserClicked}
+        setisFromBox={setisFromBox}
+        setNumber={setNumber}
         isFromBox={isFromBox}
         number={number}
       />

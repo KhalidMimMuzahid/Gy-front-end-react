@@ -9,13 +9,15 @@ import CustomLink from "../Link";
 import { useBettingDataMutation } from "../../Services/userApi";
 import { Notification } from "../ToastNotification";
 
-
-
 const ColorModal = ({
   open,
   handleClose,
   isButtonDisabled,
   currentPeriod,
+  setSelectedColor,
+  setUserClicked,
+  setisFromBox,
+  setNumber,
   selectedColor,
   userClickedNumber,
   isFromBox,
@@ -53,19 +55,19 @@ const ColorModal = ({
     contractCount: count,
     totalContractMoney: totalContractMony,
   };
-  
+
   const handleConfirm = async () => {
     if (bettingError?.data?.message) {
       return Notification(bettingError?.data?.message, "error");
     }
-  
+
     if (bettingLoading) {
       return <>Loading...</>; // It's not clear what you want to return here
     }
-  
+
     try {
       const response = await createBetting(betCreator);
-      
+
       if (response?.message) {
         Notification(bettingData?.message, "success");
       }
@@ -74,9 +76,13 @@ const ColorModal = ({
       // console.error("Error creating betting:", error);
       Notification("Something Went wrong!", "error");
     }
-    handleClose()
+    // for reseting state
+    setSelectedColor("");
+    setUserClicked(null);
+    setisFromBox(null);
+    setNumber(null);
+    handleClose();
   };
-  
 
   const modalStyle = {
     position: "fixed",
@@ -152,7 +158,11 @@ const ColorModal = ({
             <button onClick={handleClose} className='cancel-button'>
               Cancel
             </button>
-            <button onClick={handleConfirm} className='confirm-button' disabled={isButtonDisabled}>
+            <button
+              onClick={handleConfirm}
+              className='confirm-button'
+              disabled={isButtonDisabled}
+            >
               Confirm
             </button>
           </div>
