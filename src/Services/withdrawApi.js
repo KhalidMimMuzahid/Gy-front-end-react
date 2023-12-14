@@ -53,7 +53,7 @@ export const withdrawApi = createApi({
     }),
     selectWinner: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/private//select-winner",
+        url: "/api/v1/private/select-winner",
         method: "POST",
         body,
       }),

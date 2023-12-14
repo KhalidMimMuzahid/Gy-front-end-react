@@ -7,7 +7,7 @@ const columns = [
   { id: "number", label: "Number", minWidth: 50 },
   {
     id: "numberOfUser",
-    label: "NumOfUser",
+    label: "Number Of User",
     minWidth: 120,
   },
   {
@@ -42,13 +42,7 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
 
   const rows = data?.map((d, index) =>
     createData(
-      d?.color === "green" ? (
-        <span style={{ color: "green" }}>{d?.color}</span>
-      ) : d?.color === "red" ? (
-        <span style={{ color: "red" }}>{d?.color}</span>
-      ) : d?.color === "violet" ? (
-        <span style={{ color: "violet" }}>{d?.color}</span>
-      ) : d?.color === "red-violet" ? (
+      d?.option === "y1" ? (
         <div
           style={{
             display: "flex",
@@ -56,11 +50,18 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
             justifyContent: "center",
           }}
         >
-          {" "}
-          <span style={{ color: "red" }}>red</span> <span>+</span>{" "}
+          <span style={{ color: "red" }}>red</span> <span>+</span>
           <span style={{ color: "violet" }}>violet</span>
         </div>
-      ) : d?.color === "green-violet" ? (
+      ) : d?.option === "y2" ? (
+        <span style={{ color: "green" }}>Green</span>
+      ) : d?.option === "y3" ? (
+        <span style={{ color: "red" }}>Red</span>
+      ) : d?.option === "y4" ? (
+        <span style={{ color: "green" }}>Green</span>
+      ) : d?.option === "y5" ? (
+        <span style={{ color: "red" }}>Red</span>
+      ) : d?.option === "y6" ? (
         <div
           style={{
             display: "flex",
@@ -68,20 +69,27 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
             justifyContent: "center",
           }}
         >
-          {" "}
-          <span style={{ color: "green" }}>green</span> <span>+</span>{" "}
+          <span style={{ color: "green" }}>green</span> <span>+</span>
           <span style={{ color: "violet" }}>violet</span>
         </div>
+      ) : d?.option === "y7" ? (
+        <span style={{ color: "red" }}>Red</span>
+      ) : d?.option === "y8" ? (
+        <span style={{ color: "green" }}>Green</span>
+      ) : d?.option === "y9" ? (
+        <span style={{ color: "red" }}>Red</span>
       ) : (
-        ""
+        <span style={{ color: "green" }}>Green</span>
       ),
-      d?.number,
+
+      d?.serial - 1,
       d?.numberOfUser,
       d?.amount,
       d?.priceCL,
+
       <span>
         <Checkbox
-          color='primary'
+          color="primary"
           disabled={isDisable}
           onChange={() => statusChange(d)}
         />

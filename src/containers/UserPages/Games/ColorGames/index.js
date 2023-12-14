@@ -26,7 +26,7 @@ const ColorGame = () => {
     refetch: refetchForInitialTime,
     isLoading: InitialTimeisLoading,
   } = useGetInitialTimeQuery();
-  console.log("Initial Time :", initialTime);
+  // console.log("Initial Time :", initialTime);
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
 
   // console.log("Current period", periodData?.data?.period);
@@ -108,12 +108,14 @@ const ColorGame = () => {
   // state for managing modal
   const [openModal, setOpenModal] = useState(false);
   const [selectedColor, setSelectedColor] = useState("");
+
+  const [selectedOption, setSelectedOption] = useState(null);
   const [number, setNumber] = useState(0);
   // state for getting number user clicked
   const [userClicked, setUserClicked] = useState(null);
   // console.log("User clicked", userClicked);
   // function to handle opening modal
-  const handleOpenModal = (color) => {
+  const handleOpenModalX = (color) => {
     // Check if the color contains a number in parentheses
     const numberRegex = /\((\d+)\)/;
     const match = color.match(numberRegex);
@@ -136,7 +138,13 @@ const ColorGame = () => {
       setOpenModal(true);
     }
   };
+  const handleOpenModal = (option) => {
+    console.log({ option });
 
+    // selectedOption,
+    setSelectedOption(option);
+    setOpenModal(true);
+  };
   // function to handle closing modal
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -190,35 +198,35 @@ const ColorGame = () => {
       {isLoading ? (
         <h1>Loading</h1>
       ) : (
-        <div className='color_games_container'>
+        <div className="color_games_container">
           {/* For Tabs */}
           <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <TabList
                   onChange={handleChange}
-                  aria-label='lab API tabs example'
+                  aria-label="lab API tabs example"
                   centered
                 >
-                  <Tab label='Parity' value='1' />
+                  <Tab label="Parity" value="1" />
                   {/* <Tab label='Item Two' value='2' />
               <Tab label='Item Three' value='3' /> */}
                   {/* More can be addded here */}
                 </TabList>
               </Box>
-              <TabPanel value='1'>
-                <div className='top_content'>
-                  <div className='top_content_left'>
-                    <div className='title_with_icon'>
+              <TabPanel value="1">
+                <div className="top_content">
+                  <div className="top_content_left">
+                    <div className="title_with_icon">
                       <GiLaurelsTrophy size={30} />
                       <p>Period</p>
                     </div>
-                    <div className='amount'>
+                    <div className="amount">
                       <h3>{periodData?.data?.period}</h3>
                     </div>
                   </div>
-                  <div className='top_content_right'>
-                    <div className='count-dwon-container'>
+                  <div className="top_content_right">
+                    <div className="count-dwon-container">
                       <p>Count Dwon</p>
                       <h3 style={{ color: textColor }}>
                         {formatTime(seconds)}
@@ -226,115 +234,125 @@ const ColorGame = () => {
                     </div>
                   </div>
                 </div>
-                <div className='game_body'>
-                  <div className='color-selectors'>
+                <div className="game_body">
+                  <div className="color-selectors">
                     <button
-                      className='green-button'
-                      id='oub-green'
-                      onClick={() => handleOpenModal("green")}
+                      className="green-button"
+                      id="op-1"
+                      onClick={() => handleOpenModal("x1")}
                       disabled={isButtonDisabled}
                     >
                       <p>Join Green</p>
                     </button>
                     <button
-                      className='violet-button'
-                      id='oub-violate'
-                      onClick={() => handleOpenModal("violet")}
+                      className="violet-button"
+                      id="op-2"
+                      onClick={() => handleOpenModal("x2")}
                       disabled={isButtonDisabled}
                     >
                       <p>Join Violet</p>
                     </button>
                     <button
-                      className='red-button'
-                      id='oub-red'
-                      onClick={() => handleOpenModal("red")}
+                      className="red-button"
+                      id="op-3"
+                      onClick={() => handleOpenModal("x3")}
                       disabled={isButtonDisabled}
                     >
                       <p>Join Red</p>
                     </button>
                   </div>
-                  <div className='color_button_container'>
+                  <div className="color_button_container">
                     <button
-                      class='red-button button0'
-                      onClick={() => handleOpenModal("red-violet(0)")}
+                      class="red-button button0"
+                      id="op-4"
+                      onClick={() => handleOpenModal("x4")}
                       disabled={isButtonDisabled}
                     >
                       <p>0</p>
                     </button>
                     <button
-                      class='green-button'
-                      onClick={() => handleOpenModal("green(1)")}
+                      class="green-button"
+                      id="op-5"
+                      onClick={() => handleOpenModal("x5")}
                       disabled={isButtonDisabled}
                     >
                       <p>1</p>
                     </button>
                     <button
-                      class='red-button'
-                      onClick={() => handleOpenModal("red(2)")}
+                      class="red-button"
+                      id="op-6"
+                      onClick={() => handleOpenModal("x6")}
                       disabled={isButtonDisabled}
                     >
                       <p>2</p>
                     </button>
                     <button
-                      class='green-button'
-                      onClick={() => handleOpenModal("green(3)")}
+                      class="green-button"
+                      id="op-7"
+                      onClick={() => handleOpenModal("x7")}
                       disabled={isButtonDisabled}
                     >
                       <p>3</p>
                     </button>
                     <button
-                      class='red-button'
-                      onClick={() => handleOpenModal("red(4)")}
+                      class="red-button"
+                      id="op-8"
+                      onClick={() => handleOpenModal("x8")}
                       disabled={isButtonDisabled}
                     >
                       <p>4</p>
                     </button>
                   </div>
-                  <div className='color_button_container'>
+                  <div className="color_button_container">
                     <button
-                      class='red-button button6'
-                      onClick={() => handleOpenModal("green-violet(5)")}
+                      class="red-button button6"
+                      id="op-9"
+                      onClick={() => handleOpenModal("x9")}
                       disabled={isButtonDisabled}
                     >
                       <p>5</p>
                     </button>
 
                     <button
-                      class='red-button'
-                      onClick={() => handleOpenModal("red(6)")}
+                      class="red-button"
+                      id="op-10"
+                      onClick={() => handleOpenModal("x10")}
                       disabled={isButtonDisabled}
                     >
                       <p>6</p>
                     </button>
                     <button
-                      class='green-button'
-                      onClick={() => handleOpenModal("green(7)")}
+                      class="green-button"
+                      id="op-11"
+                      onClick={() => handleOpenModal("x11")}
                       disabled={isButtonDisabled}
                     >
                       <p>7</p>
                     </button>
                     <button
-                      class='red-button'
-                      onClick={() => handleOpenModal("red(8)")}
+                      class="red-button"
+                      id="op-12"
+                      onClick={() => handleOpenModal("x12")}
                       disabled={isButtonDisabled}
                     >
                       <p>8</p>
                     </button>
                     <button
-                      class='green-button'
-                      onClick={() => handleOpenModal("green(9)")}
+                      class="green-button"
+                      id="op-13"
+                      onClick={() => handleOpenModal("x13")}
                       disabled={isButtonDisabled}
                     >
                       <p>9</p>
                     </button>
                   </div>
                 </div>
-                <div className='records_table'>
-                  <div className='table_header'>
+                <div className="records_table">
+                  <div className="table_header">
                     <IoMdTrophy size={50} />
                     <p>Parity Record</p>
                   </div>
-                  <div className='table-content'>
+                  <div className="table-content">
                     <AllPeriodRecordTable data={periodRecord?.data} />
                   </div>
                 </div>
@@ -349,14 +367,17 @@ const ColorGame = () => {
             handleClose={handleCloseModal}
             isButtonDisabled={isButtonDisabled}
             currentPeriod={periodData?.data?.period}
-            selectedColor={selectedColor}
-            setSelectedColor={setSelectedColor}
-            userClickedNumber={userClicked}
-            setUserClicked={setUserClicked}
-            setisFromBox={setisFromBox}
-            setNumber={setNumber}
-            isFromBox={isFromBox}
-            number={number}
+            // selectedColor={selectedColor}
+            // setSelectedColor={setSelectedColor}
+            // userClickedNumber={userClicked}
+            // setUserClicked={setUserClicked}
+            // setisFromBox={setisFromBox}
+            // setNumber={setNumber}
+            // isFromBox={isFromBox}
+            // number={number}
+
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
           />
         </div>
       )}

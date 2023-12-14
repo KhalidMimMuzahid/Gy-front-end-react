@@ -13,7 +13,7 @@ const AdminGameDashBoard = () => {
   const { data } = useGetAllColorPrductionwHistoryQuery();
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
-  // console.log(data);
+  console.log(data);
   const periodId = data?.data[0]?.period;
   // console.log({ periodId });
 
@@ -25,14 +25,13 @@ const AdminGameDashBoard = () => {
     }
   }, [error, selectWindata]);
 
-  const statusChange = async (da) => {
-    const obj = {
-      color: da?.color,
-      number: da?.number,
-    };
-    await selectWinner(obj);
+  const statusChange = async (optionDetails) => {
+    // const obj = {
+    //   color: da?.color,
+    //   number: da?.number,
+    // };
+    await selectWinner(optionDetails);
     setIsDisable(true);
-    console.log("data may of ", da);
   };
 
   // for 3 minutes timer
