@@ -214,7 +214,7 @@ const ColorGame = () => {
                   {/* More can be addded here */}
                 </TabList>
               </Box>
-              <TabPanel value="1">
+              <TabPanel value="1" className="tab__panel__wrapper">
                 <div className="top_content">
                   <div className="top_content_left">
                     <div className="title_with_icon">
