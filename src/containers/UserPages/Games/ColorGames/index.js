@@ -31,7 +31,7 @@ const ColorGame = () => {
 
   // console.log("Current period", periodData?.data?.period);
   // detect if from non number box
-  const [isFromBox, setisFromBox] = useState(null);
+  // const [isFromBox, setisFromBox] = useState(null);
   const [isLoading, setisLoading] = useState(true);
   //getting current period creation time
   // const [createdDate, setCreatedDate] = useState(null);
@@ -178,20 +178,20 @@ const ColorGame = () => {
   // }, [periodData?.data?.period, periodID, setperiodID, refetch]);
 
   // for non-number color button
-  useEffect(() => {
-    if (selectedColor === "green") {
-      setNumber(1);
-      setisFromBox(null);
-    }
-    if (selectedColor === "red") {
-      setNumber(2);
-      setisFromBox(null);
-    }
-    if (selectedColor === "violet") {
-      setNumber(0);
-      setisFromBox(null);
-    }
-  }, [number, selectedColor]);
+  // useEffect(() => {
+  //   if (selectedColor === "green") {
+  //     setNumber(1);
+  //     setisFromBox(null);
+  //   }
+  //   if (selectedColor === "red") {
+  //     setNumber(2);
+  //     setisFromBox(null);
+  //   }
+  //   if (selectedColor === "violet") {
+  //     setNumber(0);
+  //     setisFromBox(null);
+  //   }
+  // }, [number, selectedColor]);
   // isLoading && return <h1>Loading..</h1>;
   return (
     <div>

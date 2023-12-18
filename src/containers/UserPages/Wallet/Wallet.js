@@ -97,6 +97,7 @@ const Wallet = () => {
           bgColor="#ffbd5a"
           cardBgColor="#28c66f"
         />
+
         {/* <HomeCard
           cardName='Rank Income'
           cardValue={`₹${
@@ -118,6 +119,18 @@ const Wallet = () => {
           icon={withdrawIncome}
           bgColor="#9ED5C5"
           cardBgColor="#fe9f43"
+        />
+        <HomeCard
+          cardName="Winning Wallet"
+          cardValue={`₹${
+            data?.data?.winingWallect
+              ? parseFloat(data?.data?.winingWallect).toFixed(4)
+              : "0"
+          }`}
+          icon={InDirectIncome}
+          linkText="view details"
+          bgColor="#ffbd5a"
+          cardBgColor="#28c66f"
         />
       </div>
     </div>

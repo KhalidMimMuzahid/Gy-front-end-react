@@ -91,7 +91,7 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
         <Checkbox
           color="primary"
           disabled={isDisable}
-          onChange={() => statusChange(d)}
+          onChange={() => statusChange(d?.option)}
         />
       </span>
     )
