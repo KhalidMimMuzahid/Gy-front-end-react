@@ -50,7 +50,7 @@ const UserSpecificBettingHistory = ({ data }) => {
     date,
     totalContractMoney,
     option,
-    winningAmount = "loss"
+    winningAmount
   ) {
     const { color, number } = getColoAndNumberAccordingToXOption(option);
     return {
@@ -74,7 +74,10 @@ const UserSpecificBettingHistory = ({ data }) => {
       d?.date,
       d?.totalContractMoney,
       d?.option,
-      d?.winningAmount
+      <span style={{ color: d?.winningAmount ? "black" : "red" }}>
+        {" "}
+        {d?.winningAmount || "loss"}
+      </span>
     )
   );
 
