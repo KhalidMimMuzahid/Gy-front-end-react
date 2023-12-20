@@ -7,28 +7,19 @@ import {
 import AllColorPredictionTable from "./table/AllColorPredictionTable";
 import { Notification } from "../../../../components/ToastNotification";
 import { useEffect } from "react";
-import {
-  useGetInitialTimeQuery,
-  useGetperiodIDQuery,
-} from "../../../../Services/userApi";
+import { useGetperiodIDQuery } from "../../../../Services/userApi";
+import calculateTimeDifference from "../../../../utils/function/fetCalculateTimeDifference";
 
 const AdminGameDashBoard = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
-
-  const {
-    data: initialTime,
-    refetch: refetchForInitialTime,
-    isLoading: InitialTimeisLoading,
-  } = useGetInitialTimeQuery();
   const [isDisable, setIsDisable] = React.useState(false);
   const [isLoading, setisLoading] = React.useState(true);
   const { data } = useGetAllColorPrductionwHistoryQuery();
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
   console.log(data);
-  const periodId = data?.data[0]?.period;
-  // console.log({ periodId });
-
+  let initialTimeDuration =
+    180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
@@ -50,38 +41,41 @@ const AdminGameDashBoard = () => {
 
   // for 3 minutes timer
   // const initialTime = 180; // 3 minutes in seconds
-  const [seconds, setSeconds] = React.useState(initialTime);
+  const [seconds, setSeconds] = React.useState(null);
 
   React.useEffect(() => {
     if (!isLoading) {
       const interval = setInterval(() => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
+          setisLoading(false);
+        } else if (seconds === 0) {
+          refetch();
+          setisLoading(true);
         } else {
-          setSeconds(initialTime?.data); // Reset the timer to initial value
+          // now time is minus value
+          setisLoading(true);
         }
       }, 1000);
 
       return () => clearInterval(interval); // Cleanup interval on component unmount
     }
-  }, [seconds, isLoading]);
-  // for setting period automatically after 3 minutes
+  }, [seconds]);
+
   useEffect(() => {
-    if (
-      // seconds !== (null || undefined) &&
-      // seconds === 0 &&
-      periodData?.data?.period ||
-      !seconds
-    ) {
-      refetch();
-      refetchForInitialTime();
-      setisLoading(true);
-      // setperiodID(periodData.data[0].period);
+    if (periodData?.data?.period) {
+      initialTimeDuration =
+        180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
+
+      if (initialTimeDuration < 0) {
+        refetch();
+        setisLoading(true);
+      } else {
+        setSeconds(initialTimeDuration);
+        setisLoading(false);
+      }
     }
-    if (initialTime?.data && periodData?.data?.period) {
-      setisLoading(false);
-    }
-  }, [seconds, periodData?.data?.period, initialTime?.data]);
+  }, [periodData?.data?.period]);
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const remainingSeconds = timeInSeconds % 60;
