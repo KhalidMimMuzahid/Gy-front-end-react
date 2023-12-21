@@ -15,7 +15,8 @@ export const settingApi = createApi({
   tagTypes: ["setting"], // automatic-data fetching
   endpoints: (builder) => ({
     // get popup image
-    getPopupImage: builder.query({ // SAST API
+    getPopupImage: builder.query({
+      // SAST API
       query: () => "/api/get_popup_img",
       providesTags: ["setting"], // automatic-data fetching
     }),
@@ -44,7 +45,8 @@ export const settingApi = createApi({
       }),
       invalidatesTags: ["setting"],
     }),
-    addReward: builder.mutation({ // SAST API
+    addReward: builder.mutation({
+      // SAST API
       query: (body) => ({
         url: "/api/v1/private/user/upload_reward_image",
         method: "POST",
@@ -52,7 +54,8 @@ export const settingApi = createApi({
       }),
       invalidatesTags: ["setting"],
     }),
-    updateReward: builder.mutation({ // SAST API
+    updateReward: builder.mutation({
+      // SAST API
       query: (body) => ({
         url: "/api/v1/private/user/update_reward_image",
         method: "PUT",
@@ -60,12 +63,26 @@ export const settingApi = createApi({
       }),
       invalidatesTags: ["setting"],
     }),
-    deleteReward: builder.mutation({ // SAST API
+    deleteReward: builder.mutation({
+      // SAST API
       query: (body) => ({
         url: "/api/v1/private/user/delete_reward_image",
         method: "DELETE",
         body,
       }),
+      invalidatesTags: ["setting"],
+    }),
+
+    updateWinningPercentage: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/winning-share-percentage",
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
+    getWinningPercentage: builder.query({
+      query: () => "/api/v1/private/winning-share-percentage",
       invalidatesTags: ["setting"],
     }),
     getAdminReward: builder.query({
@@ -98,4 +115,6 @@ export const {
   useUpdateRewardMutation, // SAST API
   useDeleteRewardMutation, // SAST API
   useGetAdminRewardQuery, // SAST API
+  useUpdateWinningPercentageMutation,
+  useGetWinningPercentageQuery,
 } = settingApi;
