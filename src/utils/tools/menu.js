@@ -245,6 +245,12 @@ export const menus = [
         route: "/dashboard/pdf-controller",
         permission: ["admin"],
       },
+      {
+        id: "4f7sfs8fs8fnaj3w",
+        menu: "Wining Percentage",
+        route: "/dashboard/wining-percentage",
+        permission: ["admin"],
+      },
     ],
   },
   // ************************************* user dashboard menu ************************//

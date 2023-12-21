@@ -220,6 +220,9 @@ import("../containers/AdminPages/Game/AdminDashBoard/index")
 const AdminChangePassword = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.ChangePassword")
 );
+const WiningPercentage = React.lazy(() =>
+  import("../containers/AdminPages/Admin.Setting/Admin.WiningPercentage")
+);
 const AdminChangeEmail = React.lazy(() =>
   import("../containers/AdminPages/Admin.Account/Admin.ChangeEmail")
 );
@@ -340,7 +343,6 @@ export const routers = [
     permission: ["user"],
     component: ColorGameHistory,
   },
-
 
   // Team section
   {
@@ -639,6 +641,12 @@ export const routers = [
     name: "Create Update",
     permission: ["admin"],
     component: AdminCreateUpdate,
+  },
+  {
+    path: "/wining-percentage",
+    name: "Wining Percentage",
+    permission: ["admin"],
+    component: WiningPercentage,
   },
   {
     path: "/contact-us",
