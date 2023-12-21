@@ -35,6 +35,11 @@ const columns = [
     label: "Total Contract Money",
     minWidth: 50,
   },
+  {
+    id: "winningAmount",
+    label: "Winning Amount",
+    minWidth: 50,
+  },
 ];
 
 const UserSpecificBettingHistory = ({ data }) => {
@@ -42,13 +47,10 @@ const UserSpecificBettingHistory = ({ data }) => {
   function createData(
     userId,
     period,
-    // fullName,
     date,
-    // contractCount,
-    // color,
-    // number,
     totalContractMoney,
-    option
+    option,
+    winningAmount
   ) {
     const { color, number } = getColoAndNumberAccordingToXOption(option);
     return {
@@ -60,12 +62,23 @@ const UserSpecificBettingHistory = ({ data }) => {
       color,
       number,
       totalContractMoney,
+      winningAmount,
     };
   }
 
   const rows = data?.map((d, index) =>
     // console.log(d)
-    createData(d?.userId, d?.period, d?.date, d?.totalContractMoney, d?.option)
+    createData(
+      d?.userId,
+      d?.period,
+      d?.date,
+      d?.totalContractMoney,
+      d?.option,
+      <span style={{ color: d?.winningAmount ? "black" : "red" }}>
+        {" "}
+        {d?.winningAmount || "loss"}
+      </span>
+    )
   );
 
   return (

@@ -9,46 +9,29 @@ import TabPanel from "@mui/lab/TabPanel";
 import { GiLaurelsTrophy } from "react-icons/gi";
 import { IoMdTrophy } from "react-icons/io";
 import { useState } from "react";
+// import ColorModal from "../../.seconds./../components/ColorModal/ColorModal";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import {
-  useGetInitialTimeQuery,
-  useGetperiodIDQuery,
-} from "../../../../Services/userApi";
+import { useGetperiodIDQuery } from "../../../../Services/userApi";
 import { useEffect } from "react";
 import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
 import { Notification } from "../../../../components/ToastNotification";
+import calculateTimeDifference from "../../../../utils/function/fetCalculateTimeDifference";
 const ColorGame = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
-
-  const {
-    data: initialTime,
-    refetch: refetchForInitialTime,
-    isLoading: InitialTimeisLoading,
-  } = useGetInitialTimeQuery();
-  // console.log("Initial Time :", initialTime);
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
 
-  // console.log("Current period", periodData?.data?.period);
-  // detect if from non number box
-  // const [isFromBox, setisFromBox] = useState(null);
+  let initialTimeDuration =
+    180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
+
   const [isLoading, setisLoading] = useState(true);
-  //getting current period creation time
-  // const [createdDate, setCreatedDate] = useState(null);
-  // console.log("period created at:", createdDate);
-  // setCreatedDate(periodData?.data[0]?.createdAt);
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
-  // for period id
-  // const [periodID, setperiodID] = React.useState(periodData?.data?.period);
-  // For Tabs
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  // for 3 minutes timer
-  // const initialTime = 180; // 3 minutes in seconds
   const [seconds, setSeconds] = React.useState(null);
   const [notificationShown, setNotificationShown] = useState(false);
   React.useEffect(() => {
@@ -56,31 +39,34 @@ const ColorGame = () => {
       const interval = setInterval(() => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
+          setisLoading(false);
+        } else if (seconds === 0) {
+          refetch();
+          setisLoading(true);
         } else {
-          setSeconds(initialTime?.data); // Reset the timer to initial value
+          // now time is minus value
+          setisLoading(true);
         }
       }, 1000);
 
       return () => clearInterval(interval); // Cleanup interval on component unmount
     }
-  }, [seconds, isLoading]);
-  // for setting period automatically after 3 minutes
+  }, [seconds]);
+
   useEffect(() => {
-    if (
-      // seconds !== (null || undefined) &&
-      // seconds === 0 &&
-      periodData?.data?.period ||
-      !seconds
-    ) {
-      refetch();
-      refetchForInitialTime();
-      setisLoading(true);
-      // setperiodID(periodData.data[0].period);
+    if (periodData?.data?.period) {
+      initialTimeDuration =
+        180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
+
+      if (initialTimeDuration < 0) {
+        refetch();
+        setisLoading(true);
+      } else {
+        setSeconds(initialTimeDuration);
+        setisLoading(false);
+      }
     }
-    if (initialTime?.data && periodData?.data?.period) {
-      setisLoading(false);
-    }
-  }, [seconds, periodData?.data?.period, initialTime?.data]);
+  }, [periodData?.data?.period]);
 
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -107,37 +93,15 @@ const ColorGame = () => {
   }, [seconds, isButtonDisabled, notificationShown]);
   // state for managing modal
   const [openModal, setOpenModal] = useState(false);
-  const [selectedColor, setSelectedColor] = useState("");
+  // const [selectedColor, setSelectedColor] = useState("");
 
   const [selectedOption, setSelectedOption] = useState(null);
-  const [number, setNumber] = useState(0);
+  // const [number, setNumber] = useState(0);
   // state for getting number user clicked
-  const [userClicked, setUserClicked] = useState(null);
+  // const [userClicked, setUserClicked] = useState(null);
   // console.log("User clicked", userClicked);
   // function to handle opening modal
-  const handleOpenModalX = (color) => {
-    // Check if the color contains a number in parentheses
-    const numberRegex = /\((\d+)\)/;
-    const match = color.match(numberRegex);
-    // Remove parentheses and their content from the color string
-    const cleanedColor = color.replace(/\(\d+\)/, "");
-    if (match && match[1]) {
-      const number = parseInt(match[1]);
-      if (number >= 0 && number <= 10) {
-        setSelectedColor(cleanedColor);
-        setOpenModal(true);
-        // Do something with the number if needed
-        // console.log(`Button ${number} clicked`);
-        setUserClicked(number);
-      } else {
-        console.log("Button out of range (0-10)");
-      }
-    } else {
-      // Handle other buttons without numbers in parentheses
-      setSelectedColor(color);
-      setOpenModal(true);
-    }
-  };
+
   const handleOpenModal = (option) => {
     console.log({ option });
 
@@ -148,51 +112,9 @@ const ColorGame = () => {
   // function to handle closing modal
   const handleCloseModal = () => {
     setOpenModal(false);
-    setSelectedColor("");
+    // setSelectedColor("");
   };
-  // for setting period
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (seconds && periodData?.data?.period) {
-  //       try {
-  //         if (seconds && periodData?.data?.period) {
-  //           setperiodID(periodData.data[0].period);
-  //         } else if (seconds === 0) {
-  //           console.log("Fetching...");
-  //         }
-  //       } catch (error) {
-  //         // Handle error if refetch fails
-  //         console.error("Error fetching data:", error);
-  //       }
-  //     } else {
-  //     }
-  //   };
 
-  //   fetchData();
-
-  //   // Add cleanup function if necessary
-  //   // For example, if refetch returns a cleanup function
-  //   // return () => {
-  //   //   // Perform cleanup here if needed
-  //   // };
-  // }, [periodData?.data?.period, periodID, setperiodID, refetch]);
-
-  // for non-number color button
-  // useEffect(() => {
-  //   if (selectedColor === "green") {
-  //     setNumber(1);
-  //     setisFromBox(null);
-  //   }
-  //   if (selectedColor === "red") {
-  //     setNumber(2);
-  //     setisFromBox(null);
-  //   }
-  //   if (selectedColor === "violet") {
-  //     setNumber(0);
-  //     setisFromBox(null);
-  //   }
-  // }, [number, selectedColor]);
-  // isLoading && return <h1>Loading..</h1>;
   return (
     <div>
       {isLoading ? (
