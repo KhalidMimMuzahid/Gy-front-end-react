@@ -2,20 +2,42 @@ import React, { useEffect, useState } from "react";
 import CardLayout from "../../../components/CardLayout";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
+import {
+  useGetWiningShareProfitQuery,
+  useWiningSharePercentageMutation,
+} from "../../../Services/Setting";
+import { Notification } from "../../../components/ToastNotification";
 
 const WiningPercentage = () => {
-  /* rtk */
-  //   const [ChangeIncomeStatus, {}] = useChangeIncomeDistributionStatusMutation();
-  //   const [
-  //     ChangeIncomeDistribution,
-  //     {
-  //       data: responseChangeIncomeDistribution,
-  //       isLoading: isLoadingChangeIncomeDistribution,
-  //       error: errorChangeIncomeDistribution,
-  //     },
-  //   ] = useChangeIncomeDistributionMutation();
-  //   const { data } = useGetIncomeDistributionQuery();
-  var data;
+  const [
+    winingSharePercentage,
+    { data: winingData, isLoading: winingIsLoading, error: winingErr },
+  ] = useWiningSharePercentageMutation();
+  const { data, error } = useGetWiningShareProfitQuery();
+  const [currPer, setCurrPer] = useState([]);
+
+  useEffect(() => {
+    if (data?.data) {
+      const myArray = Object?.entries(data?.data)?.map(([key, value]) => value);
+      myArray?.splice(0, 3);
+      myArray?.pop();
+      setCurrPer(myArray);
+    }
+  }, [data]);
+
+  const [info, setInfo] = useState({
+    level1: 0,
+    level2: 0,
+    level3: 0,
+    level4: 0,
+    level5: 0,
+    level6: 0,
+    level7: 0,
+  });
+
+  const handleChange = (level, value) => {
+    setInfo({ ...info, ["level" + level]: value });
+  };
   const [status, setStatus] = useState("");
   const [to_token_data, setTo_Token_data] = useState({
     to_token_self: 0,
@@ -30,9 +52,8 @@ const WiningPercentage = () => {
     to_token_level_9: 0,
     to_token_level_10: 0,
   });
-  const [total_percentage_data, setTotal_percentage_data] = useState({
-    to_token_total: 100,
-    inr_total: 100,
+  const [total_percentage, setTotal_percentage] = useState({
+    total: 100,
   });
 
   //   useEffect(() => {
@@ -58,186 +79,181 @@ const WiningPercentage = () => {
 
   // total tp token percentage
   const tokenPercentage =
-    (total_percentage_data.to_token_total * 10 -
-      to_token_data.to_token_self * 10 -
-      to_token_data.to_token_level_1 * 10 -
-      to_token_data.to_token_level_2 * 10 -
-      to_token_data.to_token_level_3 * 10 -
-      to_token_data.to_token_level_4 * 10 -
-      to_token_data.to_token_level_5 * 10 -
-      to_token_data.to_token_level_6 * 10 -
-      to_token_data.to_token_level_7 * 10 -
-      to_token_data.to_token_level_8 * 10 -
-      to_token_data.to_token_level_9 * 10 -
-      to_token_data.to_token_level_10 * 10) /
-    10;
-
+    total_percentage.total -
+    info?.level1 -
+    info?.level2 -
+    info?.level3 -
+    info?.level4 -
+    info?.level5 -
+    info?.level6 -
+    info?.level7;
   const totalPercentageToken = tokenPercentage >= 0 ? tokenPercentage : 0;
-  const handleChange = (e) => {
-    switch (e.target.name) {
-      case "to_token_self":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_self: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_1":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_1: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_2":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_2: parseFloat(e.target.value),
-          }));
-        }
-        break;
 
-      case "to_token_level_3":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_3: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_4":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_4: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_5":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_5: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_6":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_6: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_7":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_7: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_8":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_8: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_9":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_9: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      case "to_token_level_10":
-        if (e.target.value !== "") {
-          if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
-            e.target.value = e.target.min;
-          }
-          if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
-            e.target.value = e.target.max;
-          }
-          setTo_Token_data((prev) => ({
-            ...prev,
-            to_token_level_10: parseFloat(e.target.value),
-          }));
-        }
-        break;
-      default:
-        setTotal_percentage_data({
-          ...total_percentage_data,
-          to_token_total: 0,
-        });
-        break;
-    }
-  };
+  // const handleChange = (e) => {
+  //   switch (e.target.name) {
+  //     case "to_token_self":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_self: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_1":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_1: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_2":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_2: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+
+  //     case "to_token_level_3":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_3: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_4":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_4: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_5":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_5: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_6":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_6: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_7":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_7: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_8":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_8: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_9":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_9: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     case "to_token_level_10":
+  //       if (e.target.value !== "") {
+  //         if (parseFloat(e.target.value) < parseFloat(e.target.min)) {
+  //           e.target.value = e.target.min;
+  //         }
+  //         if (parseFloat(e.target.value) > parseFloat(e.target.max)) {
+  //           e.target.value = e.target.max;
+  //         }
+  //         setTo_Token_data((prev) => ({
+  //           ...prev,
+  //           to_token_level_10: parseFloat(e.target.value),
+  //         }));
+  //       }
+  //       break;
+  //     default:
+  //       setTotal_percentage_data({
+  //         ...total_percentage_data,
+  //         to_token_total: 0,
+  //       });
+  //       break;
+  //   }
+  // };
 
   /* on change click handler for static and dynamic  */
   const [fieldIdentity, setFieldIdentity] = useState(1);
@@ -265,26 +281,40 @@ const WiningPercentage = () => {
     }
   }, [data, setFieldIdentity]);
 
-  const handleSubmitTPToken = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const obj = {
-      token_level_dist: [
-        parseFloat(to_token_data.to_token_self),
-        parseFloat(to_token_data.to_token_level_1),
-        parseFloat(to_token_data.to_token_level_2),
-        parseFloat(to_token_data.to_token_level_3),
-        parseFloat(to_token_data.to_token_level_4),
-        parseFloat(to_token_data.to_token_level_5),
-        parseFloat(to_token_data.to_token_level_6),
-        parseFloat(to_token_data.to_token_level_7),
-        parseFloat(to_token_data.to_token_level_8),
-        parseFloat(to_token_data.to_token_level_9),
-        parseFloat(to_token_data.to_token_level_10),
-      ],
-    };
-    // ChangeIncomeDistribution(obj);
-    console.log("285 line: ", obj);
+    if (tokenPercentage !== 0) {
+      Notification("Total can't be more or less than 100", "error");
+    } else {
+      const obj = {
+        level1: parseFloat(info?.level1),
+        level2: parseFloat(info?.level2),
+        level3: parseFloat(info?.level3),
+        level4: parseFloat(info?.level4),
+        level5: parseFloat(info?.level5),
+        level6: parseFloat(info?.level6),
+        level7: parseFloat(info?.level7),
+      };
+      winingSharePercentage(obj);
+    }
   };
+
+  useEffect(() => {
+    if (winingData?.message) {
+      setInfo({
+        level1: 0,
+        level2: 0,
+        level3: 0,
+        level4: 0,
+        level5: 0,
+        level6: 0,
+        level7: 0,
+      });
+      Notification(winingData?.message, "success");
+    } else if (winingErr) {
+      Notification(winingErr?.data?.message, "error");
+    }
+  }, [winingData, winingErr]);
 
   return (
     <div className="tp_income_distribution_page_wrapper">
@@ -352,9 +382,9 @@ const WiningPercentage = () => {
                     disabled={true}
                   />
                 </div>
-                <p>TP Token</p>
-                <form onSubmit={handleSubmitTPToken}>
-                  <div
+                <p>Wining Percentage</p>
+                <form onSubmit={handleSubmit}>
+                  {/* <div
                     className="form_group percentage_field"
                     style={{ display: "inherit" }}
                   >
@@ -364,14 +394,14 @@ const WiningPercentage = () => {
                       name="to_token_self"
                       id="self"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(1, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_self}
+                      value={info?.level1}
                       isRequired={true}
                     />
-                  </div>
+                  </div> */}
                   <div
                     className="form_group percentage_field"
                     style={{ display: "inherit" }}
@@ -382,11 +412,11 @@ const WiningPercentage = () => {
                       name="to_token_level_1"
                       id="to_token_level_1"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(1, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_1}
+                      value={info?.level1}
                       isRequired={true}
                     />
                   </div>
@@ -400,11 +430,11 @@ const WiningPercentage = () => {
                       name="to_token_level_2"
                       id="to_token_level_2"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(2, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_2}
+                      value={info?.level2}
                       isRequired={true}
                     />
                   </div>
@@ -418,11 +448,11 @@ const WiningPercentage = () => {
                       name="to_token_level_3"
                       id="to_token_level_3"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(3, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_3}
+                      value={info?.level3}
                       isRequired={true}
                     />
                   </div>
@@ -436,11 +466,11 @@ const WiningPercentage = () => {
                       name="to_token_level_4"
                       id="to_token_level_4"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(4, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_4}
+                      value={info?.level4}
                       isRequired={true}
                     />
                   </div>
@@ -454,11 +484,11 @@ const WiningPercentage = () => {
                       name="to_token_level_5"
                       id="to_token_level_5"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(5, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_5}
+                      value={info?.level5}
                       isRequired={true}
                     />
                   </div>
@@ -472,11 +502,11 @@ const WiningPercentage = () => {
                       name="to_token_level_6"
                       id="to_token_level_6"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(6, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_6}
+                      value={info?.level6}
                       isRequired={true}
                     />
                   </div>
@@ -490,11 +520,11 @@ const WiningPercentage = () => {
                       name="to_token_level_7"
                       id="to_token_level_7"
                       placeholder=""
-                      onChange={handleChange}
+                      onChange={(e) => handleChange(7, e.target.value)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      value={to_token_data.to_token_level_7}
+                      value={info?.level7}
                       isRequired={true}
                     />
                   </div>
@@ -505,8 +535,7 @@ const WiningPercentage = () => {
                     //     // isLoadingChangeIncomeDistribution ? true : false
                     //   }
                   >
-                    {/* {isLoadingChangeIncomeDistribution ? "Loading" : "submit"} */}
-                    Submit
+                    {winingIsLoading ? "Loading...." : "submit"}
                   </Button>
                 </form>
               </div>
@@ -515,12 +544,10 @@ const WiningPercentage = () => {
               <div className="inr_container">
                 <p>Wining Percentage</p>
                 <div className="inr_tp_token tp_token">
-                  {data?.data?.token_level_dist?.length > 0 &&
-                    data?.data?.token_level_dist?.map((tp, i) => (
+                  {currPer?.length > 0 &&
+                    currPer?.map((tp, i) => (
                       <div>
-                        <h3>
-                          Current {i === 0 ? "Self" : `Level ${i}`} Winign Percentage
-                        </h3>
+                        <h3>Current {`Level ${i + 1}`} Winign Percentage</h3>
                         <p>{tp} %</p>
                       </div>
                     ))}
