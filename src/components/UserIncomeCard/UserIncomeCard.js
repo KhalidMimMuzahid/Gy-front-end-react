@@ -20,7 +20,7 @@ const UserIncomeCard = ({
           style={{ backgroundColor: bgColor }}
         >
           <img
-            style={{ width: "70px", height: "70px", padding: "15px" }}
+            style={{ width: "50px", height: "50px", padding: "15px" }}
             className="LevelIncomeImageIcon"
             src={icon}
             alt=""
