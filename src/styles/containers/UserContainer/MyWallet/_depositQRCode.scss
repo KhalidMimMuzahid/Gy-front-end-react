@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-direction: row;
+    flex-direction: column;
 
     @include breakpoints(tablet) {
       flex-direction: column;
@@ -19,6 +19,16 @@
       color: $text-black;
       @include breakpoints(portraitTablet) {
         width: 100%;
+      }
+      .card2 {
+        text-align: center;
+        justify-content: center;
+        height: 50px;
+
+        a {
+          font-size: 25px;
+         padding-top: 10px;
+        }
       }
       .qr_img {
         text-align: center;
