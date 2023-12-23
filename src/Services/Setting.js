@@ -98,6 +98,7 @@ export const settingApi = createApi({
     }),
     getWebsiteAnalytics: builder.query({
       query: () => "/api/v1/public/website_analytics",
+      providesTags: ["setting"], // automatic-data fetching
     }),
   }),
 });

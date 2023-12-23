@@ -16,7 +16,7 @@ export const userApi = createApi({
   endpoints: (builder) => ({
     getLoginUser: builder.query({
       query: () => "/api/v1/common/get_user",
-      providesTags: ["User"], // automatic-data fetching
+      providesTags: ["User", "adminUser"], // automatic-data fetching
     }),
     getAutopoolOneStatus: builder.query({
       query: () => "/api/v1/secure/autopool_one_status",
@@ -166,11 +166,11 @@ export const userApi = createApi({
     // admin
     getAllUser: builder.query({
       query: () => "/api/v1/private/user_analytics",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     allUserList: builder.query({
       query: () => "/api/v1/private/user/get_all_users",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     editUserList: builder.mutation({
       query: (body) => ({
@@ -178,7 +178,7 @@ export const userApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     deleteUserList: builder.mutation({
       query: (body) => ({
@@ -186,7 +186,7 @@ export const userApi = createApi({
         method: "PUT",
         body: { userId: body.userId },
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     editUserStatus: builder.mutation({
       query: (body) => ({
@@ -194,7 +194,7 @@ export const userApi = createApi({
         method: "PUT",
         body: { user_id: body.userId },
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     editAdminEmail: builder.mutation({
       query: (body) => ({
@@ -202,7 +202,7 @@ export const userApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     editAdminPassword: builder.mutation({
       query: (body) => ({
@@ -210,15 +210,15 @@ export const userApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     activeUserList: builder.query({
       query: () => "/api/v1/private/user/get_active_users",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     blockUserList: builder.query({
       query: () => "/api/v1/private/user/get_blocked_users",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     addAutoPoolController: builder.mutation({
       query: (body) => ({
@@ -226,16 +226,16 @@ export const userApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     getAutopoolStatus: builder.query({
       query: () => "/api/v1/private/get_autopool_setting",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     getMemberBusinessHistory: builder.query({
       query: ({ level, userId }) =>
         `/api/v1/private/user/get_team_stats_details?level=${level}&userId=${userId}`,
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     addTeamStatistics: builder.mutation({
       query: (body) => ({
@@ -243,25 +243,25 @@ export const userApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     // auto trade
     getAutoTradeUsers: builder.query({
       query: () => "/api/v1/private/auto_trade_users",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     getAutoTradeAllUpgradeHistory: builder.query({
       query: () => "/api/v1/private/auto_trade_upgrade_history",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     getAutoTradeAllRoiIncomeHistory: builder.query({
       query: () => "/api/v1/private/auto_trade_roi_income_history",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     ///////////////////////// NEW ENDPOINT ////////////////////
     getAllUserStatistics: builder.query({
       query: () => "/api/v1/private/get_admin_dashboard_data",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
 
     addBank: builder.mutation({
@@ -270,9 +270,11 @@ export const userApi = createApi({
         method: "PUT",
         body,
       }),
+      invalidatesTags: ["User"],
     }),
     getSuccessKyc: builder.query({
       query: () => "/api/v1/secure/user/get-kyc-success-status",
+      providesTags: ["User"],
     }),
 
     //for upload kyc
@@ -282,6 +284,7 @@ export const userApi = createApi({
         method: "POST",
         body,
       }),
+      providesTags: ["User"],
     }),
     // for update kyc status
     updateKyc: builder.mutation({
@@ -290,7 +293,7 @@ export const userApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"],
     }),
     getUserKyc: builder.query({
       query: () => "/api/v1/secure/user/get-kyc",
@@ -298,24 +301,25 @@ export const userApi = createApi({
     }),
     getUserBankDetail: builder.query({
       query: () => "/api/v1/secure/user/get-bank",
-      providesTags: ["bank"], // automatic-data fetching
+      providesTags: ["bank", "User"], // automatic-data fetching
     }),
     getSuccessKyc: builder.query({
       query: () => "/api/v1/secure/user/get-kyc-success-status",
+      providesTags: ["User"],
     }),
 
     //KYC for admin
     getAllkycAdmin: builder.query({
       query: () => "/api/v1/private/user/get_all_kyc",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     getsuccesskycAdmin: builder.query({
       query: () => "/api/v1/private/user/get-all-success-kyc",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
     getrejectedkycAdmin: builder.query({
       query: () => "/api/v1/private/user/get-all-reject-kyc",
-      providesTags: ["adminUser"], // automatic-data fetching
+      providesTags: ["User", "adminUser", "Validate", "autoTrade", "bank"], // automatic-data fetching
     }),
 
     addGoogleLogin: builder.mutation({
@@ -325,6 +329,7 @@ export const userApi = createApi({
         method: "POST",
         body: body,
       }),
+      invalidatesTags:["User"]
     }),
     checkLogin: builder.mutation({
       // user register

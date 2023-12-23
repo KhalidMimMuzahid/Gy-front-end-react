@@ -17,11 +17,11 @@ export const withdrawApi = createApi({
     // admin
     allWithdrawHistory: builder.query({
       query: () => "/api/v1/private/show_all_withdraw",
-      providesTags: ["adminWithdraw"], // automatic-data fetching
+      providesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"], // automatic-data fetching
     }),
     allAutoTradeWithdrawHistory: builder.query({
       query: () => "/api/v1/private/auto_trade_withdraw_requests",
-      providesTags: ["autoTradeWithdraw"], // automatic-data fetching
+      providesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"], // automatic-data fetching
     }),
     editAutoTradeWithdrawStatus: builder.mutation({
       query: (body) => ({
@@ -29,7 +29,7 @@ export const withdrawApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["autoTradeWithdraw"],
+      invalidatesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"],
     }),
     editWithdrawStatus: builder.mutation({
       query: (body) => ({
@@ -37,19 +37,19 @@ export const withdrawApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["adminWithdraw"],
+      invalidatesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"],
     }),
     completedWithdrawHistory: builder.query({
       query: () => "/api/v1/private/get_success_withdraw",
-      providesTags: ["adminWithdraw"], // automatic-data fetching
+      providesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"], // automatic-data fetching
     }),
     canceledWithdrawHistory: builder.query({
       query: () => "/api/v1/private/get_rejected_withdraw",
-      providesTags: ["adminWithdraw"], // automatic-data fetching
+      providesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"], // automatic-data fetching
     }),
     getAllColorPrductionwHistory: builder.query({
       query: () => "/api/v1/private/get-all-color-priediction-history",
-      providesTags: ["adminWithdraw"], // automatic-data fetching
+      providesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"], // automatic-data fetching
     }),
     selectWinner: builder.mutation({
       query: (body) => ({
@@ -57,7 +57,7 @@ export const withdrawApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["autoTradeWithdraw"],
+      invalidatesTags: ["adminWithdraw", "userWithdraw", "autoTradeWithdraw"],
     }),
   }),
 });
