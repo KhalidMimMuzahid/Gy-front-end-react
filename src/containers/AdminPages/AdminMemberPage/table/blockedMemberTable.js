@@ -105,7 +105,7 @@ const BlockedMemberTable = ({ data, blockHandler, deleteHandler }) => {
             border: "none",
             borderRadius: "5px",
             padding: "5px 10px",
-            pointerEvents: d?.deleteStatus ? 'none' : 'auto',
+            pointerEvents: d?.deleteStatus ? "none" : "auto",
             color: !d?.deleteStatus ? "white" : "#c6c6c6",
             cursor: !d?.deleteStatus ? "pointer" : "no-drop",
             backgroundColor: !d?.deleteStatus
