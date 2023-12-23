@@ -5,27 +5,35 @@ import DataTable from "../../../../components/DataTable";
 const AdminTopupHistoryTable = ({ data }) => {
   const columns = [
     { id: "sr", label: "Sr.", minWidth: 20 },
-    { id: "user_id", label: "User ID", minWidth: 150 },
-    { id: "user_fullname", label: "Full Name", minWidth: 220 },
+    {
+      id: "user_id",
+      label: "User ID",
+      minWidth: window.innerWidth > 476 ? 150 : 60,
+    },
+    {
+      id: "user_fullname",
+      label: "Full Name",
+      minWidth: window.innerWidth > 476 ? 220 : 60,
+    },
     {
       id: "packages",
       label: "Package",
-      minWidth: 150,
+      minWidth: window.innerWidth > 476 ? 120 : 60,
     },
     {
       id: "upgradepackage",
       label: "Upgrade Package",
-      minWidth: 150,
+      minWidth: window.innerWidth > 476 ? 150 : 60,
     },
     {
       id: "amount",
       label: "Amount",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 40,
     },
     {
       id: "date",
       label: "Topup Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 120 : 50,
     },
   ];
 

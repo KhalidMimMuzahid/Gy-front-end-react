@@ -4,41 +4,45 @@ import DataTable from "../../../../components/DataTable";
 
 const columns = [
   { id: "sn", label: "S.N", minWidth: 20 },
-  { id: "userId", label: "User ID", minWidth: 100 },
+  {
+    id: "userId",
+    label: "User ID",
+    minWidth: window.innerWidth > 476 ? 100 : 30,
+  },
   {
     id: "fullName",
     label: "Full Name",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "sponsorId",
     label: "Sponsor ID",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 100 : 30,
   },
   {
     id: "mobile",
     label: "Mobile",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 80 : 40,
   },
   {
     id: "email",
     label: "Email",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "joiningDate",
     label: "Joining Date",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 120 : 50,
   },
   {
     id: "activationDate",
     label: "Activation Date",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 120 : 50,
   },
   {
     id: "action",
     label: "Action",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 80 : 40,
   },
 ];
 

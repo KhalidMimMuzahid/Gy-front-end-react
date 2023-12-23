@@ -5,13 +5,21 @@ import DataTable from "../../../../components/DataTable";
 const columns = [
   { id: "id", label: "S.N", minWidth: 20 },
   { id: "userName", label: "User Name", minWidth: 40 },
-  { id: "email", label: "Email", minWidth: 120 },
-  { id: "mobile", label: "Mobile", minWidth: 80 },
-  { id: "purpose", label: "Purpose", minWidth: 80 },
+  { id: "email", label: "Email", minWidth: window.innerWidth > 476 ? 120 : 60 },
+  {
+    id: "mobile",
+    label: "Mobile",
+    minWidth: window.innerWidth > 476 ? 80 : 50,
+  },
+  {
+    id: "purpose",
+    label: "Purpose",
+    minWidth: window.innerWidth > 476 ? 80 : 50,
+  },
   {
     id: "ticket_referrance",
     label: "Ticket Reference",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 80 : 50,
   },
   {
     id: "image",
@@ -21,7 +29,7 @@ const columns = [
   {
     id: "question",
     label: "Message",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 120 : 60,
   },
 ];
 
@@ -29,8 +37,8 @@ const AdminTicketHistory = ({ data, showImageDetails, showMessage }) => {
   function createData(
     id,
     userName,
-email,
-mobile,
+    email,
+    mobile,
     purpose,
     ticket_referrance,
     image,

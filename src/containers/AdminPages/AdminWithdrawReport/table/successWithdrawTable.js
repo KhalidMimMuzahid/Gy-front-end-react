@@ -3,41 +3,45 @@ import DataTable from "../../../../components/DataTable";
 
 const columns = [
   { id: "sr", label: "Sr.", minWidth: 20 },
-  { id: "userId", label: "User ID", minWidth: 100 },
+  {
+    id: "userId",
+    label: "User ID",
+    minWidth: window.innerWidth > 476 ? 100 : 40,
+  },
   {
     id: "date",
     label: "Date",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 100 : 60,
   },
   {
     id: "request_amount",
     label: "Request Amount",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "after_charge",
     label: "After Charge",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "withdrawCharge",
     label: "Withdraw Charge",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "current_balance",
     label: "Current Balance",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "transaction_id",
     label: "Transaction ID",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 60,
   },
   {
     id: "status",
     label: "Status",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
 ];
 

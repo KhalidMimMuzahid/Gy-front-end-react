@@ -7,37 +7,37 @@ const columns = [
   {
     id: "name",
     label: "Name",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "amount",
     label: "Amount",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "date",
     label: "Date",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 120 : 40,
   },
   {
     id: "image",
     label: "Transaction Proof",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 120 : 40,
   },
   {
     id: "transaction_id",
     label: "Transaction ID",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "tid",
     label: "TID",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "action",
     label: "Action",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 80 : 40,
   },
 ];
 
@@ -88,7 +88,11 @@ const AllDepositTable = ({
         }}
       >
         <img
-          style={{ width: "30px", height: "30px" }}
+          style={{
+            width: window.innerWidth > 476 ? "30px" : "20px",
+            height: window.innerWidth > 476 ? "30px" : "20px",
+            margin: "0px auto"
+          }}
           src={d?.proofPic?.avatar}
           alt=""
         ></img>
