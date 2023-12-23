@@ -21,7 +21,7 @@ $border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #000;
+    color: $text-black;
     @include breakpoints(miniPortraitTablet) {
       padding: 7px 0;
     }
@@ -76,7 +76,7 @@ $border-radius: 5px;
 
 @mixin button-style($background-color) {
   background-color: $background-color;
-  color: white;
+  color: #fff;
   border: none;
   outline: none;
   width: $button-width;
@@ -132,7 +132,7 @@ $border-radius: 5px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #000;
+    color: $text-black;
     @include breakpoints(miniPortraitTablet) {
       margin: 5px 0;
     }
