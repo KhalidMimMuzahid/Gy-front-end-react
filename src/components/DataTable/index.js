@@ -10,6 +10,7 @@ import { useReducer } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const DataTable = ({ columns, rows, perPageShow, tableHeight, className }) => {
+  // console.log(columns)
   const [pageShow, setPageShow] = useSearchParams();
   const pageTerm = pageShow.get("newPage") || "";
   const defaultValues = {
@@ -51,7 +52,7 @@ const DataTable = ({ columns, rows, perPageShow, tableHeight, className }) => {
               {columns.map((column, i) => (
                 <TableCell
                   key={i + 50}
-                  align={column.align}
+                  align={"center"}
                   style={{ minWidth: column.minWidth }}
                   className="materialTableCell"
                 >

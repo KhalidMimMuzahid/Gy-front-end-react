@@ -54,7 +54,7 @@ const AllPeriodRecordTable = ({ data }) => {
                 background:
                   Number(option?.slice(1)) - 1 === i
                     ? getBackgroundColor(i)
-                    : "#ccc",
+                    : "",
                 width: "20px",
                 borderRadius: "50%",
                 display: "flex",
