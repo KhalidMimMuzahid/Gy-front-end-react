@@ -48,11 +48,11 @@ const FundReceivingHistory = React.lazy(() =>
 
 //games section
 const ColorGame = React.lazy(() =>
-import("../containers/UserPages/Games/ColorGames/index")
-)
+  import("../containers/UserPages/Games/ColorGames/index")
+);
 const ColorGameHistory = React.lazy(() =>
-import("../containers/UserPages/Games/UserBettingHistory/index")
-)
+  import("../containers/UserPages/Games/UserBettingHistory/index")
+);
 
 // Team section
 const DirectTeam = React.lazy(() =>
@@ -213,8 +213,8 @@ const AdminTicketData = React.lazy(() =>
 
 //games dashboard for admin
 const AdminGameDashBoard = React.lazy(() =>
-import("../containers/AdminPages/Game/AdminDashBoard/index")
-)
+  import("../containers/AdminPages/Game/AdminDashBoard/index")
+);
 
 // settings section
 const AdminChangePassword = React.lazy(() =>
@@ -222,6 +222,9 @@ const AdminChangePassword = React.lazy(() =>
 );
 const WiningPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.WiningPercentage")
+);
+const ROIPercentage = React.lazy(() =>
+  import("../containers/AdminPages/Admin.Setting/Admin.RoiPercentage")
 );
 const AdminChangeEmail = React.lazy(() =>
   import("../containers/AdminPages/Admin.Account/Admin.ChangeEmail")
@@ -647,6 +650,12 @@ export const routers = [
     name: "Wining Percentage",
     permission: ["admin"],
     component: WiningPercentage,
+  },
+  {
+    path: "/roi-percentage",
+    name: "ROI Percentage",
+    permission: ["admin"],
+    component: ROIPercentage,
   },
   {
     path: "/contact-us",

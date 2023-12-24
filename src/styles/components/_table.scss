@@ -25,7 +25,8 @@
 .materialTable {
   transition: all 0.3s ease-in-out;
   .materialTableHead {
-    .materialTableRow {
+    background: $bg-body !important;
+    .materialTableBodyRowForAdminGameDashboard {
       .materialTableCell {
         background: $bg-body !important;
         color: $text-p-color !important;
@@ -38,7 +39,7 @@
           line-height: inherit !important;
           padding: 0px 2px !important;
           font-size: 10px !important;
-          line-height: 0 !important;
+          // line-height: 0 !important;
         }
       }
     }
@@ -65,6 +66,7 @@
         color: $text-p-color !important;
         border-bottom: 1px solid rgb(224 224 224 / 38%) !important;
         text-align: center !important;
+        // text-align: center !important;
         // padding-top: 0px !important;
         // padding-bottom: 0px !important;
 

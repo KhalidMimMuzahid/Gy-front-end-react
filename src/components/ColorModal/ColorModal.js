@@ -86,6 +86,7 @@ const ColorModal = ({
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "white",
+    color: "black",
     padding: "20px",
     borderRadius: "8px",
     outline: "none",
@@ -111,7 +112,7 @@ const ColorModal = ({
       aria-describedby="modal-modal-description"
     >
       <Box sx={modalStyle}>
-        <h2 id="modal-modal-title">{`Join ${getOptionTitle(
+        <h2 id="modal-modal-title" >{`Join ${getOptionTitle(
           selectedOption
         )}`}</h2>
         <div className="modal_body">

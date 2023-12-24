@@ -25,40 +25,24 @@ const LevelIncomeTable = ({ data, showDetails }) => {
       minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
-      id: "transaction_id",
-      label: "Transaction ID",
-      minWidth: window.innerWidth > 476 ? 100 : 50,
+      id: "type",
+      label: "Type",
+      minWidth: 100,
     },
   ];
 
-  function createData(
-    sn,
-    income_from_user_id,
-    level,
-    amount,
-    date,
-    transaction_id
-  ) {
-    return { sn, income_from_user_id, level, amount, date, transaction_id };
+  function createData(sn, income_from_user_id, level, amount, date, type) {
+    return { sn, income_from_user_id, level, amount, date, type };
   }
 
   const rows = data?.map((d, i) =>
     createData(
       i + 1,
-      d?.incomeFrom,
+      d?.incomeFromUserId,
       d?.level,
-      "₹" + Number(d?.amount).toFixed(4),
-      d?.date,
-      <p
-        style={{
-          userSelect: "none",
-          cursor: "pointer",
-          textDecoration: "underline",
-        }}
-        onClick={() => showDetails(d)}
-      >
-        {d?.transactionID}
-      </p>
+      "₹" + Number(d?.winningAmount).toFixed(4),
+      d?.date || "this is date",
+      d?.type || "profit-share"
     )
   );
 
@@ -68,7 +52,7 @@ const LevelIncomeTable = ({ data, showDetails }) => {
       rows={rows}
       perPageShow={6}
       tableHeight={440}
-      className='common_table'
+      className="common_table"
     />
   );
 };

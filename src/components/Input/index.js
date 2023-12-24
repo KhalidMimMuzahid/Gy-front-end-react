@@ -21,6 +21,7 @@ const Input = (props) => {
         onChange={props.onChange}
         disabled={props.disabled}
         ref={props.ref}
+        defaultValue={props?.defaultValue}
       />
       {props?.copyToClipboard && (
         <span

@@ -12,14 +12,15 @@ import calculateTimeDifference from "../../../../utils/function/fetCalculateTime
 
 const AdminGameDashBoard = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
-  const [isDisable, setIsDisable] = React.useState(false);
+  const [isDisable, setIsDisable] = React.useState(true);
   const [isLoading, setisLoading] = React.useState(true);
   const { data } = useGetAllColorPrductionwHistoryQuery();
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
-  console.log(data);
+  // console.log(data);
   let initialTimeDuration =
     180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
+  // console.log("nnnnnn", initialTimeDuration)
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
@@ -49,9 +50,15 @@ const AdminGameDashBoard = () => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
           setisLoading(false);
+          if (seconds > 30) {
+            setIsDisable(true);
+          } else if (seconds <= 30 && isDisable) {
+            setIsDisable(false);
+          }
         } else if (seconds === 0) {
           refetch();
           setisLoading(true);
+          setIsDisable(true);
         } else {
           // now time is minus value
           setisLoading(true);
@@ -61,6 +68,16 @@ const AdminGameDashBoard = () => {
       return () => clearInterval(interval); // Cleanup interval on component unmount
     }
   }, [seconds]);
+
+  // for keep checkbox disabled untill 2 minutes and 30 sec
+
+  useEffect(() => {
+    if (initialTimeDuration <= 30) {
+      setIsDisable(false);
+    } else {
+      setIsDisable(true);
+    }
+  }, [initialTimeDuration, isDisable]);
 
   useEffect(() => {
     if (periodData?.data?.period) {
@@ -90,18 +107,18 @@ const AdminGameDashBoard = () => {
       {isLoading ? (
         <h1>Loading</h1>
       ) : (
-        <div className="game_dashboard_wrapper">
-          <div className="game_dashboard_header">
-            <div className="game_dashboard_header_left">
-              <h4>Count Dwon</h4>
+        <div className='game_dashboard_wrapper'>
+          <div className='game_dashboard_header'>
+            <div className='game_dashboard_header_left'>
+              <h4>Count Down</h4>
               <h5 style={{ color: textColor }}>{formatTime(seconds)}</h5>
             </div>
-            <div className="game_dashboard_header_right">
+            <div className='game_dashboard_header_right'>
               <h4>Active Period Id</h4>
               <p>{periodData?.data?.period}</p>
             </div>
           </div>
-          <div className="game_dashboard_table">
+          <div className='game_dashboard_table'>
             <AllColorPredictionTable
               data={data?.data}
               statusChange={statusChange}
@@ -115,5 +132,3 @@ const AdminGameDashBoard = () => {
 };
 
 export default AdminGameDashBoard;
-
-
