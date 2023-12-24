@@ -67,12 +67,11 @@ const AdminGameDashBoard = () => {
 
   useEffect(() => {
     if (initialTimeDuration <= 30) {
-      setIsDisable(false)
+      setIsDisable(false);
+    } else {
+      setIsDisable(true);
     }
-    else  {
-      setIsDisable(true)
-    }
-  },[initialTimeDuration,isDisable])
+  }, [initialTimeDuration, isDisable]);
 
   useEffect(() => {
     if (periodData?.data?.period) {
@@ -102,18 +101,18 @@ const AdminGameDashBoard = () => {
       {isLoading ? (
         <h1>Loading</h1>
       ) : (
-        <div className="game_dashboard_wrapper">
-          <div className="game_dashboard_header">
-            <div className="game_dashboard_header_left">
+        <div className='game_dashboard_wrapper'>
+          <div className='game_dashboard_header'>
+            <div className='game_dashboard_header_left'>
               <h4>Count Down</h4>
               <h5 style={{ color: textColor }}>{formatTime(seconds)}</h5>
             </div>
-            <div className="game_dashboard_header_right">
+            <div className='game_dashboard_header_right'>
               <h4>Active Period Id</h4>
               <p>{periodData?.data?.period}</p>
             </div>
           </div>
-          <div className="game_dashboard_table">
+          <div className='game_dashboard_table'>
             <AllColorPredictionTable
               data={data?.data}
               statusChange={statusChange}
@@ -127,5 +126,3 @@ const AdminGameDashBoard = () => {
 };
 
 export default AdminGameDashBoard;
-
-
