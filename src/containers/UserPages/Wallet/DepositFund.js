@@ -13,6 +13,7 @@ import {
   useGetAllWalletQuery,
 } from "../../../Services/walletApi";
 import { useGetLoginUserQuery } from "../../../Services/userApi";
+import PuiImage from "../../../../src/assets/PUI.png";
 const DepositFundPage = () => {
   const { data: allWalletInfo } = useGetAllWalletQuery();
   const { data: userData } = useGetLoginUserQuery();
@@ -55,9 +56,9 @@ const DepositFundPage = () => {
     } else {
       if (value.amount < 0) {
         Notification("Negative amount is not allow", "error");
-      } else if(value?.amount <500){
+      } else if (value?.amount < 500) {
         Notification("Minimum deposit is 500", "error");
-      }else {
+      } else {
         await addDeposit(formData);
       }
     }
@@ -94,7 +95,8 @@ const DepositFundPage = () => {
             <div className="ss-trade_section_title_right_side">
               <div className="ss-trade_section_title_balance ss-trade_section_Trx_balance">
                 <p>
-                ₹ {allWalletInfo?.data?.depositBalance
+                  ₹{" "}
+                  {allWalletInfo?.data?.depositBalance
                     ? parseFloat(allWalletInfo?.data?.depositBalance).toFixed(4)
                     : "0"}
                 </p>
@@ -104,19 +106,31 @@ const DepositFundPage = () => {
           <div className="ss-trade_topupaccount_page_content">
             <div className="ss-trade_topup_qr_content">
               {/* bnb */}
-              <div className="qr_code_box"> 
-                
-                  <div className="card">
-                    <div>
-                      <h2>Bank Name: KOTAK MAHINDRA BANK</h2>
-                      <h3>Account Number: 6612085398</h3>
-                      <h3>IFSC Code: KKBK0001358</h3>
-                    </div>
-
+              <div className="qr_code_box">
+                <div className="card">
+                  <div>
+                    <h2>Bank Name : ICICI Bank</h2>
+                    <h3>Account Name : 3W Business Private Limited</h3>
+                    <h3>Account : 025405006735</h3>
+                    <h3>IFSC Code : ICIC0000254</h3>
                   </div>
-               
-                  
-              </div> 
+                </div>
+              </div>
+              <div className="qr_code_box">
+                <div className="card2">
+                  <div style={{ justifyContent: "center", display:"flex", gap:"15px" }}>
+                    <a href="upi://pay?pa=3wbusinessprivatelimited@icici&cu=INR&tn=Grow More">
+                      {" "}
+                      PAY Via
+                      
+                    </a>
+                    <img
+                        src={PuiImage}
+                        style={{ height: "60px", width: "70px" }}
+                      />
+                  </div>
+                </div>
+              </div>
               {/* trx */}
               {/* <div className="qr_code_box">
                 <div className="qr_img">

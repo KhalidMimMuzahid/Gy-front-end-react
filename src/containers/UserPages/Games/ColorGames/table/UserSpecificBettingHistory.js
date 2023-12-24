@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "../../../../../components/DataTable";
 import { getColoAndNumberAccordingToXOption } from "../../../../../utils/function/getColoAndNumberAccordingToXOption";
-
+import "../../../../../styles/abstract/_variables.scss"
 const columns = [
   { id: "userId", label: "User Id", minWidth: 20 },
   { id: "period", label: "Period", minWidth: 20 },
@@ -74,7 +74,7 @@ const UserSpecificBettingHistory = ({ data }) => {
       d?.date,
       d?.totalContractMoney,
       d?.option,
-      <span style={{ color: d?.winningAmount ? "black" : "red" }}>
+      <span style={{ color: d?.winningAmount ? `$text-p-color` : "red" }}>
         {" "}
         {d?.winningAmount || "loss"}
       </span>
