@@ -12,7 +12,7 @@ import calculateTimeDifference from "../../../../utils/function/fetCalculateTime
 
 const AdminGameDashBoard = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
-  const [isDisable, setIsDisable] = React.useState(false);
+  const [isDisable, setIsDisable] = React.useState(true);
   const [isLoading, setisLoading] = React.useState(true);
   const { data } = useGetAllColorPrductionwHistoryQuery();
   const [selectWinner, { data: selectWindata, error }] =
@@ -49,9 +49,16 @@ const AdminGameDashBoard = () => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
           setisLoading(false);
+
+          if (seconds > 30) {
+            setIsDisable(true);
+          } else {
+            setIsDisable(false);
+          }
         } else if (seconds === 0) {
           refetch();
           setisLoading(true);
+          setIsDisable(true);
         } else {
           // now time is minus value
           setisLoading(true);

@@ -132,6 +132,18 @@ const Wallet = () => {
           bgColor="#ffbd5a"
           cardBgColor="#28c66f"
         />
+        <HomeCard
+          cardName="Winning Share"
+          cardValue={`₹${
+            data?.data?.winingShare
+              ? parseFloat(data?.data?.winingShare).toFixed(4)
+              : "0"
+          }`}
+          icon={InDirectIncome}
+          linkText="view details"
+          bgColor="#ffbd5a"
+          cardBgColor="#28c66f"
+        />
       </div>
     </div>
   );
