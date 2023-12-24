@@ -50,10 +50,9 @@ const AdminGameDashBoard = () => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
           setisLoading(false);
-
           if (seconds > 30) {
             setIsDisable(true);
-          } else {
+          } else if (seconds <= 30 && isDisable) {
             setIsDisable(false);
           }
         } else if (seconds === 0) {
