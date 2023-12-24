@@ -17,9 +17,10 @@ const AdminGameDashBoard = () => {
   const { data } = useGetAllColorPrductionwHistoryQuery();
   const [selectWinner, { data: selectWindata, error }] =
     useSelectWinnerMutation();
-  console.log(data);
+  // console.log(data);
   let initialTimeDuration =
     180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
+  // console.log("nnnnnn", initialTimeDuration)
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
@@ -69,6 +70,17 @@ const AdminGameDashBoard = () => {
     }
   }, [seconds]);
 
+  // for keep checkbox disabled untill 2 minutes and 30 sec
+
+  useEffect(() => {
+    if (initialTimeDuration <= 30) {
+      setIsDisable(false)
+    }
+    else  {
+      setIsDisable(true)
+    }
+  },[initialTimeDuration,isDisable])
+
   useEffect(() => {
     if (periodData?.data?.period) {
       initialTimeDuration =
@@ -100,7 +112,7 @@ const AdminGameDashBoard = () => {
         <div className="game_dashboard_wrapper">
           <div className="game_dashboard_header">
             <div className="game_dashboard_header_left">
-              <h4>Count Dwon</h4>
+              <h4>Count Down</h4>
               <h5 style={{ color: textColor }}>{formatTime(seconds)}</h5>
             </div>
             <div className="game_dashboard_header_right">

@@ -149,7 +149,7 @@ const ColorGame = () => {
                   </div>
                   <div className="top_content_right">
                     <div className="count-dwon-container">
-                      <p>Count Dwon</p>
+                      <p>Count Down</p>
                       <h3 style={{ color: textColor }}>
                         {formatTime(seconds)}
                       </h3>

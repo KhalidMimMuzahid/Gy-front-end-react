@@ -1,6 +1,8 @@
 // for responsive
 @import "../../../../responsive/breakpoints";
+
 //variables
+@import "../../../../abstract/variables";
 $button-height: 40px;
 $button-width: 15%;
 $border-radius: 5px;
@@ -27,6 +29,7 @@ $border-radius: 5px;
     }
     .title_with_icon {
       display: flex;
+      color: $text-p-color;
       align-items: center;
       gap: 1rem;
       @include breakpoints(miniPortraitTablet) {
@@ -34,7 +37,7 @@ $border-radius: 5px;
       }
     }
     .amount h3 {
-      color: currentColor;
+      color: $text-p-color;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       @include breakpoints(miniPortraitTablet) {
@@ -49,6 +52,7 @@ $border-radius: 5px;
         align-items: center;
         justify-content: center;
         text-align: center;
+        color: $text-p-color;
       }
     }
   }
@@ -127,12 +131,13 @@ $border-radius: 5px;
 }
 .records_table {
   .table_header {
+    padding: 1rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #000;
+    color: $text-p-color;
     @include breakpoints(miniPortraitTablet) {
       margin: 5px 0;
     }
