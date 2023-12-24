@@ -20,7 +20,7 @@ const AdminGameDashBoard = () => {
   // console.log(data);
   let initialTimeDuration =
     180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
-  console.log("nnnnnn", initialTimeDuration)
+  // console.log("nnnnnn", initialTimeDuration)
   useEffect(() => {
     if (selectWindata?.message) {
       Notification(selectWindata?.message, "success");
