@@ -1,6 +1,7 @@
 import React from "react";
 import DataTable from "../../../../../components/DataTable";
 import { Checkbox } from "@mui/material";
+import "../../../../../styles/abstract/_variables.scss"
 
 const columns = [
   { id: "color", label: "Result", minWidth: 20 },
@@ -89,7 +90,8 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
 
       <span>
         <Checkbox
-          color="primary"
+          style={{color:`--var(text-p-color)`}}
+          // color={`$text-p-color`}
           disabled={isDisable}
           onChange={() => statusChange(d?.option)}
         />

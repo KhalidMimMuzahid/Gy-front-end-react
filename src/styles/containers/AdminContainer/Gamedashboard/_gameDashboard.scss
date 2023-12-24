@@ -1,9 +1,10 @@
+@import "../../../abstract/variables";
 .game_dashboard_wrapper {
   padding: 0.30rem;
 }
 .game_dashboard_header {
-  background: #7f7f7f;
-  color: #ffff;
+  background: $bg-body;
+  color: $text-p-color;
   padding: 0.40rem;
   display: flex;
   align-items: start;
@@ -20,4 +21,7 @@
     align-items: center;
     justify-content: center;
   }
+}
+.MuiButtonBase-root{
+  color: $text-p-color !important;
 }

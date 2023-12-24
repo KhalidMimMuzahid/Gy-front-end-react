@@ -23,7 +23,8 @@
 .materialTable {
   transition: all 0.3s ease-in-out;
   .materialTableHead {
-    .materialTableRow {
+    background: $bg-body !important;
+    .materialTableBodyRowForAdminGameDashboard {
       .materialTableCell {
         background: $bg-body !important;
         color: $text-p-color !important;
