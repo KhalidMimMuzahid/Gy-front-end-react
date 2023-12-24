@@ -10,6 +10,7 @@ import TransactionModal from "../../../components/Modal/TransactionModal";
 const LevelIncome = () => {
   const { data: levelIncome, isLoading: isLoadingDirectIncome } =
     useGetAllLevelIncomeHistoryUserQuery();
+
   // modal toggle
   const [openModal, setOpenModal] = useState(false);
   const modalRef = useRef(null);
@@ -34,28 +35,28 @@ const LevelIncome = () => {
   }
   return (
     <>
-      <div className='UserEarning_wallet_page_wrapper'>
-        <div className='UserEarning_dash_content card_row'>
+      <div className="UserEarning_wallet_page_wrapper">
+        <div className="UserEarning_dash_content card_row">
           <UserIncomeCard
-            cardName='Profit Share'
+            cardName="Profit Share"
             cardValue={`₹${
               levelIncome?.data?.totalLevelIncome
                 ? parseFloat(levelIncome?.data?.totalLevelIncome).toFixed(4)
                 : "0"
             }`}
             icon={roiIncomeIcon}
-            bgColor='#38cab3'
-            linkText='view details'
-            cardBgColor='#00d0e7'
+            bgColor="#38cab3"
+            linkText="view details"
+            cardBgColor="#00d0e7"
           />
         </div>
         <SectionCommonTable
-          wrapperClassName='roi_table'
+          wrapperClassName="roi_table"
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle='Profit Share'
+          sectionTableTitle="Profit Share"
           table={
             <LevelIncomeTable
-              data={levelIncome?.data?.history}
+              data={levelIncome.data}
               showDetails={showDetails}
             />
           }
@@ -65,7 +66,7 @@ const LevelIncome = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         modalRef={modalRef}
-        modalTitle='Details'
+        modalTitle="Details"
         objValue={modalData}
       />
     </>
