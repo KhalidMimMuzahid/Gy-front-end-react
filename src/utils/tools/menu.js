@@ -251,6 +251,12 @@ export const menus = [
         route: "/dashboard/wining-percentage",
         permission: ["admin"],
       },
+      {
+        id: "4s88sfs5f8wr",
+        menu: "ROI Percentage",
+        route: "/dashboard/roi-percentage",
+        permission: ["admin"],
+      },
     ],
   },
   // ************************************* user dashboard menu ************************//

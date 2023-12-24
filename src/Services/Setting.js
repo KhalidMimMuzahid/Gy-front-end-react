@@ -81,6 +81,18 @@ export const settingApi = createApi({
       }),
       invalidatesTags: ["setting"],
     }),
+    updateRoiPercentage: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/roi_percentage",
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
+    getRoiPercentage: builder.query({
+      query: () => "/api/v1/private/roi_percentage",
+      invalidatesTags: ["setting"],
+    }),
     getWinningPercentage: builder.query({
       query: () => "/api/v1/private/winning-share-percentage",
       invalidatesTags: ["setting"],
@@ -117,4 +129,6 @@ export const {
   useGetAdminRewardQuery, // SAST API
   useUpdateWinningPercentageMutation,
   useGetWinningPercentageQuery,
+  useUpdateRoiPercentageMutation,
+  useGetRoiPercentageQuery,
 } = settingApi;
