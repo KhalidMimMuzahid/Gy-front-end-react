@@ -1,6 +1,6 @@
 import React from "react";
 import DataTable from "../../../../../components/DataTable";
-
+import "../../../../../styles/abstract/_variables.scss"
 const columns = [
   { id: "periodId", label: "Period", minWidth: 20 },
   { id: "price", label: "Price", minWidth: 50 },
@@ -57,6 +57,7 @@ const AllPeriodRecordTable = ({ data }) => {
                     : "",
                 width: "20px",
                 borderRadius: "50%",
+                border: `1 px solid $text-p-color`,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

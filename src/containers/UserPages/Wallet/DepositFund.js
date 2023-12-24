@@ -13,7 +13,7 @@ import {
   useGetAllWalletQuery,
 } from "../../../Services/walletApi";
 import { useGetLoginUserQuery } from "../../../Services/userApi";
-import PuiImage from "../../../../src/assets/PUI.jpg";
+import PuiImage from "../../../../src/assets/PUI.png";
 const DepositFundPage = () => {
   const { data: allWalletInfo } = useGetAllWalletQuery();
   const { data: userData } = useGetLoginUserQuery();
