@@ -265,6 +265,32 @@ const TeamStatistics = () => {
                       bgColor="#38cab3"
                       cardBgColor="#fe9f43"
                     />
+                    <HomeCard
+                      cardName="Winning Share"
+                      cardValue={`₹${
+                        TeamStatisticsResponse?.data?.totalWithdraw
+                          ? parseFloat(
+                              TeamStatisticsResponse?.data?.totalWithdraw
+                            ).toFixed(4)
+                          : "0"
+                      }`}
+                      icon={roiIcon}
+                      bgColor="#38cab3"
+                      cardBgColor="#fe9f43"
+                    />
+                    <HomeCard
+                      cardName="Winning Amount"
+                      cardValue={`₹${
+                        TeamStatisticsResponse?.data?.totalWithdraw
+                          ? parseFloat(
+                              TeamStatisticsResponse?.data?.totalWithdraw
+                            ).toFixed(4)
+                          : "0"
+                      }`}
+                      icon={userListIcon}
+                      bgColor="#38cab3"
+                      cardBgColor="#fe9f43"
+                    />
                   </>
                 ) : (
                   "Not found"

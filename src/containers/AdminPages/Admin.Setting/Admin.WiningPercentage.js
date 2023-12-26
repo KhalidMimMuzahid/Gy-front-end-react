@@ -105,7 +105,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="Level-1"
-                      type="number"
+                      type="text"
                       name="level1"
                       id="self"
                       placeholder=""
@@ -123,7 +123,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="level-2"
-                      type="number"
+                      type="text"
                       name="level2"
                       id="to_token_level_1"
                       placeholder=""
@@ -141,7 +141,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="Level-3"
-                      type="number"
+                      type="text"
                       name="level3"
                       id="to_token_level_2"
                       placeholder=""
@@ -159,7 +159,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="Level-4"
-                      type="number"
+                      type="text"
                       name="level4"
                       id="to_token_level_3"
                       placeholder=""
@@ -177,7 +177,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="Level-5"
-                      type="number"
+                      type="text"
                       name="level5"
                       id="to_token_level_4"
                       placeholder=""
@@ -195,7 +195,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="Level-6"
-                      type="number"
+                      type="text"
                       name="level6"
                       id="to_token_level_5"
                       placeholder=""
@@ -213,7 +213,7 @@ const WiningPercentage = () => {
                   >
                     <Input
                       label="Level-7"
-                      type="number"
+                      type="text"
                       name="level7"
                       id="to_token_level_6"
                       placeholder=""
