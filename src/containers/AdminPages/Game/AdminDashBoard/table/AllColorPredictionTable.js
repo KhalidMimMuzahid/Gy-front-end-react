@@ -29,7 +29,12 @@ const columns = [
   },
 ];
 
-const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
+const AllColorPredictionTable = ({
+  data,
+  isDisable,
+  statusChange,
+  isWinnerSelected,
+}) => {
   function createData(color, number, numberOfUser, amount, priceCL, action) {
     return {
       color,
@@ -89,12 +94,17 @@ const AllColorPredictionTable = ({ data, isDisable, statusChange }) => {
       d?.priceCL,
 
       <span>
-        <Checkbox
-          style={{color:`--var(text-p-color)`}}
-          // color={`$text-p-color`}
-          disabled={isDisable}
-          onChange={() => statusChange(d?.option)}
-        />
+        {isDisable && !isWinnerSelected ? (
+          <span style={{ color: "red" }}>X</span>
+        ) : (
+          <Checkbox
+            style={{ color: `--var(text-p-color)` }}
+            // color={`$text-p-color`}
+            checked={isWinnerSelected === d?.option}
+            disabled={isDisable}
+            onChange={() => statusChange(d?.option)}
+          />
+        )}
       </span>
     )
   );
