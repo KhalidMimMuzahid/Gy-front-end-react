@@ -53,7 +53,7 @@ const TeamStatistics = () => {
     await addTeamStatistics(obj);
     setShowTeam(true);
   };
-
+  console.log({ TeamStatisticsResponse });
   // go to props
   const navigate = useNavigate();
   // const goToHistory = (level) =>
@@ -281,9 +281,9 @@ const TeamStatistics = () => {
                     <HomeCard
                       cardName="Winning Amount"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.totalWithdraw
+                        TeamStatisticsResponse?.data?.winingAmount
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.totalWithdraw
+                              TeamStatisticsResponse?.data?.winingAmount
                             ).toFixed(4)
                           : "0"
                       }`}
