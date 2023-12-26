@@ -81,6 +81,9 @@ const RankIncome = React.lazy(() =>
 const RoiIncome = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.RoiIncome")
 );
+const WinningAmount = React.lazy(() =>
+  import("../containers/UserPages/Earnings/Earning.WiningAmount")
+);
 const Reward = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.Reward")
 );
@@ -172,6 +175,11 @@ const AdminDirectIncome = React.lazy(() =>
 );
 const AdminLevelIncome = React.lazy(() =>
   import("../containers/AdminPages/AdminEarningTrack/AdminEarning.LevelIncome")
+);
+const AdminWinningAmount = React.lazy(() =>
+  import(
+    "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
+  )
 );
 const AdminGlobalPoolIncome = React.lazy(() =>
   import(
@@ -405,6 +413,12 @@ export const routers = [
     component: RoiIncome,
   },
   {
+    path: "/earnings/winning-amount",
+    name: "Winning Amount",
+    permission: ["user"],
+    component: WinningAmount,
+  },
+  {
     path: "/earnings/rank-income",
     name: "Rank Income",
     permission: ["user"],
@@ -572,6 +586,12 @@ export const routers = [
     name: "Profit Share",
     permission: ["admin"],
     component: AdminLevelIncome,
+  },
+  {
+    path: "/earnings/winning-amount",
+    name: "Winning Amount",
+    permission: ["admin"],
+    component: AdminWinningAmount,
   },
   {
     path: "/earnings/global-pool-income",
