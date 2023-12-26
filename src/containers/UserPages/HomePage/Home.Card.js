@@ -11,12 +11,14 @@ const HomeCard = ({
   teamBusiness,
   role,
   goToHistory,
-  level
+  level,
 }) => {
+  // const cardBgGradient = `linear-gradient(circle, rgba(0, 44, 166, 0.651) 0%, ${cardBgColor})`;
+
   return (
     <div
       className="ss-trade_dash_card_wrapper"
-      // style={{ backgroundColor: cardBgColor }}
+      style={{ background: cardBgColor }}
     >
       <div className="ss-trade_content">
         <div className="ss-trade_widget_info">
