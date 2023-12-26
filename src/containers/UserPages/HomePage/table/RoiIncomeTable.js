@@ -6,26 +6,30 @@ const RoiInocmeTable = () => {
   const { data } = useRoiIncomeDataUserQuery();
   const columns = [
     { id: "sn", label: "S.N", minWidth: 20 },
-    { id: "packages", label: "Package", minWidth: 100 },
+    {
+      id: "packages",
+      label: "Package",
+      minWidth: window.innerWidth > 476 ? 100 : 50,
+    },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 120 : 50,
     },
     {
       id: "roi_per_day",
       label: "ROI Per Day",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "amount",
       label: "Amount",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 40,
     },
     {
       id: "total_amount",
       label: "Total Amount",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
   ];
 

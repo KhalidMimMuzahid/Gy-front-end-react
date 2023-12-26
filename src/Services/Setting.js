@@ -45,6 +45,14 @@ export const settingApi = createApi({
       }),
       invalidatesTags: ["setting"],
     }),
+    winingSharePercentage: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/winning-share-percentage",
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
     addReward: builder.mutation({
       // SAST API
       query: (body) => ({
@@ -101,6 +109,10 @@ export const settingApi = createApi({
       query: () => "/api/v1/private/user/get-all-rewards",
       providesTags: ["setting"], // automatic-data fetching
     }),
+    getWiningShareProfit: builder.query({
+      query: () => "/api/v1/private/winning-share-percentage",
+      providesTags: ["setting"], // automatic-data fetching
+    }),
     getYoutube: builder.query({
       query: () => "/api/v1/public/get_video_link",
       providesTags: ["setting"], // automatic-data fetching
@@ -111,6 +123,7 @@ export const settingApi = createApi({
     }),
     getWebsiteAnalytics: builder.query({
       query: () => "/api/v1/public/website_analytics",
+      providesTags: ["setting"], // automatic-data fetching
     }),
   }),
 });
@@ -127,6 +140,8 @@ export const {
   useUpdateRewardMutation, // SAST API
   useDeleteRewardMutation, // SAST API
   useGetAdminRewardQuery, // SAST API
+  useWiningSharePercentageMutation,
+  useGetWiningShareProfitQuery,
   useUpdateWinningPercentageMutation,
   useGetWinningPercentageQuery,
   useUpdateRoiPercentageMutation,

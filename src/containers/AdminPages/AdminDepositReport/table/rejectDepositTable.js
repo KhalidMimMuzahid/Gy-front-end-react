@@ -3,36 +3,40 @@ import DataTable from "../../../../components/DataTable";
 
 const columns = [
   { id: "sr", label: "Sr.", minWidth: 20 },
-  { id: "userId", label: "User ID", minWidth: 100 },
+  {
+    id: "userId",
+    label: "User ID",
+    minWidth: window.innerWidth > 476 ? 100 : 50,
+  },
   {
     id: "name",
     label: "Name",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "amount",
     label: "Amount",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "date",
     label: "Date",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "transaction_id",
     label: "Transaction ID",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "tid",
     label: "TID",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "status",
     label: "Status",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
 ];
 

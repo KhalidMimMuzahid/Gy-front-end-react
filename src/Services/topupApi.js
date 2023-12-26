@@ -21,7 +21,7 @@ export const topupApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["userTopup", "adminUser", "autoTrade", "autoTradeFriendly"],
     }),
     createROIAdmin: builder.mutation({
       query: (body) => ({
@@ -29,7 +29,7 @@ export const topupApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminUser"],
+      invalidatesTags: ["userTopup", "adminUser", "autoTrade", "autoTradeFriendly"],
     }),
     // user
     autoTradeUpgrade: builder.mutation({
@@ -102,7 +102,7 @@ export const topupApi = createApi({
         url: "/api/v1/private/get_topup_history",
         method: "GET",
       }),
-      providesTags: ["adminUser"],
+      providesTags: ["userTopup", "adminUser", "autoTrade", "autoTradeFriendly"],
     }),
   }),
 });

@@ -1,4 +1,6 @@
 @import "../abstract/variables";
+@import "../responsive/breakpoints";
+
 .materialTablePagination {
   .MuiTablePagination-toolbar {
     transition: all 0.3s ease-in-out;
@@ -30,6 +32,15 @@
         color: $text-p-color !important;
         border-bottom: 1px solid rgb(224 224 224 / 38%) !important;
         text-align: center !important;
+        padding: 16px;
+
+        @include breakpoints(largeMiniMobile) {
+          text-align: left !important;
+          line-height: inherit !important;
+          padding: 0px 2px !important;
+          font-size: 10px !important;
+          // line-height: 0 !important;
+        }
       }
     }
   }
@@ -39,6 +50,14 @@
         color: $text-p-color !important;
         border-bottom: 1px solid rgb(224 224 224 / 38%) !important;
         text-align: center !important;
+        padding: 16px;
+
+        @include breakpoints(largeMiniMobile) {
+          text-align: left !important;
+          line-height: inherit !important;
+          padding: 0px 2px !important;
+          font-size: 10px !important;
+        }
       }
     }
     // set the new class for admin game dashboard table
@@ -50,7 +69,34 @@
         // text-align: center !important;
         // padding-top: 0px !important;
         // padding-bottom: 0px !important;
+
+        @include breakpoints(largeMiniMobile) {
+          text-align: left !important;
+          line-height: inherit !important;
+          padding: 0px 2px !important;
+          font-size: 10px !important;
+        }
       }
     }
+  }
+}
+
+.css-1ex1afd-MuiTableCell-root {
+  padding: 0px 2px !important;
+}
+
+.css-y8ay40-MuiTableCell-root {
+  background: $bg-body !important;
+  color: $text-p-color !important;
+  border-bottom: 1px solid rgb(224 224 224 / 38%) !important;
+  text-align: center !important;
+  padding: 16px;
+
+  @include breakpoints(largeMiniMobile) {
+    text-align: left !important;
+    line-height: 0 !important;
+    padding: 0px 2px !important;
+    font-size: 10px !important;
+    line-height: inherit !important;
   }
 }

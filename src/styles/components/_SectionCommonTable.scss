@@ -19,6 +19,10 @@
   .ss-trade_sectiontable_card {
     padding: 25px;
     min-height: 250px;
+
+    @include breakpoints(largeMiniMobile) {
+      padding: 5px !important;
+    }
     .ss-trade_sectiontable_title {
       margin-bottom: 20px;
       display: flex;

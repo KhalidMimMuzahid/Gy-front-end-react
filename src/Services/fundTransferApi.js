@@ -17,11 +17,11 @@ export const fundTransferApi = createApi({
     // admin
     allFundTransferHistoryAdmin: builder.query({
       query: () => "/api/v1/private/fund_transfer_report",
-      providesTags: ["adminFundTransfer"], // automatic-data fetching
+      providesTags: ["adminFundTransfer", "userFundTransfer"], // automatic-data fetching
     }),
     fundTransferHistoryAdmin: builder.query({
       query: () => "/api/v1/private/admin_fundtransfer",
-      providesTags: ["adminFundTransfer"], // automatic-data fetching
+      providesTags: ["adminFundTransfer", "userFundTransfer"], // automatic-data fetching
     }),
   }),
 });

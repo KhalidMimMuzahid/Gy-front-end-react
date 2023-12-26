@@ -4,21 +4,25 @@ import DataTable from "../../../../components/DataTable";
 const RankIncomeTable = ({ data, showDetails }) => {
   const columns = [
     { id: "sn", label: "S.N", minWidth: 20 },
-    { id: "level", label: "Rank", minWidth: 100 },
+    {
+      id: "level",
+      label: "Rank",
+      minWidth: window.innerWidth > 476 ? 100 : 40,
+    },
     {
       id: "amount",
       label: "Amount",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 40,
     },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
     {
       id: "transaction_id",
       label: "Transaction ID",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
   ];
 

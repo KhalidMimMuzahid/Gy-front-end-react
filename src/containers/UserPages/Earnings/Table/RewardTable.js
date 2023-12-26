@@ -7,28 +7,28 @@ const RewardTable = ({ data, showDetails }) => {
     {
       id: "user_id",
       label: "User Id",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
     {
       id: "full_name",
       label: "Full Name",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
 
     {
       id: "amount",
       label: "Amount",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 120 : 60,
     },
     {
       id: "transectionId",
       label: "Transection ID",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 120 : 60,
     },
   ];
 

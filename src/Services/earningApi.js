@@ -17,15 +17,15 @@ export const earningApi = createApi({
     // admin
     roiIncomeData: builder.query({
       query: () => "/api/v1/private/roi_income_data",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     levelIncomeData: builder.query({
       query: () => "/api/v1/private/level_income_data",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAutopoolMembersAdmin: builder.query({
       query: () => "/api/v1/private/autopool_users",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     addTreeAutoPoolAdmin: builder.mutation({
       // user login
@@ -34,19 +34,19 @@ export const earningApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getBoosterIncomeMembersAdmin: builder.query({
       query: () => "/api/v1/private/all_booster_user",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllBoosterIncomeIDsAdmin: builder.query({
       query: () => "/api/v1/private/total_booster_user",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getBoosterUpgradeIncome: builder.query({
       query: () => "/api/v1/private/sponsor_booster_income_admin",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     addBoostTreeAutPoolAdmin: builder.mutation({
       // user login
@@ -55,12 +55,12 @@ export const earningApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getRoyaltyMembersAdmin: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
       query: () => `/api/v1/private/getroyaltymembers`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     addSendRoyaltyMembersMoneyAdmin: builder.mutation({
       // user login
@@ -69,7 +69,7 @@ export const earningApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     // user earning
     roiIncomeDataUser: builder.query({
@@ -109,7 +109,7 @@ export const earningApi = createApi({
     }),
     getRoyaltyIncomeHistoryAdmin: builder.query({
       query: () => "/api/v1/private/getroyaltymemberhistory",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAutoPoolHistoryEarning: builder.query({
       query: () => "/api/v1/secure/getautopool_history",
@@ -133,19 +133,19 @@ export const earningApi = createApi({
     }),
     getGiftIncomeHistoryAdmin: builder.query({
       query: () => "/api/v1/private/gift_income_history",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getGiftTransferUserListAdmin: builder.query({
       query: () => "/api/v1/private/gift_income_user",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getGiftTransferHistoryAdmin: builder.query({
       query: () => "/api/v1/private/gift_income_history",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getUserTopupHistoryAdmin: builder.query({
       query: () => "/api/v1/private/all_user_activation",
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getIncomeLevelUpdate: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
@@ -155,21 +155,21 @@ export const earningApi = createApi({
     getIncomeLevelUpdateAdmin: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
       query: () => `/api/v1/private/get_income_level_update`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     addSendGiftSingleUserAdmin: builder.mutation({
       query: ({ id }) => ({
         url: `/api/v1/private/send_gift_single_user/${id}`,
         method: "POST",
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     addSendGiftAllUserAdmin: builder.mutation({
       query: () => ({
         url: `/api/v1/private/send_gift_all_user`,
         method: "POST",
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getBoosterIncomeHistory: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
@@ -179,12 +179,12 @@ export const earningApi = createApi({
     getIndirectIncomeHistoryAdmin: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
       query: () => `/api/v1/private/indirect_income_data`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getDirectIncomeHistoryAdmin: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
       query: () => `/api/v1/private/direct_income_data`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getUserActivationIncome: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
@@ -198,9 +198,11 @@ export const earningApi = createApi({
     }),
     getBonanzaAchievement: builder.query({
       query: () => `/secure/api/getBonanzaAchievement`,
+      providesTags: ["user"], // automatic-data fetching
     }),
     getBonanzaPrize: builder.query({
       query: () => `/secure/api/getBonanzaPrize`,
+      providesTags: ["user"], // automatic-data fetching
     }),
     getBoosterUpgradeUserIncome: builder.query({
       query: () => `/secure/api/sponsor_booster_income`,
@@ -209,7 +211,7 @@ export const earningApi = createApi({
     getDirectWithdrawIncomeHistoryAdmin: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
       query: () => `/api/v1/private/direct_withdraw_income`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getSingleBonanzaAchieve: builder.mutation({
       query: (body) => ({
@@ -217,17 +219,19 @@ export const earningApi = createApi({
         method: "POST",
         body: body,
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllBonanzaPrize: builder.query({
       query: () => `/api/v1/private/getAllBonanzaPrize`,
+      providesTags: ["user"], // automatic-data fetching
     }),
     getAllBonanzaAchieverList: builder.query({
       query: () => `/api/v1/private/getAllBonanzaAchieverList`,
+      providesTags: ["user"], // automatic-data fetching
     }),
     getBoosterControllUsers: builder.query({
       query: () => `/api/v1/private/booster_eligible_users`,
-      providesTags: ["boosterController"], // automatic-data fetching
+      providesTags:  ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     updateBoosterController: builder.mutation({
       query: (body) => ({
@@ -235,38 +239,38 @@ export const earningApi = createApi({
         method: "PUT",
         body: body,
       }),
-      invalidatesTags: ["boosterController"], // automatic-data fetching
+      invalidatesTags:  ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     // ************************** New ENDPOINT **********************
     getAllDirLevIncomeHistoryAdmin: builder.query({
       // SAST API
       query: () => `/api/v1/private/get_level_income`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllRankIncomeHistoryAdmin: builder.query({
       query: () => `/api/v1/private/get_rank_income`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllStakingIncomeHistoryAdmin: builder.query({
       // SAST API
       query: () => `/api/v1/private/get_roi_income`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllStakingLevelIncomeHistoryAdmin: builder.query({
       query: () => `/api/v1/private/staking_level_income_history_by_admin`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllBonusRewardIncomeHistoryAdmin: builder.query({
       query: () => `/api/v1/private/bonus_income_history_by_admin`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getAllGlobalPoolIncomeHistoryAdmin: builder.query({
       query: () => `/api/v1/private/global_pool_income_history_by_admin`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     getGlobalPoolUserListAdmin: builder.query({
       query: () => `/api/v1/private/global_pool_eligible_user_list`,
-      providesTags: ["adminEarning"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     addGlobalPoolIncomeAdmin: builder.mutation({
       query: (body) => ({
@@ -274,15 +278,17 @@ export const earningApi = createApi({
         method: "POST",
         body: body,
       }),
-      invalidatesTags: ["adminEarning"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     /////////////////////////////////// User/////////////////////
-    getAllLevelIncomeHistoryUser: builder.query({ // SAST API
+    getAllLevelIncomeHistoryUser: builder.query({
+      // SAST API
       // SAST API
       query: () => `/api/v1/secure/get_level_income`,
       providesTags: ["user"], // automatic-data fetching
     }),
-    getUserRankIncome: builder.query({ // SAST API
+    getUserRankIncome: builder.query({
+      // SAST API
       // SAST API
       query: () => `/api/v1/secure/get_rank_income`,
       providesTags: ["user"], // automatic-data fetching
@@ -292,7 +298,8 @@ export const earningApi = createApi({
       query: () => `/api/v1/secure/get_roi_income`,
       providesTags: ["user"], // automatic-data fetching
     }),
-    getRewardHistoryUser: builder.query({ // SAST API
+    getRewardHistoryUser: builder.query({
+      // SAST API
       query: () => `/api/v1/secure/get_reward`,
       providesTags: ["user"], // automatic-data fetching
     }),
