@@ -206,6 +206,12 @@ export const menus = [
         route: "/dashboard/color-games",
         permission: ["admin"],
       },
+      {
+        id: "458s7fs8f8sf",
+        menu: "Game History",
+        route: "/dashboard/game-history",
+        permission: ["admin"],
+      },
     ],
   },
   {
