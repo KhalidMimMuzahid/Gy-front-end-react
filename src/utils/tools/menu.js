@@ -140,6 +140,12 @@ export const menus = [
         route: "/dashboard/earnings/staking-income",
         permission: ["admin"],
       },
+      {
+        id: "f5sf5s8fs8zz",
+        menu: "Winning Amount",
+        route: "/dashboard/earnings/winning-amount",
+        permission: ["admin"],
+      },
       // Comment out unnessesary route
       // {
       //   id: "f5sf5s8fs8frank",
@@ -420,6 +426,12 @@ export const menus = [
         id: "fs55s8fs8fs",
         menu: " Actinic Bonus",
         route: "/dashboard/earnings/roi-income",
+        permission: ["user"],
+      },
+      {
+        id: "fs55s8fs8fpt",
+        menu: " Winning Amount",
+        route: "/dashboard/earnings/winning-amount",
         permission: ["user"],
       },
       //commenting unnessesary route
