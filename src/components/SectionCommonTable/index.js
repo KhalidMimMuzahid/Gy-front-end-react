@@ -31,7 +31,23 @@ const SectionCommonTable = ({
   sendAll,
   adminBalance,
   modalRef,
+  gameHistory,
 }) => {
+  const colors = [
+    "--Select--",
+    "red+violet-1",
+    "red-2",
+    "green-3",
+    "red-4",
+    "green-5",
+    "red+violet-6",
+    "red-7",
+    "green-8",
+    "red-9",
+    "green-10",
+  ];
+  const result = ["--Select--","Win", "Lose"];
+  const [status, setStatus] = useState('');
   const [showModal, setShowModal] = useState(false);
   const { data: loginUserData } = useGetLoginUserQuery();
   const [search, setSearch] = useState("");
@@ -49,7 +65,7 @@ const SectionCommonTable = ({
       setDate(state);
     }
   }, [state]);
-  
+
   useEffect(
     () => {
       if (data) {
@@ -90,7 +106,6 @@ const SectionCommonTable = ({
     // [data, search] // if i set data as a dependencies, then this useEffect hook is falling to loop hole
     [search]
   );
-  
 
   const searchFunction = () => {
     if (data) {
@@ -218,9 +233,9 @@ const SectionCommonTable = ({
   return (
     <div className={`ss-trade_sectiontable_wrapper ${wrapperClassName}`}>
       {adminBalance && (
-        <CardLayout className='admin__balance__area'>
-          <div className='admin__balance'>
-            <h2 className='usdt_balance'>
+        <CardLayout className="admin__balance__area">
+          <div className="admin__balance">
+            <h2 className="usdt_balance">
               USDT Balance:{" "}
               {adminBalance?.usdtBalance?.data
                 ? parseFloat(adminBalance?.usdtBalance?.data).toFixed(4)
@@ -238,14 +253,14 @@ const SectionCommonTable = ({
         </CardLayout>
       )}
 
-      <CardLayout style={cardStyle} className='ss-trade_sectiontable_card'>
-        <div className='ss-trade_sectiontable_title'>
-          <div className='ss-trade_sectiontable_title_container'>
+      <CardLayout style={cardStyle} className="ss-trade_sectiontable_card">
+        <div className="ss-trade_sectiontable_title">
+          <div className="ss-trade_sectiontable_title_container">
             <h2>{sectionTableTitle}</h2>
             {addGiftAllUser && (
               <Button
-                className='ss-trade_giftAllButton'
-                type='button'
+                className="ss-trade_giftAllButton"
+                type="button"
                 onClick={() => addGiftAllUser()}
                 // hidden={lastDay}
                 disabled={!(toDay === lastDay || toDay === firstDay)}
@@ -260,54 +275,56 @@ const SectionCommonTable = ({
               </Button>
             )}
           </div>
-          <div className='left'>
+          <div className="left">
             {sendAll && (
-              <Button onClick={sendAll} className='send-all'>
+              <Button onClick={sendAll} className="send-all">
                 Send All
               </Button>
             )}
 
             {loginUserData?.data?.role === userRole.ADMIN &&
               totalAmount !== 0 && (
-                <div className='searchbar_input'>₹{totalAmount}</div>
+                <div className="searchbar_input">₹{totalAmount}</div>
               )}
 
             {/* search filter */}
-            {loginUserData?.data?.role === userRole.ADMIN && data && (
-              <CSVLink
-                style={{ marginLeft: "10px" }}
-                className='downloadCSV_button'
-                data={data}
-                headers={headers}
-                filename={"sst.csv"}
-              >
-                <Button className='downloadCSV_button'>Download Data</Button>
-              </CSVLink>
-            )}
-            {data && setFilterData && (
-              <div className='searchbar_input'>
+            {loginUserData?.data?.role === userRole.ADMIN &&
+              data &&
+              !gameHistory && (
+                <CSVLink
+                  style={{ marginLeft: "10px" }}
+                  className="downloadCSV_button"
+                  data={data}
+                  headers={headers}
+                  filename={"sst.csv"}
+                >
+                  <Button className="downloadCSV_button">Download Data</Button>
+                </CSVLink>
+              )}
+            {data && setFilterData && !gameHistory && (
+              <div className="searchbar_input">
                 <Input
-                  type='text'
-                  name='search'
-                  className='spacial_search_input'
-                  placeholder='Search user id'
+                  type="text"
+                  name="search"
+                  className="spacial_search_input"
+                  placeholder="Search user id"
                   onChange={(e) => setSearch(e.target.value)}
                   value={search}
                 />
               </div>
             )}
 
-            {loginUserData?.data?.role === userRole.ADMIN && (
+            {loginUserData?.data?.role === userRole.ADMIN && !gameHistory && (
               <Button
-                className='filter_button'
+                className="filter_button"
                 onClick={() => setShowModal(true)}
               >
                 Filter
               </Button>
             )}
-            {loginUserData?.data?.role === userRole.ADMIN && (
+            {loginUserData?.data?.role === userRole.ADMIN && !gameHistory && (
               <Button
-                className='filter_button'
+                className="filter_button"
                 onClick={() => {
                   setDate([
                     {
@@ -323,22 +340,92 @@ const SectionCommonTable = ({
                 Reset
               </Button>
             )}
+
+            {/* color game history filter */}
+            {loginUserData?.data?.role === userRole.ADMIN && gameHistory && (
+              <>
+                <div className="searchbar_input">
+                  <Input
+                    type="text"
+                    name="search"
+                    className="spacial_search_input"
+                    placeholder="Search user id"
+                    onChange={(e) => setSearch(e.target.value)}
+                    value={search}
+                  />
+                </div>
+                <div className="updateTXNID_row">
+                  <select
+                    name="status"
+                    defaultValue={"--Select--"}
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      padding: "9px 8px",
+                      borderRadius: "5px 0px 0px 5px",
+                      textTransform: "capitalize",
+                      // marginTop: "-10px",
+                      border: "1px solid #ccc",
+                      background: "#fff",
+                    }}
+                    // value={rowData?.role}
+                    // onChange={(e) => handleChange("role", e.target.value)}
+                  >
+                    {colors?.map((d, i) => (
+                      <option value={d} key={i + 1}>
+                        {d}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="updateTXNID_row">
+                  <select
+                    name="status"
+                    defaultValue={"--Select--"}
+                    style={{
+                      border: "none",
+                      outline: "none",
+                      padding: "9px 8px",
+                      borderRadius: "5px 0px 0px 5px",
+                      textTransform: "capitalize",
+                      // marginTop: "-10px",
+                      border: "1px solid #ccc",
+                      background: "#fff",
+                    }}
+                    // value={rowData?.role}
+                    onChange={(e) => setStatus(e.target.value)}
+                  >
+                    {result?.map((d, i) => (
+                      <option value={d} key={i + 1}>
+                        {d}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </>
+            )}
           </div>
         </div>
+        {status && (
+          <p style={{fontSize: '14px', paddingBottom: "10px"}}>
+            Total Users: 30, Total Winning Amount: $500, Total Betting Amount:
+            $150
+          </p>
+        )}
         {dataTeam && (
           <LevelTeamFilter
             setAllTeamSearch={setAllTeamSearch}
             dataTeam={dataTeam}
           />
         )}
-        <div className='ss-trade_sectiontable_table'>{table}</div>
+        <div className="ss-trade_sectiontable_table">{table}</div>
         {calculateContainer && (
-          <div className='ss-trade_sectiontable_calculate'>
+          <div className="ss-trade_sectiontable_calculate">
             {calculateCredit && (
-              <h2 className='credit_balance'>{calculateCredit}</h2>
+              <h2 className="credit_balance">{calculateCredit}</h2>
             )}
             {calculateDebit && (
-              <h2 className='debit_balance'>{calculateDebit}</h2>
+              <h2 className="debit_balance">{calculateDebit}</h2>
             )}
           </div>
         )}
@@ -357,7 +444,7 @@ const SectionCommonTable = ({
             moveRangeOnFirstSelection={false}
             months={2}
             ranges={state}
-            direction='horizontal'
+            direction="horizontal"
           />
         </Modal>
       )}

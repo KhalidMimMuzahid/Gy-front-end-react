@@ -14,6 +14,7 @@ const AdminGameHistory = () => {
         sectionTableTitle={`Game History`}
         data={[]}
         setFilterData={() => {}}
+        gameHistory={true}
         table={<GameHistoryTable data={[]} />}
       />
     </>
