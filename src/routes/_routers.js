@@ -87,9 +87,9 @@ const WinningAmount = React.lazy(() =>
 const Reward = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.Reward")
 );
-const WinningAmount = React.lazy(() =>
-  import("../containers/UserPages/Earnings/Earning.MyWinningAmount")
-);
+// const WinningAmount = React.lazy(() =>
+//   import("../containers/UserPages/Earnings/Earning.MyWinningAmount")
+// );
 
 // withdraw section
 const WithdrawFund = React.lazy(() =>
