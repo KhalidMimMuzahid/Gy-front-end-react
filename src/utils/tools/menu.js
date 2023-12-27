@@ -140,19 +140,12 @@ export const menus = [
         route: "/dashboard/earnings/staking-income",
         permission: ["admin"],
       },
-      // Comment out unnessesary route
-      // {
-      //   id: "f5sf5s8fs8frank",
-      //   menu: "Rank income",
-      //   route: "/dashboard/earnings/rank-income",
-      //   permission: ["admin"],
-      // },
-      // {
-      //   id: "f5sf5s8fs8fnaj3w",
-      //   menu: "Reward",
-      //   route: "/dashboard/earnings/admin-reward",
-      //   permission: ["admin"],
-      // },
+      {
+        id: "4fs8s7f8sfrs",
+        menu: " Winning Amount",
+        route: "/dashboard/earnings/winning-amount",
+        permission: ["admin"],
+      },
     ],
   },
   {
@@ -422,19 +415,12 @@ export const menus = [
         route: "/dashboard/earnings/roi-income",
         permission: ["user"],
       },
-      //commenting unnessesary route
-      // {
-      //   id: "fs55s8fs8fssstrs",
-      //   menu: "Rank Income",
-      //   route: "/dashboard/earnings/rank-income",
-      //   permission: ["user"],
-      // },
-      // {
-      //   id: "fdf8s8f8s8fs",
-      //   menu: "Reward",
-      //   route: "/dashboard/earnings/reward",
-      //   permission: ["user"],
-      // },
+      {
+        id: "1f5s7fs7f9s9fs",
+        menu: "Winning Amount",
+        route: "/dashboard/earnings/winning-amount",
+        permission: ["user"],
+      },
     ],
   },
   {
