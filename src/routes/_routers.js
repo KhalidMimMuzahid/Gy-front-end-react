@@ -87,6 +87,9 @@ const WinningAmount = React.lazy(() =>
 const Reward = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.Reward")
 );
+const WinningAmount = React.lazy(() =>
+  import("../containers/UserPages/Earnings/Earning.MyWinningAmount")
+);
 
 // withdraw section
 const WithdrawFund = React.lazy(() =>
@@ -206,6 +209,9 @@ const AdminBonusRewardIncome = React.lazy(() =>
 );
 const AdminReward = React.lazy(() =>
   import("../containers/AdminPages/AdminFundTransfer/Admin.Reward")
+);
+const WinningAmountAdmin = React.lazy(() =>
+  import("../containers/AdminPages/Admin.Winner/Earning.MyWinningAmountAdmin.js")
 );
 
 // support section
@@ -430,6 +436,12 @@ export const routers = [
     permission: ["user"],
     component: Reward,
   },
+  {
+    path: "/earnings/winning-amount",
+    name: "Winning Amount",
+    permission: ["user"],
+    component: WinningAmountAdmin,
+  },
 
   // withdraw section
   {
@@ -628,6 +640,12 @@ export const routers = [
     name: "Reward",
     permission: ["admin"],
     component: AdminReward,
+  },
+  {
+    path: "/earnings/winning-amount",
+    name: "Winning Amount",
+    permission: ["admin"],
+    component: WinningAmountAdmin,
   },
 
   // admin kyc routes
