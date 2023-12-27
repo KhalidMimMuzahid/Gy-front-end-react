@@ -79,8 +79,9 @@
     .ss-trade_dashboard_login_content {
       .submit_btn {
         background-color: #00a5ec;
-        padding: 10px 12px;
+        padding: 10px;
         width: 100%;
+        height: fit-content;
         border-radius: 3px;
         border: none;
         font-size: 15px;
@@ -93,6 +94,23 @@
         &:hover {
           background-color: #0183bb;
           box-shadow: 0 5px 5px 0 rgb(82 63 105 / 5%);
+        }
+        .google_btn {
+          button {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+
+            font-size: 15px;
+            div {
+              background: transparent !important;
+              size: 25px !important;
+            }
+            span {
+              color: white !important;
+            }
+          }
         }
       }
       .forget_password {
@@ -121,9 +139,9 @@
           flex-direction: row;
         }
 
-        button {
-          background-color: #bdf9ff !important;
-        }
+        // button {
+        //   background-color: #bdf9ff !important;
+        // }
       }
       .go_to_register {
         width: 100%;

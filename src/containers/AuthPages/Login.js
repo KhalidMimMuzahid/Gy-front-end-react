@@ -210,7 +210,7 @@ const Login = () => {
                       {isLoading ? "Loading..." : "Login"}
                     </Button>
                     {/* Google Sign in Stuff */}
-                    {/* <Button
+                    <Button
                       type="button"
                       className="submit_btn"
                       onClick={() => {
@@ -226,7 +226,7 @@ const Login = () => {
                           cookiePolicy={"single_host_origin"}
                         />
                       </div>
-                    </Button> */}
+                    </Button>
                     <div className="go_to_register">
                       <p>
                         <CustomLink href="/" className="log_page_nav_link">
@@ -259,7 +259,7 @@ const Login = () => {
           </div>
         </AuthCardLayout>
       </div>
-      {openModal && (
+      {/* {openModal && (
         <GoogleLoginModal
           handleGoogleLogin={handleGoogleLogin}
           handleOnChange={handleOnChange}
@@ -270,7 +270,7 @@ const Login = () => {
           isSponsorId={sponsorid || "admin"}
           loading={loading}
         />
-      )}
+      )} */}
       <Footer />
     </>
   );
