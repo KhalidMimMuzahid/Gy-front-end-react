@@ -164,7 +164,7 @@ const TeamStatistics = () => {
                         icon={totalActiveTeam}
                         bgColor="#42855B"
                         cardBottom={true}
-                        cardBgColor="#28c66f"
+                        cardBgColor={i % 2 === 0 ? "#0087F6" : "#F7941D"}
                         type="level"
                         role={loginUserData?.data?.role}
                         goToHistory={() =>

@@ -13,7 +13,12 @@ const HomeCard = ({
   goToHistory,
   level,
 }) => {
-  // const cardBgGradient = `linear-gradient(circle, rgba(0, 44, 166, 0.651) 0%, ${cardBgColor})`;
+
+  // Function to lighten a color
+
+  const cardBgGradient = `radial-gradient(circle, #EEF5FF 0%,  ${cardBgColor} 100%)`;
+
+
 
   return (
     <div

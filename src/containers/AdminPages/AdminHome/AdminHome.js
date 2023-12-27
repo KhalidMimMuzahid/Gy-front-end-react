@@ -25,7 +25,7 @@ const AdminHome = () => {
             icon={totalUserIcon}
             linkText="view details"
             bgColor="#FF87B2"
-            cardBgColor="#fe9f43"
+            cardBgColor="#0087F6"
           />
           <HomeCard
             cardName="Total Active User"
@@ -33,7 +33,7 @@ const AdminHome = () => {
             icon={activeUserIcon}
             linkText="view details"
             bgColor="#ffbd5a"
-            cardBgColor="#00d0e7"
+            cardBgColor="#F7941D"
           />
           <HomeCard
             cardName="Total Inactive User"
@@ -41,7 +41,7 @@ const AdminHome = () => {
             icon={activeUserIcon}
             linkText="view details"
             bgColor="#ffbd5a"
-            cardBgColor="#00d0e7"
+            cardBgColor="#0087F6"
           />
           <HomeCard
             cardName="Blocked User"
@@ -51,7 +51,7 @@ const AdminHome = () => {
             icon={blockUserIcon}
             linkText="view details"
             bgColor="#ffbd5a"
-            cardBgColor="#28c66f"
+            cardBgColor="#F7941D"
           />
           <HomeCard
             cardName="Total Investment"
@@ -63,7 +63,7 @@ const AdminHome = () => {
             icon={totalInvestmentIcon}
             linkText="view details"
             bgColor="#f74f75"
-            cardBgColor="#00d0e7"
+            cardBgColor="#0087F6"
           />
         </div>
       </div>
