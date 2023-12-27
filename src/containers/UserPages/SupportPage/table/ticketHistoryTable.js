@@ -4,21 +4,25 @@ import DataTable from "../../../../components/DataTable";
 const TicketHistoryTable = ({ data, showImageDetails, showMessage }) => {
   const columns = [
     { id: "id", label: "S.N", minWidth: 20 },
-    { id: "purpose", label: "Purpose", minWidth: 100 },
+    {
+      id: "purpose",
+      label: "Purpose",
+      minWidth: window.innerWidth > 476 ? 100 : 50,
+    },
     {
       id: "ticket_referrance",
       label: "Ticket Referrance",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 50,
     },
     {
       id: "image",
       label: "Image",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 50,
     },
     {
       id: "question",
       label: "Question",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 50,
     },
   ];
 

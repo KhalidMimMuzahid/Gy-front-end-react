@@ -7,27 +7,27 @@ const RoiIncomeTable = ({ data, showDetails }) => {
     {
       id: "userId",
       label: "User ID",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
     {
       id: "fullName",
       label: "Full Name",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "amount",
       label: "Amount",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 120 : 40,
     },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 120 : 50,
     },
     {
       id: "transectionId",
       label: "Transection Id",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
   ];
 

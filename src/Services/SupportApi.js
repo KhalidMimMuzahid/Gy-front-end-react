@@ -17,7 +17,7 @@ export const supportApi = createApi({
     // admin
     getAllContactUs: builder.query({
       query: () => "/api/v1/private/get_all_contactus",
-      providesTags: ["adminSupport"], // automatic-data fetching
+      providesTags:  ["adminSupport", "userSupport"], // automatic-data fetching
     }),
     addNewUpdate: builder.mutation({
       query: (body) => ({
@@ -25,11 +25,11 @@ export const supportApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["adminSupport"],
+      invalidatesTags:  ["adminSupport", "userSupport"],
     }),
     getAllSupportMessage: builder.query({
       query: () => "/api/v1/private/get_all_support",
-      providesTags: ["adminSupport"], // automatic-data fetching
+      providesTags:  ["adminSupport", "userSupport"], // automatic-data fetching
     }),
 
     // user

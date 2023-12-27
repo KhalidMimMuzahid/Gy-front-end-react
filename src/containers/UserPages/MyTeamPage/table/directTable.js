@@ -12,7 +12,7 @@ const DirectTable = ({ data }) => {
     {
       id: "name",
       label: "Full Name",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     // {
     //   id: "mobile",
@@ -27,12 +27,12 @@ const DirectTable = ({ data }) => {
     {
       id: "joining_date",
       label: "Joining Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "activation_date",
       label: "Activation date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
   ];
 

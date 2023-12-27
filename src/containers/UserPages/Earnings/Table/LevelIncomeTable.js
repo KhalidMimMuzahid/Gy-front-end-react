@@ -4,17 +4,25 @@ import DataTable from "../../../../components/DataTable";
 const LevelIncomeTable = ({ data, showDetails }) => {
   const columns = [
     { id: "sn", label: "S.N", minWidth: 20 },
-    { id: "income_from_user_id", label: "Income From User ID", minWidth: 100 },
-    { id: "level", label: "Level", minWidth: 100 },
+    {
+      id: "income_from_user_id",
+      label: "Income From User ID",
+      minWidth: window.innerWidth > 476 ? 100 : 50,
+    },
+    {
+      id: "level",
+      label: "Level",
+      minWidth: window.innerWidth > 476 ? 100 : 30,
+    },
     {
       id: "amount",
       label: "Amount",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 40,
     },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "type",
@@ -44,7 +52,7 @@ const LevelIncomeTable = ({ data, showDetails }) => {
       rows={rows}
       perPageShow={6}
       tableHeight={440}
-      className='common_table'
+      className="common_table"
     />
   );
 };

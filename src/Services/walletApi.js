@@ -41,7 +41,7 @@ export const walletApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["userWallet"], // automatic-data fetching
+      invalidatesTags: ["userWallet", "autoTradeWithdraw"], // automatic-data fetching
     }),
     addDepositFund: builder.mutation({
       query: (body) => ({
@@ -172,12 +172,12 @@ export const walletApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["userWallet"], // automatic-data fetching
+      invalidatesTags: ["userWallet", "autoTradeWithdraw"], // automatic-data fetching
     }),
     getRewardTransferHistoryAdmin: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,
       query: () => `/api/v1/private/reward_income_data`,
-      providesTags: ["userWallet"], // automatic-data fetching
+      providesTags: ["userWallet", "autoTradeWithdraw"], // automatic-data fetching
     }),
     getUserTopUpHistory: builder.query({
       // query: (user_id) => `/secure/api/user/get_investment/${user_id}`,

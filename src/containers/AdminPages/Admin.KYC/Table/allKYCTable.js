@@ -3,9 +3,21 @@ import DataTable from "../../../../components/DataTable";
 
 const columns = [
   { id: "sn", label: "S.N", minWidth: 20 },
-  { id: "username", label: "Username", minWidth: 50 },
-  { id: "submissionDate", label: "Submission Date", minWidth: 50 },
-  { id: "kycMethod", label: "KYC Method", minWidth: 50 },
+  {
+    id: "username",
+    label: "Username",
+    minWidth: window.innerWidth > 476 ? 50 : 40,
+  },
+  {
+    id: "submissionDate",
+    label: "Submission Date",
+    minWidth: window.innerWidth > 476 ? 50 : 30,
+  },
+  {
+    id: "kycMethod",
+    label: "KYC Method",
+    minWidth: window.innerWidth > 476 ? 50 : 40,
+  },
   { id: "cardNumber", label: "Card Number", minWidth: 50 },
   { id: "frontSide", label: "Front Side", minWidth: 50 },
   { id: "backSide", label: "Back Side", minWidth: 50 },

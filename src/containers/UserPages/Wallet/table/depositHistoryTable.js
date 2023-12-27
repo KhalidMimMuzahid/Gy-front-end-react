@@ -4,37 +4,45 @@ import DataTable from "../../../../components/DataTable";
 const DepositHistoryTable = ({ data, showImageDetails }) => {
   const columns = [
     { id: "index", label: "Sr.", minWidth: 20 },
-    { id: "user_id", label: "User ID", minWidth: 100 },
-    { id: "user_name", label: "Name", minWidth: 100 },
+    {
+      id: "user_id",
+      label: "User ID",
+      minWidth: window.innerWidth > 476 ? 100 : 40,
+    },
+    {
+      id: "user_name",
+      label: "Name",
+      minWidth: window.innerWidth > 476 ? 100 : 50,
+    },
     {
       id: "amount",
       label: "Amount",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "image",
       label: "Transaction Proof",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "transaction_id",
       label: "Transaction ID/Hash",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "tid",
       label: "TID",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "status",
       label: "Status",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 80 : 40,
     },
   ];
 

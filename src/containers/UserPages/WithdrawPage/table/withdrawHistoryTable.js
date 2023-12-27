@@ -4,41 +4,45 @@ import DataTable from "../../../../components/DataTable";
 const WithdrawHistoryTable = ({ data, showDetails }) => {
   const columns = [
     { id: "id", label: "Sr.", minWidth: 20 },
-    { id: "user_id", label: "User ID", minWidth: 100 },
+    {
+      id: "user_id",
+      label: "User ID",
+      minWidth: window.innerWidth > 476 ? 100 : 40,
+    },
     {
       id: "date",
       label: "Date",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "request_amount",
       label: "Request Amount",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "withdraw_charge",
       label: "Withdraw Charge",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "receive_amount",
       label: "Receive Amount",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "main_amount",
       label: "Current Balance",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "withdrawType",
       label: "Withdraw Type",
-      minWidth: 110,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "transaction_id",
       label: "Transaction ID",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     // {
     //   id: "hash",
@@ -48,7 +52,7 @@ const WithdrawHistoryTable = ({ data, showDetails }) => {
     {
       id: "status",
       label: "Status",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
   ];
 

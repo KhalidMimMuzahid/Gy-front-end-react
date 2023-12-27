@@ -3,12 +3,20 @@ import DataTable from "../../../../components/DataTable";
 const columns = [
   { id: "sn", label: "S.N.", minWidth: 20 },
   { id: "user_id", label: "user ID", minWidth: 40 },
-  { id: "user_name", label: "User Name", minWidth: 80 },
-  { id: "email", label: "Email Address", minWidth: 100 },
+  {
+    id: "user_name",
+    label: "User Name",
+    minWidth: window.innerWidth > 476 ? 80 : 40,
+  },
+  {
+    id: "email",
+    label: "Email Address",
+    minWidth: window.innerWidth > 476 ? 100 : 50,
+  },
   {
     id: "message",
     label: "Message",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 100 : 60,
   },
 ];
 

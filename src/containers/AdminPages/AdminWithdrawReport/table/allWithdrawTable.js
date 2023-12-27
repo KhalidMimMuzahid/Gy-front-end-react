@@ -7,37 +7,37 @@ const columns = [
   {
     id: "date",
     label: "Date",
-    minWidth: 120,
+    minWidth: window.innerWidth > 476 ? 120 : 60,
   },
   {
     id: "request_amount",
     label: "Request Amount",
-    minWidth: 80,
+    minWidth: window.innerWidth > 476 ? 80 : 40,
   },
   {
     id: "after_charge",
     label: "After Charge",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "withdrawCharge",
     label: "Withdraw Charge",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
   {
     id: "withdraw_type",
     label: "Withdraw Type",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "current_balance",
     label: "Current Balance",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   {
     id: "transaction_id",
     label: "Transaction ID",
-    minWidth: 110,
+    minWidth: window.innerWidth > 476 ? 100 : 50,
   },
   // {
   //   id: "transaction_hash",
@@ -47,7 +47,7 @@ const columns = [
   {
     id: "action",
     label: "Action",
-    minWidth: 100,
+    minWidth: window.innerWidth > 476 ? 100 : 40,
   },
 ];
 

@@ -45,7 +45,7 @@ const HomeCard = ({
           className="ss-trade_widget_icon"
           style={{ backgroundColor: bgColor }}
         >
-          <img src={icon} style={{ width: "70px", padding: "15px" }} alt="" />
+          <img src={icon} style={{ width: "50px", padding: "15px" }} alt="" />
         </div>
       </div>
     </div>

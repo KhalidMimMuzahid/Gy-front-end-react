@@ -5,21 +5,25 @@ const AutoTradeUsersTable = ({data}) => {
   /* data fetch by RTK */
   const columns = [
     { id: "sn", label: "S.N", minWidth: 20 },
-    { id: "userId", label: "User ID", minWidth: 100 },
+    {
+      id: "userId",
+      label: "User ID",
+      minWidth: window.innerWidth > 476 ? 100 : 40,
+    },
     {
       id: "full_name",
       label: "Full Name",
-      minWidth: 80,
+      minWidth: window.innerWidth > 476 ? 100 : 50,
     },
     {
       id: "sponsor_id",
       label: "Sponsor ID",
-      minWidth: 120,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
     {
       id: "date",
       label: "Date",
-      minWidth: 100,
+      minWidth: window.innerWidth > 476 ? 100 : 40,
     },
   ];
 
