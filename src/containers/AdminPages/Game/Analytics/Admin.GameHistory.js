@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SectionCommonTable from "../../../../components/SectionCommonTable";
 import GameHistoryTable from "./table/GameHistoryTable";
 import ReactApexChart from "react-apexcharts";
+import CardLayout from "../../../../components/CardLayout";
 
 const AdminGameHistory = () => {
   const [status, setStatus] = useState("");
@@ -13,7 +14,8 @@ const AdminGameHistory = () => {
         data: [
           {
             x: "2011",
-            y: 1500,
+            y: 2000,
+            fillColors: ["red", "green"],
             goals: [
               {
                 name: "Expected",
@@ -142,18 +144,20 @@ const AdminGameHistory = () => {
   };
   return (
     <>
-      <div className="ss-trade_adminHome_wrapper">
-        <div className="ss-trade_section_title">
-          <h2>Game History</h2>
-        </div>
-        <div className="game__chart">
-          <ReactApexChart
-            options={chartData.options}
-            series={chartData.series}
-            type="bar"
-            height={350}
-          />
-        </div>
+      <div className="game__history__wrapper">
+        <CardLayout className="game__history__cardLayout">
+          <div className="game__history__section__title">
+            <h2>Game History</h2>
+          </div>
+          <div className="game__chart">
+            <ReactApexChart
+              options={chartData.options}
+              series={chartData.series}
+              type="bar"
+              height={350}
+            />
+          </div>
+        </CardLayout>
       </div>
       <SectionCommonTable
         wrapperClassName="allmember_table"
@@ -161,7 +165,7 @@ const AdminGameHistory = () => {
         sectionTableTitle={`Game History`}
         data={[]}
         setFilterData={() => {}}
-        gameHistory={true}
+        gameHistory={false}
         status={status}
         setStatus={setStatus}
         table={<GameHistoryTable data={[]} />}

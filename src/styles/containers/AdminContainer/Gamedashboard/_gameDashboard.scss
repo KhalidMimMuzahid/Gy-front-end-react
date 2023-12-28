@@ -25,3 +25,14 @@
 .MuiButtonBase-root {
   color: $text-p-color !important;
 }
+
+// Game history css
+.game__history__wrapper {
+  .game__history__cardLayout {
+    padding: 10px;
+    .game__history__section__title {
+      font-size: 18px;
+      color: $text-black;
+    }
+  }
+}
