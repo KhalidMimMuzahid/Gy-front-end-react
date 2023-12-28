@@ -32,6 +32,8 @@ const SectionCommonTable = ({
   adminBalance,
   modalRef,
   gameHistory,
+  status,
+  setStatus,
 }) => {
   const colors = [
     "--Select--",
@@ -46,8 +48,7 @@ const SectionCommonTable = ({
     "red-9",
     "green-10",
   ];
-  const result = ["--Select--","Win", "Lose"];
-  const [status, setStatus] = useState('');
+  const result = ["--Select--", "Win", "Lose"];
   const [showModal, setShowModal] = useState(false);
   const { data: loginUserData } = useGetLoginUserQuery();
   const [search, setSearch] = useState("");
@@ -354,7 +355,7 @@ const SectionCommonTable = ({
                     value={search}
                   />
                 </div>
-                <div className="updateTXNID_row">
+                <div className="selectOption__row">
                   <select
                     name="status"
                     defaultValue={"--Select--"}
@@ -378,7 +379,7 @@ const SectionCommonTable = ({
                     ))}
                   </select>
                 </div>
-                <div className="updateTXNID_row">
+                <div className="selectOption__row">
                   <select
                     name="status"
                     defaultValue={"--Select--"}
@@ -390,7 +391,7 @@ const SectionCommonTable = ({
                       textTransform: "capitalize",
                       // marginTop: "-10px",
                       border: "1px solid #ccc",
-                      background: "#fff",
+                      background: `--var(bg-body)`,
                     }}
                     // value={rowData?.role}
                     onChange={(e) => setStatus(e.target.value)}
@@ -407,7 +408,7 @@ const SectionCommonTable = ({
           </div>
         </div>
         {status && (
-          <p style={{fontSize: '14px', paddingBottom: "10px"}}>
+          <p style={{ fontSize: "14px", paddingBottom: "10px" }}>
             Total Users: 30, Total Winning Amount: $500, Total Betting Amount:
             $150
           </p>
