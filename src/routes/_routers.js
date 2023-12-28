@@ -81,9 +81,7 @@ const RankIncome = React.lazy(() =>
 const RoiIncome = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.RoiIncome")
 );
-const WinningAmount = React.lazy(() =>
-  import("../containers/UserPages/Earnings/Earning.WiningAmount")
-);
+
 const Reward = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.Reward")
 );
@@ -211,7 +209,9 @@ const AdminReward = React.lazy(() =>
   import("../containers/AdminPages/AdminFundTransfer/Admin.Reward")
 );
 const WinningAmountAdmin = React.lazy(() =>
-  import("../containers/AdminPages/Admin.Winner/Earning.MyWinningAmountAdmin.js")
+  import(
+    "../containers/AdminPages/Admin.Winner/Earning.MyWinningAmountAdmin.js"
+  )
 );
 
 // support section
@@ -439,12 +439,6 @@ export const routers = [
     permission: ["user"],
     component: Reward,
   },
-  {
-    path: "/earnings/winning-amount",
-    name: "Winning Amount",
-    permission: ["user"],
-    component: WinningAmountAdmin,
-  },
 
   // withdraw section
   {
@@ -602,12 +596,7 @@ export const routers = [
     permission: ["admin"],
     component: AdminLevelIncome,
   },
-  {
-    path: "/earnings/winning-amount",
-    name: "Winning Amount",
-    permission: ["admin"],
-    component: AdminWinningAmount,
-  },
+
   {
     path: "/earnings/global-pool-income",
     name: "Gloabl Pool Income",

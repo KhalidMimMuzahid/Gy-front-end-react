@@ -5,7 +5,7 @@ import { useGetMyWinningHistoryQuery } from '../../../Services/earningApi';
 
 const MyWinningAmount = () => {
     const { data: MyWinningHistory } = useGetMyWinningHistoryQuery();
-  // console.log("My Winning History :",MyWinningHistory);
+  console.log("My Winning History :",MyWinningHistory);
   return (
     <div className='records_table'>
         <div className='table_header'>
