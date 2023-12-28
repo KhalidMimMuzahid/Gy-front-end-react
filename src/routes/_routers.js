@@ -229,6 +229,9 @@ const AdminTicketData = React.lazy(() =>
 const AdminGameDashBoard = React.lazy(() =>
   import("../containers/AdminPages/Game/AdminDashBoard/index")
 );
+const AdminGameHistory = React.lazy(() =>
+  import("../containers/AdminPages/Game/Analytics/Admin.GameHistory")
+);
 
 // settings section
 const AdminChangePassword = React.lazy(() =>
@@ -714,6 +717,12 @@ export const routers = [
     name: "Color Games",
     permission: ["admin"],
     component: AdminGameDashBoard,
+  },
+  {
+    path: "/game-History",
+    name: "Game History",
+    permission: ["admin"],
+    component: AdminGameHistory,
   },
 
   // setting section

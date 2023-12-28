@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "../../../../../components/DataTable";
 import { Checkbox } from "@mui/material";
-import "../../../../../styles/abstract/_variables.scss"
+import "../../../../../styles/abstract/_variables.scss";
 
 const columns = [
   { id: "color", label: "Result", minWidth: 20 },
