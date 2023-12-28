@@ -53,7 +53,7 @@ const TeamStatistics = () => {
     await addTeamStatistics(obj);
     setShowTeam(true);
   };
-
+  console.log({ TeamStatisticsResponse });
   // go to props
   const navigate = useNavigate();
   // const goToHistory = (level) =>
@@ -115,7 +115,7 @@ const TeamStatistics = () => {
                       icon={team}
                       bgColor="#38CAB3"
                       cardBottom={true}
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#0087F6"
                     />
                     <HomeCard
                       cardName="Self Investment"
@@ -127,7 +127,7 @@ const TeamStatistics = () => {
                       icon={team}
                       bgColor="#38CAB3"
                       cardBottom={true}
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#F7941D"
                     />
                     <HomeCard
                       cardName="Total Team"
@@ -139,7 +139,7 @@ const TeamStatistics = () => {
                       icon={team}
                       bgColor="#38CAB3"
                       cardBottom={true}
-                      cardBgColor="#00d0e7"
+                      cardBgColor="#0087F6"
                     />
                     <HomeCard
                       cardName="Total Active Team"
@@ -151,7 +151,7 @@ const TeamStatistics = () => {
                       icon={directTeam}
                       bgColor="#59CE8F"
                       cardBottom={true}
-                      cardBgColor="#00d0e7"
+                      cardBgColor="#F7941D"
                     />
                     {TeamStatisticsResponse?.data?.teamStats?.map((d, i) => (
                       <HomeCard
@@ -164,7 +164,7 @@ const TeamStatistics = () => {
                         icon={totalActiveTeam}
                         bgColor="#42855B"
                         cardBottom={true}
-                        cardBgColor="#28c66f"
+                        cardBgColor={i % 2 === 0 ? "#0087F6" : "#F7941D"}
                         type="level"
                         role={loginUserData?.data?.role}
                         goToHistory={() =>
@@ -175,69 +175,69 @@ const TeamStatistics = () => {
                     <HomeCard
                       cardName="Total Balance"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.totalBalance
+                        TeamStatisticsResponse?.data?._doc?.totalIncome
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.totalBalance
+                              TeamStatisticsResponse?.data?._doc?.totalIncome
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={userListIcon}
                       bgColor="#38cab3"
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#F7941D"
                     />
                     <HomeCard
                       cardName="Active Income"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.activeIncome
+                        TeamStatisticsResponse?.data?._doc?.activeIncome
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.activeIncome
+                              TeamStatisticsResponse?.data?._doc?.activeIncome
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={userListIcon}
                       bgColor="#38cab3"
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#0087F6"
                     />
                     <HomeCard
                       cardName="Main Wallet"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.totalIncome
+                        TeamStatisticsResponse?.data?._doc?.totalIncome
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.totalIncome
+                              TeamStatisticsResponse?.data?._doc?.totalIncome
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={userListIcon}
                       bgColor="#F49D1A"
-                      cardBgColor="#28c66f"
+                      cardBgColor="#F7941D"
                     />
                     <HomeCard
                       cardName=" Actinic Bonus"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.roiIncome
+                        TeamStatisticsResponse?.data?._doc?.roiIncome
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.roiIncome
+                              TeamStatisticsResponse?.data?._doc?.roiIncome
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={teamIcon}
                       linkText="view details"
                       bgColor="#38cab3"
-                      cardBgColor="#28c66f"
+                      cardBgColor="#0087F6"
                     />
                     <HomeCard
                       cardName="Profit Share"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.levelIncome
+                        TeamStatisticsResponse?.data?._doc?.levelIncome
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.levelIncome
+                              TeamStatisticsResponse?.data?._doc?.levelIncome
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={roiIcon}
                       linkText="view details"
                       bgColor="#ffbd5a"
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#F7941D"
                     />
                     {/* <HomeCard
                       cardName='Rank Income'
@@ -263,33 +263,33 @@ const TeamStatistics = () => {
                       }`}
                       icon={userListIcon}
                       bgColor="#38cab3"
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#0087F6"
                     />
                     <HomeCard
                       cardName="Winning Share"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.totalWithdraw
+                        TeamStatisticsResponse?.data?._doc?.winingShare
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.totalWithdraw
+                              TeamStatisticsResponse?.data?._doc?.winingShare
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={roiIcon}
                       bgColor="#38cab3"
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#F7941D"
                     />
                     <HomeCard
                       cardName="Winning Amount"
                       cardValue={`₹${
-                        TeamStatisticsResponse?.data?.totalWithdraw
+                        TeamStatisticsResponse?.data?._doc?.winingWallect
                           ? parseFloat(
-                              TeamStatisticsResponse?.data?.totalWithdraw
+                              TeamStatisticsResponse?.data?._doc?.winingWallect
                             ).toFixed(4)
                           : "0"
                       }`}
                       icon={userListIcon}
                       bgColor="#38cab3"
-                      cardBgColor="#fe9f43"
+                      cardBgColor="#0087F6"
                     />
                   </>
                 ) : (

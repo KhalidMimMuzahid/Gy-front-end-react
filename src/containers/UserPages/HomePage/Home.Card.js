@@ -11,12 +11,19 @@ const HomeCard = ({
   teamBusiness,
   role,
   goToHistory,
-  level
+  level,
 }) => {
+
+  // Function to lighten a color
+
+  const cardBgGradient = `radial-gradient(circle, #EEF5FF 0%,  ${cardBgColor} 100%)`;
+
+
+
   return (
     <div
       className="ss-trade_dash_card_wrapper"
-      // style={{ backgroundColor: cardBgColor }}
+      style={{ background: cardBgColor }}
     >
       <div className="ss-trade_content">
         <div className="ss-trade_widget_info">

@@ -62,6 +62,7 @@ const useGoogleLogin = () => {
 
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
+    console.log("hello click")
     await addGoogleLogin(value);
   };
   const modalRef = useRef(null);
@@ -86,6 +87,7 @@ const useGoogleLogin = () => {
       setOpenModal(false);
       addGoogleLogin(value);
     } else if (cData?.isLoggedIn === false) {
+      addGoogleLogin(value);
       setOpenModal(true);
     }
     return;
@@ -102,7 +104,8 @@ const useGoogleLogin = () => {
     });
     return;
   }, []);
-  console.log("my  eaddata", eData);
+  console.log("my  response", eData);
+  console.log("my value",value)
   useEffect(() => {
     console.log("tiem");
     if (eData?.isLoggedIn) {

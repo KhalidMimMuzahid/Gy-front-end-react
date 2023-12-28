@@ -107,6 +107,14 @@ export const earningApi = createApi({
       query: () => "/api/v1/secure/getroyaltyincomehistory",
       providesTags: ["user"], // automatic-data fetching
     }),
+    getMyWinningHistory: builder.query({
+      query: () => "/api/v1/secure/my-winning-amount",
+      providesTags: ["user"], // automatic-data fetching
+    }),
+    getMyWinningHistoryAdmin: builder.query({
+      query: () => "/api/v1/private/winning-amount",
+      providesTags: ["user"], // automatic-data fetching
+    }),
     getRoyaltyIncomeHistoryAdmin: builder.query({
       query: () => "/api/v1/private/getroyaltymemberhistory",
       providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
@@ -366,4 +374,6 @@ export const {
   useGetRoiIncomeHistoryUserQuery, // SAST API
   useGetRewardHistoryUserQuery, // SAST API
   useGetUserRankIncomeQuery,
+  useGetMyWinningHistoryQuery,
+  useGetMyWinningHistoryAdminQuery,
 } = earningApi;
