@@ -333,7 +333,7 @@ const ColorGame = () => {
             selectedOption={selectedOption}
             setSelectedOption={setSelectedOption}
           />
-          // for PeriodId History
+          {/* // for PeriodId History */}
           <Modal
             openModal={openhistoryModal}
             setOpenModal={setOpenhistoryModal}

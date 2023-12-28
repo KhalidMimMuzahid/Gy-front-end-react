@@ -85,9 +85,9 @@ const RoiIncome = React.lazy(() =>
 const Reward = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.Reward")
 );
-// const WinningAmount = React.lazy(() =>
-//   import("../containers/UserPages/Earnings/Earning.MyWinningAmount")
-// );
+const WinningAmount = React.lazy(() =>
+  import("../containers/UserPages/Earnings/Earning.MyWinningAmount")
+);
 
 // withdraw section
 const WithdrawFund = React.lazy(() =>
@@ -177,11 +177,11 @@ const AdminDirectIncome = React.lazy(() =>
 const AdminLevelIncome = React.lazy(() =>
   import("../containers/AdminPages/AdminEarningTrack/AdminEarning.LevelIncome")
 );
-const AdminWinningAmount = React.lazy(() =>
-  import(
-    "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
-  )
-);
+// const AdminWinningAmount = React.lazy(() =>
+//   import(
+//     "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
+//   )
+// );
 const AdminGlobalPoolIncome = React.lazy(() =>
   import(
     "../containers/AdminPages/AdminEarningTrack/AdminEarning.GlobalPoolIncome"

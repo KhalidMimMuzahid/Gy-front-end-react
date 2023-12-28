@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { HiOutlineRefresh } from "react-icons/hi";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import CustomLink from "../../components/Link";
@@ -210,23 +210,23 @@ const Login = () => {
                       {isLoading ? "Loading..." : "Login"}
                     </Button>
                     {/* Google Sign in Stuff */}
-                    <Button
+                    {/* <Button
                       type="button"
-                      className="submit_btn"
+                      className="submit_btn1"
                       onClick={() => {
                         console.log("google clicked");
                       }}
-                    >
+                    > */}
                       <div className="google_btn">
                         <GoogleLogin
                           clientId={env.google_client_id}
-                          buttonText="Sign in with google"
+                          buttonText="SIGN IN WITH GOOGLE"
                           onSuccess={responseGoogle}
                           onFailure={resFailed}
                           cookiePolicy={"single_host_origin"}
                         />
                       </div>
-                    </Button>
+                    {/* </Button> */}
                     <div className="go_to_register">
                       <p>
                         <CustomLink href="/" className="log_page_nav_link">
