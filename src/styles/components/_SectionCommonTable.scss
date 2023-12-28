@@ -143,35 +143,18 @@
             opacity: 0.8;
           }
         }
-        .updateTXNID_row {
+        .selectOption__row {
           display: flex;
           justify-content: center;
           align-items: center;
           margin-left: 10px;
+          select {
+            background: $bg-body;
+          }
 
           @include breakpoints(largeMiniMobile) {
             margin-bottom: 10px;
           }
-
-          // .send-all {
-          //   width: 165px;
-          //   padding: 10px 8px;
-          //   height: max-content;
-          //   background: $bg-thin-green;
-          //   color: #fff;
-          //   font-size: 14px;
-          //   font-weight: 500;
-          //   border: 1px solid $bg-thin-green;
-          //   text-transform: capitalize;
-          //   border-radius: 0px 5px 5px 0px;
-          //   cursor: pointer;
-          //   transition: all 0.3s ease-in-out;
-          //   margin-right: 10px;
-          //   &:hover {
-          //     opacity: 0.8;
-          //   }
-          // }
-
           .user_search {
             padding: 10px;
             border: 1px solid gray;
