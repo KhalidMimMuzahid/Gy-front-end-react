@@ -25,7 +25,6 @@ const useGoogleLogin = () => {
   const [handel, setHandel] = useState(false);
   const [sponsoreName, setSponsorName] = useState("");
   const [handelSponsore, setHandelSponsore] = useState("");
- 
 
   const handleOnChange = (e) => {
     // Update only the specific property in the state
@@ -45,7 +44,6 @@ const useGoogleLogin = () => {
       setHandel(false);
     }
   }, [value.sponsorid]);
-  
 
   const { data: sponsoridData, error: sponsoridError } =
     useGetValidateSponsorIdQuery(sponsorId);
@@ -59,10 +57,9 @@ const useGoogleLogin = () => {
     }
   }, [sponsoridError?.data, sponsoridData?.name]);
 
-
   const handleGoogleLogin = async (e) => {
     e.preventDefault();
-    console.log("hello click")
+    console.log("hello click");
     await addGoogleLogin(value);
   };
   const modalRef = useRef(null);
@@ -105,12 +102,12 @@ const useGoogleLogin = () => {
     return;
   }, []);
   console.log("my  response", eData);
-  console.log("my value",value)
+  console.log("my value", value);
   useEffect(() => {
     console.log("tiem");
     if (eData?.isLoggedIn) {
       Notification(eData?.message, "success");
-      savedLocalStorage("safe_secure_token", eData?.token);
+      savedLocalStorage("grow_more_today_token", eData?.token);
       navigate("/dashboard");
       setOpenModal(false);
     } else {

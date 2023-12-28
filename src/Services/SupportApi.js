@@ -8,7 +8,7 @@ export const supportApi = createApi({
     baseUrl: env.BASE_URL,
     // mode: 'cors',
     prepareHeaders: (headers) => {
-      headers.set("authorization", getLocalStorage("safe_secure_token"));
+      headers.set("authorization", getLocalStorage("grow_more_today_token"));
       return headers;
     },
   }),
@@ -17,7 +17,7 @@ export const supportApi = createApi({
     // admin
     getAllContactUs: builder.query({
       query: () => "/api/v1/private/get_all_contactus",
-      providesTags:  ["adminSupport", "userSupport"], // automatic-data fetching
+      providesTags: ["adminSupport", "userSupport"], // automatic-data fetching
     }),
     addNewUpdate: builder.mutation({
       query: (body) => ({
@@ -25,11 +25,11 @@ export const supportApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:  ["adminSupport", "userSupport"],
+      invalidatesTags: ["adminSupport", "userSupport"],
     }),
     getAllSupportMessage: builder.query({
       query: () => "/api/v1/private/get_all_support",
-      providesTags:  ["adminSupport", "userSupport"], // automatic-data fetching
+      providesTags: ["adminSupport", "userSupport"], // automatic-data fetching
     }),
 
     // user
@@ -65,12 +65,12 @@ export const supportApi = createApi({
 });
 
 export const {
-    useGetAllContactUsQuery,
-    useAddNewUpdateMutation,
-    useGetAllSupportMessageQuery,
-    useGetUpdatesQuery,
-    useContactUsHistoryQuery,
-    useTicketHistoryQuery,
-    useAddContactMessageMutation,
-    useAddSupportTicketMutation,
+  useGetAllContactUsQuery,
+  useAddNewUpdateMutation,
+  useGetAllSupportMessageQuery,
+  useGetUpdatesQuery,
+  useContactUsHistoryQuery,
+  useTicketHistoryQuery,
+  useAddContactMessageMutation,
+  useAddSupportTicketMutation,
 } = supportApi;

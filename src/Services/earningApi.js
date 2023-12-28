@@ -8,7 +8,7 @@ export const earningApi = createApi({
     baseUrl: env.BASE_URL,
     // mode: 'cors',
     prepareHeaders: (headers) => {
-      headers.set("authorization", getLocalStorage("safe_secure_token"));
+      headers.set("authorization", getLocalStorage("grow_more_today_token"));
       return headers;
     },
   }),
@@ -239,7 +239,7 @@ export const earningApi = createApi({
     }),
     getBoosterControllUsers: builder.query({
       query: () => `/api/v1/private/booster_eligible_users`,
-      providesTags:  ["adminEarning", "user", "boosterController"], // automatic-data fetching
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     updateBoosterController: builder.mutation({
       query: (body) => ({
@@ -247,7 +247,7 @@ export const earningApi = createApi({
         method: "PUT",
         body: body,
       }),
-      invalidatesTags:  ["adminEarning", "user", "boosterController"], // automatic-data fetching
+      invalidatesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
     // ************************** New ENDPOINT **********************
     getAllDirLevIncomeHistoryAdmin: builder.query({
