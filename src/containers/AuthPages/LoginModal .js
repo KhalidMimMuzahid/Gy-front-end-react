@@ -24,7 +24,7 @@ const LoginModal = ({ handleEmailLogin }) => {
   const [Error, setError] = useState("");
   const [btnDisable, setBtnDisable] = useState(false);
   const [showPasswordIcon, setShowPasswordIcon] = useState(false);
-  const token = getLocalStorage("safe_secure_token");
+  const token = getLocalStorage("grow_more_today_token");
 
   const navigate = useNavigate();
   const [addOtp, { error: otpError, data: otpData }] = useAddOtpMutation();
@@ -34,7 +34,7 @@ const LoginModal = ({ handleEmailLogin }) => {
       Notification(data?.message, "success");
       navigate("/dashboard");
 
-      savedLocalStorage("safe_secure_token", data?.token);
+      savedLocalStorage("grow_more_today_token", data?.token);
       removeLocalStorage("otp_timer");
     } else {
       Notification(error?.data?.message, "error");

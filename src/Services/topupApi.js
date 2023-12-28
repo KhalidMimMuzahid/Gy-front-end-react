@@ -8,7 +8,7 @@ export const topupApi = createApi({
     baseUrl: env.BASE_URL,
     // mode: 'cors',
     prepareHeaders: (headers) => {
-      headers.set("authorization", getLocalStorage("safe_secure_token"));
+      headers.set("authorization", getLocalStorage("grow_more_today_token"));
       return headers;
     },
   }),
@@ -21,7 +21,12 @@ export const topupApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["userTopup", "adminUser", "autoTrade", "autoTradeFriendly"],
+      invalidatesTags: [
+        "userTopup",
+        "adminUser",
+        "autoTrade",
+        "autoTradeFriendly",
+      ],
     }),
     createROIAdmin: builder.mutation({
       query: (body) => ({
@@ -29,7 +34,12 @@ export const topupApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["userTopup", "adminUser", "autoTrade", "autoTradeFriendly"],
+      invalidatesTags: [
+        "userTopup",
+        "adminUser",
+        "autoTrade",
+        "autoTradeFriendly",
+      ],
     }),
     // user
     autoTradeUpgrade: builder.mutation({
@@ -102,7 +112,12 @@ export const topupApi = createApi({
         url: "/api/v1/private/get_topup_history",
         method: "GET",
       }),
-      providesTags: ["userTopup", "adminUser", "autoTrade", "autoTradeFriendly"],
+      providesTags: [
+        "userTopup",
+        "adminUser",
+        "autoTrade",
+        "autoTradeFriendly",
+      ],
     }),
   }),
 });

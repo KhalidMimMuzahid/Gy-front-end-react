@@ -46,7 +46,7 @@ const Login = () => {
 
   // auth check
   useEffect(() => {
-    if (getLocalStorage("safe_secure_token")) {
+    if (getLocalStorage("grow_more_today_token")) {
       navigate("/dashboard");
     }
   }, [navigate]);
@@ -63,7 +63,7 @@ const Login = () => {
       Notification(data?.message, "success");
       navigate("/dashboard");
       popupShow = true;
-      savedLocalStorage("safe_secure_token", data?.token);
+      savedLocalStorage("grow_more_today_token", data?.token);
       removeLocalStorage("otp_timer");
     } else {
       Notification(error?.data?.message, "error");
@@ -107,7 +107,7 @@ const Login = () => {
     setCaptchaRefresh(!captchaRefresh);
   };
   const [showPassword, setShowPassword] = useState(false);
-  const token = getLocalStorage("safe_secure_token");
+  const token = getLocalStorage("grow_more_today_token");
   useEffect(() => {
     if (token) {
       navigate("/");
@@ -217,15 +217,15 @@ const Login = () => {
                         console.log("google clicked");
                       }}
                     > */}
-                      <div className="google_btn">
-                        <GoogleLogin
-                          clientId={env.google_client_id}
-                          buttonText="SIGN IN WITH GOOGLE"
-                          onSuccess={responseGoogle}
-                          onFailure={resFailed}
-                          cookiePolicy={"single_host_origin"}
-                        />
-                      </div>
+                    <div className="google_btn">
+                      <GoogleLogin
+                        clientId={env.google_client_id}
+                        buttonText="SIGN IN WITH GOOGLE"
+                        onSuccess={responseGoogle}
+                        onFailure={resFailed}
+                        cookiePolicy={"single_host_origin"}
+                      />
+                    </div>
                     {/* </Button> */}
                     <div className="go_to_register">
                       <p>
