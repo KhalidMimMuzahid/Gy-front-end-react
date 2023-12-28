@@ -11,22 +11,40 @@ import { IoMdTrophy } from "react-icons/io";
 import { useState } from "react";
 // import ColorModal from "../../.seconds./../components/ColorModal/ColorModal";
 import ColorModal from "../../../../components/ColorModal/ColorModal";
-import { useGetperiodIDQuery } from "../../../../Services/userApi";
+import {
+  useGetPeriodHistoryMutation,
+  useGetperiodIDQuery,
+} from "../../../../Services/userApi";
 import { useEffect } from "react";
 import { useGetAllPeriodRecordQuery } from "../../../../Services/userApi";
 import AllPeriodRecordTable from "./table/AllPeriodRecordTable";
 import { Notification } from "../../../../components/ToastNotification";
 import calculateTimeDifference from "../../../../utils/function/fetCalculateTimeDifference";
+import Modal from "../../../../components/Modal";
+import { useClickOutside } from "../../../../hooks/useClickOutside";
+import PeriodHistoryTable from "./table/PeriodHistoryTable";
+
 const ColorGame = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
   const { data: periodRecord } = useGetAllPeriodRecordQuery();
+  const [
+    periodHistory,
+    { data: periodHistoryData, error: periodHistoryError },
+  ] = useGetPeriodHistoryMutation();
 
+  const modalRef = React.useRef(null);
+  useClickOutside(modalRef, () => setOpenModal(false));
   let initialTimeDuration =
     180 - Math?.floor(calculateTimeDifference(periodData?.data?.updatedAt));
 
   const [isLoading, setisLoading] = useState(true);
   const [isButtonDisabled, setisButtonDisabled] = useState(false);
   const [value, setValue] = React.useState("1");
+  const [periodId, setPeriodId] = useState();
+  // state for managing modal
+  const [openModal, setOpenModal] = useState(false);
+  //history modal
+  const [openhistoryModal, setOpenhistoryModal] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -53,6 +71,18 @@ const ColorGame = () => {
     }
   }, [seconds]);
 
+  //for periodId History
+  // Function to fetch period history based on periodId
+  const fetchPeriodHistory = async (periodId) => {
+    try {
+      setPeriodId(periodId);
+      await periodHistory({ periodId });
+      setOpenhistoryModal(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  console.log({ periodHistoryData });
   useEffect(() => {
     if (periodData?.data?.period) {
       initialTimeDuration =
@@ -91,8 +121,7 @@ const ColorGame = () => {
       }
     }
   }, [seconds, isButtonDisabled, notificationShown]);
-  // state for managing modal
-  const [openModal, setOpenModal] = useState(false);
+
   // const [selectedColor, setSelectedColor] = useState("");
 
   const [selectedOption, setSelectedOption] = useState(null);
@@ -275,7 +304,10 @@ const ColorGame = () => {
                     <p>Parity Record</p>
                   </div>
                   <div className="table-content">
-                    <AllPeriodRecordTable data={periodRecord?.data} />
+                    <AllPeriodRecordTable
+                      data={periodRecord?.data}
+                      perioHistory={fetchPeriodHistory}
+                    />
                   </div>
                 </div>
               </TabPanel>
@@ -301,6 +333,19 @@ const ColorGame = () => {
             selectedOption={selectedOption}
             setSelectedOption={setSelectedOption}
           />
+          {/* // for PeriodId History */}
+          <Modal
+            openModal={openhistoryModal}
+            setOpenModal={setOpenhistoryModal}
+            modalTitle={`PeriodId ${periodId}`}
+            modalRef={modalRef}
+          >
+            <div className="ss-trade_commol_modal_field">
+              <div className="transaction_details">
+                <PeriodHistoryTable data={periodHistoryData?.data} />
+              </div>
+            </div>
+          </Modal>
         </div>
       )}
     </div>

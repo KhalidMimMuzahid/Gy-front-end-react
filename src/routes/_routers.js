@@ -177,11 +177,11 @@ const AdminDirectIncome = React.lazy(() =>
 const AdminLevelIncome = React.lazy(() =>
   import("../containers/AdminPages/AdminEarningTrack/AdminEarning.LevelIncome")
 );
-const AdminWinningAmount = React.lazy(() =>
-  import(
-    "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
-  )
-);
+// const AdminWinningAmount = React.lazy(() =>
+//   import(
+//     "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
+//   )
+// );
 const AdminGlobalPoolIncome = React.lazy(() =>
   import(
     "../containers/AdminPages/AdminEarningTrack/AdminEarning.GlobalPoolIncome"

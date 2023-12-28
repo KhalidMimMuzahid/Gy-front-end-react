@@ -11,7 +11,7 @@ const columns = [
   },
 ];
 
-const AllPeriodRecordTable = ({ data }) => {
+const AllPeriodRecordTable = ({ data , perioHistory}) => {
   // console.log({ data });
   function getBackgroundColor(index) {
     switch (index % 10) {
@@ -42,7 +42,8 @@ const AllPeriodRecordTable = ({ data }) => {
 
   function createData(periodId, price, option) {
     return {
-      periodId,
+      
+      periodId :(<span onClick={()=> perioHistory(periodId)} style={{cursor:"pointer", padding:"10px"}}>{periodId}</span>),
       price,
       option,
       result: (
@@ -72,7 +73,9 @@ const AllPeriodRecordTable = ({ data }) => {
   }
 
   const rows = data?.map((d, index) =>
-    createData(d?.periodId, d?.price, d?.option)
+    createData(
+
+      d?.periodId, d?.price, d?.option)
   );
 
   return (

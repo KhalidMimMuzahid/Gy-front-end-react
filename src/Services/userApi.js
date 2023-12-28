@@ -373,6 +373,14 @@ export const userApi = createApi({
       query: () => "/api/v1/secure/get-predicted",
       providesTags: ["User"], // automatic-data fetching
     }),
+    getPeriodHistory: builder.mutation({
+      // user register
+      query: (body) => ({
+        url: "/api/v1/secure/get-period-history",
+        method: "POST",
+        body: body,
+      }),
+    }),
   }),
 });
 
@@ -437,4 +445,5 @@ export const {
   useBettingDataMutation,
   useGetAllPeriodRecordQuery,
   useGetPredictedQuery,
+  useGetPeriodHistoryMutation,
 } = userApi;
