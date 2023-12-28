@@ -45,9 +45,9 @@ const LevelIncome = () => {
                 : "0"
             }`}
             icon={roiIncomeIcon}
-            bgColor="#38cab3"
+            bgColor="#0087F6"
             linkText="view details"
-            cardBgColor="#00d0e7"
+            cardBgColor="#F7941D"
           />
         </div>
         <SectionCommonTable
