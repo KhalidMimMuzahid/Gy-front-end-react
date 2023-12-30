@@ -84,7 +84,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className='ss-trade_homPage_wrapper' id='pddfff'>
+    <div className="ss-trade_homPage_wrapper" id="pddfff">
       {/* <div className="ss-trade_homPage_important_notice_section">
         <img
           className=""
@@ -92,36 +92,36 @@ const HomePage = () => {
           alt="Safe & Secure Trade coming soon"
         />
       </div> */}
-      <div className='ss-trade_section_title for_download_handle'>
+      <div className="ss-trade_section_title for_download_handle">
         <h2>Dashboard</h2>
       </div>
-      <div className='importantLinks'>
+      <div className="importantLinks">
         <span>Referrel URL </span>
-        <div className='socialLinksBox'>
-          <div className='socialLinks'>
+        <div className="socialLinksBox">
+          <div className="socialLinks">
             {/* refer link */}
             <button
-              className='refferLink'
+              className="refferLink"
               onClick={() => copyToClipboard("left")}
             >
               <ImCopy /> Copy reffer link
             </button>
             {/* whatsapp */}
-            <button className='refWhatsappButton' onClick={shareOnWhatsApp}>
+            <button className="refWhatsappButton" onClick={shareOnWhatsApp}>
               <BsWhatsapp /> Whatsapp
             </button>
           </div>
-          <div className='socialLinks'>
+          <div className="socialLinks">
             {/* facebook */}
             <button
-              className='refFacebookButton'
+              className="refFacebookButton"
               onClick={handleFbShareButtonClick}
             >
               <BsFacebook /> Facebook
             </button>
             {/* telegram */}
             <button
-              className='refTelegramButton'
+              className="refTelegramButton"
               onClick={handleTeShareButtonClick}
             >
               <BsTelegram /> Telegram
@@ -130,9 +130,9 @@ const HomePage = () => {
         </div>
       </div>
       {/* 1st row */}
-      <div className='first_row dashboard_content'>
-        <div className='ss-trade_dash_content_item'>
-          <div className='ss-trade_dash_content card_row'>
+      <div className="first_row dashboard_content">
+        <div className="ss-trade_dash_content_item">
+          <div className="ss-trade_dash_content card_row">
             {/* <HomeCard
               cardName='Total Income'
               cardValue={`₹${
@@ -167,28 +167,28 @@ const HomePage = () => {
               cardBgColor='#fe9f43'
             /> */}
             <HomeCard
-              cardName=' Actinic Bonus'
+              cardName=" Actinic Bonus"
               cardValue={`₹${
                 userState?.data?.roiIncome
                   ? Number(userState?.data?.roiIncome).toFixed(4)
                   : "0"
               }`}
               icon={DirectIncome}
-              linkText='view details'
-              bgColor='#38cab3'
-              cardBgColor='#fe9f43'
+              linkText="view details"
+              bgColor="#38cab3"
+              cardBgColor="#F7941D"
             />
             <HomeCard
-              cardName='Profit Share'
+              cardName="Profit Share"
               cardValue={`₹${
                 userState?.data?.levelIncome
                   ? Number(userState?.data?.levelIncome).toFixed(4)
                   : "0"
               }`}
               icon={DirectIncome}
-              linkText='view details'
-              bgColor='#38cab3'
-              cardBgColor='#fe9f43'
+              linkText="view details"
+              bgColor="#38cab3"
+              cardBgColor="#0087F6"
             />
           </div>
 
@@ -196,9 +196,9 @@ const HomePage = () => {
 
           <div>
             <SectionCommonTable
-              wrapperClassName='roi_table'
+              wrapperClassName="roi_table"
               cardStyle={{ backgroundColor: "#fff" }}
-              sectionTableTitle=' Actinic Bonus'
+              sectionTableTitle=" Actinic Bonus"
               table={
                 <RoiIncomeTable
                   data={roiData?.data?.history}
@@ -213,11 +213,11 @@ const HomePage = () => {
         <Modal
           openModal={openModalForImage}
           setOpenModal={setOpenModalForImage}
-          modalTitle=''
+          modalTitle=""
           modalRef={modalImageRef}
         >
-          <div className='ss-trade_commol_modal_field'>
-            <img src={popupImage?.avatar} className='popupImage' alt='popup' />
+          <div className="ss-trade_commol_modal_field">
+            <img src={popupImage?.avatar} className="popupImage" alt="popup" />
           </div>
         </Modal>
       ) : null}

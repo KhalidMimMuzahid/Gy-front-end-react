@@ -43,7 +43,7 @@ const Header = ({ show, setShow }) => {
   }, [value]);
   // handle logout
   const handleLogout = () => {
-    removeLocalStorage("safe_secure_token");
+    removeLocalStorage("grow_more_today_token");
     window.location.reload();
   };
   // get user

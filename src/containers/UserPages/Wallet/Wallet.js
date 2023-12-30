@@ -29,7 +29,7 @@ const Wallet = () => {
           }`}
           icon={totalIncome}
           bgColor="#6C4AB6"
-          cardBgColor="#fe9f43"
+          cardBgColor="#F7941D"
         />
         <HomeCard
           cardName="Active Income"
@@ -40,7 +40,7 @@ const Wallet = () => {
           }`}
           icon={totalIncome}
           bgColor="#6C4AB6"
-          cardBgColor="#fe9f43"
+          cardBgColor="#0087F6"
         />
         <HomeCard
           cardName="Self Investment"
@@ -49,7 +49,7 @@ const Wallet = () => {
           }`}
           icon={BoosterIncome}
           bgColor="#38cab3"
-          cardBgColor="#00d0e7"
+          cardBgColor="#F7941D"
         />
         <HomeCard
           cardName="Main Wallet"
@@ -60,7 +60,7 @@ const Wallet = () => {
           }`}
           icon={totalIncome}
           bgColor="#6C4AB6"
-          cardBgColor="#fe9f43"
+          cardBgColor="#0087F6"
         />
         <HomeCard
           cardName="Direct Income"
@@ -71,7 +71,7 @@ const Wallet = () => {
           }`}
           icon={totalIncome}
           bgColor="#6C4AB6"
-          cardBgColor="#fe9f43"
+          cardBgColor="#F7941D"
         />
         <HomeCard
           cardName="Profit Share"
@@ -83,7 +83,7 @@ const Wallet = () => {
           icon={DirectIncome}
           linkText="view details"
           bgColor="#38cab3"
-          cardBgColor="#00d0e7"
+          cardBgColor="#0087F6"
         />
         <HomeCard
           cardName=" Actinic Bonus"
@@ -95,7 +95,7 @@ const Wallet = () => {
           icon={InDirectIncome}
           linkText="view details"
           bgColor="#ffbd5a"
-          cardBgColor="#28c66f"
+          cardBgColor="#F7941D"
         />
 
         {/* <HomeCard
@@ -118,7 +118,7 @@ const Wallet = () => {
           }`}
           icon={withdrawIncome}
           bgColor="#9ED5C5"
-          cardBgColor="#fe9f43"
+          cardBgColor="#0087F6"
         />
         <HomeCard
           cardName="Winning Wallet"
@@ -130,7 +130,7 @@ const Wallet = () => {
           icon={InDirectIncome}
           linkText="view details"
           bgColor="#ffbd5a"
-          cardBgColor="#28c66f"
+          cardBgColor="#F7941D"
         />
         <HomeCard
           cardName="Winning Share"
@@ -142,7 +142,7 @@ const Wallet = () => {
           icon={InDirectIncome}
           linkText="view details"
           bgColor="#ffbd5a"
-          cardBgColor="#28c66f"
+          cardBgColor="#0087F6"
         />
       </div>
     </div>
