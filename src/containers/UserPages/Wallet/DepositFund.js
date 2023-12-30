@@ -56,9 +56,11 @@ const DepositFundPage = () => {
     } else {
       if (value.amount < 0) {
         Notification("Negative amount is not allow", "error");
-      } else if (value?.amount < 500) {
-        Notification("Minimum deposit is 500", "error");
-      } else {
+      }
+      //  else if (value?.amount < 500) {
+      //   Notification("Minimum deposit is 500", "error");
+      // }
+      else {
         await addDeposit(formData);
       }
     }
@@ -118,16 +120,21 @@ const DepositFundPage = () => {
               </div>
               <div className="qr_code_box">
                 <div className="card2">
-                  <div style={{ justifyContent: "center", display:"flex", gap:"15px" }}>
+                  <div
+                    style={{
+                      justifyContent: "center",
+                      display: "flex",
+                      gap: "15px",
+                    }}
+                  >
                     <a href="upi://pay?pa=3wbusinessprivatelimited@icici&cu=INR&tn=Grow More">
                       {" "}
                       PAY Via
-                      
                     </a>
                     <img
-                        src={PuiImage}
-                        style={{ height: "60px", width: "70px" }}
-                      />
+                      src={PuiImage}
+                      style={{ height: "60px", width: "70px" }}
+                    />
                   </div>
                 </div>
               </div>
