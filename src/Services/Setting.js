@@ -125,6 +125,34 @@ export const settingApi = createApi({
       query: () => "/api/v1/public/website_analytics",
       providesTags: ["setting"], // automatic-data fetching
     }),
+    updateMinDepositeAmount: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/manage_deposite_amount",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
+    updateMinWithdrawAmount: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/manage_withdarw_amount",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
+    updateMinWithdrawPercentageAmount: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/manage_withdarw_percentage_amount",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
+    getManageData: builder.query({
+      query: () => "/api/v1/private/get_manage_amount",
+      providesTags: ["setting"], // automatic-data fetching
+    }),
   }),
 });
 
@@ -146,4 +174,8 @@ export const {
   useGetWinningPercentageQuery,
   useUpdateRoiPercentageMutation,
   useGetRoiPercentageQuery,
+  useUpdateMinDepositeAmountMutation,
+  useUpdateMinWithdrawAmountMutation,
+  useUpdateMinWithdrawPercentageAmountMutation,
+  useGetManageDataQuery
 } = settingApi;

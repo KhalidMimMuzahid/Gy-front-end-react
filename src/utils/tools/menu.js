@@ -271,7 +271,7 @@ export const menus = [
       },
       {
         id: "4s88sfs5f8hgh",
-        menu: "Manage Amount & Percentage",
+        menu: "Manage",
         route: "/dashboard/minimum-amount-percentage",
         permission: ["admin"],
       },
