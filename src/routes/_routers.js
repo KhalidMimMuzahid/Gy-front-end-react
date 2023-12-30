@@ -243,6 +243,9 @@ const WiningPercentage = React.lazy(() =>
 const ROIPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.RoiPercentage")
 );
+const ManageMinimumAmountPercentage = React.lazy(() =>
+  import("../containers/AdminPages/Admin.Setting/Admin.ManageMinimumAmountPercentage")
+);
 const AdminChangeEmail = React.lazy(() =>
   import("../containers/AdminPages/Admin.Account/Admin.ChangeEmail")
 );
@@ -686,6 +689,12 @@ export const routers = [
     name: "ROI Percentage",
     permission: ["admin"],
     component: ROIPercentage,
+  },
+  {
+    path: "/minimum-amount-percentage",
+    name: "Manage Minimum Amount & Percentage",
+    permission: ["admin"],
+    component: ManageMinimumAmountPercentage,
   },
   {
     path: "/contact-us",

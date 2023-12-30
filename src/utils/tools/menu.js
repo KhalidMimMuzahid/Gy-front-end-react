@@ -269,6 +269,12 @@ export const menus = [
         route: "/dashboard/roi-percentage",
         permission: ["admin"],
       },
+      {
+        id: "4s88sfs5f8hgh",
+        menu: "Manage Amount & Percentage",
+        route: "/dashboard/minimum-amount-percentage",
+        permission: ["admin"],
+      },
     ],
   },
   // ************************************* user dashboard menu ************************//

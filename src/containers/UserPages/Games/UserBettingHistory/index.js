@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetPredictedQuery } from "../../../../Services/userApi";
-import { IoMdTrophy } from "react-icons/io";
 import UserSpecificBettingHistory from "../ColorGames/table/UserSpecificBettingHistory";
+import SectionCommonTable from "../../../../components/SectionCommonTable";
 
 const UserBettingHistory = () => {
   const { data: predictedData } = useGetPredictedQuery();
@@ -9,12 +9,18 @@ const UserBettingHistory = () => {
   return (
     <div>
       <div className='records_table'>
-        <div className='table_header'>
-          <IoMdTrophy size={50} />
-          <p>My Betting Records</p>
-        </div>
         <div className='table-content'>
-          <UserSpecificBettingHistory data={predictedData?.data} />
+          <SectionCommonTable
+            wrapperClassName='roi_table'
+            cardStyle={{ backgroundColor: "#fff" }}
+            sectionTableTitle=' My Betting History'
+            table={
+              <UserSpecificBettingHistory
+                data={predictedData?.data}
+                // showDetails={showDetails}
+              />
+            }
+          />
         </div>
       </div>
     </div>
