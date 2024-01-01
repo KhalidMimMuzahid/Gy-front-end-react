@@ -80,14 +80,18 @@
       margin: 0;
       padding: 0;
       font-family: "lazerGameZone", sans-serif !important;
+      @include breakpoints(tablet) {
+        flex-direction: column;
+      }
       h1 {
         font-size: 5rem;
-        font-weight: 900;
+        font-weight: 900 !important;
         text-transform: capitalize;
         color: white;
         -webkit-text-stroke: 1px purple;
         padding: 0px;
         margin: 0px;
+        font-family: "lazerGameZone", sans-serif !important;
         @include breakpoints(tablet) {
           font-size: 39px;
           font-weight: 900 !important;

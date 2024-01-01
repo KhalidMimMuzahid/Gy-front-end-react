@@ -244,7 +244,9 @@ const ROIPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.RoiPercentage")
 );
 const ManageMinimumAmountPercentage = React.lazy(() =>
-  import("../containers/AdminPages/Admin.Setting/Admin.ManageMinimumAmountPercentage")
+  import(
+    "../containers/AdminPages/Admin.Setting/Admin.ManageMinimumAmountPercentage"
+  )
 );
 const AdminChangeEmail = React.lazy(() =>
   import("../containers/AdminPages/Admin.Account/Admin.ChangeEmail")
@@ -716,12 +718,12 @@ export const routers = [
     permission: ["admin"],
     component: AdminGameDashBoard,
   },
-  {
-    path: "/game-History",
-    name: "Game History",
-    permission: ["admin"],
-    component: AdminGameHistory,
-  },
+  // {
+  //   path: "/game-History",
+  //   name: "Game History",
+  //   permission: ["admin"],
+  //   component: AdminGameHistory,
+  // },
 
   // setting section
   // {
