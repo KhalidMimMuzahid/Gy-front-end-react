@@ -37,8 +37,8 @@ const LandingPage = () => {
       <div className="sst_home-banner" style={{ height: "100%" }}>
         <div className="container sst_hero-container">
           <div className="sst_herro-left">
-            <div className="sst_hero-title" style={{ fontFamily: "lazer" }}>
-              <h1 style={{ fontFamily: "lazer" }}>PLAY </h1>
+            <div className="sst_hero-title">
+              <h1>PLAY </h1>
               <h1> &</h1>
               <h1>WIN </h1>
             </div>
