@@ -47,9 +47,9 @@ const FundReceivingHistory = React.lazy(() =>
 );
 
 //games section
-const ColorGame = React.lazy(() =>
-  import("../containers/UserPages/Games/ColorGames/index")
-);
+// const ColorGame = React.lazy(() =>
+//   import("../containers/UserPages/Games/ColorGames/index")
+// );
 const ColorGameHistory = React.lazy(() =>
   import("../containers/UserPages/Games/UserBettingHistory/index")
 );
@@ -354,12 +354,12 @@ export const routers = [
   },
 
   // games section
-  {
-    path: "/games/color-game",
-    name: "Color Game",
-    permission: ["user"],
-    component: ColorGame,
-  },
+  // {
+  //   path: "/games/color-game",
+  //   name: "Color Game",
+  //   permission: ["user"],
+  //   component: ColorGame,
+  // },
   {
     path: "/games/color-game/betting-history",
     name: "Betting History",

@@ -361,12 +361,12 @@ export const menus = [
     icon: <GrGamepad />,
     permission: ["user"],
     dropdown: [
-      {
-        id: "7854s8dfs5d",
-        menu: "Color game",
-        route: "/dashboard/games/color-game",
-        permission: ["user"],
-      },
+      // {
+      //   id: "7854s8dfs5d",
+      //   menu: "Color game",
+      //   route: "/dashboard/games/color-game",
+      //   permission: ["user"],
+      // },
       {
         id: "7854s8dfs5jk",
         menu: "My Betting History",
