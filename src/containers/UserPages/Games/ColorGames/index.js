@@ -34,7 +34,8 @@ const ColorGame = () => {
   } = useGetPredictedOnSinglePeriodQuery();
 
   const { data: periodData, refetch } = useGetperiodIDQuery();
-  const { data: periodRecord } = useGetAllPeriodRecordQuery();
+  const { data: periodRecord, refetch: refetchPeriodRecord } =
+    useGetAllPeriodRecordQuery();
   const [
     periodHistory,
     { data: periodHistoryData, error: periodHistoryError },
@@ -98,6 +99,7 @@ const ColorGame = () => {
 
       if (initialTimeDuration < 0) {
         refetch();
+        refetchPeriodRecord();
         refetchPredictedDataForCurrrentPeriod();
         setisLoading(true);
       } else {
@@ -331,8 +333,10 @@ const ColorGame = () => {
             isButtonDisabled={isButtonDisabled}
             currentPeriod={periodData?.data?.period}
             selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
-              refetchPredictedDataForCurrrentPeriod={refetchPredictedDataForCurrrentPeriod}
+            setSelectedOption={setSelectedOption}
+            refetchPredictedDataForCurrrentPeriod={
+              refetchPredictedDataForCurrrentPeriod
+            }
           />
           {/* // for PeriodId History */}
           {/* <Modal
