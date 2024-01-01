@@ -16,7 +16,9 @@ html {
 }
 @font-face {
   font-family: "lazerGameZone", sans-serif;
-  src: url("../assets/front/Lazer-Game-Zone.ttf") format("ttf");
+  src: local("LazerGameZone"),
+    url("../assets/front/LazerGameZone.woff") format("woff"),
+    url("../assets/front/LazerGameZone.ttf") format("ttf");
 }
 .home_wrapper {
   display: flex;
