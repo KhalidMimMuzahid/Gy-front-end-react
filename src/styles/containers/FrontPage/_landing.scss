@@ -1,0 +1,142 @@
+@import "../../responsive/breakpoints";
+@import "../../abstract/variables";
+
+.sst_home-banner {
+  background-image: url("../../../../src//assets/HomeBg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  @include breakpoints(tablet) {
+    padding: 10px 0;
+    height: 100% !important;
+  }
+
+  .sst_hero-container {
+    font-family: $font-family;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    @include breakpoints(tablet) {
+      flex-direction: column;
+    }
+
+    .sst_herro-left {
+      flex: 1;
+      margin-right: 30px;
+      padding-bottom: 40px;
+
+      @include breakpoints(tablet) {
+        margin-right: 0px;
+      }
+
+      h4 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: #fff;
+        padding: 6px 10px;
+        display: inline-block;
+
+        @include breakpoints(tablet) {
+          font-size: 12px;
+        }
+      }
+
+      .sst_hero-buttons {
+        margin-top: 20px;
+
+        @include breakpoints(tablet) {
+          margin: 20px 0;
+        }
+
+        button {
+          background-color: #1982e4d1;
+          border-radius: 20px;
+          padding: 15px 25px;
+          font-size: 20px;
+          color: #fff;
+          border: none;
+          margin-right: 20px;
+          font-weight: 600 !important;
+          transition: all 500ms ease-in-out;
+          cursor: pointer;
+
+          @include breakpoints(tablet) {
+            padding: 10px 15px;
+            font-size: 15px;
+            margin-right: 10px;
+          }
+
+          :hover {
+            background-color: rgb(2, 2, 161);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .sst_hero-title {
+      display: flex;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+      font-family: "lazerGameZone", sans-serif !important;
+      @include breakpoints(tablet) {
+        flex-direction: column;
+      }
+      h1 {
+        font-size: 5rem;
+        font-weight: 900 !important;
+        text-transform: capitalize;
+        color: white;
+        -webkit-text-stroke: 1px purple;
+        padding: 0px;
+        margin: 0px;
+        font-family: "lazerGameZone", sans-serif !important;
+        @include breakpoints(tablet) {
+          font-size: 39px;
+          font-weight: 900 !important;
+          padding: 10px 0 10px;
+          line-height: 1.5em;
+        }
+        -webkit-animation: bounce 1.5s ease-in-out 0s infinite alternate;
+        animation: bounce 1.5s ease-in-out 0s infinite alternate;
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+    .sst_herro-right {
+      flex: 1;
+      float: left;
+      text-align: end;
+      @include breakpoints(tablet) {
+        text-align: center;
+      }
+      img {
+        width: 50%;
+        height: 100%;
+        -webkit-animation: bounce 2.8s ease-in-out 0s infinite alternate;
+        animation: bounce 1.8s ease-in-out 0s infinite alternate;
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
+        @include breakpoints(tablet) {
+          width: 400px;
+          max-width: 75%;
+        }
+      }
+    }
+  }
+}

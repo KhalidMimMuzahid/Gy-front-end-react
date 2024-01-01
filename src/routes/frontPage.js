@@ -9,6 +9,7 @@ import Particle from "../containers/FrontPage/components/Particle";
 import Plan from "../containers/FrontPage/Pages/Plan";
 import ComingSoon from "../components/ComingSoon/ComingSoon";
 import PlanPDF from "../containers/FrontPage/components/PlanPDF";
+import LandingPage from "../containers/FrontPage/Pages/LandingPage";
 // import Packages from "../containers/FrontPage/Pages/Packages";
 const FrontPage = () => {
   return (
@@ -16,8 +17,10 @@ const FrontPage = () => {
     {/* <Particle/> */}
       {/* <SideBarSocialIcon/> */}
       <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" index element={<LandingPage/>} />
+        <Route path="/about" index element={<Home />} />
+        {/* <Route path="/about" element={<About />} /> */}
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/planPDF" element={<PlanPDF />} />
         <Route path="/income-types" element={<Plan />} />
         <Route path="/contact" element={<Contact />} />

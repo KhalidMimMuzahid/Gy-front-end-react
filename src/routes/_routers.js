@@ -727,12 +727,12 @@ export const routers = [
     permission: ["admin"],
     component: AdminGameDashBoard,
   },
-  {
-    path: "/game-History",
-    name: "Game History",
-    permission: ["admin"],
-    component: AdminGameHistory,
-  },
+  // {
+  //   path: "/game-History",
+  //   name: "Game History",
+  //   permission: ["admin"],
+  //   component: AdminGameHistory,
+  // },
 
   // setting section
   // {

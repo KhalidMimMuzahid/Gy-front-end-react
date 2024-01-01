@@ -21,7 +21,7 @@ const WithdrawPage = () => {
   const [formErrors, setFormErrors] = useState({});
   const [message, setMessage] = useState("");
   const [accountNumber, setAccountNumber] = useState(userBank?.banks[0]?.accountNumber || "");
-
+console.log({allWalletInfo})
   const [data, setData] = useState({
     amount: "",
     accountNumber: accountNumber || 0,
@@ -100,13 +100,13 @@ const WithdrawPage = () => {
             >
               <p>
               Self Investment: ₹
-                {allWalletInfo?.data?.investmentAmount
-                  ? parseFloat(allWalletInfo?.data?.investmentAmount).toFixed(4)
+                {allWalletInfo?.data?.selfInvestment
+                  ? parseFloat(allWalletInfo?.data?.selfInvestment).toFixed(4)
                   : "0"}
               </p>
               <p style={{ marginLeft: "10px !important" }}>
-              ₹ {allWalletInfo?.data?.activeIncome
-                  ? parseFloat(allWalletInfo?.data?.activeIncome).toFixed(4)
+              ₹ {allWalletInfo?.data?.withdrawalBallance
+                  ? parseFloat(allWalletInfo?.data?.withdrawalBallance).toFixed(4)
                   : "0"}
               </p>
             </div>

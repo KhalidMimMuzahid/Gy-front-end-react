@@ -219,12 +219,12 @@ export const menus = [
         route: "/dashboard/color-games",
         permission: ["admin"],
       },
-      {
-        id: "458s7fs8f8sf",
-        menu: "Game History",
-        route: "/dashboard/game-history",
-        permission: ["admin"],
-      },
+      // {
+      //   id: "458s7fs8f8sf",
+      //   menu: "Game History",
+      //   route: "/dashboard/game-history",
+      //   permission: ["admin"],
+      // },
     ],
   },
   {
@@ -271,7 +271,7 @@ export const menus = [
       },
       {
         id: "4s88sfs5f8hgh",
-        menu: "Manage Amount & Percentage",
+        menu: "Manage",
         route: "/dashboard/minimum-amount-percentage",
         permission: ["admin"],
       },
