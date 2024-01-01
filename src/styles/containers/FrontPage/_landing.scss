@@ -1,0 +1,137 @@
+@import "../../responsive/breakpoints";
+
+.sst_home-banner {
+  // background-color: $bg_front_black_purple;
+  background-image: url("../../../../src//assets/HomeBg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  //   padding: 50px 50px 80px 50px;
+
+  //   background: linear-gradient(to right, #2dd687, #0078d4);
+  height: 100%;
+  width: 100%;
+  @include breakpoints(tablet) {
+    padding: 100px 10px 50px 10px;
+  }
+
+  .sst_hero-container {
+    font-family: $font-family;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    // margin-left: 40px;
+    flex-direction: row;
+    width: 100%;
+    @include breakpoints(tablet) {
+      flex-direction: column;
+    }
+
+    .sst_herro-left {
+      flex: 1;
+      margin-right: 30px;
+      padding-bottom: 40px;
+
+      @include breakpoints(tablet) {
+        margin-right: 0px;
+      }
+
+      h4 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: #c50555;
+        // background: #0070ec57;
+        padding: 6px 10px;
+        // border-radius: 10px;
+        display: inline-block;
+
+        @include breakpoints(tablet) {
+          font-size: 12px;
+        }
+      }
+
+      .sst_hero-buttons {
+        margin-top: 20px;
+
+        @include breakpoints(tablet) {
+          margin: 20px 0;
+        }
+
+        button {
+          background-color: #1982e4d1;
+          border-radius: 20px;
+          padding: 15px 25px;
+          font-size: 20px;
+          color: #c50555;
+          border: none;
+          margin-right: 20px;
+          font-weight: 600 !important;
+          transition: all 500ms ease-in-out;
+          cursor: pointer;
+
+          @include breakpoints(tablet) {
+            padding: 10px 15px;
+            font-size: 15px;
+            margin-right: 10px;
+          }
+
+          :hover {
+            background-color: rgb(2, 2, 161);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    @font-face {
+      font-family: "gameingfront";
+      src: url("../../../assets/front/LazerGameZone.ttf") format("truetype"); /* Adjust the path and format accordingly */
+      /* You can include additional font variations (e.g., font-weight, font-style) here if needed */
+    }
+    .sst_hero-title {
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+
+      h1 {
+        font-size: 5rem;
+        font-weight: 900px;
+        text-transform: capitalize;
+        font-family: "gameingfront", sans-serif;
+        color: white;
+        -webkit-text-stroke: 2px purple;
+        padding: 0px;
+        margin: 0px;
+        @include breakpoints(tablet) {
+          font-size: 39px;
+          font-weight: 900 !important;
+          padding: 10px 0 10px;
+          line-height: 1.5em;
+        }
+      }
+    }
+    .sst_herro-right {
+      flex: 1;
+      float: left;
+      //   background-color: yellow;
+      img {
+        width: 130%;
+        height: 230%;
+        -webkit-animation: bounce 2.8s ease-in-out 0s infinite alternate;
+        animation: bounce 1.8s ease-in-out 0s infinite alternate;
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
+        @include breakpoints(tablet) {
+          width: 400px;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
