@@ -10,7 +10,6 @@ const Earning = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(data.data);
 
   return (
     <>
@@ -19,7 +18,7 @@ const Earning = () => {
           <UserIncomeCard
             cardName='ROI Income'
             cardValue={`₹${
-              data?.data?.roiIncome || 0
+              data?.data?.roiIncome.toFixed(4) || 0
             }`}
             icon={roiIncomeIcon}
             bgColor='#0087F6'
@@ -29,7 +28,7 @@ const Earning = () => {
           <UserIncomeCard
             cardName='Level ROI'
             cardValue={`₹${
-              data?.data?.levelROI
+              data?.data?.levelROI.toFixed(4)
               || 0
             }`}
             icon={roiIncomeIcon}
@@ -40,7 +39,7 @@ const Earning = () => {
           <UserIncomeCard
             cardName='Winning Amount'
             cardValue={`₹${
-              data?.data?.winingAmount || 0
+              data?.data?.winingAmount.toFixed(4) || 0
               
             }`}
             icon={roiIncomeIcon}
@@ -51,7 +50,7 @@ const Earning = () => {
           <UserIncomeCard
             cardName='Winning From Level'
             cardValue={`₹${
-              data?.data?.winingFromLevel || 0
+              data?.data?.winingFromLevel.toFixed(4) || 0
             }`}
             icon={roiIncomeIcon}
             bgColor='#0087F6'

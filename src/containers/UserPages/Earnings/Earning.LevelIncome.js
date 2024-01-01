@@ -40,9 +40,8 @@ const LevelIncome = () => {
           <UserIncomeCard
             cardName='Level ROI'
             cardValue={`₹${
-              levelIncome?.data?.totalLevelIncome
-                ? parseFloat(levelIncome?.data?.totalLevelIncome).toFixed(4)
-                : "0"
+              levelIncome?.data?.levelROI.toFixed(4)
+              || 0
             }`}
             icon={roiIncomeIcon}
             bgColor='#0087F6'
@@ -50,11 +49,9 @@ const LevelIncome = () => {
             cardBgColor='#F7941D'
           />
           <UserIncomeCard
-            cardName='Winning From Lavel'
+            cardName='Winning From Level'
             cardValue={`₹${
-              levelIncome?.data?.totalLevelIncome
-                ? parseFloat(levelIncome?.data?.totalLevelIncome).toFixed(4)
-                : "0"
+              levelIncome?.data?.winingFromLevel.toFixed(4) || 0
             }`}
             icon={roiIncomeIcon}
             bgColor='#0087F6'
