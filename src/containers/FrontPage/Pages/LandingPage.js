@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Particle from "../components/Particle";
 import Homes from "../containers/Home";
 import Landing from "../../../components/LandingPage/Landing";
+import "../../../styles/containers/FrontPage/_landing.scss";
 import HomeImage from "../../../assets/Home.png";
 import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
@@ -26,7 +27,7 @@ const LandingPage = () => {
 
   const handleButtonClick = () => {
     // Redirect to the login page
-    navigate('/login');
+    navigate("/login");
   };
   return (
     <>
@@ -36,8 +37,8 @@ const LandingPage = () => {
       <div className="sst_home-banner" style={{ height: "100%" }}>
         <div className="container sst_hero-container">
           <div className="sst_herro-left">
-            <div className="sst_hero-title">
-              <h1>PLAY </h1>
+            <div className="sst_hero-title" style={{ fontFamily: "lazer" }}>
+              <h1 style={{ fontFamily: "lazer" }}>PLAY </h1>
               <h1> &</h1>
               <h1>WIN </h1>
             </div>

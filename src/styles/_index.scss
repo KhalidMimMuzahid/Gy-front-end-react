@@ -14,6 +14,10 @@
 html {
   scroll-behavior: smooth;
 }
+@font-face {
+  font-family: "lazerGameZone", sans-serif;
+  src: url("../assets/front/LazerGameZone.woff") format("woff");
+}
 .home_wrapper {
   display: flex;
   .menu_backdrop {

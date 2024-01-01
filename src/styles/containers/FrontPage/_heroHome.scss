@@ -1,15 +1,12 @@
 @import "../../responsive/breakpoints";
 
 .sst_home-banner {
-  // background-color: $bg_front_black_purple;
-  // background-image: url("https://res.cloudinary.com/deavhufn6/image/upload/v1694425310/sst-bg_dchkjr.jpg");
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  padding: 100px 50px 80px 50px;
+  padding: 100px 0;
   background-color: #675785;
+  height: 90vh !important;
 
   @include breakpoints(tablet) {
-    padding: 100px 10px 50px 10px;
+    padding: 100px 0;
   }
 
   .sst_hero-container {
