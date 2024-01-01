@@ -70,31 +70,31 @@ const TeamStatistics = () => {
   };
 
   return (
-    <div className="tp_updatepassword_page_wrapper">
+    <div className='tp_updatepassword_page_wrapper'>
       <CardLayout
         style={{ backgroundColor: "#fff" }}
-        className="tp_accountpassword_card"
+        className='tp_accountpassword_card'
       >
-        <div className="tp_accountpassword_title">
+        <div className='tp_accountpassword_title'>
           <h2>Users Info</h2>
         </div>
-        <div className="tp_accountpassword_field">
+        <div className='tp_accountpassword_field'>
           <form onSubmit={handleSubmit}>
-            <div className="form_group">
+            <div className='form_group'>
               <Input
-                label="User Id"
-                type="text"
+                label='User Id'
+                type='text'
                 value={value.userId}
-                name="userId"
-                placeholder="Search user id"
+                name='userId'
+                placeholder='Search user id'
                 onChange={handleChange}
-                inputGroupClass="left"
+                inputGroupClass='left'
               />
             </div>
-            <div className="form_group">
+            <div className='form_group'>
               <Button
-                type="submit"
-                className="submit_btn"
+                type='submit'
+                className='submit_btn'
                 disabled={isLoading ? true : false}
               >
                 {isLoading ? "Loading..." : "Search"}
@@ -103,55 +103,55 @@ const TeamStatistics = () => {
           </form>
         </div>
         {showTeam && TeamStatisticsResponse && (
-          <div className="team_over_view">
+          <div className='team_over_view'>
             <h2>User Info</h2>
-            <div className="tp_dash_content_item">
-              <div className="tp_dash_content card_row">
+            <div className='tp_dash_content_item'>
+              <div className='tp_dash_content card_row'>
                 {TeamStatisticsResponse?.data?.fullName ? (
                   <>
                     <HomeCard
-                      cardName="Full Name"
+                      cardName='Full Name'
                       cardValue={TeamStatisticsResponse?.data?.fullName}
                       icon={team}
-                      bgColor="#38CAB3"
+                      bgColor='#38CAB3'
                       cardBottom={true}
-                      cardBgColor="#0087F6"
+                      cardBgColor='#0087F6'
                     />
                     <HomeCard
-                      cardName="Self Investment"
+                      cardName='Self Investment'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?.investmentAmount
                           ? TeamStatisticsResponse?.data?.investmentAmount
                           : 0
                       }`}
                       icon={team}
-                      bgColor="#38CAB3"
+                      bgColor='#38CAB3'
                       cardBottom={true}
-                      cardBgColor="#F7941D"
+                      cardBgColor='#F7941D'
                     />
                     <HomeCard
-                      cardName="Total Team"
+                      cardName='Total Team'
                       cardValue={
                         TeamStatisticsResponse?.data?.totalTeam
                           ? TeamStatisticsResponse?.data?.totalTeam
                           : "0"
                       }
                       icon={team}
-                      bgColor="#38CAB3"
+                      bgColor='#38CAB3'
                       cardBottom={true}
-                      cardBgColor="#0087F6"
+                      cardBgColor='#0087F6'
                     />
                     <HomeCard
-                      cardName="Total Active Team"
+                      cardName='Total Active Team'
                       cardValue={
                         TeamStatisticsResponse?.data?.totalActiveTeam
                           ? TeamStatisticsResponse?.data?.totalActiveTeam
                           : "0"
                       }
                       icon={directTeam}
-                      bgColor="#59CE8F"
+                      bgColor='#59CE8F'
                       cardBottom={true}
-                      cardBgColor="#F7941D"
+                      cardBgColor='#F7941D'
                     />
                     {TeamStatisticsResponse?.data?.teamStats?.map((d, i) => (
                       <HomeCard
@@ -162,10 +162,10 @@ const TeamStatistics = () => {
                         cardValue={d?.totalTeam}
                         teamBusiness={d?.totalBusinessAmount || 0}
                         icon={totalActiveTeam}
-                        bgColor="#42855B"
+                        bgColor='#42855B'
                         cardBottom={true}
                         cardBgColor={i % 2 === 0 ? "#0087F6" : "#F7941D"}
-                        type="level"
+                        type='level'
                         role={loginUserData?.data?.role}
                         goToHistory={() =>
                           navigateWithParams(d?.level, value?.userId)
@@ -173,7 +173,7 @@ const TeamStatistics = () => {
                       />
                     ))}
                     <HomeCard
-                      cardName="Total Balance"
+                      cardName='Total Balance'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.totalIncome
                           ? parseFloat(
@@ -182,11 +182,11 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={userListIcon}
-                      bgColor="#38cab3"
-                      cardBgColor="#F7941D"
+                      bgColor='#38cab3'
+                      cardBgColor='#F7941D'
                     />
                     <HomeCard
-                      cardName="Active Income"
+                      cardName='Active Income'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.activeIncome
                           ? parseFloat(
@@ -195,11 +195,11 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={userListIcon}
-                      bgColor="#38cab3"
-                      cardBgColor="#0087F6"
+                      bgColor='#38cab3'
+                      cardBgColor='#0087F6'
                     />
                     <HomeCard
-                      cardName="Main Wallet"
+                      cardName='Main Wallet'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.totalIncome
                           ? parseFloat(
@@ -208,11 +208,11 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={userListIcon}
-                      bgColor="#F49D1A"
-                      cardBgColor="#F7941D"
+                      bgColor='#F49D1A'
+                      cardBgColor='#F7941D'
                     />
                     <HomeCard
-                      cardName=" Actinic Bonus"
+                      cardName=' ROI Income'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.roiIncome
                           ? parseFloat(
@@ -221,12 +221,12 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={teamIcon}
-                      linkText="view details"
-                      bgColor="#38cab3"
-                      cardBgColor="#0087F6"
+                      linkText='view details'
+                      bgColor='#38cab3'
+                      cardBgColor='#0087F6'
                     />
                     <HomeCard
-                      cardName="Profit Share"
+                      cardName='Level ROI'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.levelIncome
                           ? parseFloat(
@@ -235,9 +235,9 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={roiIcon}
-                      linkText="view details"
-                      bgColor="#ffbd5a"
-                      cardBgColor="#F7941D"
+                      linkText='view details'
+                      bgColor='#ffbd5a'
+                      cardBgColor='#F7941D'
                     />
                     {/* <HomeCard
                       cardName='Rank Income'
@@ -253,7 +253,7 @@ const TeamStatistics = () => {
                       cardBgColor='#fe9f43'
                     /> */}
                     <HomeCard
-                      cardName="Total Withdraw"
+                      cardName='Total Withdraw'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?.totalWithdraw
                           ? parseFloat(
@@ -262,11 +262,11 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={userListIcon}
-                      bgColor="#38cab3"
-                      cardBgColor="#0087F6"
+                      bgColor='#38cab3'
+                      cardBgColor='#0087F6'
                     />
                     <HomeCard
-                      cardName="Winning Share"
+                      cardName='Winning From Level'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.winingShare
                           ? parseFloat(
@@ -275,11 +275,11 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={roiIcon}
-                      bgColor="#38cab3"
-                      cardBgColor="#F7941D"
+                      bgColor='#38cab3'
+                      cardBgColor='#F7941D'
                     />
                     <HomeCard
-                      cardName="Winning Amount"
+                      cardName='Winning Amount'
                       cardValue={`₹${
                         TeamStatisticsResponse?.data?._doc?.winingWallect
                           ? parseFloat(
@@ -288,8 +288,8 @@ const TeamStatistics = () => {
                           : "0"
                       }`}
                       icon={userListIcon}
-                      bgColor="#38cab3"
-                      cardBgColor="#0087F6"
+                      bgColor='#38cab3'
+                      cardBgColor='#0087F6'
                     />
                   </>
                 ) : (

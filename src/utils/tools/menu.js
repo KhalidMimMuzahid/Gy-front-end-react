@@ -130,13 +130,13 @@ export const menus = [
     dropdown: [
       {
         id: "34qqf43gq3hq",
-        menu: "Profit Share",
+        menu: "Levels",
         route: "/dashboard/earnings/level-income",
         permission: ["admin"],
       },
       {
         id: "f5sf5s8fs8f",
-        menu: " Actinic Bonus",
+        menu: " ROI Income",
         route: "/dashboard/earnings/staking-income",
         permission: ["admin"],
       },
@@ -369,7 +369,7 @@ export const menus = [
       // },
       {
         id: "7854s8dfs5jk",
-        menu: "My Betting History",
+        menu: "My Game History",
         route: "/dashboard/games/color-game/betting-history",
         permission: ["user"],
       },
@@ -429,14 +429,20 @@ export const menus = [
     permission: ["user"],
     dropdown: [
       {
+        id: "e7rfs5fs25gsenbvjj",
+        menu: "Earning",
+        route: "/dashboard/earnings/earning",
+        permission: ["user"],
+      },
+      {
         id: "e7rfs5fs25gsenbv",
-        menu: "Profit Share",
+        menu: "Levels",
         route: "/dashboard/earnings/level-income",
         permission: ["user"],
       },
       {
         id: "fs55s8fs8fs",
-        menu: " Actinic Bonus",
+        menu: " ROI Income",
         route: "/dashboard/earnings/roi-income",
         permission: ["user"],
       },

@@ -13,7 +13,7 @@ const UserBettingHistory = () => {
           <SectionCommonTable
             wrapperClassName='roi_table'
             cardStyle={{ backgroundColor: "#fff" }}
-            sectionTableTitle=' My Betting History'
+            sectionTableTitle=' My Game History'
             table={
               <UserSpecificBettingHistory
                 data={predictedData?.data}

@@ -15,7 +15,7 @@ const UserCurrentPeriodBettingHistory = () => {
           <SectionCommonTable
             wrapperClassName='roi_table'
             cardStyle={{ backgroundColor: "#fff" }}
-            sectionTableTitle=' My Betting On Current Period'
+            sectionTableTitle=' My Game On Current Period'
             table={
               <UsersCurrentPeriodBetting
                 data={predictedData?.data}
