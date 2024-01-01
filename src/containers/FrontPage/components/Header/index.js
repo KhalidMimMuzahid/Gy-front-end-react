@@ -6,7 +6,7 @@ import {
   getLocalStorage,
   removeLocalStorage,
 } from "../../../../utils/function/localStorage";
-const Header = ({ hidePackageRoute, refs, scrollTo }) => {
+const Header = ({ refs, scrollTo }) => {
   const [stickyNav, setStickyNav] = useState(false);
   const stickyNavbar = () => {
     if (window.pageYOffset > 100) {
@@ -44,7 +44,6 @@ const Header = ({ hidePackageRoute, refs, scrollTo }) => {
           <div className="ss-trade_front_logo">
             <CustomLink href="/" className="logo">
               <img src={logo} alt="logo" />
-              {/* <h2 style={{padding: "15px"}}>Safe & Secure Trade</h2> */}
             </CustomLink>
             <ul className="ss-trade_front_navbar_lists2">
               {getLocalStorage("grow_more_today_token") ? (
@@ -96,23 +95,20 @@ const Header = ({ hidePackageRoute, refs, scrollTo }) => {
             }`}
           >
             <ul className="ss-trade_front_navbar_lists">
-              <li
-                onClick={() => currentRoute === "/" && scrollTo(refs?.homeref)}
-                className="ss-trade_front_navbar_list"
-              >
-                <CustomLink className="ss-trade_front_nav_link">
+              <li className="ss-trade_front_navbar_list">
+                <CustomLink href="/" className="ss-trade_front_nav_link">
                   Home
                 </CustomLink>
               </li>
               <li
-                onClick={() => currentRoute === "/" && scrollTo(refs?.aboutref)}
+                // onClick={() => currentRoute === "/" && scrollTo(refs?.aboutref)}
                 className="ss-trade_front_navbar_list"
               >
-                <CustomLink className="ss-trade_front_nav_link">
+                <CustomLink href="/about" className="ss-trade_front_nav_link">
                   About
                 </CustomLink>
               </li>
-              <li
+              {/* <li
                 onClick={() =>
                   currentRoute === "/" && scrollTo(refs?.servicesref)
                 }
@@ -121,7 +117,7 @@ const Header = ({ hidePackageRoute, refs, scrollTo }) => {
                 <CustomLink className="ss-trade_front_nav_link">
                   Services
                 </CustomLink>
-              </li>
+              </li> */}
               <li className="ss-trade_front_navbar_list">
                 <CustomLink href="/planPDF" className="ss-trade_front_nav_link">
                   Business PDF

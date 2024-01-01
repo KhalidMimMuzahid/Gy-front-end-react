@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Particle from "../components/Particle";
-import Homes from "../containers/Home";
-import Landing from "../../../components/LandingPage/Landing";
+// import Particle from "../components/Particle";
+// import Homes from "../containers/Home";
+// import Landing from "../../../components/LandingPage/Landing";
 import "../../../styles/containers/FrontPage/_landing.scss";
 import HomeImage from "../../../assets/Home.png";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const LandingPage = () => {
 
   const scrollto = (elementref) => {
     window.scrollTo({
-      top: elementref.current.offsetTop - 100,
+      top: elementref?.current?.offsetTop - 100,
       behavior: "smooth",
     });
   };
@@ -31,7 +31,10 @@ const LandingPage = () => {
   };
   return (
     <>
-      {/* <Header refs={{homeref,missionref,aboutref, servicesref}} scrollTo={scrollto} hidePackageRoute /> */}
+      <Header
+        refs={{ homeref, missionref, aboutref, servicesref }}
+        scrollTo={scrollto}
+      />
       {/* <Homes  refs={{homeref,missionref,aboutref, servicesref}} /> */}
       {/* <Landing/> */}
       <div className="sst_home-banner" style={{ height: "100%" }}>
