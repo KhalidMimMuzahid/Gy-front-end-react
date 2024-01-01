@@ -139,23 +139,6 @@ const HomePage = () => {
         <ColorGame/>
         </div>
       </div>
-      <div className='first_row dashboard_content'>
-        <div className='ss-trade_dash_content_item'>
-        <UserCurrentPeriodBettingHistory/>
-        </div>
-      </div>
-      {/* {popupImage?.avatar ? (
-        <Modal
-          openModal={openModalForImage}
-          setOpenModal={setOpenModalForImage}
-          modalTitle=''
-          modalRef={modalImageRef}
-        >
-          <div className='ss-trade_commol_modal_field'>
-            <img src={popupImage?.avatar} className='popupImage' alt='popup' />
-          </div>
-        </Modal>
-      ) : null} */}
     </div>
   );
 };
