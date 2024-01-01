@@ -373,6 +373,10 @@ export const userApi = createApi({
       query: () => "/api/v1/secure/get-predicted",
       providesTags: ["User"], // automatic-data fetching
     }),
+    getPredictedOnSinglePeriod: builder.query({
+      query: () => "/api/v1/secure/get-my-prediction",
+      providesTags: ["User"], // automatic-data fetching
+    }),
     getPeriodHistory: builder.mutation({
       // user register
       query: (body) => ({
@@ -446,4 +450,5 @@ export const {
   useGetAllPeriodRecordQuery,
   useGetPredictedQuery,
   useGetPeriodHistoryMutation,
+  useGetPredictedOnSinglePeriodQuery,
 } = userApi;

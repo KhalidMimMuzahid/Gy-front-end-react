@@ -28,25 +28,25 @@ const RoiIncome = () => {
   }
   return (
     <>
-      <div className="UserEarning_wallet_page_wrapper">
-        <div className="UserEarning_dash_content card_row">
+      <div className='UserEarning_wallet_page_wrapper'>
+        <div className='UserEarning_dash_content card_row'>
           <UserIncomeCard
-            cardName=" Actinic Bonus"
+            cardName=' ROI Income'
             cardValue={`₹${
               data?.data?.roiIncome
                 ? parseFloat(data?.data?.roiIncome).toFixed(4)
                 : "0"
             }`}
             icon={roiIncomeIcon}
-            bgColor="#38cab3"
-            linkText="view details"
-            cardBgColor="#F7941D"
+            bgColor='#38cab3'
+            linkText='view details'
+            cardBgColor='#F7941D'
           />
         </div>
         <SectionCommonTable
-          wrapperClassName="roi_table"
+          wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle=" Actinic Bonus"
+          sectionTableTitle=' ROI Income'
           table={
             <RoiIncomeTable
               data={roiData?.data?.history}
@@ -62,28 +62,28 @@ const RoiIncome = () => {
         modalTitle={"Details"}
         modalRef={modalRef}
       >
-        <div className="ss-trade_commol_modal_field">
+        <div className='ss-trade_commol_modal_field'>
           <div
-            className="transaction_details"
+            className='transaction_details'
             style={{ textAlign: "left", marginTop: "20px" }}
           >
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Package:</strong>
               <span>₹{roiData?.data?.currentPackage}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Amount:</strong>
               <span>₹{Number(values.commissionAmount).toFixed(4)}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Date:</strong>
               <span>{values?.incomeDate}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Time:</strong>
               <span>{values?.incomeTime}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Status:</strong>
               <span>success</span>
             </p>

@@ -33,7 +33,7 @@ const StakingLevelIncome = () => {
         <SectionCommonTable
           wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle='Staking Profit Share'
+          sectionTableTitle='Staking Level ROI'
           table={
             <StakingLevelIncomeTable
               data={StakingIncome?.data}

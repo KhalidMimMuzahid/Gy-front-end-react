@@ -17,6 +17,7 @@ const ColorModal = ({
   currentPeriod,
   selectedOption,
   setSelectedOption,
+  refetchPredictedDataForCurrrentPeriod,
 }) => {
   const [
     createBetting,
@@ -64,6 +65,7 @@ const ColorModal = ({
       // console.log({ response });
       if (response?.data?.message) {
         Notification(response?.data?.message, "success");
+        refetchPredictedDataForCurrrentPeriod();
       }
     } catch (error) {
       // Handle error in case of an issue with the API call
@@ -108,14 +110,14 @@ const ColorModal = ({
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby='modal-modal-title'
+      aria-describedby='modal-modal-description'
     >
       <Box sx={modalStyle}>
-        <h2 id="modal-modal-title" >{`Join ${getOptionTitle(
+        <h2 id='modal-modal-title'>{`Join ${getOptionTitle(
           selectedOption
         )}`}</h2>
-        <div className="modal_body">
+        <div className='modal_body'>
           <p>Contract Money</p>
           <ButtonInputGroup
             selectedValue={selectedValue}
@@ -123,29 +125,29 @@ const ColorModal = ({
             setcurVal={setcurVal}
           />
           {/* counter of contract here */}
-          <div className="counter-container">
-            <label className="counter-label">Contract count</label>
-            <div className="counter">
-              <button onClick={decrement} className="counter-button">
+          <div className='counter-container'>
+            <label className='counter-label'>Contract count</label>
+            <div className='counter'>
+              <button onClick={decrement} className='counter-button'>
                 -
               </button>
-              <span className="count">{count}</span>
-              <button onClick={increment} className="counter-button">
+              <span className='count'>{count}</span>
+              <button onClick={increment} className='counter-button'>
                 +
               </button>
             </div>
           </div>
           {/* Calculate total Amount */}
-          <div className="total_amount_to_deduct">
+          <div className='total_amount_to_deduct'>
             <p>Total Contract Money is : {totalContractMony}</p>
           </div>
-          <div className="accept_condition">
+          <div className='accept_condition'>
             <FormGroup>
-              <div className="terms_and_condition">
+              <div className='terms_and_condition'>
                 <FormControlLabel control={<Checkbox checked />} />
                 <p>
                   I agreed to{" "}
-                  <CustomLink href="https://www.facebook.com/">
+                  <CustomLink href='https://www.facebook.com/'>
                     PRE SALE RULE
                   </CustomLink>
                 </p>
@@ -153,13 +155,13 @@ const ColorModal = ({
             </FormGroup>
           </div>
           {/* Add confirm and cancel buttons */}
-          <div className="button-container">
-            <button onClick={handleClose} className="cancel-button">
+          <div className='button-container'>
+            <button onClick={handleClose} className='cancel-button'>
               Cancel
             </button>
             <button
               onClick={handleConfirm}
-              className="confirm-button"
+              className='confirm-button'
               disabled={isButtonDisabled}
             >
               Confirm

@@ -22,7 +22,7 @@ const IncomeTypes = () => {
             <Card
               className='dark_blue'
               discountText='Income 2'
-              packageAmount='Profit Share'
+              packageAmount='Level ROI'
               mining='Package Profit'
               buttonText='START'
               buttonStyle='#e8c743'

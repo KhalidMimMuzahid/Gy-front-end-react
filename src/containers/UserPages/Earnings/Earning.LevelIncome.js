@@ -35,25 +35,34 @@ const LevelIncome = () => {
   }
   return (
     <>
-      <div className="UserEarning_wallet_page_wrapper">
-        <div className="UserEarning_dash_content card_row">
+      <div className='UserEarning_wallet_page_wrapper'>
+        <div className='UserEarning_dash_content card_row'>
           <UserIncomeCard
-            cardName="Profit Share"
+            cardName='Level ROI'
             cardValue={`₹${
-              levelIncome?.data?.totalLevelIncome
-                ? parseFloat(levelIncome?.data?.totalLevelIncome).toFixed(4)
-                : "0"
+              levelIncome?.data?.levelROI.toFixed(4)
+              || 0
             }`}
             icon={roiIncomeIcon}
-            bgColor="#0087F6"
-            linkText="view details"
-            cardBgColor="#F7941D"
+            bgColor='#0087F6'
+            linkText='view details'
+            cardBgColor='#F7941D'
+          />
+          <UserIncomeCard
+            cardName='Winning From Level'
+            cardValue={`₹${
+              levelIncome?.data?.winingFromLevel.toFixed(4) || 0
+            }`}
+            icon={roiIncomeIcon}
+            bgColor='#0087F6'
+            linkText='view details'
+            cardBgColor='#F7941D'
           />
         </div>
         <SectionCommonTable
-          wrapperClassName="roi_table"
+          wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle="Profit Share"
+          sectionTableTitle='Levels'
           table={
             <LevelIncomeTable
               data={levelIncome.data}
@@ -66,7 +75,7 @@ const LevelIncome = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         modalRef={modalRef}
-        modalTitle="Details"
+        modalTitle='Details'
         objValue={modalData}
       />
     </>
