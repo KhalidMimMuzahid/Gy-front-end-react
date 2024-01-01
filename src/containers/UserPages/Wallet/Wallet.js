@@ -43,11 +43,7 @@ const Wallet = () => {
           cardName="Self Investment"
           cardValue={`₹${
             data?.data?.selfInvestment
-<<<<<<< HEAD
-              ? Number(data?.data?.selfInvestment).toFixed(4)
-=======
               ? parseFloat(data?.data?.selfInvestment).toFixed(4)
->>>>>>> 493839f32036fce7d68e08f22f593671b710c937
               : "0"
           }`}
           icon={BoosterIncome}
