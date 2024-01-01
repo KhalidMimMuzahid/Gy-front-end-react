@@ -10,52 +10,46 @@ const Earning = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const totalBalance =
+    data?.data?.selfInvestment + data?.data?.withdrawalBallance;
+  // console.log({ totalBalance });
+  console.log({ data });
 
   return (
     <>
-      <div className='UserEarning_wallet_page_wrapper'>
-        <div className='UserEarning_dash_content card_row'>
+      <div className="UserEarning_wallet_page_wrapper">
+        <div className="UserEarning_dash_content card_row">
           <UserIncomeCard
-            cardName='ROI Income'
-            cardValue={`₹${
-              data?.data?.roiIncome.toFixed(4) || 0
-            }`}
+            cardName="ROI Income"
+            cardValue={`₹${data?.data?.roiIncome.toFixed(4) || 0}`}
             icon={roiIncomeIcon}
-            bgColor='#0087F6'
-            linkText='view details'
-            cardBgColor='#F7941D'
+            bgColor="#0087F6"
+            linkText="view details"
+            cardBgColor="#F7941D"
           />
           <UserIncomeCard
-            cardName='Level ROI'
-            cardValue={`₹${
-              data?.data?.levelROI.toFixed(4)
-              || 0
-            }`}
+            cardName="Level ROI"
+            cardValue={`₹${data?.data?.levelROI.toFixed(4) || 0}`}
             icon={roiIncomeIcon}
-            bgColor='#0087F6'
-            linkText='view details'
-            cardBgColor='#F7941D'
+            bgColor="#0087F6"
+            linkText="view details"
+            cardBgColor="#F7941D"
           />
           <UserIncomeCard
-            cardName='Winning Amount'
-            cardValue={`₹${
-              data?.data?.winingAmount.toFixed(4) || 0
-              
-            }`}
+            cardName="Winning Amount"
+            cardValue={`₹${data?.data?.winingAmount.toFixed(4) || 0}`}
             icon={roiIncomeIcon}
-            bgColor='#0087F6'
-            linkText='view details'
-            cardBgColor='#F7941D'
+            bgColor="#0087F6"
+            linkText="view details"
+            cardBgColor="#F7941D"
           />
           <UserIncomeCard
-            cardName='Winning From Level'
-            cardValue={`₹${
-              data?.data?.winingFromLevel.toFixed(4) || 0
-            }`}
+            cardName="Winning From Level"
+            cardValue={`₹${data?.data?.winingFromLevel.toFixed(4) || 0}`}
             icon={roiIncomeIcon}
-            bgColor='#0087F6'
-            linkText='view details'
-            cardBgColor='#F7941D'
+            bgColor="#0087F6"
+            linkText="view details"
+            cardBgColor="#F7941D"
           />
         </div>
       </div>

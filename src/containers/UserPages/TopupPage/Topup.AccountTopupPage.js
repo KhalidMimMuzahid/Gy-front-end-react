@@ -50,6 +50,8 @@ const AccountTopupPage = () => {
     }
   };
 
+
+
   return (
     <div className="ss-trade_topupaccount_page_wrapper">
       <CardLayout
@@ -73,7 +75,7 @@ const AccountTopupPage = () => {
                   allWalletInfo?.data
                     ? parseFloat(
                         allWalletInfo?.data?.depositBalance +
-                          allWalletInfo?.data?.activeIncome
+                          allWalletInfo?.data?.withdrawalBallance
                       ).toFixed(4)
                     : "0"
                 }`}
