@@ -13,8 +13,8 @@ const Earning = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const totalBalance = data?.data?.investmentAmount + data?.data?.activeIncome;
-  console.log({ totalBalance });
+  const totalBalance = data?.data?.selfInvestment + data?.data?.withdrawalBallance;
+  // console.log({ totalBalance });
   console.log({ data });
 
   // modal toggle
