@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Particle from "../components/Particle";
 import Homes from "../containers/Home";
 import Landing from "../../../components/LandingPage/Landing";
+import "../../../styles/containers/FrontPage/_landing.scss";
 import HomeImage from "../../../assets/Home.png";
 import { useNavigate } from "react-router-dom";
 const LandingPage = () => {
@@ -26,7 +27,7 @@ const LandingPage = () => {
 
   const handleButtonClick = () => {
     // Redirect to the login page
-    navigate('/login');
+    navigate("/login");
   };
   return (
     <>

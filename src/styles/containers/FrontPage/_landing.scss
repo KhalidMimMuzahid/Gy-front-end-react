@@ -1,27 +1,22 @@
 @import "../../responsive/breakpoints";
+@import "../../abstract/variables";
 
 .sst_home-banner {
-  // background-color: $bg_front_black_purple;
   background-image: url("../../../../src//assets/HomeBg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  //   padding: 50px 50px 80px 50px;
-
-  //   background: linear-gradient(to right, #2dd687, #0078d4);
   height: 100%;
   width: 100%;
   @include breakpoints(tablet) {
-    padding: 100px 10px 50px 10px;
+    padding: 10px 0;
+    height: 100% !important;
   }
 
   .sst_hero-container {
     font-family: $font-family;
     display: flex;
-    // justify-content: space-between;
     align-items: center;
-    // margin-left: 40px;
     flex-direction: row;
-    width: 100%;
     @include breakpoints(tablet) {
       flex-direction: column;
     }
@@ -38,10 +33,8 @@
       h4 {
         font-size: 2rem;
         font-weight: 400;
-        color: #c50555;
-        // background: #0070ec57;
+        color: #fff;
         padding: 6px 10px;
-        // border-radius: 10px;
         display: inline-block;
 
         @include breakpoints(tablet) {
@@ -61,7 +54,7 @@
           border-radius: 20px;
           padding: 15px 25px;
           font-size: 20px;
-          color: #c50555;
+          color: #fff;
           border: none;
           margin-right: 20px;
           font-weight: 600 !important;
@@ -81,41 +74,53 @@
         }
       }
     }
-
-    @font-face {
-      font-family: "gameingfront";
-      src: url("../../../assets/front/LazerGameZone.ttf") format("truetype"); /* Adjust the path and format accordingly */
-      /* You can include additional font variations (e.g., font-weight, font-style) here if needed */
-    }
     .sst_hero-title {
+      display: flex;
       font-size: 20px;
       margin: 0;
       padding: 0;
-
+      font-family: "lazerGameZone", sans-serif !important;
+      @include breakpoints(tablet) {
+        flex-direction: column;
+      }
       h1 {
         font-size: 5rem;
-        font-weight: 900px;
+        font-weight: 900 !important;
         text-transform: capitalize;
-        font-family: "gameingfront", sans-serif;
         color: white;
-        -webkit-text-stroke: 2px purple;
+        -webkit-text-stroke: 1px purple;
         padding: 0px;
         margin: 0px;
+        font-family: "lazerGameZone", sans-serif !important;
         @include breakpoints(tablet) {
           font-size: 39px;
           font-weight: 900 !important;
           padding: 10px 0 10px;
           line-height: 1.5em;
         }
+        -webkit-animation: bounce 1.5s ease-in-out 0s infinite alternate;
+        animation: bounce 1.5s ease-in-out 0s infinite alternate;
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
       }
     }
     .sst_herro-right {
       flex: 1;
       float: left;
-      //   background-color: yellow;
+      text-align: end;
+      @include breakpoints(tablet) {
+        text-align: center;
+      }
       img {
-        width: 130%;
-        height: 230%;
+        width: 50%;
+        height: 100%;
         -webkit-animation: bounce 2.8s ease-in-out 0s infinite alternate;
         animation: bounce 1.8s ease-in-out 0s infinite alternate;
         @keyframes bounce {
@@ -129,7 +134,7 @@
         }
         @include breakpoints(tablet) {
           width: 400px;
-          max-width: 100%;
+          max-width: 75%;
         }
       }
     }

@@ -10,15 +10,15 @@ const AdminGameHistory = () => {
   const chartData = {
     series: [
       {
-        name: "Actual",
+        name: "",
         data: [
           {
-            x: "2011",
-            y: 2000,
-            fillColors: ["red", "green"],
+            x: "15",
+            y: 15,
+            fillColor: "#FF0000",
             goals: [
               {
-                name: "Expected",
+                name: ["name", "age"],
                 value: 1400,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
@@ -26,11 +26,12 @@ const AdminGameHistory = () => {
             ],
           },
           {
-            x: "2012",
+            x: "25",
             y: 4432,
+            fillColor: "#008000",
             goals: [
               {
-                name: "Expected",
+                name: "",
                 value: 5400,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
@@ -38,11 +39,12 @@ const AdminGameHistory = () => {
             ],
           },
           {
-            x: "2013",
+            x: "30",
             y: 5423,
+            fillColor: "#7F00FF",
             goals: [
               {
-                name: "Expected",
+                name: "",
                 value: 5200,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
@@ -50,23 +52,23 @@ const AdminGameHistory = () => {
             ],
           },
           {
-            x: "2014",
-            y: 6653,
+            x: "48",
+            y: 20,
             goals: [
               {
-                name: "Expected",
-                value: 6500,
+                name: "",
+                value: 200,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
               },
             ],
           },
           {
-            x: "2015",
+            x: "47",
             y: 8133,
             goals: [
               {
-                name: "Expected",
+                name: "",
                 value: 6600,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
@@ -74,11 +76,11 @@ const AdminGameHistory = () => {
             ],
           },
           {
-            x: "2016",
+            x: "36",
             y: 7132,
             goals: [
               {
-                name: "Expected",
+                name: "",
                 value: 7500,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
@@ -86,11 +88,11 @@ const AdminGameHistory = () => {
             ],
           },
           {
-            x: "2017",
+            x: "78",
             y: 7332,
             goals: [
               {
-                name: "Expected",
+                name: "",
                 value: 8700,
                 strokeHeight: 5,
                 strokeColor: "#775DD0",
@@ -98,14 +100,73 @@ const AdminGameHistory = () => {
             ],
           },
           {
-            x: "2018",
+            x: "47",
             y: 6553,
             goals: [
               {
-                name: "Expected",
+                name: "",
                 value: 7300,
-                strokeHeight: 2,
-                strokeDashArray: 2,
+                strokeHeight: 5,
+                strokeColor: "#775DD0",
+              },
+            ],
+          },
+          {
+            x: "47",
+            y: 6553,
+            goals: [
+              {
+                name: "",
+                value: 7300,
+                strokeHeight: 5,
+                strokeColor: "#775DD0",
+              },
+            ],
+          },
+          {
+            x: "47",
+            y: 6553,
+            goals: [
+              {
+                name: "",
+                value: 7300,
+                strokeHeight: 5,
+                strokeColor: "#775DD0",
+              },
+            ],
+          },
+          {
+            x: "47",
+            y: 6553,
+            goals: [
+              {
+                name: "",
+                value: 7300,
+                strokeHeight: 5,
+                strokeColor: "#775DD0",
+              },
+            ],
+          },
+          {
+            x: "47",
+            y: 6553,
+            goals: [
+              {
+                name: "",
+                value: 7300,
+                strokeHeight: 5,
+                strokeColor: "#775DD0",
+              },
+            ],
+          },
+          {
+            x: "47",
+            y: 6553,
+            goals: [
+              {
+                name: "",
+                value: 7300,
+                strokeHeight: 5,
                 strokeColor: "#775DD0",
               },
             ],
@@ -119,7 +180,7 @@ const AdminGameHistory = () => {
         type: "bar",
         events: {
           click: function (_chart, _w, e) {
-            console.log("barIndex", e?.dataPointIndex);
+            console.log("barIndex", e);
           },
         },
       },
@@ -128,17 +189,40 @@ const AdminGameHistory = () => {
           columnWidth: "60%",
         },
       },
-      colors: ["#00E396", "#f4f4"],
+      colors: ["#00E396"],
       dataLabels: {
-        enabled: false,
+        enabled: true,
+        style: {
+          colors: ["#fff"],
+        },
+        formatter: function (val) {
+          return val; // Display data value as label
+        },
+      },
+      yaxis: {
+        categories: [
+          "",
+          "",
+          "",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+        ],
+        labels: {
+          show: true,
+        },
       },
       legend: {
         show: false,
         showForSingleSeries: true,
         customLegendItems: ["Actual", "Expected"],
-        markers: {
-          fillColors: ["#00E396", "#775DD0"],
-        },
       },
     },
   };

@@ -34,25 +34,33 @@ const ManageMinimumAmountPercentage = () => {
       loading: withdrawPercentageLoading,
     },
   ] = useUpdateMinWithdrawPercentageAmountMutation();
-  const {data:manageAmount,} = useGetManageDataQuery()
+  const { data: manageAmount } = useGetManageDataQuery();
 
-useEffect(() => {
-  if (manageAmount && manageAmount.message && manageAmount.message.length > 0) {
-    const { minimumDepositAmount, minimumWithdrawAmount, withdrawPercentage } = manageAmount.message[0];
+  useEffect(() => {
+    if (
+      manageAmount &&
+      manageAmount.message &&
+      manageAmount.message.length > 0
+    ) {
+      const {
+        minimumDepositAmount,
+        minimumWithdrawAmount,
+        withdrawPercentage,
+      } = manageAmount.message[0];
 
-    if (minimumDepositAmount !== undefined) {
-      setDepositeAmount(minimumDepositAmount);
-      setsWithdarwAmount(minimumWithdrawAmount);
-      setPercentage(withdrawPercentage);
-    }  else {
-      // If none of the properties are available, reset all states
-      setWithdrawPercentage("");
-      setMinimumWithdrawAmount("");
-      setMinimumDepositeAmount("");
+      if (minimumDepositAmount !== undefined) {
+        setDepositeAmount(minimumDepositAmount);
+        setsWithdarwAmount(minimumWithdrawAmount);
+        setPercentage(withdrawPercentage);
+      } else {
+        // If none of the properties are available, reset all states
+        setWithdrawPercentage("");
+        setMinimumWithdrawAmount("");
+        setMinimumDepositeAmount("");
+      }
     }
-  }
-}, [manageAmount]);
-//confromation for Withdraw parcentate Notificaion
+  }, [manageAmount]);
+  //confromation for Withdraw parcentate Notificaion
   useEffect(() => {
     if (withdrawPercentageData?.message) {
       Notification(withdrawPercentageData?.message, "success");
@@ -118,86 +126,96 @@ useEffect(() => {
         </div>
         <div className="ss-trade_accountpassword_field">
           <div>
-          <form onSubmit={handleWithdrawPercentage}>
-            <div className="form_group">
-              <Input
-                label="Mange Withdraw Percentage"
-                type="number"
-                name="new_email"
-                value={withdrawPercentage}
-                onChange={(e) => setWithdrawPercentage(e.target.value)}
-                placeholder="Enter Mange Withdraw Percentage"
-                inputGroupClass="right"
-                isRequired={true}
-              />
-            </div>
+            <form onSubmit={handleWithdrawPercentage}>
+              <div className="form_group">
+                <Input
+                  label="Mange Withdraw Percentage"
+                  type="number"
+                  name="new_email"
+                  value={withdrawPercentage}
+                  onChange={(e) => setWithdrawPercentage(e.target.value)}
+                  placeholder="Enter Mange Withdraw Percentage"
+                  inputGroupClass="right"
+                  isRequired={true}
+                />
+              </div>
 
-            <div className="form_group">
-              <Button type="submit" className="submit_btn" disabled ={withdrawPercentageLoading ? true : false}>
-                {withdrawPercentageLoading ? "Loading" :"Update"}
-              </Button>
-            </div>
-          </form>
-          <form onSubmit={handleMinDeposite}>
-            <div className="form_group">
-              <Input
-                label="Minimum Deposite Amount"
-                type="text"
-                disabl
-                name=""
-                value={minimumDepositeAmount}
-                onChange={(e) => setMinimumDepositeAmount(e.target.value)}
-                placeholder="Enter Mange Minimum Deposite Amount"
-                inputGroupClass="right"
-                isRequired={true}
-              />
-            </div>
+              <div className="form_group">
+                <Button
+                  type="submit"
+                  className="submit_btn"
+                  disabled={withdrawPercentageLoading ? true : false}
+                >
+                  {withdrawPercentageLoading ? "Loading" : "Update"}
+                </Button>
+              </div>
+            </form>
+            <form onSubmit={handleMinDeposite}>
+              <div className="form_group">
+                <Input
+                  label="Minimum Deposite Amount"
+                  type="text"
+                  disabl
+                  name=""
+                  value={minimumDepositeAmount}
+                  onChange={(e) => setMinimumDepositeAmount(e.target.value)}
+                  placeholder="Enter Mange Minimum Deposite Amount"
+                  inputGroupClass="right"
+                  isRequired={true}
+                />
+              </div>
 
-            <div className="form_group">
-              <Button
-                type="submit"
-                className="submit_btn"
-                disabled={depositLoading ? true : false}
-              >
-                {depositLoading ? "Loading..." : "Update"}
-              </Button>
-            </div>
-          </form>
-          <form onSubmit={handleSubmitMinWithdraw}>
-            <div className="form_group">
-              <Input
-                label="Minimum withdraw Amount"
-                type="text"
-                name=""
-                value={minimumWithdrawAmount}
-                onChange={(e) => setMinimumWithdrawAmount(e.target.value)}
-                placeholder="Enter Mange Minimum withdraw Amount"
-                inputGroupClass="right"
-                isRequired={true}
-              />
-            </div>
+              <div className="form_group">
+                <Button
+                  type="submit"
+                  className="submit_btn"
+                  disabled={depositLoading ? true : false}
+                >
+                  {depositLoading ? "Loading..." : "Update"}
+                </Button>
+              </div>
+            </form>
+            <form onSubmit={handleSubmitMinWithdraw}>
+              <div className="form_group">
+                <Input
+                  label="Minimum withdraw Amount"
+                  type="text"
+                  name=""
+                  value={minimumWithdrawAmount}
+                  onChange={(e) => setMinimumWithdrawAmount(e.target.value)}
+                  placeholder="Enter Mange Minimum withdraw Amount"
+                  inputGroupClass="right"
+                  isRequired={true}
+                />
+              </div>
 
-            <div className="form_group">
-              <Button
-                type="submit"
-                className="submit_btn"
-                disabled={withdrawLoading ? true : false}
-              >
-                {withdrawLoading ? "Loading..." : "update"}
-              </Button>
-            </div>
-          </form>
+              <div className="form_group">
+                <Button
+                  type="submit"
+                  className="submit_btn"
+                  disabled={withdrawLoading ? true : false}
+                >
+                  {withdrawLoading ? "Loading..." : "update"}
+                </Button>
+              </div>
+            </form>
           </div>
           <div>
-          <div style={{ border: "1px solid black", justifyContent: "center", padding: "10px", width: "450px" }}>
-        <h1 style={{textAlign:"center"}}>Preview</h1>
-        <div style={{  marginTop: "10px" }}>
-          <h2>Minmum Withdraw Amount : {withdrawAmount}</h2>
-          <h2>Minmum Deposite Amount : {DepositeAmount}</h2>
-          <h2>Withdraw Percentage Amount : {percentage}%</h2>
-          
-        </div>
-      </div>
+            <div
+              style={{
+                border: "1px solid black",
+                justifyContent: "center",
+                padding: "10px",
+                width: "450px",
+              }}
+            >
+              <h1 style={{ textAlign: "center" }}>Preview</h1>
+              <div style={{ marginTop: "10px" }}>
+                <h2>Minmum Withdraw Amount : {withdrawAmount}</h2>
+                <h2>Minmum Deposite Amount : {DepositeAmount}</h2>
+                <h2>Withdraw Percentage Amount : {percentage}%</h2>
+              </div>
+            </div>
           </div>
         </div>
       </CardLayout>
