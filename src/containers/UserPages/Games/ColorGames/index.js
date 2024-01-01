@@ -23,6 +23,7 @@ import calculateTimeDifference from "../../../../utils/function/fetCalculateTime
 import Modal from "../../../../components/Modal";
 import { useClickOutside } from "../../../../hooks/useClickOutside";
 import PeriodHistoryTable from "./table/PeriodHistoryTable";
+import GameLoader from "../../../../components/Loading/GameLoader/GameLoader";
 
 const ColorGame = () => {
   const { data: periodData, refetch } = useGetperiodIDQuery();
@@ -147,7 +148,7 @@ const ColorGame = () => {
   return (
     <div>
       {isLoading ? (
-        <h1>Loading</h1>
+        <GameLoader/>
       ) : (
         <div className="color_games_container">
           {/* For Tabs */}

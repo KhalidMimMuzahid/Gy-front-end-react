@@ -1,10 +1,7 @@
 import React from "react";
 import HomeCard from "../HomePage/Home.Card";
-import levelIncome from "../../../assets/dashboardIcon/level.png";
 import totalIncome from "../../../assets/dashboardIcon/income.png";
 import BoosterIncome from "../../../assets/dashboardIcon/booster_income.png";
-import InDirectIncome from "../../../assets/dashboardIcon/indriectincome.png";
-import DirectIncome from "../../../assets/dashboardIcon/direct_income.png";
 import withdrawIncome from "../../../assets/dashboardIcon/withdraw_income.png";
 import { useGetAllWalletQuery } from "../../../Services/walletApi";
 import Loading from "../../../components/Loading/Loading";
@@ -14,17 +11,14 @@ const Wallet = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const totalBalance = data?.data?.investmentAmount + data?.data?.activeIncome;
-  console.log({ totalBalance });
-  console.log({ data });
   return (
     <div className='wallet_page_wrapper'>
       <div className='ss-trade_dash_content card_row'>
         <HomeCard
           cardName='Total Income'
           cardValue={`₹${
-            data?.data?.totalBalance
-              ? Number(data?.data?.totalBalance).toFixed(4)
+            data?.data?.totalIncome
+              ? Number(data?.data?.totalIncome).toFixed(4)
               : "0"
           }`}
           icon={totalIncome}
@@ -34,8 +28,8 @@ const Wallet = () => {
         <HomeCard
           cardName='Withdrawal Ballance'
           cardValue={`₹${
-            data?.data?.activeIncome
-              ? Number(data?.data?.activeIncome).toFixed(4)
+            data?.data?.withdrawalBallance
+              ? Number(data?.data?.withdrawalBallance).toFixed(4)
               : "0"
           }`}
           icon={totalIncome}
@@ -45,7 +39,9 @@ const Wallet = () => {
         <HomeCard
           cardName='Self Investment'
           cardValue={`₹${
-            totalBalance ? parseFloat(totalBalance).toFixed(4) : "0"
+            data?.data?.selfInvestment
+              ? Number(data?.data?.selfInvestment).toFixed(4)
+              : "0"
           }`}
           icon={BoosterIncome}
           bgColor='#38cab3'
@@ -62,8 +58,6 @@ const Wallet = () => {
           bgColor='#9ED5C5'
           cardBgColor='#0087F6'
         />
-        
-        
       </div>
     </div>
   );
