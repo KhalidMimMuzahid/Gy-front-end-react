@@ -10,7 +10,7 @@ const Sidebar = ({ sideBarShow, theme }) => {
   //getting theme state
 
   const handleLogout = () => {
-    removeLocalStorage("safe_secure_token");
+    removeLocalStorage("grow_more_today_token");
     window.location.reload();
   };
   //using theme value
@@ -26,22 +26,22 @@ const Sidebar = ({ sideBarShow, theme }) => {
   // get user
   const { data } = useGetLoginUserQuery();
   return (
-    <div className='ss-trade_sidebar'>
-      <div className='ss-trade_logo_container'>
+    <div className="ss-trade_sidebar">
+      <div className="ss-trade_logo_container">
         {theme === "dark" ? (
-          <img src={logoDark} width='100%' alt='logo' />
+          <img src={logoDark} width="100%" alt="logo" />
         ) : (
-          <img src={logoLight} width='100%' alt='logo' />
+          <img src={logoLight} width="100%" alt="logo" />
         )}
       </div>
-      <div className='ss-trade_user_profile'>
-        <div className='ss-trade_user_info'>
+      <div className="ss-trade_user_profile">
+        <div className="ss-trade_user_info">
           <h2>{data?.data?.name}</h2>
           <p>{data?.data?.email}</p>
         </div>
       </div>
-      <div className='ss-trade_sidebar_menu'>
-        <ul className='ss-trade_sidebar_menu_lists'>
+      <div className="ss-trade_sidebar_menu">
+        <ul className="ss-trade_sidebar_menu_lists">
           <MenuAccordion
             d={menus}
             sideBarShow={sideBarShow}

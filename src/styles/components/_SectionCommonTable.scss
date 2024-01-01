@@ -143,6 +143,29 @@
             opacity: 0.8;
           }
         }
+        .selectOption__row {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 10px;
+          select {
+            background: $bg-body;
+          }
+
+          @include breakpoints(largeMiniMobile) {
+            margin-bottom: 10px;
+          }
+          .user_search {
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 0px;
+            outline: none;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
       }
     }
     .ss-trade_sectiontable_table {

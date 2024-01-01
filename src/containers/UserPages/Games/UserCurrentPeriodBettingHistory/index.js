@@ -1,11 +1,13 @@
 import React from "react";
-import { useGetPredictedQuery } from "../../../../Services/userApi";
-import UserSpecificBettingHistory from "../ColorGames/table/UserSpecificBettingHistory";
+import { useGetPredictedQuery, useGetperiodIDQuery } from "../../../../Services/userApi";
 import SectionCommonTable from "../../../../components/SectionCommonTable";
+import UsersCurrentPeriodBetting from "../ColorGames/table/UsersCurrentPeriodBetting";
 
-const UserBettingHistory = () => {
+const UserCurrentPeriodBettingHistory = () => {
   const { data: predictedData } = useGetPredictedQuery();
   console.log("Pedicted: ", predictedData);
+  const { data: periodData, refetch } = useGetperiodIDQuery();
+  console.log("current period running now:",periodData)
   return (
     <div>
       <div className='records_table'>
@@ -13,9 +15,9 @@ const UserBettingHistory = () => {
           <SectionCommonTable
             wrapperClassName='roi_table'
             cardStyle={{ backgroundColor: "#fff" }}
-            sectionTableTitle=' My Game History'
+            sectionTableTitle=' My Game On Current Period'
             table={
-              <UserSpecificBettingHistory
+              <UsersCurrentPeriodBetting
                 data={predictedData?.data}
                 // showDetails={showDetails}
               />
@@ -27,4 +29,4 @@ const UserBettingHistory = () => {
   );
 };
 
-export default UserBettingHistory;
+export default UserCurrentPeriodBettingHistory;

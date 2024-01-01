@@ -12,25 +12,25 @@ const DirectTeamPage = () => {
     return <Loading />;
   }
   return (
-    <><div className='UserEarning_wallet_page_wrapper'>
-      <div className='UserEarning_dash_content card_row'>
-        <UserIncomeCard
-          cardName='Total Referral'
-          cardValue={`${data?.level?.length || "0"
-            }`}
-          icon={icon}
-          bgColor='#38cab3'
-          linkText='view details'
-          cardBgColor='#00d0e7'
+    <>
+      <div className="UserEarning_wallet_page_wrapper">
+        <div className="UserEarning_dash_content card_row">
+          <UserIncomeCard
+            cardName="Total Referral"
+            cardValue={`${data?.level?.length || "0"}`}
+            icon={icon}
+            bgColor="#38cab3"
+            linkText="view details"
+            cardBgColor="#F7941D"
+          />
+        </div>
+        <SectionCommonTable
+          wrapperClassName="directteam_table"
+          cardStyle={{ backgroundColor: "#fff" }}
+          sectionTableTitle="My Referral"
+          table={<DirectTable data={data} />}
         />
       </div>
-      <SectionCommonTable
-        wrapperClassName="directteam_table"
-        cardStyle={{ backgroundColor: "#fff" }}
-        sectionTableTitle="My Referral"
-        table={<DirectTable data={data} />}
-      />
-    </div>
     </>
   );
 };

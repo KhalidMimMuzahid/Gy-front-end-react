@@ -130,13 +130,13 @@ export const menus = [
     dropdown: [
       {
         id: "34qqf43gq3hq",
-        menu: "Profit Share",
+        menu: "Levels",
         route: "/dashboard/earnings/level-income",
         permission: ["admin"],
       },
       {
         id: "f5sf5s8fs8f",
-        menu: " Actinic Bonus",
+        menu: " ROI Income",
         route: "/dashboard/earnings/staking-income",
         permission: ["admin"],
       },
@@ -219,6 +219,12 @@ export const menus = [
         route: "/dashboard/color-games",
         permission: ["admin"],
       },
+      {
+        id: "458s7fs8f8sf",
+        menu: "Game History",
+        route: "/dashboard/game-history",
+        permission: ["admin"],
+      },
     ],
   },
   {
@@ -261,6 +267,12 @@ export const menus = [
         id: "4s88sfs5f8wr",
         menu: "ROI Percentage",
         route: "/dashboard/roi-percentage",
+        permission: ["admin"],
+      },
+      {
+        id: "4s88sfs5f8hgh",
+        menu: "Manage Amount & Percentage",
+        route: "/dashboard/minimum-amount-percentage",
         permission: ["admin"],
       },
     ],
@@ -349,15 +361,15 @@ export const menus = [
     icon: <GrGamepad />,
     permission: ["user"],
     dropdown: [
-      {
-        id: "7854s8dfs5d",
-        menu: "Color game",
-        route: "/dashboard/games/color-game",
-        permission: ["user"],
-      },
+      // {
+      //   id: "7854s8dfs5d",
+      //   menu: "Color game",
+      //   route: "/dashboard/games/color-game",
+      //   permission: ["user"],
+      // },
       {
         id: "7854s8dfs5jk",
-        menu: "My Betting History",
+        menu: "My Game History",
         route: "/dashboard/games/color-game/betting-history",
         permission: ["user"],
       },
@@ -417,14 +429,20 @@ export const menus = [
     permission: ["user"],
     dropdown: [
       {
+        id: "e7rfs5fs25gsenbvjj",
+        menu: "Earning",
+        route: "/dashboard/earnings/earning",
+        permission: ["user"],
+      },
+      {
         id: "e7rfs5fs25gsenbv",
-        menu: "Profit Share",
+        menu: "Levels",
         route: "/dashboard/earnings/level-income",
         permission: ["user"],
       },
       {
         id: "fs55s8fs8fs",
-        menu: " Actinic Bonus",
+        menu: " ROI Income",
         route: "/dashboard/earnings/roi-income",
         permission: ["user"],
       },

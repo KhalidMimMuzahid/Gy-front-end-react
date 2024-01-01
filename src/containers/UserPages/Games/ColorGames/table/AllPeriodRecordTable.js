@@ -1,17 +1,20 @@
 import React from "react";
 import DataTable from "../../../../../components/DataTable";
-import "../../../../../styles/abstract/_variables.scss"
+import "../../../../../styles/abstract/_variables.scss";
 const columns = [
   { id: "periodId", label: "Period", minWidth: 20 },
-  { id: "price", label: "Price", minWidth: 50 },
+  // { id: "price", label: "Price", minWidth: 50 },
   {
     id: "result",
     label: "Result",
-    minWidth: 250,
+    minWidth: 50,
   },
 ];
 
-const AllPeriodRecordTable = ({ data }) => {
+const AllPeriodRecordTable = ({
+  data,
+  // perioHistory
+}) => {
   // console.log({ data });
   function getBackgroundColor(index) {
     switch (index % 10) {
@@ -42,11 +45,27 @@ const AllPeriodRecordTable = ({ data }) => {
 
   function createData(periodId, price, option) {
     return {
-      periodId,
-      price,
+      periodId: (
+        <span
+          // onClick={() => perioHistory(periodId)}
+
+          style={{ cursor: "pointer", padding: "10px" }}
+        >
+          {periodId}
+        </span>
+      ),
+      // price,
       option,
       result: (
-        <div style={{ display: "flex", gap: "5px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            alignContent: "center",
+            justifyContent: "center",
+            gap: "5px",
+          }}
+        >
           {Array.from({ length: 10 }, (_, i) => (
             <div
               key={i}
@@ -81,7 +100,7 @@ const AllPeriodRecordTable = ({ data }) => {
       rows={rows}
       perPageShow={6}
       tableHeight={440}
-      className="common_table"
+      className='common_table'
     />
   );
 };

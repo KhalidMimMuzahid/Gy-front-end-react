@@ -8,7 +8,7 @@ export const fundTransferApi = createApi({
     baseUrl: env.BASE_URL,
     mode: "cors",
     prepareHeaders: (headers) => {
-      headers.set("authorization", getLocalStorage("safe_secure_token"));
+      headers.set("authorization", getLocalStorage("grow_more_today_token"));
       return headers;
     },
   }),
@@ -26,4 +26,7 @@ export const fundTransferApi = createApi({
   }),
 });
 
-export const { useAllFundTransferHistoryAdminQuery,useFundTransferHistoryAdminQuery } = fundTransferApi;
+export const {
+  useAllFundTransferHistoryAdminQuery,
+  useFundTransferHistoryAdminQuery,
+} = fundTransferApi;

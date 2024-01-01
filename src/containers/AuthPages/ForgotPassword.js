@@ -49,7 +49,7 @@ const ForgotPassword = () => {
     }
   };
   // redirect
-  const token = getLocalStorage("safe_secure_token");
+  const token = getLocalStorage("grow_more_today_token");
   const navigate = useNavigate();
   //  const location = useLocation();
   useEffect(() => {

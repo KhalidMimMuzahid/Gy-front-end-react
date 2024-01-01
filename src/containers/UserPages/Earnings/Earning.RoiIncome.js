@@ -31,7 +31,7 @@ const RoiIncome = () => {
       <div className='UserEarning_wallet_page_wrapper'>
         <div className='UserEarning_dash_content card_row'>
           <UserIncomeCard
-            cardName=' Actinic Bonus'
+            cardName=' ROI Income'
             cardValue={`₹${
               data?.data?.roiIncome
                 ? parseFloat(data?.data?.roiIncome).toFixed(4)
@@ -40,13 +40,13 @@ const RoiIncome = () => {
             icon={roiIncomeIcon}
             bgColor='#38cab3'
             linkText='view details'
-            cardBgColor='#00d0e7'
+            cardBgColor='#F7941D'
           />
         </div>
         <SectionCommonTable
           wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle=' Actinic Bonus'
+          sectionTableTitle=' ROI Income'
           table={
             <RoiIncomeTable
               data={roiData?.data?.history}

@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import HomeCard from "./Home.Card";
+// import HomeCard from "./Home.Card";
 import { Notification } from "../../../components/ToastNotification";
 import { BsWhatsapp, BsTelegram, BsFacebook } from "react-icons/bs";
 import { ImCopy } from "react-icons/im";
-import InDirectIncome from "../../../assets/dashboardIcon/indriectincome.png";
-import DirectIncome from "../../../assets/dashboardIcon/direct_income.png";
+// import InDirectIncome from "../../../assets/dashboardIcon/indriectincome.png";
+// import DirectIncome from "../../../assets/dashboardIcon/direct_income.png";
 import {
-  useGetDashboardStatsQuery,
+  // useGetDashboardStatsQuery,
   useGetLoginUserQuery,
 } from "../../../Services/userApi";
-import { popupShow } from "../../../containers/AuthPages/Login";
-import Modal from "../../../components/Modal";
+// import { popupShow } from "../../../containers/AuthPages/Login";
+// import Modal from "../../../components/Modal";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 import { useGetPopupImageQuery } from "../../../Services/Setting";
 import TopupHistoryPage from "../TopupPage/Topup.TopupHistoryPage";
@@ -18,16 +18,20 @@ import SectionCommonTable from "../../../components/SectionCommonTable";
 import RoiIncomeTable from "../Earnings/Table/RoiIncomeTable";
 import { useGetRoiIncomeHistoryUserQuery } from "../../../Services/earningApi";
 import { useGetAllWalletQuery } from "../../../Services/walletApi";
+import ColorGame from "../Games/ColorGames";
+import UserCurrentPeriodBettingHistory from "../Games/UserCurrentPeriodBettingHistory";
+
+
 
 const HomePage = () => {
-  const { data, isLoading } = useGetAllWalletQuery();
-  const { data: popupImage } = useGetPopupImageQuery();
-  const { data: userState } = useGetDashboardStatsQuery();
+  // const { data, isLoading } = useGetAllWalletQuery();
+  // const { data: popupImage } = useGetPopupImageQuery();
+  // const { data: userState } = useGetDashboardStatsQuery();
   // get user data
   const { data: userData } = useGetLoginUserQuery();
-  const [openModalForImage, setOpenModalForImage] = useState(popupShow);
-  const modalImageRef = useRef(null);
-  useClickOutside(modalImageRef, () => setOpenModalForImage(false));
+  // const [openModalForImage, setOpenModalForImage] = useState(popupShow);
+  // const modalImageRef = useRef(null);
+  // useClickOutside(modalImageRef, () => setOpenModalForImage(false));
 
   const [inputVal, setInputVal] = useState({
     leftVal: `${window.location.origin}/register?sponsorid=${userData?.data?.userId}`,
@@ -59,11 +63,11 @@ const HomePage = () => {
   const [, setOpenModal] = useState(false);
   const modalRef = useRef(null);
   useClickOutside(modalRef, () => setOpenModal(false));
-  const [, setValues] = useState({});
-  const showDetails = (body) => {
-    setValues(body);
-    setOpenModal(true);
-  };
+  // const [, setValues] = useState({});
+  // const showDetails = (body) => {
+  //   setValues(body);
+  //   setOpenModal(true);
+  // };
 
   // telegram post share handle
   const handleTeShareButtonClick = () => {
@@ -132,84 +136,15 @@ const HomePage = () => {
       {/* 1st row */}
       <div className='first_row dashboard_content'>
         <div className='ss-trade_dash_content_item'>
-          <div className='ss-trade_dash_content card_row'>
-            {/* <HomeCard
-              cardName='Total Income'
-              cardValue={`₹${
-                data?.data?.totalIncome
-                  ? Number(data?.data?.totalIncome).toFixed(4)
-                  : "0"
-              }`}
-              icon={DirectIncome}
-              bgColor='#6C4AB6'
-              cardBgColor='#fe9f43'
-            />
-            <HomeCard
-              cardName='Total Team'
-              cardValue={`${
-                userState?.data?.totalTeam ? userState?.data?.totalTeam : "0"
-              }`}
-              icon={InDirectIncome}
-              linkText='view details'
-              bgColor='#38cab3'
-              cardBgColor='#fe9f43'
-            />
-            <HomeCard
-              cardName='Total Direct Team'
-              cardValue={`${
-                userState?.data?.totalDirectTeam
-                  ? userState?.data?.totalDirectTeam
-                  : "0"
-              }`}
-              icon={InDirectIncome}
-              linkText='view details'
-              bgColor='#38cab3'
-              cardBgColor='#fe9f43'
-            /> */}
-            <HomeCard
-              cardName=' Actinic Bonus'
-              cardValue={`₹${
-                userState?.data?.roiIncome
-                  ? Number(userState?.data?.roiIncome).toFixed(4)
-                  : "0"
-              }`}
-              icon={DirectIncome}
-              linkText='view details'
-              bgColor='#38cab3'
-              cardBgColor='#fe9f43'
-            />
-            <HomeCard
-              cardName='Profit Share'
-              cardValue={`₹${
-                userState?.data?.levelIncome
-                  ? Number(userState?.data?.levelIncome).toFixed(4)
-                  : "0"
-              }`}
-              icon={DirectIncome}
-              linkText='view details'
-              bgColor='#38cab3'
-              cardBgColor='#fe9f43'
-            />
-          </div>
-
-          <TopupHistoryPage />
-
-          <div>
-            <SectionCommonTable
-              wrapperClassName='roi_table'
-              cardStyle={{ backgroundColor: "#fff" }}
-              sectionTableTitle=' Actinic Bonus'
-              table={
-                <RoiIncomeTable
-                  data={roiData?.data?.history}
-                  showDetails={showDetails}
-                />
-              }
-            />
-          </div>
+        <ColorGame/>
         </div>
       </div>
-      {popupImage?.avatar ? (
+      <div className='first_row dashboard_content'>
+        <div className='ss-trade_dash_content_item'>
+        <UserCurrentPeriodBettingHistory/>
+        </div>
+      </div>
+      {/* {popupImage?.avatar ? (
         <Modal
           openModal={openModalForImage}
           setOpenModal={setOpenModalForImage}
@@ -220,7 +155,7 @@ const HomePage = () => {
             <img src={popupImage?.avatar} className='popupImage' alt='popup' />
           </div>
         </Modal>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

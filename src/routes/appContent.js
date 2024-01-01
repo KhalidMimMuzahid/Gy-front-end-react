@@ -8,24 +8,22 @@ import Loading from "../components/Loading/Loading";
 const AppContent = () => {
   const { data } = useGetLoginUserQuery();
   const navigate = useNavigate();
-  const token = getLocalStorage("safe_secure_token");
+  const token = getLocalStorage("grow_more_today_token");
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
   }, [navigate, token]);
 
-  const perRoute = routers?.filter((rt) => rt?.permission?.includes(data?.data?.role));
+  const perRoute = routers?.filter((rt) =>
+    rt?.permission?.includes(data?.data?.role)
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
-      <Suspense
-        fallback={
-          <Loading/>
-        }
-      >
+      <Suspense fallback={<Loading />}>
         <Routes>
           <>
             {perRoute?.map((route, idx) => {

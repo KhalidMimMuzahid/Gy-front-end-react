@@ -91,6 +91,11 @@
   border-bottom: 1px solid rgb(224 224 224 / 38%) !important;
   text-align: center !important;
   padding: 16px;
+  & td{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 
   @include breakpoints(largeMiniMobile) {
     text-align: left !important;
