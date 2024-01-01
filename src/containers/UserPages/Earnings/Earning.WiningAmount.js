@@ -26,10 +26,10 @@ const WinningAmount = () => {
   }
   return (
     <>
-      <div className="UserEarning_wallet_page_wrapper">
+      <div className='UserEarning_wallet_page_wrapper'>
         {/* <div className='UserEarning_dash_content card_row'>
           <UserIncomeCard
-            cardName=' Actinic Bonus'
+            cardName=' ROI Income'
             cardValue={`₹${
               data?.data?.roiIncome
                 ? parseFloat(data?.data?.roiIncome).toFixed(4)
@@ -42,9 +42,9 @@ const WinningAmount = () => {
           />
         </div> */}
         <SectionCommonTable
-          wrapperClassName="roi_table"
+          wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle="Winning Amount"
+          sectionTableTitle='Winning Amount'
           table={
             <WinningAmountTable
               data={roiData?.data?.history}
@@ -60,28 +60,28 @@ const WinningAmount = () => {
         modalTitle={"Details"}
         modalRef={modalRef}
       >
-        <div className="ss-trade_commol_modal_field">
+        <div className='ss-trade_commol_modal_field'>
           <div
-            className="transaction_details"
+            className='transaction_details'
             style={{ textAlign: "left", marginTop: "20px" }}
           >
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Package:</strong>
               <span>₹{roiData?.data?.currentPackage}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Amount:</strong>
               <span>₹{Number(values.commissionAmount).toFixed(4)}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Date:</strong>
               <span>{values?.incomeDate}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Time:</strong>
               <span>{values?.incomeTime}</span>
             </p>
-            <p className="trans__row">
+            <p className='trans__row'>
               <strong style={{ textTransform: "capitalize" }}>Status:</strong>
               <span>success</span>
             </p>

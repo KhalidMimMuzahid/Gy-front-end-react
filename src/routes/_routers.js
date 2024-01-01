@@ -47,9 +47,9 @@ const FundReceivingHistory = React.lazy(() =>
 );
 
 //games section
-const ColorGame = React.lazy(() =>
-  import("../containers/UserPages/Games/ColorGames/index")
-);
+// const ColorGame = React.lazy(() =>
+//   import("../containers/UserPages/Games/ColorGames/index")
+// );
 const ColorGameHistory = React.lazy(() =>
   import("../containers/UserPages/Games/UserBettingHistory/index")
 );
@@ -72,6 +72,9 @@ const TopUpHistory = React.lazy(() =>
   import("../containers/UserPages/TopupPage/Topup.TopupHistoryPage")
 );
 // earning section
+const Earning = React.lazy(() =>
+  import("../containers/UserPages/Earnings/Earning.Earning.js")
+);
 const LevelIncome = React.lazy(() =>
   import("../containers/UserPages/Earnings/Earning.LevelIncome")
 );
@@ -244,7 +247,9 @@ const ROIPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.RoiPercentage")
 );
 const ManageMinimumAmountPercentage = React.lazy(() =>
-  import("../containers/AdminPages/Admin.Setting/Admin.ManageMinimumAmountPercentage")
+  import(
+    "../containers/AdminPages/Admin.Setting/Admin.ManageMinimumAmountPercentage"
+  )
 );
 const AdminChangeEmail = React.lazy(() =>
   import("../containers/AdminPages/Admin.Account/Admin.ChangeEmail")
@@ -354,12 +359,12 @@ export const routers = [
   },
 
   // games section
-  {
-    path: "/games/color-game",
-    name: "Color Game",
-    permission: ["user"],
-    component: ColorGame,
-  },
+  // {
+  //   path: "/games/color-game",
+  //   name: "Color Game",
+  //   permission: ["user"],
+  //   component: ColorGame,
+  // },
   {
     path: "/games/color-game/betting-history",
     name: "Betting History",
@@ -414,9 +419,15 @@ export const routers = [
   // earning section
   {
     path: "/earnings/level-income",
-    name: "Profit Share",
+    name: "Level ROI",
     permission: ["user"],
     component: LevelIncome,
+  },
+  {
+    path: "/earnings/earning",
+    name: "Earning",
+    permission: ["user"],
+    component: Earning,
   },
   {
     path: "/earnings/roi-income",
@@ -438,7 +449,7 @@ export const routers = [
   },
   {
     path: "/earnings/reward",
-    name: " Actinic Bonus",
+    name: " ROI Income",
     permission: ["user"],
     component: Reward,
   },
@@ -595,7 +606,7 @@ export const routers = [
   },
   {
     path: "/earnings/level-income",
-    name: "Profit Share",
+    name: "Level ROI",
     permission: ["admin"],
     component: AdminLevelIncome,
   },
@@ -620,7 +631,7 @@ export const routers = [
   },
   {
     path: "/earnings/staking-level-income",
-    name: "Staking Profit Share",
+    name: "Staking Level ROI",
     permission: ["admin"],
     component: AdminStakingLevelIncome,
   },

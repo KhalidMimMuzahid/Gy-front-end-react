@@ -10,7 +10,7 @@ const Chart = () => {
   const { data } = useLevelIncomeDataUserQuery();
   const LevelData = data?.level_income;
 
-  // /*  Actinic Bonus */
+  // /*  ROI Income */
   const { data: roiIncome } = useRoiIncomeDataUserQuery();
 
   const [state, setState] = useState({
@@ -20,7 +20,7 @@ const Chart = () => {
         data: [],
       },
       {
-        name: "Profit Share",
+        name: "Level ROI",
         data: [],
       },
     ],
@@ -50,7 +50,7 @@ const Chart = () => {
 
   useEffect(() => {
     const createIncomeLevelData = async () => {
-      /* Profit Share */
+      /* Level ROI */
       let levelIncomeDailyTotal = [];
       let levelIncomeDailyDate = [];
       for (let i = 0; i < 9; i++) {
@@ -70,7 +70,7 @@ const Chart = () => {
 
       levelIncomeDailyDate.pop();
 
-      /*  Actinic Bonus */
+      /*  ROI Income */
       let roiIncomeDailyTotal = [];
       let roiIncomeDailyDate = [];
       for (let i = 0; i < 8; i++) {
@@ -102,7 +102,7 @@ const Chart = () => {
             data: roiIncomeDailyTotal,
           },
           {
-            name: "Profit Share",
+            name: "Level ROI",
             data: levelIncomeDailyTotal,
             // data: parseInt(levelIncomeDailyTotal)?.toFixed(4),
           },

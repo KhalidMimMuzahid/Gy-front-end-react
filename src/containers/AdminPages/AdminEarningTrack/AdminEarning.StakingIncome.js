@@ -36,11 +36,11 @@ const StakingIncome = () => {
 
   return (
     <>
-      <div className="UserEarning_wallet_page_wrapper">
+      <div className='UserEarning_wallet_page_wrapper'>
         <SectionCommonTable
-          wrapperClassName="roi_table"
+          wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle={` Actinic Bonus (${
+          sectionTableTitle={` ROI Income (${
             filterData?.length > 0
               ? filterData?.length
               : data?.data?.length ?? 0
@@ -59,7 +59,7 @@ const StakingIncome = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         modalRef={modalRef}
-        modalTitle="Details"
+        modalTitle='Details'
         objValue={modalData}
       />
     </>

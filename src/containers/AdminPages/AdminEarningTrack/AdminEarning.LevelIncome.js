@@ -38,11 +38,11 @@ const LevelIncome = () => {
 
   return (
     <>
-      <div className="UserEarning_wallet_page_wrapper">
+      <div className='UserEarning_wallet_page_wrapper'>
         <SectionCommonTable
-          wrapperClassName="roi_table"
+          wrapperClassName='roi_table'
           cardStyle={{ backgroundColor: "#fff" }}
-          sectionTableTitle={`Profit Share (${
+          sectionTableTitle={`Level ROI (${
             filterData?.length > 0
               ? filterData?.length
               : data?.data?.length ?? 0
@@ -61,7 +61,7 @@ const LevelIncome = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         modalRef={modalRef}
-        modalTitle="Details"
+        modalTitle='Details'
         objValue={modalData}
       />
     </>

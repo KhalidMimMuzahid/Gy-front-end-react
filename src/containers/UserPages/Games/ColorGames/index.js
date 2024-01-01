@@ -73,15 +73,15 @@ const ColorGame = () => {
 
   //for periodId History
   // Function to fetch period history based on periodId
-  const fetchPeriodHistory = async (periodId) => {
-    try {
-      setPeriodId(periodId);
-      await periodHistory({ periodId });
-      setOpenhistoryModal(true);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const fetchPeriodHistory = async (periodId) => {
+  //   try {
+  //     setPeriodId(periodId);
+  //     await periodHistory({ periodId });
+  //     setOpenhistoryModal(true);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   console.log({ periodHistoryData });
   useEffect(() => {
     if (periodData?.data?.period) {
@@ -306,7 +306,7 @@ const ColorGame = () => {
                   <div className="table-content">
                     <AllPeriodRecordTable
                       data={periodRecord?.data}
-                      perioHistory={fetchPeriodHistory}
+                      // perioHistory={fetchPeriodHistory}
                     />
                   </div>
                 </div>
@@ -334,7 +334,7 @@ const ColorGame = () => {
             setSelectedOption={setSelectedOption}
           />
           {/* // for PeriodId History */}
-          <Modal
+          {/* <Modal
             openModal={openhistoryModal}
             setOpenModal={setOpenhistoryModal}
             modalTitle={`PeriodId ${periodId}`}
@@ -345,7 +345,7 @@ const ColorGame = () => {
                 <PeriodHistoryTable data={periodHistoryData?.data} />
               </div>
             </div>
-          </Modal>
+          </Modal> */}
         </div>
       )}
     </div>
