@@ -7,9 +7,13 @@ import LevelIncomeTable from "./Table/LevelIncomeTable";
 import Loading from "../../../components/Loading/Loading";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 import TransactionModal from "../../../components/Modal/TransactionModal";
+import { useGetAllWalletQuery } from "../../../Services/walletApi";
 const LevelIncome = () => {
   const { data: levelIncome, isLoading: isLoadingDirectIncome } =
     useGetAllLevelIncomeHistoryUserQuery();
+  
+  const { data, isLoading } = useGetAllWalletQuery();
+  console.log("xxxxxxxxxx",data)
 
   // modal toggle
   const [openModal, setOpenModal] = useState(false);
@@ -39,7 +43,7 @@ const LevelIncome = () => {
         <div className="UserEarning_dash_content card_row">
           <UserIncomeCard
             cardName="Level ROI"
-            cardValue={`₹${levelIncome?.data?.levelROI?.toFixed(4) || 0}`}
+            cardValue={`₹${data?.data?.levelROI?.toFixed(4) || 0}`}
             icon={roiIncomeIcon}
             bgColor="#0087F6"
             linkText="view details"
@@ -48,7 +52,7 @@ const LevelIncome = () => {
           <UserIncomeCard
             cardName="Winning From Level"
             cardValue={`₹${
-              levelIncome?.data?.winingFromLevel?.toFixed(4) || 0
+              data?.data?.winingFromLevel?.toFixed(4) || 0
             }`}
             icon={roiIncomeIcon}
             bgColor="#0087F6"
