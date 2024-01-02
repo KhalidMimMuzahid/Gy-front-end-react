@@ -7,6 +7,7 @@ import Landing from "../../../components/LandingPage/Landing";
 import "../../../styles/containers/FrontPage/_landing.scss";
 import HomeImage from "../../../assets/Home.png";
 import { useNavigate } from "react-router-dom";
+import { getLocalStorage } from "../../../utils/function/localStorage";
 const LandingPage = () => {
   useEffect(() => {
     window.scrollTo(0, 1);
@@ -24,10 +25,20 @@ const LandingPage = () => {
     });
   };
   const navigate = useNavigate();
+    // check user logged in or not
+  let UserLoggedIn = getLocalStorage("grow_more_today_token")
+
+  
 
   const handleButtonClick = () => {
     // Redirect to the login page
-    navigate("/login");
+    // auth check
+    if (UserLoggedIn) {
+      navigate("/dashboard")
+      } else {
+        navigate("/login");
+    }
+    
   };
   return (
     <>
