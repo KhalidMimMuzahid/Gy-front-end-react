@@ -2,6 +2,9 @@ import React from "react";
 import DataTable from "../../../../components/DataTable";
 
 const LevelIncomeTable = ({ data, showDetails }) => {
+
+
+  console.log({ data });
   const columns = [
     { id: "sn", label: "S.N", minWidth: 20 },
     {
@@ -29,20 +32,42 @@ const LevelIncomeTable = ({ data, showDetails }) => {
       label: "Type",
       minWidth: 100,
     },
+    {
+      id: "transactionID",
+      label: "TransactionId",
+      minWidth: 100,
+    },
   ];
 
-  function createData(sn, income_from_user_id, level, amount, date, type) {
-    return { sn, income_from_user_id, level, amount, date, type };
+  function createData(
+    sn,
+    income_from_user_id,
+    level,
+    amount,
+    date,
+    type,
+    transactionID
+  ) {
+    return {
+      sn,
+      income_from_user_id,
+      level,
+      amount,
+      date,
+      type,
+      transactionID,
+    };
   }
 
   const rows = data?.map((d, i) =>
     createData(
       i + 1,
-      d?.incomeFromUserId,
+      d?.incomeFrom,
       d?.level,
-      "₹" + Number(d?.winningAmount).toFixed(4),
+      "₹" + Number(d?.amount).toFixed(4),
       d?.date || "this is date",
-      d?.type || "profit-share"
+      d?.type || "profit-share",
+      d?.transactionID || "xxx"
     )
   );
 
