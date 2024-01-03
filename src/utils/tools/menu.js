@@ -259,8 +259,14 @@ export const menus = [
       },
       {
         id: "4f7sfs8fs8fnaj3w",
-        menu: "Wining Percentage",
-        route: "/dashboard/wining-percentage",
+        menu: "Winning Percentage",
+        route: "/dashboard/winning-percentage",
+        permission: ["admin"],
+      },
+      {
+        id: "4f7sfs8fs8fkaj3w",
+        menu: "Game Percentage",
+        route: "/dashboard/game-percentage",
         permission: ["admin"],
       },
       {

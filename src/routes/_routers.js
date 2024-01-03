@@ -240,8 +240,11 @@ const AdminGameHistory = React.lazy(() =>
 const AdminChangePassword = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.ChangePassword")
 );
-const WiningPercentage = React.lazy(() =>
+const WinningPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.WiningPercentage")
+);
+const GamePercentage = React.lazy(() =>
+  import("../containers/AdminPages/Admin.Setting/Admin.GamePercentage.js")
 );
 const ROIPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.RoiPercentage")
@@ -690,10 +693,16 @@ export const routers = [
     component: AdminCreateUpdate,
   },
   {
-    path: "/wining-percentage",
-    name: "Wining Percentage",
+    path: "/winning-percentage",
+    name: "Winning Percentage",
     permission: ["admin"],
-    component: WiningPercentage,
+    component: WinningPercentage,
+  },
+  {
+    path: "/game-percentage",
+    name: "Game Percentage",
+    permission: ["admin"],
+    component: GamePercentage,
   },
   {
     path: "/roi-percentage",
