@@ -90,7 +90,7 @@ export const settingApi = createApi({
     }),
     updateGamePercentage: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/private/winning-share-percentage",
+        url: "/api/v1/private/game-wallet-percentage",
         method: "PATCH",
         body,
       }),
@@ -113,7 +113,7 @@ export const settingApi = createApi({
       invalidatesTags: ["setting"],
     }),
     getGamePercentage: builder.query({
-      query: () => "/api/v1/private/winning-share-percentage",
+      query: () => "/api/v1/private/game-wallet-percentage",
       invalidatesTags: ["setting"],
     }),
     getAdminReward: builder.query({
