@@ -180,6 +180,12 @@ const AdminDirectIncome = React.lazy(() =>
 const AdminLevelIncome = React.lazy(() =>
   import("../containers/AdminPages/AdminEarningTrack/AdminEarning.LevelIncome")
 );
+const GameWallet = React.lazy(() =>
+  import("../containers/AdminPages/AdminEarningTrack/AdminEarning.GameWallet")
+);
+const GameWalletUser = React.lazy(() =>
+  import("../containers/UserPages/Wallet/UserEarning.GameWalletUser.js")
+);
 // const AdminWinningAmount = React.lazy(() =>
 //   import(
 //     "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
@@ -359,6 +365,12 @@ export const routers = [
     name: "Fund Receiving History",
     permission: ["user"],
     component: FundReceivingHistory,
+  },
+  {
+    path: "/wallet/game-wallet",
+    name: "Game Wallet",
+    permission: ["user"],
+    component: GameWalletUser,
   },
 
   // games section
@@ -612,6 +624,12 @@ export const routers = [
     name: "Level ROI",
     permission: ["admin"],
     component: AdminLevelIncome,
+  },
+  {
+    path: "/earnings/game-wallet",
+    name: "Game Wallet",
+    permission: ["admin"],
+    component: GameWallet,
   },
 
   {

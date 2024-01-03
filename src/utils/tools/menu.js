@@ -135,6 +135,13 @@ export const menus = [
         permission: ["admin"],
       },
       {
+        id: "e7rfs5fhjubhjbhjbuguhjvgyffyg",
+        // Might be change
+        menu: "Game Wallet",
+        route: "/dashboard/earnings/game-wallet",
+        permission: ["admin"],
+      },
+      {
         id: "f5sf5s8fs8f",
         menu: " ROI Income",
         route: "/dashboard/earnings/staking-income",
@@ -351,6 +358,12 @@ export const menus = [
         menu: "deposit fund",
         icon: <RiMoneyDollarCircleLine />,
         route: "/dashboard/wallet/deposit-fund",
+        permission: ["user"],
+      },
+      {
+        id: "e7rfs5fs25gsenbv565",
+        menu: "Game Wallet History",
+        route: "/dashboard/wallet/game-wallet",
         permission: ["user"],
       },
       {
