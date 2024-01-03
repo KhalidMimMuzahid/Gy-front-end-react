@@ -4,7 +4,6 @@ import DataTable from "../../../../components/DataTable";
 const GameWalletTableUser = ({ data, showDetails }) => {
   const columns = [
     { id: "sn", label: "S.N", minWidth: 20 },
-    { id: "userid", label: "User ID", minWidth: 100 },
     { id: "income_from_user_id", label: "Income From User ID", minWidth: 100 },
     {
       id: "amount",
@@ -23,17 +22,9 @@ const GameWalletTableUser = ({ data, showDetails }) => {
     },
   ];
 
-  function createData(
-    sn,
-    userid,
-    income_from_user_id,
-    amount,
-    date,
-    transaction_id
-  ) {
+  function createData(sn, income_from_user_id, amount, date, transaction_id) {
     return {
       sn,
-      userid,
       income_from_user_id,
       amount,
       date,
@@ -44,7 +35,6 @@ const GameWalletTableUser = ({ data, showDetails }) => {
   const rows = data?.map((d, i) =>
     createData(
       i + 1,
-      d?.userId,
       d?.incomeFrom,
       "₹" + Number(d?.amount).toFixed(4),
       d?.date,
