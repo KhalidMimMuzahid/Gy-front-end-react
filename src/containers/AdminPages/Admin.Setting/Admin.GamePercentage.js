@@ -4,7 +4,7 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 import {
   useGetGamePercentageQuery,
-  useUpdateWinningPercentageMutation,
+  useUpdateGamePercentageMutation,
 } from "../../../Services/Setting";
 import { Notification } from "../../../components/ToastNotification";
 
@@ -12,7 +12,7 @@ const GamePercentage = () => {
   const [
     updateGamePercentage,
     { data: gamePercentage, isLoading: gamePercentageIsLoading },
-  ] = useUpdateWinningPercentageMutation();
+  ] = useUpdateGamePercentageMutation();
 
   const { data: getGamePercentage, isLoading: isGetGamePercentageLoading } =
     useGetGamePercentageQuery();
@@ -45,41 +45,41 @@ const GamePercentage = () => {
     return <h1>loading...</h1>;
   }
   return (
-    <div className='tp_income_distribution_page_wrapper'>
+    <div className="tp_income_distribution_page_wrapper">
       <CardLayout
         style={{ backgroundColor: "#fff" }}
-        className='tp_income_distribution_form_card'
+        className="tp_income_distribution_form_card"
       >
-        <div className='tp_section_title'>
+        <div className="tp_section_title">
           <h2>Game Percentage</h2>
         </div>
-        <div className='tp_income_distribution_page_content'>
-          <div className='inr_token_main_container'>
-            <div className='inr_token_container'>
-              <div className='inr_token_input_container'>
+        <div className="tp_income_distribution_page_content">
+          <div className="inr_token_main_container">
+            <div className="inr_token_container">
+              <div className="inr_token_input_container">
                 <form onSubmit={handleSubmitGamePercentage}>
                   <div
-                    className='form_group percentage_field'
+                    className="form_group percentage_field"
                     style={{ display: "inherit" }}
                   >
                     <Input
-                      label='Level-1'
-                      type='text'
-                      name='level1'
-                      id='self'
-                      placeholder=''
+                      label="Level-1"
+                      type="text"
+                      name="level1"
+                      id="self"
+                      placeholder=""
                       onChange={(e) => handleChange(e)}
-                      min='0'
-                      className='input_field'
-                      inputGroupClass='left'
+                      min="0"
+                      className="input_field"
+                      inputGroupClass="left"
                       defaultValue={getGamePercentage?.data?.level1 || 1}
                       isRequired={true}
                     />
                   </div>
 
                   <Button
-                    type='submit'
-                    className='submit_btn'
+                    type="submit"
+                    className="submit_btn"
                     //   disabled={
                     //     // isLoadingChangeIncomeDistribution ? true : false
                     //   }
@@ -91,7 +91,7 @@ const GamePercentage = () => {
                 </form>
               </div>
             </div>
-            <div className='previous_inr_token_data'></div>
+            <div className="previous_inr_token_data"></div>
           </div>
         </div>
       </CardLayout>
