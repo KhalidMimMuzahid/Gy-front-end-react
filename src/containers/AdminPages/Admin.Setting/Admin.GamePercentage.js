@@ -18,7 +18,7 @@ const GamePercentage = () => {
     useGetGamePercentageQuery();
   // console.log({ gamePercentage });
 
-  // console.log({ getGamePercentage });
+  console.log({ getGamePercentage });
   const [GamePercentage, setGamePercentage] = useState({});
   const handleChange = (e) => {
     setGamePercentage((prev) => {
@@ -51,7 +51,7 @@ const GamePercentage = () => {
         className="tp_income_distribution_form_card"
       >
         <div className="tp_section_title">
-          <h2>Game Percentage</h2>
+          <h2>Game Percentagexxxxxx</h2>
         </div>
         <div className="tp_income_distribution_page_content">
           <div className="inr_token_main_container">
@@ -72,7 +72,7 @@ const GamePercentage = () => {
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
-                      defaultValue={getGamePercentage?.data?.level1 || 1}
+                      defaultValue={getGamePercentage?.data?.level1 || 0}
                       isRequired={true}
                     />
                   </div>

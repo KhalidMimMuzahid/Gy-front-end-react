@@ -30,13 +30,13 @@ const columns = [
 ];
 
 const UsersCurrentPeriodBetting = ({ data }) => {
-  console.log({ mywBettingHistory: data });
+  // console.log({ mywBettingHistory: data });
   function createData(
     // userId,
     // period,
     date,
     totalContractMoney,
-    option,
+    option
     // winningAmount
   ) {
     const { color, number } = getColoAndNumberAccordingToXOption(option);
@@ -60,7 +60,7 @@ const UsersCurrentPeriodBetting = ({ data }) => {
       // d?.period,
       d?.date,
       d?.totalContractMoney,
-      d?.option,
+      d?.option
       // <span style={{ color: d?.winningAmount ? `$text-p-color` : "red" }}>
       //   {" "}
       //   {d?.winningAmount || "loss"}
