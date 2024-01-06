@@ -171,6 +171,20 @@ const ColorGame = () => {
                   centered
                 >
                   <Tab label="Parity" value="1" />
+                  {/* <Tab label="Game Rule" /> */}
+                  <button
+                    style={{
+                      border: "none",
+                      fontSize: "0.875rem",
+                      padding: "0px 10px",
+                      marginLeft: "10px",
+                      textTransform: "uppercase",
+                      background: `--var(--bg-body)`,
+                    }}
+                    onClick={() => setOpenhistoryModal(true)}
+                  >
+                    Game Rule
+                  </button>
                   {/* <Tab label='Item Two' value='2' />
               <Tab label='Item Three' value='3' /> */}
                   {/* More can be addded here */}
@@ -321,6 +335,11 @@ const ColorGame = () => {
                     />
                   </div>
                 </div>
+                <UserCurrentPeriodBettingHistory
+                  predictedDataForCurrrentPeriod={
+                    predictedDataForCurrrentPeriod
+                  }
+                />
               </TabPanel>
               {/* More can be added Here */}
               {/* <TabPanel value='2'>Item Two</TabPanel>
@@ -338,24 +357,89 @@ const ColorGame = () => {
               refetchPredictedDataForCurrrentPeriod
             }
           />
-          {/* // for PeriodId History */}
-          {/* <Modal
+          {/* // for game rule */}
+          <Modal
             openModal={openhistoryModal}
             setOpenModal={setOpenhistoryModal}
-            modalTitle={`PeriodId ${periodId}`}
+            modalTitle={`Game Rules`}
             modalRef={modalRef}
           >
             <div className="ss-trade_commol_modal_field">
-              <div className="transaction_details">
-                <PeriodHistoryTable data={periodHistoryData?.data} />
+              <div className="game_rule">
+                <div
+                  className="rule_1"
+                  style={{ margin: "10px 0", fontSize: "15px" }}
+                >
+                  <span>01.</span>{" "}
+                  <span>
+                    {" "}
+                    3 Minute 1 Period, 2:30 Seconds To Order, 30 Seconds Waiting
+                    For The Draw. It Opens All Day, The Total Number Of
+                    Purchases In A Day Is 1440 Times.
+                  </span>
+                </div>
+                <div
+                  className="rule_1"
+                  style={{ margin: "10px 0", fontSize: "15px" }}
+                >
+                  <span>02.</span>{" "}
+                  <span>
+                    {" "}
+                    All The Single Bets Will Be Have Handling Fee 0, <br /> For
+                    Example Bet 100 Rs
+                  </span>
+                </div>
+                <div
+                  className="rule_1"
+                  style={{ margin: "10px 0", fontSize: "15px" }}
+                >
+                  <span>03.</span>{" "}
+                  <span>
+                    {" "}
+                    Select Green : If The Result Shows 1,3,7,9 The Pay Out Is
+                    (100*2)=200 ; If The Result Shows 5, The Pay Out Is
+                    (100*1.5) 150
+                  </span>
+                </div>
+                <div
+                  className="rule_1"
+                  style={{ margin: "10px 0", fontSize: "15px" }}
+                >
+                  <span>04.</span>{" "}
+                  <span>
+                    {" "}
+                    Select Red : If The Result Shows 2,4,6,8 The Pay Out Is
+                    (100*2)=200 (win) ; If The Result Shows 0, The Pay Out Is
+                    (100*1.5) 150(win)
+                  </span>
+                </div>
+                <div
+                  className="rule_1"
+                  style={{ margin: "10px 0", fontSize: "15px" }}
+                >
+                  <span>05.</span>{" "}
+                  <span>
+                    {" "}
+                    Select Violet : If The Result Shows 0 Or 5, The Pay Out Is
+                    (100*4.5)=450
+                  </span>
+                </div>
+                <div
+                  className="rule_1"
+                  style={{ margin: "10px 0", fontSize: "15px" }}
+                >
+                  <span style={{ fontWeight: "900 !important" }}>06.</span>{" "}
+                  <span>
+                    {" "}
+                    Select Number: If The Result Is The Same As The Number You
+                    Selected, The Pay Out Is (100*9)=900"
+                  </span>
+                </div>
               </div>
             </div>
-          </Modal> */}
+          </Modal>
         </div>
       )}
-      <UserCurrentPeriodBettingHistory
-        predictedDataForCurrrentPeriod={predictedDataForCurrrentPeriod}
-      />
     </div>
   );
 };
