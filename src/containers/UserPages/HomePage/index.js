@@ -21,8 +21,6 @@ import { useGetAllWalletQuery } from "../../../Services/walletApi";
 import ColorGame from "../Games/ColorGames";
 import UserCurrentPeriodBettingHistory from "../Games/UserCurrentPeriodBettingHistory";
 
-
-
 const HomePage = () => {
   // const { data, isLoading } = useGetAllWalletQuery();
   // const { data: popupImage } = useGetPopupImageQuery();
@@ -88,44 +86,44 @@ const HomePage = () => {
   };
 
   return (
-    <div className='ss-trade_homPage_wrapper' id='pddfff'>
+    <div className="ss-trade_homPage_wrapper" id="pddfff">
       {/* <div className="ss-trade_homPage_important_notice_section">
         <img
           className=""
           src="https://res.cloudinary.com/deavhufn6/image/upload/v1691001858/coming_soon_yzpthk.png"
-          alt="Safe & Secure Trade coming soon"
+          alt="Grow More Today coming soon"
         />
       </div> */}
-      <div className='ss-trade_section_title for_download_handle'>
+      <div className="ss-trade_section_title for_download_handle">
         <h2>Dashboard</h2>
       </div>
-      <div className='importantLinks'>
+      <div className="importantLinks">
         <span>Referrel URL </span>
-        <div className='socialLinksBox'>
-          <div className='socialLinks'>
+        <div className="socialLinksBox">
+          <div className="socialLinks">
             {/* refer link */}
             <button
-              className='refferLink'
+              className="refferLink"
               onClick={() => copyToClipboard("left")}
             >
               <ImCopy /> Copy reffer link
             </button>
             {/* whatsapp */}
-            <button className='refWhatsappButton' onClick={shareOnWhatsApp}>
+            <button className="refWhatsappButton" onClick={shareOnWhatsApp}>
               <BsWhatsapp /> Whatsapp
             </button>
           </div>
-          <div className='socialLinks'>
+          <div className="socialLinks">
             {/* facebook */}
             <button
-              className='refFacebookButton'
+              className="refFacebookButton"
               onClick={handleFbShareButtonClick}
             >
               <BsFacebook /> Facebook
             </button>
             {/* telegram */}
             <button
-              className='refTelegramButton'
+              className="refTelegramButton"
               onClick={handleTeShareButtonClick}
             >
               <BsTelegram /> Telegram
@@ -134,9 +132,9 @@ const HomePage = () => {
         </div>
       </div>
       {/* 1st row */}
-      <div className='first_row dashboard_content'>
-        <div className='ss-trade_dash_content_item'>
-        <ColorGame/>
+      <div className="first_row dashboard_content">
+        <div className="ss-trade_dash_content_item">
+          <ColorGame />
         </div>
       </div>
     </div>

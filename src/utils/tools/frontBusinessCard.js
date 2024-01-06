@@ -15,7 +15,7 @@ export const BusinessCard = [
     img: bplan,
     title: "The Mission",
     description:
-      "Safe & Secure Trade aims to be the most trusted global network for all of our customers, investors and suppliers, providing you with more than value through products and services, and to be a responsible value creator for all of our stake-holders. We will always be working on such projects for you and our planet. Where you will seethe vision of a better tomorrow being fulfilled and we and our society will be free from all kinds of troubles.",
+      "Grow More Today aims to be the most trusted global network for all of our customers, investors and suppliers, providing you with more than value through products and services, and to be a responsible value creator for all of our stake-holders. We will always be working on such projects for you and our planet. Where you will seethe vision of a better tomorrow being fulfilled and we and our society will be free from all kinds of troubles.",
   },
   // {
   //   id: "78df8sf8",

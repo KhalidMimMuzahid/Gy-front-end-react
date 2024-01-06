@@ -113,18 +113,18 @@ const Login = () => {
       navigate("/");
     }
   }, [token, navigate]);
-  const {
-    responseGoogle,
-    resFailed,
-    openModal,
-    setOpenModal,
-    modalRef,
-    value: values,
-    setValue: setValues,
-    handleGoogleLogin,
-    handleOnChange,
-    loading,
-  } = useGoogleLogin();
+  // const {
+  //   responseGoogle,
+  //   resFailed,
+  //   openModal,
+  //   setOpenModal,
+  //   modalRef,
+  //   value: values,
+  //   setValue: setValues,
+  //   handleGoogleLogin,
+  //   handleOnChange,
+  //   loading,
+  // } = useGoogleLogin();
   return (
     <>
       {/* <SocialIconeforLogin /> */}
@@ -217,7 +217,7 @@ const Login = () => {
                         console.log("google clicked");
                       }}
                     > */}
-                    <div className="google_btn">
+                    {/* <div className="google_btn">
                       <GoogleLogin
                         clientId={env.google_client_id}
                         buttonText="SIGN IN WITH GOOGLE"
@@ -225,7 +225,7 @@ const Login = () => {
                         onFailure={resFailed}
                         cookiePolicy={"single_host_origin"}
                       />
-                    </div>
+                    </div> */}
                     {/* </Button> */}
                     <div className="go_to_register">
                       <p>

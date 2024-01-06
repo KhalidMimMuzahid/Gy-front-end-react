@@ -12,16 +12,19 @@ const TermsConditions = ({ title, para }) => {
       <div className="container">
         <div className="termAndConditions_sub">
           <h1 className="termAndConditions">Term and Conditions</h1>
-          <h2 className="termAndConditionsWelcome">Welcome to Safe & Secure Trade!</h2>
+          <h2 className="termAndConditionsWelcome">
+            Welcome to Grow More Today!
+          </h2>
           <div className="termAndConditionBasicDetails">
             <p>
               These terms and conditions outline the rules and regulations for
-              the use of Safe & Secure Trade's Website, located at https://Safe & Secure Trade.org.
+              the use of Grow More Today Website, located at
+              https://growmore.today.
             </p>
             <p>
               By accessing this website we assume you accept these terms and
-              conditions. Do not continue to use Safe & Secure Trade if you do not agree to
-              take all of the terms and conditions stated on this page.
+              conditions. Do not continue to use Grow More Today if you do not
+              agree to take all of the terms and conditions stated on this page.
             </p>
             <p>
               The following terminology applies to these Terms and Conditions,
@@ -41,8 +44,9 @@ const TermsConditions = ({ title, para }) => {
               as referring to same. Cookies
             </p>
             <p>
-              We employ the use of cookies. By accessing Safe & Secure Trade, you agreed to use
-              cookies in agreement with the Safe & Secure Trade's Privacy Policy.
+              We employ the use of cookies. By accessing Grow More Today, you
+              agreed to use cookies in agreement with the Grow More Today
+              Privacy Policy.
             </p>
             <p>
               Most interactive websites use cookies to let us retrieve the
@@ -52,21 +56,23 @@ const TermsConditions = ({ title, para }) => {
               partners may also use cookies. License
             </p>
             <p>
-              Unless otherwise stated, Safe & Secure Trade and/or its licensors own the
-              intellectual property rights for all material on Safe & Secure Trade. All
-              intellectual property rights are reserved. You may access this
-              from Safe & Secure Trade for your own personal use subjected to restrictions set
-              in these terms and conditions.
+              Unless otherwise stated, Grow More Today and/or its licensors own
+              the intellectual property rights for all material on Grow More
+              Today. All intellectual property rights are reserved. You may
+              access this from Grow More Today for your own personal use
+              subjected to restrictions set in these terms and conditions.
             </p>
           </div>
           <div className="termAndConditionBasicDetails ">
             {/* <h2></h2> */}
             <ul className="showAndList">
               <h2>You must not:</h2>
-              <li>Republish material from Safe & Secure Trade</li>
-              <li>Sell, rent or sub-license material from Safe & Secure Trade</li>
-              <li>Reproduce, duplicate or copy material from Safe & Secure Trade</li>
-              <li>Redistribute content from Safe & Secure Trade</li>
+              <li>Republish material from Grow More Today</li>
+              <li>Sell, rent or sub-license material from Grow More Today</li>
+              <li>
+                Reproduce, duplicate or copy material from Grow More Today
+              </li>
+              <li>Redistribute content from Grow More Today</li>
             </ul>
           </div>
           <div className="termAndConditionBasicDetails">
@@ -78,20 +84,20 @@ const TermsConditions = ({ title, para }) => {
             <p>
               Parts of this website offer an opportunity for users to post and
               exchange opinions and information in certain areas of the website.
-              Safe & Secure Trade does not filter, edit, publish or review Comments prior to
-              their presence on the website. Comments do not reflect the views
-              and opinions of Safe & Secure Trade,its agents and/or affiliates. Comments
-              reflect the views and opinions of the person who post their views
-              and opinions. To the extent permitted by applicable laws, Safe & Secure Trade
-              shall not be liable for the Comments or for any liability, damages
-              or expenses caused and/or suffered as a result of any use of
-              and/or posting of and/or appearance of the Comments on this
-              website.
+              Grow More Today does not filter, edit, publish or review Comments
+              prior to their presence on the website. Comments do not reflect
+              the views and opinions of Grow More Today,its agents and/or
+              affiliates. Comments reflect the views and opinions of the person
+              who post their views and opinions. To the extent permitted by
+              applicable laws, Grow More Today shall not be liable for the
+              Comments or for any liability, damages or expenses caused and/or
+              suffered as a result of any use of and/or posting of and/or
+              appearance of the Comments on this website.
             </p>
             <p>
-              Safe & Secure Trade reserves the right to monitor all Comments and to remove any
-              Comments which can be considered inappropriate, offensive or
-              causes breach of these Terms and Conditions.
+              Grow More Today reserves the right to monitor all Comments and to
+              remove any Comments which can be considered inappropriate,
+              offensive or causes breach of these Terms and Conditions.
             </p>
           </div>
           <div className="termAndConditionBasicDetails">
@@ -119,10 +125,10 @@ const TermsConditions = ({ title, para }) => {
           </div>
           <div className="termAndConditionBasicDetails">
             <p>
-              You hereby grant Safe & Secure Trade a non-exclusive license to use, reproduce,
-              edit and authorize others to use, reproduce and edit any of your
-              Comments in any and all forms, formats or media. Hyperlinking to
-              our Content
+              You hereby grant Grow More Today a non-exclusive license to use,
+              reproduce, edit and authorize others to use, reproduce and edit
+              any of your Comments in any and all forms, formats or media.
+              Hyperlinking to our Content
             </p>
           </div>
           <div className="termAndConditionBasicDetails">
@@ -188,7 +194,7 @@ const TermsConditions = ({ title, para }) => {
               <li>
                 {" "}
                 (c) the benefit to us from the visibility of the hyperlink
-                compensates the absence of Safe & Secure Trade; and
+                compensates the absence of Grow More Today; and
               </li>
               <li>
                 {" "}
@@ -211,9 +217,9 @@ const TermsConditions = ({ title, para }) => {
             <p>
               If you are one of the organizations listed in paragraph 2 above
               and are interested in linking to our website, you must inform us
-              by sending an e-mail to Safe & Secure Trade. Please include your name, your
-              organization name, contact information as well as the URL of your
-              site, a list of any URLs from which you intend to link to our
+              by sending an e-mail to Grow More Today. Please include your name,
+              your organization name, contact information as well as the URL of
+              your site, a list of any URLs from which you intend to link to our
               Website, and a list of the URLs on our site to which you would
               like to link. Wait 2-3 weeks for a response
             </p>
@@ -237,8 +243,8 @@ const TermsConditions = ({ title, para }) => {
           </div>
           <div className="termAndConditionBasicDetails">
             <p>
-              No use of Safe & Secure Trade's logo or other artwork will be allowed for linking
-              absent a trademark license agreement. iFrames
+              No use of Grow More Today logo or other artwork will be allowed
+              for linking absent a trademark license agreement. iFrames
             </p>
             <p>
               Without prior approval and written permission, you may not create

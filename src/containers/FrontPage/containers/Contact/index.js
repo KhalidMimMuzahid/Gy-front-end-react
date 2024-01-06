@@ -3,7 +3,6 @@ import email from "../../../../assets/social_icon/email.png";
 import telegram from "../../../../assets/social_icon/telegram.png";
 import whatsapp from "../../../../assets/social_icon/whatsapp.png";
 const Contact = () => {
-
   return (
     <>
       <div className="ss-trade_front_contact_wrapper" id="contact">
@@ -15,7 +14,7 @@ const Contact = () => {
             <div className="ss-trade_front_contact_form">
               <div className="ss-trade_front_contact_address">
                 <a
-                  href="mailto:help@Safe & Secure Trade.org"
+                  href="mailto:growmoretodaypro@gmail.com"
                   target="_blank"
                   className="address_list"
                   rel="noreferrer"

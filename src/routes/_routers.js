@@ -625,12 +625,12 @@ export const routers = [
     permission: ["admin"],
     component: AdminLevelIncome,
   },
-  {
-    path: "/earnings/game-wallet",
-    name: "Game Wallet",
-    permission: ["admin"],
-    component: GameWallet,
-  },
+  // {
+  //   path: "/earnings/game-wallet",
+  //   name: "Game Wallet",
+  //   permission: ["admin"],
+  //   component: GameWallet,
+  // },
 
   {
     path: "/earnings/global-pool-income",

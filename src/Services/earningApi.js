@@ -370,7 +370,7 @@ export const {
   useGetAllBonanzaPrizeQuery,
   useGetBoosterControllUsersQuery,
   useUpdateBoosterControllerMutation,
-  // **************** Safe & Secure Trade.org NEW ENDPOINT **********************
+  // **************** Grow More Today NEW ENDPOINT **********************
   useGetAllDirLevIncomeHistoryAdminQuery, // SAST API
   useGetAllRankIncomeHistoryAdminQuery,
   useGetAllStakingIncomeHistoryAdminQuery, // SAST API

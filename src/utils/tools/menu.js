@@ -134,13 +134,13 @@ export const menus = [
         route: "/dashboard/earnings/level-income",
         permission: ["admin"],
       },
-      {
-        id: "e7rfs5fhjubhjbhjbuguhjvgyffyg",
-        // Might be change
-        menu: "Game Wallet",
-        route: "/dashboard/earnings/game-wallet",
-        permission: ["admin"],
-      },
+      // {
+      //   id: "e7rfs5fhjubhjbhjbuguhjvgyffyg",
+      //   // Might be change
+      //   menu: "Game Wallet",
+      //   route: "/dashboard/earnings/game-wallet",
+      //   permission: ["admin"],
+      // },
       {
         id: "f5sf5s8fs8f",
         menu: " ROI Income",
