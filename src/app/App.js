@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { ToastContainer } from "react-toastify";
 import Routers from "../routes";
-import logo from "../assets/logo.png";
+import logo from "../assets/growmorelogo.png";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import "../assets/front/Lazer-Game-Zone.ttf";

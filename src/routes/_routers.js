@@ -366,12 +366,12 @@ export const routers = [
     permission: ["user"],
     component: FundReceivingHistory,
   },
-  {
-    path: "/wallet/game-wallet",
-    name: "Game Wallet",
-    permission: ["user"],
-    component: GameWalletUser,
-  },
+  // {
+  //   path: "/wallet/game-wallet",
+  //   name: "Game Wallet",
+  //   permission: ["user"],
+  //   component: GameWalletUser,
+  // },
 
   // games section
   // {
@@ -625,12 +625,12 @@ export const routers = [
     permission: ["admin"],
     component: AdminLevelIncome,
   },
-  // {
-  //   path: "/earnings/game-wallet",
-  //   name: "Game Wallet",
-  //   permission: ["admin"],
-  //   component: GameWallet,
-  // },
+  {
+    path: "/earnings/game-wallet",
+    name: "Game Wallet",
+    permission: ["admin"],
+    component: GameWallet,
+  },
 
   {
     path: "/earnings/global-pool-income",
