@@ -255,6 +255,16 @@ export const earningApi = createApi({
       query: () => `/api/v1/private/get_level_income`,
       providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
     }),
+    getGameWalletIncomeByAdmin: builder.query({
+      // SAST API
+      query: () => `/api/v1/private/get_game_wallet_income`,
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
+    }),
+    getGameWalletIncomeByUser: builder.query({
+      // SAST API
+      query: () => `/api/v1/secure/get_game_wallet_income`,
+      providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
+    }),
     getAllRankIncomeHistoryAdmin: builder.query({
       query: () => `/api/v1/private/get_rank_income`,
       providesTags: ["adminEarning", "user", "boosterController"], // automatic-data fetching
@@ -376,4 +386,6 @@ export const {
   useGetUserRankIncomeQuery,
   useGetMyWinningHistoryQuery,
   useGetMyWinningHistoryAdminQuery,
+  useGetGameWalletIncomeByAdminQuery,
+  useGetGameWalletIncomeByUserQuery,
 } = earningApi;

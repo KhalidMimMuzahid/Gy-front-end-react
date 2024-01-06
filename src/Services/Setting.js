@@ -80,10 +80,17 @@ export const settingApi = createApi({
       }),
       invalidatesTags: ["setting"],
     }),
-
     updateWinningPercentage: builder.mutation({
       query: (body) => ({
         url: "/api/v1/private/winning-share-percentage",
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["setting"],
+    }),
+    updateGamePercentage: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/private/game-wallet-percentage",
         method: "PATCH",
         body,
       }),
@@ -103,6 +110,10 @@ export const settingApi = createApi({
     }),
     getWinningPercentage: builder.query({
       query: () => "/api/v1/private/winning-share-percentage",
+      invalidatesTags: ["setting"],
+    }),
+    getGamePercentage: builder.query({
+      query: () => "/api/v1/private/game-wallet-percentage",
       invalidatesTags: ["setting"],
     }),
     getAdminReward: builder.query({
@@ -177,5 +188,7 @@ export const {
   useUpdateMinDepositeAmountMutation,
   useUpdateMinWithdrawAmountMutation,
   useUpdateMinWithdrawPercentageAmountMutation,
-  useGetManageDataQuery
+  useUpdateGamePercentageMutation,
+  useGetManageDataQuery,
+  useGetGamePercentageQuery,
 } = settingApi;

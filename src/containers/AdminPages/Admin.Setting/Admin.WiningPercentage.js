@@ -50,7 +50,6 @@ const WiningPercentage = () => {
         style={{ backgroundColor: "#fff" }}
         className="tp_income_distribution_form_card"
       >
-        {" "}
         <div className="tp_section_title">
           <h2>Wining Percentage</h2>
         </div>
@@ -69,7 +68,7 @@ const WiningPercentage = () => {
                       name="level1"
                       id="self"
                       placeholder=""
-                      onChange={(e) => handleChange(1, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
@@ -87,7 +86,7 @@ const WiningPercentage = () => {
                       name="level2"
                       id="to_token_level_1"
                       placeholder=""
-                      onChange={(e) => handleChange(1, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
@@ -105,7 +104,7 @@ const WiningPercentage = () => {
                       name="level3"
                       id="to_token_level_2"
                       placeholder=""
-                      onChange={(e) => handleChange(2, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
@@ -123,7 +122,7 @@ const WiningPercentage = () => {
                       name="level4"
                       id="to_token_level_3"
                       placeholder=""
-                      onChange={(e) => handleChange(3, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
@@ -141,7 +140,7 @@ const WiningPercentage = () => {
                       name="level5"
                       id="to_token_level_4"
                       placeholder=""
-                      onChange={(e) => handleChange(4, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
@@ -159,7 +158,7 @@ const WiningPercentage = () => {
                       name="level6"
                       id="to_token_level_5"
                       placeholder=""
-                      onChange={(e) => handleChange(5, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"
@@ -177,7 +176,7 @@ const WiningPercentage = () => {
                       name="level7"
                       id="to_token_level_6"
                       placeholder=""
-                      onChange={(e) => handleChange(6, e.target.value)}
+                      onChange={(e) => handleChange(e)}
                       min="0"
                       className="input_field"
                       inputGroupClass="left"

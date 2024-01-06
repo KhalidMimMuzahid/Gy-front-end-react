@@ -180,6 +180,12 @@ const AdminDirectIncome = React.lazy(() =>
 const AdminLevelIncome = React.lazy(() =>
   import("../containers/AdminPages/AdminEarningTrack/AdminEarning.LevelIncome")
 );
+const GameWallet = React.lazy(() =>
+  import("../containers/AdminPages/AdminEarningTrack/AdminEarning.GameWallet")
+);
+const GameWalletUser = React.lazy(() =>
+  import("../containers/UserPages/Wallet/UserEarning.GameWalletUser.js")
+);
 // const AdminWinningAmount = React.lazy(() =>
 //   import(
 //     "../containers/AdminPages/AdminEarningTrack/AdminEarning.WinningAmount"
@@ -240,8 +246,11 @@ const AdminGameHistory = React.lazy(() =>
 const AdminChangePassword = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.ChangePassword")
 );
-const WiningPercentage = React.lazy(() =>
+const WinningPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.WiningPercentage")
+);
+const GamePercentage = React.lazy(() =>
+  import("../containers/AdminPages/Admin.Setting/Admin.GamePercentage.js")
 );
 const ROIPercentage = React.lazy(() =>
   import("../containers/AdminPages/Admin.Setting/Admin.RoiPercentage")
@@ -356,6 +365,12 @@ export const routers = [
     name: "Fund Receiving History",
     permission: ["user"],
     component: FundReceivingHistory,
+  },
+  {
+    path: "/wallet/game-wallet",
+    name: "Game Wallet",
+    permission: ["user"],
+    component: GameWalletUser,
   },
 
   // games section
@@ -610,6 +625,12 @@ export const routers = [
     permission: ["admin"],
     component: AdminLevelIncome,
   },
+  {
+    path: "/earnings/game-wallet",
+    name: "Game Wallet",
+    permission: ["admin"],
+    component: GameWallet,
+  },
 
   {
     path: "/earnings/global-pool-income",
@@ -690,10 +711,16 @@ export const routers = [
     component: AdminCreateUpdate,
   },
   {
-    path: "/wining-percentage",
-    name: "Wining Percentage",
+    path: "/winning-percentage",
+    name: "Winning Percentage",
     permission: ["admin"],
-    component: WiningPercentage,
+    component: WinningPercentage,
+  },
+  {
+    path: "/game-percentage",
+    name: "Game Percentage",
+    permission: ["admin"],
+    component: GamePercentage,
   },
   {
     path: "/roi-percentage",
