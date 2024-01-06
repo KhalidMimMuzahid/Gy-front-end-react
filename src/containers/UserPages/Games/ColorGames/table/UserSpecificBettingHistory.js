@@ -43,7 +43,7 @@ const columns = [
 ];
 
 const UserSpecificBettingHistory = ({ data }) => {
-  console.log({ mywBettingHistory: data });
+  // console.log({ mywBettingHistory: data });
   function createData(
     userId,
     period,

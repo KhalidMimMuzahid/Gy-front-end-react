@@ -65,6 +65,9 @@ const useGoogleLogin = () => {
   const modalRef = useRef(null);
   const [openModal, setOpenModal] = useState(false);
   useClickOutside(modalRef, () => setOpenModal(false));
+
+
+
   const responseGoogle = async (response) => {
     console.log({ response });
     setValue({
@@ -73,11 +76,16 @@ const useGoogleLogin = () => {
       first_name: response?.profileObj?.givenName,
       last_name: response?.profileObj?.familyName,
     });
+
+    console.log({ response });
     const token = {
       email: response?.profileObj?.email,
     };
     await isCheck(token);
   };
+
+
+
   // console.log(responseGoogle);
   useEffect(() => {
     if (cData?.isLoggedIn === true) {
